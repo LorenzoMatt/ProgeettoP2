@@ -364,7 +364,7 @@ template <class T>
 container<T>::const_iterator::const_iterator() : ptr(nullptr), pastTheEnd(false) {}
 
 template <class T>
-container<T>::const_iterator::const_iterator(iterator &i) : ptr(i.ptr), pastTheEnd(i.pte) {}
+container<T>::const_iterator::const_iterator(iterator &i) : ptr(i.ptr), pastTheEnd(i.pastTheEnd) {}
 
 template <class T>
 const T &container<T>::const_iterator::operator*() const

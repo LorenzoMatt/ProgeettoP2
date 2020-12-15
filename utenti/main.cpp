@@ -1,7 +1,7 @@
 #include "home.h"
 #include <QApplication>
 #include "utente.h"
-int main(int argc, char *argv[])
+int main()
 {
 //    QApplication a(argc, argv);
 //    Home w;
@@ -17,6 +17,4 @@ int main(int argc, char *argv[])
     d.insertBack(utente("non lo so","dioboia","diostronzo","porco","dio"));
     model c(d);
     cout<<c.get_utenti();
-
-
 }
