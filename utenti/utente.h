@@ -5,7 +5,6 @@
 #include "accesso.h"
 #include "domanda.h"
 #include "model.h"
-class  model;
 class utente
 {
     friend std::ostream& operator<<(std::ostream& os,const utente& u);
