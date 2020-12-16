@@ -1,25 +1,25 @@
 #include "accesso.h"
 
-accesso::accesso(string username, string password) : username(username),password(password)
+Accesso::Accesso(string username, string password) : username(username),password(password)
 {
 }
 
-void accesso::set_username(string username)
+void Accesso::set_username(string username)
 {
     this->username=username;
 }
 
-void accesso::set_password(string password)
+void Accesso::set_password(string password)
 {
     this->password=password;
 }
 
-std::string accesso::get_username() const
+std::string Accesso::get_username() const
 {
     return username;
 }
 
-std::string accesso::get_password() const
+std::string Accesso::get_password() const
 {
     return password;
 }

@@ -5,23 +5,34 @@
 #include "accesso.h"
 #include "domanda.h"
 #include "model.h"
-class utente
+#include "amico_non_presente.h"
+#include <list>
+using std::list;
+class Domanda;
+class Utente
 {
-    friend std::ostream& operator<<(std::ostream& os,const utente& u);
+    friend std::ostream& operator<<(std::ostream& os,const Utente& u);
 private:
-    accesso credenziali;
-    profilo pf;
+    Accesso credenziali;
+    Profilo pf;
     unsigned int punti=0;
-    container<utente*> amici;
-    container<utente*> seguaci;
+    container<Utente*> amici;
+    container<Utente*> seguaci;
     unsigned int risposte_date;
-    container<domanda> domande;
+    container<Domanda*> domande;
+    void aggiungi_seguace(Utente*);
 public:
-    utente();
-    utente(string username,string password,string nome,string cognome,string email);
-    profilo get_profilo() const;
-    accesso get_credenziali() const;
-    unsigned int get_punti() const;
+    Utente();
+    Utente(string username,string password,string nome,string cognome,string email);
+    Profilo get_profilo() const;//OK
+    Accesso get_credenziali() const;//OK
+    unsigned int get_punti() const;//OK
+    void fai_domanda(const string& domanda);
+    void aggiungi_amico(Utente* utente);
+    void togli_amico(Utente* utente);
+    container<Utente *> get_amici() const;
+    container<Utente*> get_seguaci() const;
+
 };
 
 #endif // UTENTE_H

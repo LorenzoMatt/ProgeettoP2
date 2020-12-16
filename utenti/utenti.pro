@@ -31,6 +31,8 @@ SOURCES += \
     profilo.cpp \
     accesso.cpp \
     domanda.cpp \
+    commento.cpp \
+    amico_non_presente.cpp
 
 HEADERS += \
         home.h \
@@ -39,7 +41,9 @@ HEADERS += \
     utente.h \
     profilo.h \
     accesso.h \
-    domanda.h
+    domanda.h \
+    commento.h \
+    amico_non_presente.h
 
 
 FORMS += \

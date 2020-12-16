@@ -2,14 +2,14 @@
 #define ACCESSO_H
 #include <iostream>
 using std::string;
-class accesso
+class Accesso
 {
 private:
     string username;
     string password;
-    accesso();
+    Accesso();
 public:
-    accesso(string,string);
+    Accesso(string,string);
     void set_username(string);
     void set_password(string);
     string get_username() const;

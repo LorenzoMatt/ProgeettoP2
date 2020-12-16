@@ -29,7 +29,7 @@ private:
 
     nodo *last, *first; // lista vuota iff first==last==nullptr    per garantire inserimento in testa e coda in tempo costante
     static nodo *copy(nodo *p, nodo *&l);
-    static bool isLess(nodo *d1, nodo *d2);
+    static bool is_less(nodo *d1, nodo *d2);
 
 public:
     ~container();
@@ -37,10 +37,10 @@ public:
     container(unsigned int k, const T &t);
     container();
     container &operator=(const container &d);
-    void insertFront(const T &t);
-    void insertBack(const T &t);
-    void popFront();
-    void popBack();
+    void push_front(const T &t);
+    void push_back(const T &t);
+    void pop_front();
+    void pop_back();
     bool empty() const;
     unsigned int countElements() const;
     bool operator<(const container &d) const;
@@ -130,7 +130,7 @@ typename container<T>::nodo *container<T>::copy(nodo *p, nodo *&l) //si passa la
 }
 
 template <class T>
-bool container<T>::isLess(nodo *d1, nodo *d2)
+bool container<T>::is_less(nodo *d1, nodo *d2)
 {
     if (d2 == nullptr)
         return false;
@@ -139,7 +139,7 @@ bool container<T>::isLess(nodo *d1, nodo *d2)
         return true;
     // d1 e d2 NON vuote
     return d1->info < d2->info ||
-           (d1->info == d2->info && isLess(d1->next, d2->next));
+           (d1->info == d2->info && is_less(d1->next, d2->next));
 }
 
 template <class T>
@@ -160,7 +160,7 @@ container<T> &container<T>::operator=(const container<T> &d)
 }
 
 template <class T>
-void container<T>::insertFront(const T &t)
+void container<T>::push_front(const T &t)
 {
     first = new nodo(t, nullptr, first);
     if (first->next == nullptr)
@@ -176,7 +176,7 @@ void container<T>::insertFront(const T &t)
 }
 
 template <class T>
-void container<T>::insertBack(const T &t)
+void container<T>::push_back(const T &t)
 {
     last = new nodo(t, last, nullptr);
     if (last->prev == nullptr)
@@ -192,7 +192,7 @@ void container<T>::insertBack(const T &t)
 }
 
 template <class T>
-void container<T>::popFront()
+void container<T>::pop_front()
 {
     if (first) //se la lista ha almeno un elemento
     {
@@ -213,7 +213,7 @@ void container<T>::popFront()
 }
 
 template <class T>
-void container<T>::popBack()
+void container<T>::pop_back()
 {
     if (first)
     {
@@ -251,19 +251,19 @@ typename container<T>::iterator container<T>::insert(iterator i, const T &t) //i
 {
     if (i.ptr == nullptr) //la lista è vuota
     {
-        insertFront(t);
+        push_front(t);
         return begin();
     }
     else //lista non vuota
     {
         if (i == end()) //iteratore past the end
         {
-            insertBack(t);
+            push_back(t);
             return --end(); //cerca il past the end della lista aggiornata e ne ritorna il precedente (ultimo)
         }
         else if (i == begin()) //iteratore primo elemento
         {
-            insertFront(t);
+            push_front(t);
             return begin(); //ritorna il primo, avendo inserito t prima del primo (che diventa quindi il primo)
         }
         else //caso generale
@@ -284,12 +284,12 @@ typename container<T>::iterator container<T>::remove(iterator i) //rimuove il no
         if (i == begin())
         {
             ++i;
-            popFront();
+            pop_front();
         }
         else if (i == --end())
         {
             ++i;
-            popBack();
+            pop_back();
         }
         else
         {
@@ -308,7 +308,7 @@ template <class T>
 container<T>::container(unsigned int k, const T &t) : last(nullptr), first(nullptr)
 {
     for (unsigned int i = 0; i < k; ++i)
-        insertFront(t);
+        push_front(t);
 }
 template <class T>
 container<T>::container() : last(nullptr), first(nullptr) {}
@@ -322,7 +322,7 @@ container<T>::~container()
 template <class T>
 bool container<T>::operator<(const container<T> &d) const
 {
-    return isLess(first, d.first);
+    return is_less(first, d.first);
 }
 
 /**********************************CONST_ITERATOR**********************************/
@@ -362,7 +362,7 @@ template <class T>
 container<T>::const_iterator::const_iterator() : ptr(nullptr), pastTheEnd(false) {}
 
 template <class T>
-container<T>::const_iterator::const_iterator(iterator &i) : ptr(i.ptr), pastTheEnd(i.pte) {}
+container<T>::const_iterator::const_iterator(iterator &i) : ptr(i.ptr), pastTheEnd(i.pastTheEnd) {}
 
 template <class T>
 const T &container<T>::const_iterator::operator*() const
@@ -517,7 +517,6 @@ std::ostream &operator<<(std::ostream &os, const container<T> &l)
     return os;
 }
 
-#endif // DLIST_H
 
 /*
 DONE:

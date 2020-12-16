@@ -17,6 +17,7 @@
 //    for(auto it=lingue.cbegin();it!=lingue.cend();++it)
 //        cout<<*it<<endl;
 //}
+/*
 #include "profilo.h"
 
 
@@ -59,4 +60,50 @@ std::ostream& operator<<(std::ostream& os,const profilo& p){
     return os;
 
 }
+*/
+#include "profilo.h"
+
+
+Profilo::Profilo(){}
+Profilo::~Profilo(){}
+Profilo::Profilo(const string& n,const string& c,const string& e):nome(n),cognome(c),email(e){}
+
+void Profilo::SetNome(const string& n){nome=n;}
+void Profilo::SetCognome(const string& c){cognome=c;}
+void Profilo::SetEmail(const string& e){email=e;}
+
+void Profilo::AggiungiCompetenza(const string& c){
+    competenze.push_back(c);
+}
+
+void Profilo::AggiungiTitoloDiStudio (const string& t){
+    titoli_di_studio.push_back(t);
+}
+
+string Profilo::GetNome() const{return nome;}
+string Profilo::GetCognome() const{return cognome;}
+string Profilo::GetEmail() const{return email;}
+
+container<string> Profilo::GetCompetenze() const{
+    return competenze;
+}
+
+container<string> Profilo::GetTitoliDiStudio() const{
+    return titoli_di_studio;
+}
+/*
+std::ostream& operator<<(std::ostream& os,const profilo& p){
+
+   return os<<p.nome<<endl<<p.cognome<<endl<<p.email<<endl<<p.competenze<<p.titoli_di_studio;
+}*/
+std::ostream& operator<<(std::ostream& os,const Profilo& p){
+    os<<"nome: " <<p.GetNome()<<endl<<"cognome: "<<p.GetCognome()<<endl<<"email: "<<p.GetEmail();
+    os<<endl<<"competenze: "<<p.competenze;
+    os<<endl<<"Titoli di studio: "<<p.titoli_di_studio;
+    return os;
+
+}
+
+
+
 

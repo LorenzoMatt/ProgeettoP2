@@ -37,7 +37,7 @@
 //    //void AggiungiTitoloDiStudio(string);
 //    void StampaLingue() const;
 //};
-
+/*
 //#endif // PROFILO_H
 #ifndef PROFILO_H
 #define PROFILO_H
@@ -81,5 +81,48 @@ public:
 };
 
 #endif // PROFILO_H
+*/
+#ifndef PROFILO_H
+#define PROFILO_H
 
+#include <string>
+#include <iostream>
+#include <container.h>
+
+using std::cout;
+using std::endl;
+using std::string;
+
+class Profilo
+{
+   friend std::ostream& operator<<(std::ostream& os,const Profilo& u);
+
+    string nome;
+    string cognome;
+    string email;
+    container<string>competenze;
+    container<string> titoli_di_studio;
+    Profilo();
+
+public:
+    Profilo(const string&,const string&,const string&);
+    ~Profilo();
+    void SetNome(const string&); // OK
+    void SetCognome(const string&); //OK
+    void SetEmail(const string&); //OK
+    void AggiungiCompetenza(const string&); //OK
+    void AggiungiTitoloDiStudio (const string&); //OK
+
+    string GetNome() const; //OK
+    string GetCognome() const; //OK
+    string GetEmail() const;//OK
+
+    container<string> GetCompetenze() const; //OK
+    container<string> GetTitoliDiStudio() const; //OK
+
+
+
+};
+
+#endif // PROFILO_H
 
