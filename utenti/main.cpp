@@ -2,62 +2,11 @@
 #include <QApplication>
 #include "utente.h"
 #include <list>
-struct nodoP
-{
-    int info;
-    nodoP  *next;
-    nodoP(int i=0, nodoP *n=0):info(i),next(n){}
-};
-nodoP* insric(nodoP* x,nodoP* L);
-nodoP* riordina(nodoP* x)
-{
-    if(!x)
-        return 0;
 
-        nodoP* L=riordina(x->next);
-        nodoP* ord=insric(x,L);
-        return ord;
-}
-nodoP* insric(nodoP* x,nodoP* L)
-{
-    if(!L)
-        return x;
-    if(x->info<=L->info)
-    {
-        x->next=L;
-        return x;
-    }
-    else
-    {
-        L->next=insric(x,L->next);
-        return L;
-    }
-}
-void printList(nodoP* L)
-{
-    if(L)
-    {
-        cout<<L->info<<" ";
-        printList(L->next);
-    }
-}
 
-nodoP* creaLista(int* A,int dim,int i){
-    if(i==dim)
-        return 0;
-    nodoP* L=creaLista(A,dim,i+1);
-    nodoP* x=new nodoP(A[i],L);
-    return x;
-}
 
 int main()
 {
-    int a[5]={4,88,67,0,45};
-    nodoP* L=creaLista(a,5,0);
-    printList(L);
-    nodoP* ord=riordina(L);
-    cout<<endl;
-    printList(ord);
 
 
 //    QApplication a(argc, argv);
@@ -65,7 +14,7 @@ int main()
 //    w.show();
 
 
-/*
+
 //    return a.exec();
     //  ////////////////////////////////////////////////////////////TEST UTENTE ///////////////////////////////////////////////////////////
     cout<<"TEST UTENTI"<<endl<<endl;
@@ -153,6 +102,6 @@ cout<<endl<<endl<<endl<<"TEST DOMANDE"<<endl<<endl;
         cout<<**it<<endl;
 
 
-*/
+
 
 }
