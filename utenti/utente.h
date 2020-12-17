@@ -13,8 +13,8 @@ class Utente
 {
     friend std::ostream& operator<<(std::ostream& os,const Utente& u);
 private:
-    Accesso credenziali;
-    Profilo pf;
+    Accesso* credenziali;
+    Profilo* pf;
     unsigned int punti=0;
     container<Utente*> amici;
     container<Utente*> seguaci;
@@ -24,8 +24,8 @@ private:
 public:
     Utente();
     Utente(string username,string password,string nome,string cognome,string email);
-    const Profilo& get_profilo() const;//OK
-    Accesso get_credenziali() const;//OK
+    Profilo& get_profilo() const;//OK
+    Accesso& get_credenziali() const;//OK
     unsigned int get_punti() const;//OK
     void fai_domanda(Domanda& domanda);
     void aggiungi_amico(Utente& utente);

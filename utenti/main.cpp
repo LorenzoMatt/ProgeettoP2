@@ -19,8 +19,9 @@ int main()
     //  ////////////////////////////////////////////////////////////TEST UTENTE ///////////////////////////////////////////////////////////
     cout<<"TEST UTENTI"<<endl<<endl;
     Utente ut("ciao","dioboia","diostronzo","porco","dio");
-    cout<<ut.get_profilo()<<endl;
-    cout<<ut.get_punti();
+    ut.get_profilo().AggiungiCompetenza("stare a letto");
+    ut.get_profilo().AggiungiCompetenza("stare a letto");
+    cout<<ut.get_profilo();
     Utente x("Lorenzo","dioboia","diostronzo","porco","dio");
     Utente x2("Mirko","dioboia","diostronzo","porco","dio");
     Utente x3("Mirko","dioboia","diostronzo","porco","dio");

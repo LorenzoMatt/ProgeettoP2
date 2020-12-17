@@ -43,7 +43,8 @@ HEADERS += \
     accesso.h \
     domanda.h \
     commento.h \
-    amico_non_presente.h
+    amico_non_presente.h \
+    deepptr.h
 
 
 FORMS += \

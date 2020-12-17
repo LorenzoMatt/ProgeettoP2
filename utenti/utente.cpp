@@ -2,8 +2,8 @@
 
 std::ostream &operator<<(std::ostream &os, const Utente &u)
 {
-    os<<u.pf<<endl;
-    os<<"username: "<<u.credenziali.get_username()<<endl<<"password: "<<u.credenziali.get_password()<<endl;
+    os<<*(u.pf)<<endl;
+    os<<"username: "<<u.credenziali->get_username()<<endl<<"password: "<<u.credenziali->get_password()<<endl;
     return os;
 }
 
@@ -13,22 +13,22 @@ void Utente::aggiungi_seguace(Utente* utente)
     seguaci.push_back(utente);
 }
 
-Utente::Utente():pf(Profilo("ciao","ciao","ciao")),credenziali(Accesso("lorenzo","1111"))
+Utente::Utente():pf(new Profilo("ciao","ciao","ciao")),credenziali(new Accesso("lorenzo","1111"))
 {
 
 }
 
 Utente::Utente(std::string username, std::string password, std::string nome, std::string cognome, std::string email)
-    :credenziali(Accesso(username,password)),pf(Profilo(nome,cognome,email)),risposte_date(0){}
+    :credenziali(new Accesso(username,password)),pf(new Profilo(nome,cognome,email)),risposte_date(0){}
 
-const Profilo &Utente::get_profilo() const
+Profilo& Utente::get_profilo() const
 {
-    return pf;
+    return* pf;
 }
 
-Accesso Utente::get_credenziali() const
+Accesso& Utente::get_credenziali() const
 {
-    return credenziali;
+    return *credenziali;
 }
 
 unsigned int Utente::get_punti() const
@@ -68,7 +68,7 @@ void Utente::togli_amico(Utente *utente)
 }
 
 
-const container<Utente *> &Utente::get_amici() const
+const container<Utente *>& Utente::get_amici() const
 {
     return amici;
 }
@@ -85,5 +85,5 @@ container<Domanda*> Utente::get_domande() const
 
 void Utente::set_profilo(const std::string & diocan)
 {
-    pf.SetNome(diocan);
+    pf->SetNome(diocan);
 }
