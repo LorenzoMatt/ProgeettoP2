@@ -18,25 +18,48 @@ int main()
 //    return a.exec();
     //  ////////////////////////////////////////////////////////////TEST UTENTE ///////////////////////////////////////////////////////////
     cout<<"TEST UTENTI"<<endl<<endl;
-    Utente ut("ciao","dioboia","diostronzo","porco","dio");
+    Utente ut("Pikachu","dioboia","diostronzo","porco","dio");
     ut.get_profilo().AggiungiCompetenza("stare a letto");
     ut.get_profilo().AggiungiCompetenza("stare a letto");
     cout<<ut.get_profilo();
     Utente x("Lorenzo","dioboia","diostronzo","porco","dio");
-    Utente x2("Mirko","dioboia","diostronzo","porco","dio");
+    Utente x2("Elisa","dioboia","diostronzo","porco","dio");
     Utente x3("Mirko","dioboia","diostronzo","porco","dio");
-    Utente x4("Mirko","dioboia","diostronzo","porco","dio");
-    Utente x5("Mirko","dioboia","diostronzo","porco","dio");
+    Utente x4("Francesca","dioboia","diostronzo","porco","dio");
+    Utente x5("Elton","dioboia","diostronzo","porco","dio");
     ut.aggiungi_amico(x);
     ut.aggiungi_amico(x2);
     ut.aggiungi_amico(x3);
     ut.aggiungi_amico(x4);
+    x2.aggiungi_amico(x);
+    x3.aggiungi_amico(x);
+    x4.aggiungi_amico(x);
+    int i=1;
+
+    cout<<"amici di ut ------------------------"<<endl;
+    for(container<Utente*>::const_iterator it=ut.get_amici().begin();it!=ut.get_amici().end();++it,i++){
+       cout<<"amico n. "<<i<<endl<<**it<<endl;
+    }
+    i=1;
+    cout<<endl<<"seguaci di x--------------------------------------------"<<endl;
+    for(container<Utente*>::const_iterator it=x.get_seguaci().begin();it!=x.get_seguaci().end();++it,i++){
+        cout<<"seguace n. "<<i<<endl<<endl<<**it;
+    }
+    i=1;
+    cout<<"bastaaaaa seguaci di x--------------------------------------------"<<endl;
+    ut.togli_amico(&x);
+    for(container<Utente*>::const_iterator it=x.get_seguaci().begin();it!=x.get_seguaci().end();++it,i++){
+        cout<<"seguace n. "<<i<<endl<<endl<<**it;
+    }
+    i=1;
+    cout<<"amici di ut ------------------------"<<endl;
+    for(container<Utente*>::const_iterator it=ut.get_amici().begin();it!=ut.get_amici().end();++it,i++){
+       cout<<"amico n. "<<i<<endl<<**it<<endl;
+    }
+    cout<<endl<<"fine amici di ut ------------------------"<<endl;
 
 
-    list<Utente*> l;
-    l.push_back(&x);
-    l.push_back(&x2);
-    l.push_back(&x3);
+
     //for (list<Utente*>::iterator it=l.begin();it!=l.end();++it)
             //cout<<**it;
     container<Utente*> dd= ut.get_amici();

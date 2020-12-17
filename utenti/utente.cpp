@@ -13,6 +13,20 @@ void Utente::aggiungi_seguace(Utente* utente)
     seguaci.push_back(utente);
 }
 
+void Utente::togli_amico_ausiliario(Utente *utente) // da testare
+{
+    for(auto it=amici.begin();it!=amici.end();++it)
+        if((*it)==utente)
+            amici.remove(it);
+}
+
+void Utente::togli_seguace_ausiliario(Utente *utente) // da testare
+{
+    for(auto it=seguaci.begin();it!=seguaci.end();++it)
+        if((*it)==utente)
+            seguaci.remove(it);
+}
+
 Utente::Utente():pf(new Profilo("ciao","ciao","ciao")),credenziali(new Accesso("lorenzo","1111"))
 {
 
@@ -44,26 +58,50 @@ void Utente::fai_domanda(Domanda& domanda)
 
 void Utente::aggiungi_amico(Utente& utente)
 {
+    if(this!=&utente)
+    {
     amici.push_back(&utente);
     utente.aggiungi_seguace(this);
+    }
 
 }
 
-void Utente::togli_amico(Utente *utente)
+void Utente::togli_amico(Utente *utente) // da testare
+{
+    bool tolto=false;
+
+    //try{
+        for(auto it=amici.begin();it!=amici.end() && !tolto;++it)
+            if((*it)==utente)
+            {
+                amici.remove(it);
+                tolto=true;
+                utente->togli_seguace(this);
+            }
+        //if(!tolto)
+            //throw amico_non_presente();
+        //}catch(amico_non_presente)
+        //{
+            //std::cerr<<"amico non trovato";
+        //}
+}
+
+void Utente::togli_seguace(Utente *utente) // da testare
 {
     bool tolto=false;
     try{
-    for(auto it=amici.begin();it!=amici.end() && !tolto;++it)
+    for(auto it=seguaci.begin();it!=seguaci.end() && !tolto;++it)
         if((*it)==utente)
         {
-            amici.remove(it);
+            seguaci.remove(it);
             tolto=true;
+            utente->togli_amico(this);
         }
     if(!tolto)
         throw amico_non_presente();
     }catch(amico_non_presente)
     {
-        std::cerr<<"amico non trovato";
+        std::cerr<<"seguace non trovato";
     }
 }
 
