@@ -8,7 +8,7 @@ Domanda::Domanda()
 
 Domanda::Domanda(const string& t, Utente* autore, unsigned int priorita):testo(t),autore_domanda(autore),priorita(priorita){}
 
-void Domanda::AggiungiCommento(const Commento& c){
+void Domanda::aggiungi_commento(const Commento& c){
     commenti.push_back(c);
 }
 void Domanda::RimuoviCommento(const Commento& c){

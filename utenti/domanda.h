@@ -22,7 +22,7 @@ private:
     Domanda();
 public:
     Domanda(const string&,Utente*,unsigned int);
-    void AggiungiCommento(const Commento&);//OK
+    void aggiungi_commento(const Commento&);//OK
     void RimuoviCommento(const Commento&);//OK
     Utente* get_autore_domanda() const;//OK
 

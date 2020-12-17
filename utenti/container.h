@@ -15,8 +15,7 @@ std::ostream &operator<<(std::ostream &, const container<T> &);
 template <class T>
 class container
 {
-    friend std::ostream &operator<<<T>(std::ostream &, const container &);
-
+    friend std::ostream &operator << <T>(std::ostream &, const container <T> &);
 private:
     class nodo
     {

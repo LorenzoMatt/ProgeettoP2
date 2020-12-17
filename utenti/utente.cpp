@@ -19,9 +19,9 @@ Utente::Utente():pf(Profilo("ciao","ciao","ciao")),credenziali(Accesso("lorenzo"
 }
 
 Utente::Utente(std::string username, std::string password, std::string nome, std::string cognome, std::string email)
-    :credenziali(Accesso(username,password)),pf(Profilo(nome,cognome,email)){}
+    :credenziali(Accesso(username,password)),pf(Profilo(nome,cognome,email)),risposte_date(0){}
 
-Profilo Utente::get_profilo() const
+const Profilo &Utente::get_profilo() const
 {
     return pf;
 }
@@ -36,15 +36,16 @@ unsigned int Utente::get_punti() const
     return punti;
 }
 
-void Utente::fai_domanda(const std::string &domanda)
+void Utente::fai_domanda(Domanda& domanda)
 {
-    domande.push_back(new Domanda(domanda,this,0));
+    domande.push_back(&domanda);
+    //domande.push_back(new Domanda(domanda,this,0));
 }
 
-void Utente::aggiungi_amico(Utente *utente)
+void Utente::aggiungi_amico(Utente& utente)
 {
-    amici.push_back(utente);
-    utente->aggiungi_seguace(utente);
+    amici.push_back(&utente);
+    utente.aggiungi_seguace(this);
 
 }
 
@@ -66,12 +67,23 @@ void Utente::togli_amico(Utente *utente)
     }
 }
 
-container<Utente *> Utente::get_amici() const
+
+const container<Utente *> &Utente::get_amici() const
 {
     return amici;
 }
 
-container<Utente*> Utente::get_seguaci() const
+const container<Utente*>& Utente::get_seguaci() const
 {
     return seguaci;
+}
+
+container<Domanda*> Utente::get_domande() const
+{
+    return domande;
+}
+
+void Utente::set_profilo(const std::string & diocan)
+{
+    pf.SetNome(diocan);
 }

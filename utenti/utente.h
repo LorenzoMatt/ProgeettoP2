@@ -18,20 +18,22 @@ private:
     unsigned int punti=0;
     container<Utente*> amici;
     container<Utente*> seguaci;
-    unsigned int risposte_date;
-    container<Domanda*> domande;
+    unsigned int risposte_date=0;
     void aggiungi_seguace(Utente*);
+    container<Domanda*> domande;
 public:
     Utente();
     Utente(string username,string password,string nome,string cognome,string email);
-    Profilo get_profilo() const;//OK
+    const Profilo& get_profilo() const;//OK
     Accesso get_credenziali() const;//OK
     unsigned int get_punti() const;//OK
-    void fai_domanda(const string& domanda);
-    void aggiungi_amico(Utente* utente);
+    void fai_domanda(Domanda& domanda);
+    void aggiungi_amico(Utente& utente);
     void togli_amico(Utente* utente);
-    container<Utente *> get_amici() const;
-    container<Utente*> get_seguaci() const;
+    const container<Utente*>& get_amici() const ;
+    const container<Utente*>& get_seguaci() const;
+    container<Domanda*> get_domande() const;
+    void set_profilo(const string&);
 
 };
 
