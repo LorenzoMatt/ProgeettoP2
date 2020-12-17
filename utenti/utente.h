@@ -19,7 +19,7 @@ private:
     container<Utente*> amici;
     container<Utente*> seguaci;
     unsigned int risposte_date=0;
-    void aggiungi_seguace(Utente* utente);
+    void aggiungi_seguace(Utente& utente);
     container<Domanda*> domande;
     void togli_amico_ausiliario(Utente* utente);
     void togli_seguace_ausiliario(Utente* utente);

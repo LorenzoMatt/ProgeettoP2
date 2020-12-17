@@ -48,6 +48,10 @@ int main()
     i=1;
     cout<<"bastaaaaa seguaci di x--------------------------------------------"<<endl;
     ut.togli_amico(&x);
+    Utente j("ciao","dd","t","g","w");
+    //ut.togli_amico(&j);
+    cout<<"controllo seguaci di x--------------------------------------------"<<endl;
+
     for(container<Utente*>::const_iterator it=x.get_seguaci().begin();it!=x.get_seguaci().end();++it,i++){
         cout<<"seguace n. "<<i<<endl<<endl<<**it;
     }
@@ -124,8 +128,5 @@ cout<<endl<<endl<<endl<<"TEST DOMANDE"<<endl<<endl;
     profili.push_back(&e4);
     for(container<Profilo*>::iterator it=profili.begin();it!=profili.end();++it)
         cout<<**it<<endl;
-
-
-
 
 }

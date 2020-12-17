@@ -8,25 +8,6 @@ std::ostream &operator<<(std::ostream &os, const Utente &u)
 }
 
 
-void Utente::aggiungi_seguace(Utente* utente)
-{
-    seguaci.push_back(utente);
-}
-
-void Utente::togli_amico_ausiliario(Utente *utente) // da testare
-{
-    for(auto it=amici.begin();it!=amici.end();++it)
-        if((*it)==utente)
-            amici.remove(it);
-}
-
-void Utente::togli_seguace_ausiliario(Utente *utente) // da testare
-{
-    for(auto it=seguaci.begin();it!=seguaci.end();++it)
-        if((*it)==utente)
-            seguaci.remove(it);
-}
-
 Utente::Utente():pf(new Profilo("ciao","ciao","ciao")),credenziali(new Accesso("lorenzo","1111"))
 {
 
@@ -55,13 +36,25 @@ void Utente::fai_domanda(Domanda& domanda)
     domande.push_back(&domanda);
     //domande.push_back(new Domanda(domanda,this,0));
 }
-
+void Utente::togli_amico_ausiliario(Utente *utente) // da testare
+{
+    for(auto it=amici.begin();it!=amici.end();++it)
+        if((*it)==utente)
+            amici.remove(it);
+}
+void Utente::aggiungi_seguace(Utente& utente)
+{
+    if(this!=&utente)
+    {
+    seguaci.push_back(&utente);
+    }
+}
 void Utente::aggiungi_amico(Utente& utente)
 {
     if(this!=&utente)
     {
     amici.push_back(&utente);
-    utente.aggiungi_seguace(this);
+    utente.aggiungi_seguace(*this);
     }
 
 }
@@ -70,22 +63,59 @@ void Utente::togli_amico(Utente *utente) // da testare
 {
     bool tolto=false;
 
-    //try{
+    try{
         for(auto it=amici.begin();it!=amici.end() && !tolto;++it)
             if((*it)==utente)
             {
                 amici.remove(it);
                 tolto=true;
-                utente->togli_seguace(this);
+                cout<<"jkdvfnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnndvfjlnszkjnjnzsklnfjnjdslnfjase"<<endl;
+                utente->togli_seguace_ausiliario(this);
             }
-        //if(!tolto)
-            //throw amico_non_presente();
-        //}catch(amico_non_presente)
-        //{
-            //std::cerr<<"amico non trovato";
-        //}
+        if(!tolto)
+            throw amico_non_presente();
+        }catch(amico_non_presente)
+        {
+            std::cerr<<"amico non trovato";
+            return;
+        }
 }
+void Utente::togli_seguace_ausiliario(Utente *utente) // È stato testato, ma non so perchè se tolgo il booleano non funziona
+{/*
+    for(auto it=seguaci.begin();it!=seguaci.end();++it) // non so perchè non funzioni
+    if((*it)==utente){
+        seguaci.remove(it);
+    }*/
 
+/*---------il codice sottostante funziona
+    bool tolto=false;
+
+for(auto it=seguaci.begin();it!=seguaci.end() && !tolto;++it)
+    if((*it)==utente)
+    {
+        seguaci.remove(it);
+        tolto=true;
+        cout<<"trovatooooooooooooo!!!!";
+    }
+    */
+    try{
+        bool tolto=false;
+
+    for(auto it=seguaci.begin();it!=seguaci.end() && !tolto;++it)
+        if((*it)==utente)
+        {
+            seguaci.remove(it);
+            tolto=true;
+            cout<<"trovatooooooooooooo!!!!";
+        }
+    if(!tolto)
+        throw amico_non_presente();
+    }catch(amico_non_presente){
+        std::cerr<<"seguace non trovato";
+        return;
+    }
+
+}
 void Utente::togli_seguace(Utente *utente) // da testare
 {
     bool tolto=false;
@@ -95,13 +125,13 @@ void Utente::togli_seguace(Utente *utente) // da testare
         {
             seguaci.remove(it);
             tolto=true;
-            utente->togli_amico(this);
+            utente->togli_amico_ausiliario(this);
         }
     if(!tolto)
         throw amico_non_presente();
-    }catch(amico_non_presente)
-    {
+    }catch(amico_non_presente){
         std::cerr<<"seguace non trovato";
+        return;
     }
 }
 
@@ -111,7 +141,7 @@ const container<Utente *>& Utente::get_amici() const
     return amici;
 }
 
-const container<Utente*>& Utente::get_seguaci() const
+const container<Utente *>& Utente::get_seguaci() const
 {
     return seguaci;
 }
