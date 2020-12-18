@@ -26,6 +26,7 @@ private:
     void togli_seguace_ausiliario(Utente* utente);
 public:
     Utente();
+    Utente(const Utente& u);
     Utente(string username,string password,string nome,string cognome,string email);
     Profilo& get_profilo() const;//OK
     Accesso& get_credenziali() const;//OK
@@ -39,6 +40,7 @@ public:
     const container<Utente*>& get_seguaci() const;
     const container<Domanda*>& get_domande() const;
     void set_profilo(const string&);
+    //virtual Utente* clone(return new Utente(t));
 
 };
 

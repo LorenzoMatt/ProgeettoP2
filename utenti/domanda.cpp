@@ -1,10 +1,7 @@
 #include "domanda.h"
 
 
-Domanda::Domanda()
-{
 
-}
 
 Domanda::Domanda(const string& t, Utente* autore, unsigned int priorita):testo(t),autore_domanda(autore),priorita(priorita){}
 
@@ -28,7 +25,7 @@ Utente* Domanda::get_autore_domanda() const
 
 std::ostream &operator<<(std::ostream & os, const Domanda& d){
 
-    return os<<"domanda: "<<d.testo<<endl<<d.commenti;
+    return os<<"domanda: "<<d.testo<<endl<<"commenti: "<<d.commenti;
 }
 
 

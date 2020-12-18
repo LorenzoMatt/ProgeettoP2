@@ -1,13 +1,13 @@
 #include "home.h"
 #include <QApplication>
 #include "utente.h"
+#include "model.h"
 #include <list>
-
-
+#include "deepptr.h"
+#include <memory>
 
 int main()
 {
-
 
 //    QApplication a(argc, argv);
 //    Home w;
@@ -124,31 +124,32 @@ int main()
 
 cout<<endl<<endl<<endl<<"TEST DOMANDE"<<endl<<endl;
     // ///////////////////////////////////////////////////////////TEST DOMANDE ////////////////////////////////////////////////////////////
-    Domanda domanda("ho una domanda",&ut,0);
+    Domanda* domanda=new Domanda("ho una domanda",&ut,0);
 
-    cout<<*(domanda.get_autore_domanda());// OK
+    cout<<*domanda->get_autore_domanda();// OK
     Commento commento1("vaffanculo",nullptr);
-    domanda.aggiungi_commento(Commento("non abbiamo chiesto",nullptr)); //OK
-    domanda.aggiungi_commento(Commento("non ho commenti da aggiungere",nullptr)); //OK
-    domanda.aggiungi_commento(commento1);//OK
-    cout<<domanda; //OK
-   // domanda.RimuoviCommento(Commento("non ho commenti da aggiungere",nullptr)); //OK
-    //domanda.RimuoviCommento(commento1);//OK
-    cout<<endl<<domanda;
-    ut.fai_domanda(domanda);
+    domanda->aggiungi_commento(Commento("non abbiamo chiesto",nullptr)); //OK
+    domanda->aggiungi_commento(Commento("non ho commenti da aggiungere",nullptr)); //OK
+    domanda->aggiungi_commento(commento1);//OK
+    cout<<*domanda; //OK
+    domanda->RimuoviCommento(Commento("non ho commenti da aggiungere",nullptr)); //OK
+    domanda->RimuoviCommento(commento1);//OK
+    cout<<endl<<*domanda;
+    ut.fai_domanda(*domanda);
+    // ut.fai_domanda("ma come mai il cielo è blu?");
     cout<<endl<<endl<<endl<<"DIOBOIAAAAAAAAAAAA"<<endl;
-    container<Domanda*> store=ut.get_domande();
-    for(container<Domanda*>::iterator it=store.begin();it!=store.end();++it)
+    const container<Domanda*>& store=ut.get_domande();// se passo per riferimento noto la differenza se ad ut aggiungo una domanda
+    for(container<Domanda*>::const_iterator it=store.begin();it!=store.end();++it)
         cout<<**it<<endl;
-    Domanda domanda2("sono gesu di nazzaret",&ut,0);
-    ut.fai_domanda(domanda2);
+    Domanda* domanda2=new Domanda("sono gesu di nazzaret",&ut,0);
+    ut.fai_domanda(*domanda2);
 
     cout<<endl<<endl<<"aggiunta domanda a ut"<<endl;
-          for(container<Domanda*>::iterator it=store.begin();it!=store.end();++it)
+          for(container<Domanda*>::const_iterator it=store.begin();it!=store.end();++it)
               cout<<**it<<endl;
 
 
-    // /////////////////////////////////////////////////////// TEST PROFILO //////////////////////////////////////////
+   // /////////////////////////////////////////////////////// TEST PROFILO //////////////////////////////////////////
     cout<<endl<<endl<<endl<<"TEST PROFILO"<<endl<<endl;
 
     Profilo e("porco","dio","bastardo");
@@ -167,4 +168,29 @@ cout<<endl<<endl<<endl<<"TEST DOMANDE"<<endl<<endl;
     for(container<Profilo*>::iterator it=profili.begin();it!=profili.end();++it)
         cout<<**it<<endl;
 
+    // /////////////////////////////////////////////////////// TEST DEEPPTR //////////////////////////////////////////
+
+    Utente* u=new Utente("Giorgio","0000","Giorgio","Armani","giorgioamrmani");
+    DeepPtr<Utente> ptr=DeepPtr<Utente>(u);
+    cout<<*ptr;
+    //container<DeepPtr<Utente>> utente;
+    //utente.push_back(DeepPtr<Utente>(new Utente("Giorgio","0000","Giorgio","Armani","giorgioamrmani")));
+   // utentee.push_back(ptr);
+
+    list<std::unique_ptr<Utente>> utentee;
+    utentee.push_back(std::make_unique<Utente>(Utente("Giorgio","0000","Giorgio","Armani","giorgioamrmani")));
+    utentee.push_back(std::make_unique<Utente>(ut));
+    utentee.push_back(std::make_unique<Utente>(x));
+    list<std::unique_ptr<Utente>*> utentee2;
+    std::unique_ptr<Utente> punto=std::make_unique<Utente>(x2);
+    utentee2.push_back(&punto);
+    cout<<"stampapuntooooooooooo"<<endl<<*punto<<endl;
+    for(list<std::unique_ptr<Utente>*>::iterator it=utentee2.begin();it!=utentee2.end();++it)// funziona
+        cout<<"utente1111111"<<endl<<***it; //funziona
+
+    Utente g(ut);
+    cout<<"costruisco ut"<<endl<<endl<<endl<<endl<<ut<<"costruttore di copia"<<endl<<g<<endl<<"indirizzo di g "<<&g<<endl<<"indirizzo di ut "<<&ut<<endl;
+
+    for (container<Domanda*>::const_iterator it=ut.get_domande().begin();it!=ut.get_domande().end();++it)
+        cout<<**it;
 }

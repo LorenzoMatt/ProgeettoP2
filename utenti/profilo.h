@@ -95,15 +95,15 @@ using std::string;
 class Profilo
 {
    friend std::ostream& operator<<(std::ostream& os,const Profilo& u);
-
+private:
     string nome;
     string cognome;
     string email;
     container<string>competenze;
     container<string> titoli_di_studio;
-    Profilo();
 
 public:
+    Profilo()=delete;
     Profilo(const string&,const string&,const string&);
     ~Profilo();
     void SetNome(const string&); // OK

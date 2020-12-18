@@ -64,7 +64,7 @@ std::ostream& operator<<(std::ostream& os,const profilo& p){
 #include "profilo.h"
 
 
-Profilo::Profilo(){}
+//Profilo::Profilo(){}
 Profilo::~Profilo(){}
 Profilo::Profilo(const string& n,const string& c,const string& e):nome(n),cognome(c),email(e){}
 

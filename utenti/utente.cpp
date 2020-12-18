@@ -13,6 +13,12 @@ Utente::Utente():pf(new Profilo("ciao","ciao","ciao")),credenziali(new Accesso("
 
 }
 
+Utente::Utente(const Utente &u):credenziali(new Accesso(*u.credenziali)),pf(new Profilo(*u.pf))
+{
+
+}
+
+
 Utente::Utente(std::string username, std::string password, std::string nome, std::string cognome, std::string email)
     :credenziali(new Accesso(username,password)),pf(new Profilo(nome,cognome,email)),risposte_date(0){}
 

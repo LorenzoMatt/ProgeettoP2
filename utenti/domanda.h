@@ -19,8 +19,8 @@ private:
     string testo;
     container<Commento> commenti;
     unsigned int priorita;
-    Domanda();
 public:
+    Domanda()=delete;
     Domanda(const string&,Utente*,unsigned int);
     void aggiungi_commento(const Commento&);//OK
     void RimuoviCommento(const Commento&);//OK
