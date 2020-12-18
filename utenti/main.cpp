@@ -36,6 +36,9 @@ int main()
     x4.aggiungi_amico(x);
     int i=1;
 
+    Utente j("ciao","dd","t","g","w");
+
+
     cout<<"amici di ut ------------------------"<<endl;
     for(container<Utente*>::const_iterator it=ut.get_amici().begin();it!=ut.get_amici().end();++it,i++){
        cout<<"amico n. "<<i<<endl<<**it<<endl;
@@ -48,24 +51,51 @@ int main()
     i=1;
     cout<<"bastaaaaa seguaci di x--------------------------------------------"<<endl;
     ut.togli_amico(&x);
-    Utente j("ciao","dd","t","g","w");
     //ut.togli_amico(&j);
     cout<<"controllo seguaci di x--------------------------------------------"<<endl;
-
     for(container<Utente*>::const_iterator it=x.get_seguaci().begin();it!=x.get_seguaci().end();++it,i++){
         cout<<"seguace n. "<<i<<endl<<endl<<**it;
     }
     i=1;
+    cout<<"fine del controllo seguaci di x--------------------------------------------"<<endl;
+
+    cout<<"amici di ut ------------------------"<<endl;
+    for(container<Utente*>::const_iterator it=ut.get_amici().begin();it!=ut.get_amici().end();++it,i++){
+       cout<<"amico n. "<<i<<endl<<**it<<endl;
+    }
+    i=1;
+    cout<<endl<<"fine amici di ut ------------------------"<<endl;
+    ut.aggiungi_amico(x);
+    cout<<"aggiunto amico ad ut"<<endl;
     cout<<"amici di ut ------------------------"<<endl;
     for(container<Utente*>::const_iterator it=ut.get_amici().begin();it!=ut.get_amici().end();++it,i++){
        cout<<"amico n. "<<i<<endl<<**it<<endl;
     }
     cout<<endl<<"fine amici di ut ------------------------"<<endl;
 
+    x.togli_seguace(&ut);
+    //x.togli_seguace(&j); OK
+    i=1;
+    cout<<"tolto seguace ut da x"<<endl;
+    cout<<"amici di ut ------------------------"<<endl;
+    for(container<Utente*>::const_iterator it=ut.get_amici().begin();it!=ut.get_amici().end();++it,i++){
+       cout<<"amico n. "<<i<<endl<<**it<<endl;
+    }
+    cout<<endl<<"fine amici di ut ------------------------"<<endl;
+
+    cout<<"controllo seguaci di x--------------------------------------------"<<endl;
+    i=1;
+    for(container<Utente*>::const_iterator it=x.get_seguaci().begin();it!=x.get_seguaci().end();++it,i++){
+        cout<<"seguace n. "<<i<<endl<<endl<<**it;
+    }
+    i=1;
+    cout<<"fine del controllo seguaci di x--------------------------------------------"<<endl;
 
 
     //for (list<Utente*>::iterator it=l.begin();it!=l.end();++it)
             //cout<<**it;
+
+    cout<<"modifica del profilo di ut tramite una copia--------------------------------------------"<<endl;
     container<Utente*> dd= ut.get_amici();
     for(container<Utente*>::iterator it=dd.begin();it!=dd.end();++it){
         (*it)->set_profilo("gesu bastardo");
@@ -91,9 +121,11 @@ int main()
     //cout<<c.get_utenti();
 
 
+
 cout<<endl<<endl<<endl<<"TEST DOMANDE"<<endl<<endl;
     // ///////////////////////////////////////////////////////////TEST DOMANDE ////////////////////////////////////////////////////////////
     Domanda domanda("ho una domanda",&ut,0);
+
     cout<<*(domanda.get_autore_domanda());// OK
     Commento commento1("vaffanculo",nullptr);
     domanda.aggiungi_commento(Commento("non abbiamo chiesto",nullptr)); //OK
@@ -108,6 +140,12 @@ cout<<endl<<endl<<endl<<"TEST DOMANDE"<<endl<<endl;
     container<Domanda*> store=ut.get_domande();
     for(container<Domanda*>::iterator it=store.begin();it!=store.end();++it)
         cout<<**it<<endl;
+    Domanda domanda2("sono gesu di nazzaret",&ut,0);
+    ut.fai_domanda(domanda2);
+
+    cout<<endl<<endl<<"aggiunta domanda a ut"<<endl;
+          for(container<Domanda*>::iterator it=store.begin();it!=store.end();++it)
+              cout<<**it<<endl;
 
 
     // /////////////////////////////////////////////////////// TEST PROFILO //////////////////////////////////////////

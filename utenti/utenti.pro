@@ -32,7 +32,8 @@ SOURCES += \
     accesso.cpp \
     domanda.cpp \
     commento.cpp \
-    amico_non_presente.cpp
+    amico_non_presente.cpp \
+    non_autore_domanda.cpp
 
 HEADERS += \
         home.h \
@@ -44,7 +45,8 @@ HEADERS += \
     domanda.h \
     commento.h \
     amico_non_presente.h \
-    deepptr.h
+    deepptr.h \
+    non_autore_domanda.h
 
 
 FORMS += \
