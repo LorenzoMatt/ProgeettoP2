@@ -167,8 +167,11 @@ cout<<endl<<endl<<endl<<"TEST DOMANDE"<<endl<<endl;
     profili.push_back(&e4);
     for(container<Profilo*>::iterator it=profili.begin();it!=profili.end();++it)
         cout<<**it<<endl;
+    ut.get_profilo().SetNome("giovanni");
+    cout<<"profilo di ut"<<endl<<ut.get_profilo();//ok modifica correttamente
 
     // /////////////////////////////////////////////////////// TEST DEEPPTR //////////////////////////////////////////
+    cout<<endl<<endl<<endl<<"TEST DEEPPTR"<<endl<<endl;
 
     Utente* u=new Utente("Giorgio","0000","Giorgio","Armani","giorgioamrmani");
     DeepPtr<Utente> ptr=DeepPtr<Utente>(u);
