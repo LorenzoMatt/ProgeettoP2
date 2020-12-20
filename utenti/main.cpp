@@ -241,25 +241,29 @@ cout<<endl<<endl<<endl<<"TEST DOMANDE"<<endl<<endl;
 
     for (container<Domanda*>::const_iterator it=ut.get_domande().begin();it!=ut.get_domande().end();++it)
         cout<<**it;*/
-    Utente* ut=new Utente("Pikachu","dioboia","diostronzo","porco","dio");
-        ut->get_profilo().AggiungiCompetenza("stare a letto");
-        ut->get_profilo().AggiungiCompetenza("segarsi tanto");
-        cout<<ut->get_profilo();
+
+
+        Model m;
+        Utente* ut=new Utente("Pikachu","dioboia","diostronzo","porco","dio");
+        //cout<<&ut->get_profilo()<<endl;
+        //cout<<&ut<<endl;
+        //cout<<&ut<<endl;
+        //cout<<&ut->get_profilo()<<endl;
         Utente* x=new Utente("Lorenzo","stronzo","diostronzo","porco","dio");
         Utente* x2=new Utente("Elisa","dioboia","diostronzo","porco","dio");
         Utente* x3=new Utente("Mirko","dioluamaro","diostronzo","porco","dio");
         Utente* x4=new Utente("Francesca","diobestia","diostronzo","porco","dio");
         Utente* x5=new Utente("Elton","diocan","diostronzo","porco","dio");
-        Model m;
         m.aggiungi_utente(*x);
         m.aggiungi_utente(*ut);
+        //cout<<&ut<<endl;
+        //cout<<&ut->get_profilo();
         m.aggiungi_utente(*x2);
         m.aggiungi_utente(*x3);
         m.aggiungi_utente(*x4);
         m.aggiungi_utente(*x5);
         m.get_utente("Lorenzo")->get_profilo().AggiungiCompetenza("stare a letto");
-        ut->get_profilo().AggiungiCompetenza("segarsi tanto");
-        x->aggiungi_amico(*ut);
+
         x->aggiungi_amico(*x2);
         x->aggiungi_amico(*x3);
         x->aggiungi_amico(*x4);
@@ -279,18 +283,22 @@ cout<<endl<<endl<<endl<<"TEST DOMANDE"<<endl<<endl;
         x4->aggiungi_amico(*x);
         x4->aggiungi_amico(*x2);
         x4->aggiungi_amico(*x3);
-
+        ut->get_profilo().AggiungiCompetenza("stare a letto");
+        ut->get_profilo().AggiungiCompetenza("segarsi tanto");
+        ut->get_profilo().AggiungiCompetenza("segarsi tanto");
     container<string> lista;
-    ut->cerca_utente(m,"Lorenzo",lista,3);
+    ut->cerca_utente(m,"Pikachu",lista,3);
     cout<<lista;
-    //cout<<x->get_username_amici();
-
    /* int i=1;
     cout<<"amici di ut ------------------------"<<endl;
     for(container<Utente*>::const_iterator it=ut->get_amici().begin();it!=ut->get_amici().end();++it,i++)
        cout<<"amico n. "<<i<<endl<<**it<<endl;
     cout<<endl<<"cerco utente"<<endl;
     cout<<*(m.get_utente("Mirko"));*/
+//x->aggiungi_amico(*ut);
+//cout<<&ut<<endl;
+//cout<<&ut->get_profilo()<<endl;
+
 
 
 

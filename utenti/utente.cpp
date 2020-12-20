@@ -229,11 +229,4 @@ void Utente::cerca_utente(const Model & model, const string & username, containe
     Utente::Funtore f(numero_funtore);//nelle funzioni polimorfe il numero_funtore sarà sostituito con 1 in account gratuito,2 in gold e 3 in premium
     f(utente, lista_di_elementi);
 }
-/*
-void UtenteBasic::userSearch(const DB& d, const Username& u, list<string>& l) const
-{
-    Utente* su = d.find(u);
-    Utente::SearchFunctor sf(1);
-    sf(su, l);
-}
-*/
+
