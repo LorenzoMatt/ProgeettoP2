@@ -50,9 +50,16 @@ void Utente::fai_domanda(Domanda& domanda)// il sollevamento dell'eccezione funz
 }
 void Utente::togli_amico_ausiliario(Utente *utente) // funziona ma il codice commentato non funziona e non so perchè
 {
-    /*for(auto it=amici.begin();it!=amici.end();++it)
-        if(&(*it)==&utente)
-            amici.remove(it);*/
+    bool tolto=false;
+
+    for(auto it=amici.begin();it!=amici.end() && !tolto;++it)
+        if((*it)==utente)
+        {
+            amici.remove(it);
+            tolto=true;
+            cout<<"trovatooooooooooooo!!!!";
+        }
+/*
     try{
         bool tolto=false;
 
@@ -69,6 +76,7 @@ void Utente::togli_amico_ausiliario(Utente *utente) // funziona ma il codice com
         std::cerr<<"seguace non trovato";
         return;
     }
+    */
 }
 void Utente::aggiungi_seguace(Utente& utente) //OK
 {
@@ -79,12 +87,20 @@ void Utente::aggiungi_seguace(Utente& utente) //OK
 }
 void Utente::aggiungi_amico(Utente& utente) //OK
 {
-    if(this!=&utente)
+    try
     {
-    amici.push_back(&utente);
-    utente.aggiungi_seguace(*this);
-    }
-
+        if(this!=&utente)
+        {
+            amici.push_back(&utente);
+            utente.aggiungi_seguace(*this);
+        }else
+        {
+            throw(amico_non_presente());
+        }
+    }catch(amico_non_presente)
+    {
+        std::cerr<<"non ti puoi aggiungere fra gli amici!";
+        return;    }
 }
 
 void Utente::togli_amico(Utente *utente) // OK, serve a togliere un utente dalla sua lista degli amici se presente e
@@ -93,6 +109,7 @@ void Utente::togli_amico(Utente *utente) // OK, serve a togliere un utente dalla
     bool tolto=false;
 
     try{
+        if(this!=utente){
         for(auto it=amici.begin();it!=amici.end() && !tolto;++it)
             if((*it)==utente)
             {
@@ -102,11 +119,20 @@ void Utente::togli_amico(Utente *utente) // OK, serve a togliere un utente dalla
             }
         if(!tolto)
             throw amico_non_presente();
-        }catch(amico_non_presente)
-        {
-            std::cerr<<"amico non trovato";
-            return;
+        }else{
+             throw togliere_te_stesso_dagli_amici();
         }
+    }
+    catch(amico_non_presente)
+    {
+        std::cerr<<"amico non trovato";
+        return;
+    }
+    catch(togliere_te_stesso_dagli_amici) //funziona
+    {
+        std::cerr<<"non puoi togliere te stesso dagli amici!";
+        return;
+    }
 }
 void Utente::togli_seguace_ausiliario(Utente *utente) // È stato testato, ma non so perchè se tolgo il booleano non funziona
 // serve a togliere un seguace dalla propria lista. È una funzione utilizzata da togli_amico
@@ -116,7 +142,7 @@ void Utente::togli_seguace_ausiliario(Utente *utente) // È stato testato, ma no
         seguaci.remove(it);
     }*/
 
-/*---------il codice sottostante funziona
+
     bool tolto=false;
 
 for(auto it=seguaci.begin();it!=seguaci.end() && !tolto;++it)
@@ -126,7 +152,8 @@ for(auto it=seguaci.begin();it!=seguaci.end() && !tolto;++it)
         tolto=true;
         cout<<"trovatooooooooooooo!!!!";
     }
-    */
+    /*
+
     try{
         bool tolto=false;
 
@@ -143,6 +170,8 @@ for(auto it=seguaci.begin();it!=seguaci.end() && !tolto;++it)
         std::cerr<<"seguace non trovato";
         return;
     }
+    */
+
 
 }
 void Utente::togli_seguace(Utente *utente) // OK, toglie un suo seguace dalla coda se è presente e l'utente che ha rimosso il

@@ -1,39 +1,50 @@
-
-//template<class T>
-#ifndef DEEP_PTR_H
-#define DEEP_PTR_H
-
-#include <iostream>
+#ifndef PUNTATORESMART_H
+#define PUNTATORESMART_H
 template<class T>
-class DeepPtr
-{
-    T* m_ptr;
+class DeepPtr{
+private:
+    T* oggetto;
 public:
-    DeepPtr(T* ptr = nullptr) : m_ptr(ptr){}
-    ~DeepPtr()
-    {
-        delete m_ptr;
-    }
-    // Copy constructor
-    DeepPtr(const DeepPtr& a) = delete;
-    // Move constructor
-    DeepPtr(DeepPtr&& a) : m_ptr(a.m_ptr)
-    {
-        a.m_ptr = nullptr;
-    }
-    // Copy assignment
-    DeepPtr& operator=(const DeepPtr& a) = delete;
-    // Move assignment
-    DeepPtr& operator=(DeepPtr&& a)
-    {
-        if (&a == this)
-            return *this;
-        delete m_ptr;
-        m_ptr = a.m_ptr;
-        a.m_ptr = nullptr;
-        return *this;
-    }
-    T& operator*() const { return *m_ptr; }
-    T* operator->() const { return m_ptr; }
+    DeepPtr();
+    virtual ~DeepPtr();
+    DeepPtr(T*);
+    DeepPtr(const DeepPtr<T>&);
+    DeepPtr<T> &operator =(const DeepPtr<T>&);
+    T& operator*() const;
+    T* operator->() const;
 };
-#endif // DEEP_PTR_H
+
+template<class T>
+DeepPtr<T>::DeepPtr():oggetto(nullptr){}
+
+template<class T>
+DeepPtr<T>::DeepPtr(T* t):oggetto(t){}
+
+template<class T>
+DeepPtr<T>::DeepPtr(const DeepPtr<T>& t):oggetto(new T(*t)){}
+
+template<class T>
+DeepPtr<T>::~DeepPtr()
+{delete oggetto;}
+
+template<class T>
+DeepPtr<T>& DeepPtr<T>::operator =(const DeepPtr<T>& d)
+{
+    if(this!=&d){
+        delete oggetto;
+        oggetto=new T(d.oggetto);
+    }
+    return *this;
+}
+
+template<class T>
+T& DeepPtr<T>::operator*() const
+{
+    return *oggetto;
+}
+
+template<class T>
+T* DeepPtr<T>:: operator->() const{
+    return oggetto;
+}
+#endif // PUNTATORESMART_H

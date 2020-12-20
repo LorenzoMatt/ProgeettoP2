@@ -34,6 +34,7 @@ int main()
     x2.aggiungi_amico(x);
     x3.aggiungi_amico(x);
     x4.aggiungi_amico(x);
+    // x4.togli_amico(&x4);
     int i=1;
 
     Utente j("ciao","dd","t","g","w");
@@ -49,8 +50,9 @@ int main()
         cout<<"seguace n. "<<i<<endl<<endl<<**it;
     }
     i=1;
-    cout<<"bastaaaaa seguaci di x--------------------------------------------"<<endl;
+    cout<<"fine seguaci di x--------------------------------------------"<<endl;
     ut.togli_amico(&x);
+    cout<<"tolto x dagli amici di ut"<<endl;
     //ut.togli_amico(&j);
     cout<<"controllo seguaci di x--------------------------------------------"<<endl;
     for(container<Utente*>::const_iterator it=x.get_seguaci().begin();it!=x.get_seguaci().end();++it,i++){
@@ -66,7 +68,7 @@ int main()
     i=1;
     cout<<endl<<"fine amici di ut ------------------------"<<endl;
     ut.aggiungi_amico(x);
-    cout<<"aggiunto amico ad ut"<<endl;
+    cout<<"riaggiunto x agli amici di ut"<<endl;
     cout<<"amici di ut ------------------------"<<endl;
     for(container<Utente*>::const_iterator it=ut.get_amici().begin();it!=ut.get_amici().end();++it,i++){
        cout<<"amico n. "<<i<<endl<<**it<<endl;
@@ -125,8 +127,12 @@ int main()
 cout<<endl<<endl<<endl<<"TEST DOMANDE"<<endl<<endl;
     // ///////////////////////////////////////////////////////////TEST DOMANDE ////////////////////////////////////////////////////////////
     Domanda* domanda=new Domanda("ho una domanda",&ut,0);
-
-    cout<<*domanda->get_autore_domanda();// OK
+    cout<<"autore domanda "<<endl;
+    cout<<*domanda->get_autore_domanda();// OK    
+    domanda->get_autore_domanda()->get_profilo().SetCognome("dio ebete");
+    cout<<endl<<"autore domanda modificato"<<endl;
+    //cout<<*domanda->get_autore_domanda();// OK
+    cout<<ut;
     Commento commento1("vaffanculo",nullptr);
     domanda->aggiungi_commento(Commento("non abbiamo chiesto",nullptr)); //OK
     domanda->aggiungi_commento(Commento("non ho commenti da aggiungere",nullptr)); //OK
