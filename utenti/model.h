@@ -2,6 +2,7 @@
 #define MODEL_H
 #include "utente.h"
 #include "deepptr.h"
+#include "utente_gia_presente.h"
 class Utente;
 class Domanda;
 class Model
@@ -9,9 +10,11 @@ class Model
 private:
     container<DeepPtr<Utente>> utenti;
     container<Domanda> domande;
+    bool check_presenza(const string&);
 public:
     Model();
     Model(const container<DeepPtr<Utente>>&);
+    void aggiungi_utente(Utente&);
     void aggiungi_utente_gratuito();
     void aggiungi_utente_premium();
     void aggiungi_utente_gold();

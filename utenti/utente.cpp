@@ -215,7 +215,7 @@ void Utente::set_profilo(const string & nome)
     pf->SetNome(nome);
 }
 
-string Utente::get_username_amici() const
+string Utente::get_username_amici() const //OK
 {
     string username;
     for(container<Utente*>::const_iterator it=amici.begin();it!=amici.end();++it)
@@ -226,7 +226,7 @@ string Utente::get_username_amici() const
 void Utente::cerca_utente(const Model & model, const string & username, container<std::string> &lista_di_elementi,int numero_funtore) const
 {
     Utente* utente = model.get_utente(username);
-    Utente::Funtore f(numero_funtore);
+    Utente::Funtore f(numero_funtore);//nelle funzioni polimorfe il numero_funtore sarà sostituito con 1 in account gratuito,2 in gold e 3 in premium
     f(utente, lista_di_elementi);
 }
 /*

@@ -29,7 +29,8 @@ HEADERS += accesso.h \
            non_autore_domanda.h \
            profilo.h \
            togliere_te_stesso_dagli_amici.h \
-           utente.h
+           utente.h \
+    utente_gia_presente.h
 FORMS += home.ui
 SOURCES += accesso.cpp \
            amico_non_presente.cpp \
@@ -40,4 +41,5 @@ SOURCES += accesso.cpp \
            model.cpp \
            non_autore_domanda.cpp \
            profilo.cpp \
-           utente.cpp
+           utente.cpp \
+    utente_gia_presente.cpp

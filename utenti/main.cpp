@@ -18,7 +18,7 @@ int main()
 //    return a.exec();
     //  ////////////////////////////////////////////////////////////TEST UTENTE ///////////////////////////////////////////////////////////
     cout<<"TEST UTENTI"<<endl<<endl;
-    Utente ut("Pikachu","dioboia","diostronzo","porco","dio");
+   /* Utente ut("Pikachu","dioboia","diostronzo","porco","dio");
     ut.get_profilo().AggiungiCompetenza("stare a letto");
     ut.get_profilo().AggiungiCompetenza("stare a letto");
     cout<<ut.get_profilo();
@@ -31,15 +31,24 @@ int main()
     ut.aggiungi_amico(x2);
     ut.aggiungi_amico(x3);
     ut.aggiungi_amico(x4);
-    x2.aggiungi_amico(x);
-    x3.aggiungi_amico(x);
-    x4.aggiungi_amico(x);
-    x.aggiungi_amico(x2);
-    x.aggiungi_amico(x4);
     x.aggiungi_amico(ut);
+    x.aggiungi_amico(x2);
     x.aggiungi_amico(x3);
-    // x4.togli_amico(&x4);
-    int i=1;
+    x.aggiungi_amico(x4);
+    x2.aggiungi_amico(ut);
+    x2.aggiungi_amico(x);
+    x2.aggiungi_amico(x3);
+    x2.aggiungi_amico(x4);
+    x3.aggiungi_amico(ut);
+    x3.aggiungi_amico(x);
+    x3.aggiungi_amico(x2);
+    x3.aggiungi_amico(x4);
+    x4.aggiungi_amico(ut);
+    x4.aggiungi_amico(x);
+    x4.aggiungi_amico(x2);
+    x4.aggiungi_amico(x3);
+    // x4.togli_amico(&x4);*/
+/*    int i=1;
 
     Utente j("ciao","dd","t","g","w");
 
@@ -48,33 +57,45 @@ int main()
     for(container<Utente*>::const_iterator it=ut.get_amici().begin();it!=ut.get_amici().end();++it,i++){
        cout<<"amico n. "<<i<<endl<<**it<<endl;
     }
-   /* i=1;
-    cout<<endl<<"seguaci di x--------------------------------------------"<<endl;
-    for(container<Utente*>::const_iterator it=x.get_seguaci().begin();it!=x.get_seguaci().end();++it,i++){
-        cout<<"seguace n. "<<i<<endl<<endl<<**it;
-    }
- cout<<"fine seguaci di x--------------------------------------------"<<endl<<endl;
-*/
     i=1;
-
-
-
     cout<<"amici di x ------------------------"<<endl;
     for(container<Utente*>::const_iterator it=x.get_amici().begin();it!=x.get_amici().end();++it,i++){
        cout<<"amico n. "<<i<<endl<<**it<<endl;
     }
     i=1;
+    cout<<"amici di x2 ------------------------"<<endl;
+    for(container<Utente*>::const_iterator it=x2.get_amici().begin();it!=x2.get_amici().end();++it,i++){
+       cout<<"amico n. "<<i<<endl<<**it<<endl;
+    }
+i=1;
+cout<<endl<<"seguaci di x2--------------------------------------------"<<endl;
+for(container<Utente*>::const_iterator it=x2.get_seguaci().begin();it!=x2.get_seguaci().end();++it,i++){
+    cout<<"seguace n. "<<i<<endl<<endl<<**it;
+}
+cout<<"fine seguaci di x2--------------------------------------------"<<endl<<endl;
+
+i=1;
+ cout<<endl<<"seguaci di x--------------------------------------------"<<endl;
+ for(container<Utente*>::const_iterator it=x.get_seguaci().begin();it!=x.get_seguaci().end();++it,i++){
+     cout<<"seguace n. "<<i<<endl<<endl<<**it;
+ }
+cout<<"fine seguaci di x--------------------------------------------"<<endl<<endl;
 
     ut.togli_amico(&x);
     cout<<"tolto x dagli amici di ut"<<endl;
     //ut.togli_amico(&j);
+    i=1;
     cout<<"controllo seguaci di x--------------------------------------------"<<endl;
     for(container<Utente*>::const_iterator it=x.get_seguaci().begin();it!=x.get_seguaci().end();++it,i++){
         cout<<"seguace n. "<<i<<endl<<endl<<**it;
     }
     i=1;
-    cout<<"fine del controllo seguaci di x--------------------------------------------"<<endl;
-
+    cout<<endl<<"seguaci di x2--------------------------------------------"<<endl;
+    for(container<Utente*>::const_iterator it=x2.get_seguaci().begin();it!=x2.get_seguaci().end();++it,i++){
+        cout<<"seguace n. "<<i<<endl<<endl<<**it;
+    }
+    cout<<"fine seguaci di x2--------------------------------------------"<<endl<<endl;
+i=1;
     cout<<"amici di ut ------------------------"<<endl;
     for(container<Utente*>::const_iterator it=ut.get_amici().begin();it!=ut.get_amici().end();++it,i++){
        cout<<"amico n. "<<i<<endl<<**it<<endl;
@@ -88,7 +109,6 @@ int main()
        cout<<"amico n. "<<i<<endl<<**it<<endl;
     }
     cout<<endl<<"fine amici di ut ------------------------"<<endl;
-
     x.togli_seguace(&ut);
     //x.togli_seguace(&j); OK
     i=1;
@@ -106,7 +126,13 @@ int main()
     }
     i=1;
     cout<<"fine del controllo seguaci di x--------------------------------------------"<<endl;
-
+    cout<<"controllo seguaci di x2--------------------------------------------"<<endl;
+    i=1;
+    for(container<Utente*>::const_iterator it=x2.get_seguaci().begin();it!=x2.get_seguaci().end();++it,i++){
+        cout<<"seguace n. "<<i<<endl<<endl<<**it;
+    }
+    i=1;
+    cout<<"fine del controllo seguaci di x2--------------------------------------------"<<endl;
 
     //for (list<Utente*>::iterator it=l.begin();it!=l.end();++it)
             //cout<<**it;
@@ -135,9 +161,8 @@ int main()
     //d.insertBack(utente("non lo so","dioboia","diostronzo","porco","dio"));
     //model c(d);
     //cout<<c.get_utenti();
-
-
-
+cout<<endl<<endl<<"username degli amici di ut"<<endl<<endl;
+cout<<x.get_username_amici(); //OK
 cout<<endl<<endl<<endl<<"TEST DOMANDE"<<endl<<endl;
     // ///////////////////////////////////////////////////////////TEST DOMANDE ////////////////////////////////////////////////////////////
     Domanda* domanda=new Domanda("ho una domanda",&ut,0);
@@ -215,5 +240,60 @@ cout<<endl<<endl<<endl<<"TEST DOMANDE"<<endl<<endl;
     cout<<"costruisco ut"<<endl<<endl<<endl<<endl<<ut<<"costruttore di copia"<<endl<<g<<endl<<"indirizzo di g "<<&g<<endl<<"indirizzo di ut "<<&ut<<endl;
 
     for (container<Domanda*>::const_iterator it=ut.get_domande().begin();it!=ut.get_domande().end();++it)
-        cout<<**it;
+        cout<<**it;*/
+    Utente* ut=new Utente("Pikachu","dioboia","diostronzo","porco","dio");
+        ut->get_profilo().AggiungiCompetenza("stare a letto");
+        ut->get_profilo().AggiungiCompetenza("segarsi tanto");
+        cout<<ut->get_profilo();
+        Utente* x=new Utente("Lorenzo","stronzo","diostronzo","porco","dio");
+        Utente* x2=new Utente("Elisa","dioboia","diostronzo","porco","dio");
+        Utente* x3=new Utente("Mirko","dioluamaro","diostronzo","porco","dio");
+        Utente* x4=new Utente("Francesca","diobestia","diostronzo","porco","dio");
+        Utente* x5=new Utente("Elton","diocan","diostronzo","porco","dio");
+        Model m;
+        m.aggiungi_utente(*x);
+        m.aggiungi_utente(*ut);
+        m.aggiungi_utente(*x2);
+        m.aggiungi_utente(*x3);
+        m.aggiungi_utente(*x4);
+        m.aggiungi_utente(*x5);
+        m.get_utente("Lorenzo")->get_profilo().AggiungiCompetenza("stare a letto");
+        ut->get_profilo().AggiungiCompetenza("segarsi tanto");
+        x->aggiungi_amico(*ut);
+        x->aggiungi_amico(*x2);
+        x->aggiungi_amico(*x3);
+        x->aggiungi_amico(*x4);
+        ut->aggiungi_amico(*x);
+        ut->aggiungi_amico(*x2);
+        ut->aggiungi_amico(*x3);
+        ut->aggiungi_amico(*x4);
+        x2->aggiungi_amico(*ut);
+        x2->aggiungi_amico(*x);
+        x2->aggiungi_amico(*x3);
+        x2->aggiungi_amico(*x4);
+        x3->aggiungi_amico(*ut);
+        x3->aggiungi_amico(*x);
+        x3->aggiungi_amico(*x2);
+        x3->aggiungi_amico(*x4);
+        x4->aggiungi_amico(*ut);
+        x4->aggiungi_amico(*x);
+        x4->aggiungi_amico(*x2);
+        x4->aggiungi_amico(*x3);
+
+    container<string> lista;
+    ut->cerca_utente(m,"Lorenzo",lista,3);
+    cout<<lista;
+    //cout<<x->get_username_amici();
+
+   /* int i=1;
+    cout<<"amici di ut ------------------------"<<endl;
+    for(container<Utente*>::const_iterator it=ut->get_amici().begin();it!=ut->get_amici().end();++it,i++)
+       cout<<"amico n. "<<i<<endl<<**it<<endl;
+    cout<<endl<<"cerco utente"<<endl;
+    cout<<*(m.get_utente("Mirko"));*/
+
+
+
+
+
 }

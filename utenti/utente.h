@@ -42,8 +42,8 @@ public:
     const container<Utente*>& get_seguaci() const;
     const container<Domanda*>& get_domande() const;
     void set_profilo(const string&);
-    string get_username_amici() const;
-    void cerca_utente(const Model&, const string&, container<string>&,int) const;
+    string get_username_amici() const; //OK
+    void cerca_utente(const Model&, const string&, container<string>&,int) const;// quando implementeremo le classi polimorfe dovrà andare tolto l'ultimo intero da passare alla funzione
     //virtual Utente* clone(return new Utente(t));
 
 protected:
