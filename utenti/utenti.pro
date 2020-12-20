@@ -34,7 +34,6 @@ FORMS += home.ui
 SOURCES += accesso.cpp \
            amico_non_presente.cpp \
            commento.cpp \
-           deepptr.cpp \
            domanda.cpp \
            home.cpp \
            main.cpp \
