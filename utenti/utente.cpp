@@ -210,7 +210,30 @@ const container<Domanda *> &Utente::get_domande() const
     return domande;
 }
 
-void Utente::set_profilo(const std::string & nome)
+void Utente::set_profilo(const string & nome)
 {
     pf->SetNome(nome);
 }
+
+string Utente::get_username_amici() const
+{
+    string username;
+    for(container<Utente*>::const_iterator it=amici.begin();it!=amici.end();++it)
+        username=username+" "+(*it)->get_credenziali().get_username();
+    return username;
+}
+
+void Utente::cerca_utente(const Model & model, const string & username, container<std::string> &lista_di_elementi,int numero_funtore) const
+{
+    Utente* utente = model.get_utente(username);
+    Utente::Funtore f(numero_funtore);
+    f(utente, lista_di_elementi);
+}
+/*
+void UtenteBasic::userSearch(const DB& d, const Username& u, list<string>& l) const
+{
+    Utente* su = d.find(u);
+    Utente::SearchFunctor sf(1);
+    sf(su, l);
+}
+*/

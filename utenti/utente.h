@@ -11,6 +11,7 @@
 #include <list>
 using std::list;
 class Domanda;
+class Model;
 class Utente
 {
     friend std::ostream& operator<<(std::ostream& os,const Utente& u);
@@ -41,7 +42,47 @@ public:
     const container<Utente*>& get_seguaci() const;
     const container<Domanda*>& get_domande() const;
     void set_profilo(const string&);
+    string get_username_amici() const;
+    void cerca_utente(const Model&, const string&, container<string>&,int) const;
     //virtual Utente* clone(return new Utente(t));
+
+protected:
+    //Classe Funtore utilizzata per la ricerca polimorfa dell'utente
+    class Funtore
+    {
+    public:
+        int search;
+        Funtore(int x=0) : search(x) {}
+        void operator() (const Utente* ut, container<string>& l) const
+        {
+            switch(search)
+            {
+                case 1:
+                    l.push_back(ut->credenziali->get_username());
+                    l.push_back(ut->pf->GetNome());
+                    l.push_back(ut->pf->GetCognome());
+                    l.push_back(ut->pf->GetEmail());
+                    break;
+
+                case 2:
+                    l.push_back(ut->credenziali->get_username());
+                    l.push_back(ut->pf->GetNome());
+                    l.push_back(ut->pf->GetCognome());
+                    l.push_back(ut->pf->GetEmail());
+                    l.push_back(ut->pf->competenze_toString());
+                    break;
+
+                case 3:
+                    l.push_back(ut->credenziali->get_username());
+                    l.push_back(ut->pf->GetNome());
+                    l.push_back(ut->pf->GetCognome());
+                    l.push_back(ut->pf->GetEmail());
+                    l.push_back(ut->pf->competenze_toString());
+                    l.push_back(ut->get_username_amici());
+                    break;
+            }
+        }
+    };
 
 };
 

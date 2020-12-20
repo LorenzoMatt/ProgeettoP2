@@ -84,6 +84,14 @@ string Profilo::GetNome() const{return nome;}
 string Profilo::GetCognome() const{return cognome;}
 string Profilo::GetEmail() const{return email;}
 
+std::string Profilo::competenze_toString() const
+{
+    string c;
+    for(container<string>::const_iterator it=competenze.cbegin();it!=competenze.cend();++it)
+        c=c+" " + *it;
+    return c;
+}
+
 container<string> Profilo::GetCompetenze() const{
     return competenze;
 }

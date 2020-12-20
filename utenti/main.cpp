@@ -34,6 +34,10 @@ int main()
     x2.aggiungi_amico(x);
     x3.aggiungi_amico(x);
     x4.aggiungi_amico(x);
+    x.aggiungi_amico(x2);
+    x.aggiungi_amico(x4);
+    x.aggiungi_amico(ut);
+    x.aggiungi_amico(x3);
     // x4.togli_amico(&x4);
     int i=1;
 
@@ -44,13 +48,23 @@ int main()
     for(container<Utente*>::const_iterator it=ut.get_amici().begin();it!=ut.get_amici().end();++it,i++){
        cout<<"amico n. "<<i<<endl<<**it<<endl;
     }
-    i=1;
+   /* i=1;
     cout<<endl<<"seguaci di x--------------------------------------------"<<endl;
     for(container<Utente*>::const_iterator it=x.get_seguaci().begin();it!=x.get_seguaci().end();++it,i++){
         cout<<"seguace n. "<<i<<endl<<endl<<**it;
     }
+ cout<<"fine seguaci di x--------------------------------------------"<<endl<<endl;
+*/
     i=1;
-    cout<<"fine seguaci di x--------------------------------------------"<<endl;
+
+
+
+    cout<<"amici di x ------------------------"<<endl;
+    for(container<Utente*>::const_iterator it=x.get_amici().begin();it!=x.get_amici().end();++it,i++){
+       cout<<"amico n. "<<i<<endl<<**it<<endl;
+    }
+    i=1;
+
     ut.togli_amico(&x);
     cout<<"tolto x dagli amici di ut"<<endl;
     //ut.togli_amico(&j);
