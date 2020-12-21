@@ -59,7 +59,9 @@ public:
         T &operator*() const;
         T *operator->() const;
         iterator &operator++();
+        iterator operator++(int);
         iterator &operator--();
+        iterator operator--(int);
         bool operator==(const iterator &x) const;
         bool operator!=(const iterator &x) const;
     };
@@ -478,7 +480,27 @@ typename container<T>::iterator &container<T>::iterator::operator++()
     }
     return *this;
 }
-
+template <class T>
+typename container<T>::iterator container<T>::iterator::operator++(int)
+{
+  iterator aux=*this;
+  if (ptr != nullptr)
+  {
+      if (!pastTheEnd)
+      {
+          if (ptr->next == nullptr)
+          {
+              ptr++; //chiamata al ++ prefisso sugli interi: ptr è un indirizzo
+              pastTheEnd = true;
+          }
+          else
+          {
+              ptr = ptr->next;
+          }
+      }
+  }
+  return aux;
+}
 template <class T>
 typename container<T>::iterator &container<T>::iterator::operator--()
 {
@@ -493,6 +515,22 @@ typename container<T>::iterator &container<T>::iterator::operator--()
             ptr = ptr->prev;
     }
     return *this;
+}
+template <class T>
+typename container<T>::iterator container<T>::iterator::operator--(int)
+{
+  iterator aux=*this;
+  if (ptr != nullptr)
+  {
+      if (pastTheEnd)
+      {
+          --ptr;
+          pastTheEnd = false;
+      }
+      else
+          ptr = ptr->prev;
+  }
+  return aux;
 }
 
 template <class T>

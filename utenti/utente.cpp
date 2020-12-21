@@ -2,34 +2,34 @@
 
 std::ostream &operator<<(std::ostream &os, const Utente &u) //OK
 {
-    os<<*(u.pf)<<endl;
-    os<<"username: "<<u.credenziali->get_username()<<endl<<"password: "<<u.credenziali->get_password()<<endl;
+    os<<u.pf<<endl;
+    os<<"username: "<<u.credenziali.get_username()<<endl<<"password: "<<u.credenziali.get_password()<<endl;
     return os;
 }
 
 
-Utente::Utente():pf(new Profilo("ciao","ciao","ciao")),credenziali(new Accesso("lorenzo","1111"))
+Utente::Utente():pf(Profilo("ciao","ciao","ciao")),credenziali(Accesso("lorenzo","1111"))
 {
 
 }
 
-Utente::Utente(const Utente &u):credenziali(new Accesso(*u.credenziali)),pf(new Profilo(*u.pf))
+Utente::Utente(const Utente &u):credenziali(u.credenziali),pf(u.pf)
 {
 
 }
 
 
 Utente::Utente(std::string username, std::string password, std::string nome, std::string cognome, std::string email)
-    :credenziali(new Accesso(username,password)),pf(new Profilo(nome,cognome,email)),risposte_date(0){}
+    :credenziali(Accesso(username,password)),pf(Profilo(nome,cognome,email)),risposte_date(0){}
 
-Profilo& Utente::get_profilo() const  //OK
+Profilo Utente::get_profilo() const  //OK
 {
-    return* pf;
+    return pf;
 }
 
-Accesso& Utente::get_credenziali() const //OK
+Accesso Utente::get_credenziali() const //OK
 {
-    return *credenziali;
+    return credenziali;
 }
 
 unsigned int Utente::get_punti() const
@@ -205,15 +205,21 @@ const container<Utente *>& Utente::get_seguaci() const // OK
     return seguaci;
 }
 
-const container<Domanda *> &Utente::get_domande() const
+container<Domanda *>& Utente::get_domande()
 {
     return domande;
 }
 
 void Utente::set_profilo(const string & nome)
 {
-    pf->SetNome(nome);
+    pf.SetNome(nome);
 }
+
+void Utente::scrivi_commento(Domanda *d, std::string risposta)
+{
+    d->aggiungi_commento(Commento(risposta,this));
+}
+
 
 string Utente::get_username_amici() const //OK
 {
@@ -228,5 +234,15 @@ void Utente::cerca_utente(const Model & model, const string & username, containe
     Utente* utente = model.get_utente(username);
     Utente::Funtore f(numero_funtore);//nelle funzioni polimorfe il numero_funtore sarà sostituito con 1 in account gratuito,2 in gold e 3 in premium
     f(utente, lista_di_elementi);
+}
+
+void Utente::AggiungiCompetenza(const std::string & competenza)
+{
+    pf.AggiungiCompetenza(competenza);
+}
+
+void Utente::AggiungiTitoloDiStudio(const std::string & titolo)
+{
+    pf.AggiungiTitoloDiStudio(titolo);
 }
 

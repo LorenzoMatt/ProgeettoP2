@@ -7,7 +7,7 @@ private:
 public:
     DeepPtr();
     virtual ~DeepPtr();
-    DeepPtr(T*);
+    DeepPtr(T *);
     DeepPtr(const DeepPtr<T>&);
     DeepPtr<T> &operator =(const DeepPtr<T>&);
     T& operator*() const;
@@ -18,10 +18,10 @@ template<class T>
 DeepPtr<T>::DeepPtr():oggetto(nullptr){}
 
 template<class T>
-DeepPtr<T>::DeepPtr(T* t):oggetto(t){}
+DeepPtr<T>::DeepPtr(T *t):oggetto(t){}
 
 template<class T>
-DeepPtr<T>::DeepPtr(const DeepPtr<T>& t):oggetto(new T(*t)){}
+DeepPtr<T>::DeepPtr(const DeepPtr<T>& t):oggetto(t.oggetto ? new T(*t) : 0){} //andrà sostituita con oggetto(t.oggetto ? t.oggetto->clone() : 0)
 
 template<class T>
 DeepPtr<T>::~DeepPtr()
@@ -32,7 +32,7 @@ DeepPtr<T>& DeepPtr<T>::operator =(const DeepPtr<T>& d)
 {
     if(this!=&d){
         delete oggetto;
-        oggetto=new T(d.oggetto);
+        oggetto=d.oggetto ? new T(d.oggetto) : 0; // andrà sostituito con d.oggetto ? d.oggetto->clone() : 0
     }
     return *this;
 }

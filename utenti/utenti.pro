@@ -30,7 +30,13 @@ HEADERS += accesso.h \
            profilo.h \
            togliere_te_stesso_dagli_amici.h \
            utente.h \
-    utente_gia_presente.h
+    utente_gia_presente.h \
+    prova.h \
+    test_deep_ptr.h \
+    test_domande.h \
+    test_model.h \
+    test_profilo.h \
+    test_utenti.h
 FORMS += home.ui
 SOURCES += accesso.cpp \
            amico_non_presente.cpp \
@@ -42,4 +48,10 @@ SOURCES += accesso.cpp \
            non_autore_domanda.cpp \
            profilo.cpp \
            utente.cpp \
-    utente_gia_presente.cpp
+    utente_gia_presente.cpp \
+    prova.cpp \
+    test_domande.cpp \
+    test_utenti.cpp \
+    test_profilo.cpp \
+    test_deep_ptr.cpp \
+    test_model.cpp
