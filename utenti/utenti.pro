@@ -36,7 +36,8 @@ HEADERS += accesso.h \
     test_domande.h \
     test_model.h \
     test_profilo.h \
-    test_utenti.h
+    test_utenti.h \
+    basic.h
 FORMS += home.ui
 SOURCES += accesso.cpp \
            amico_non_presente.cpp \
@@ -54,4 +55,5 @@ SOURCES += accesso.cpp \
     test_utenti.cpp \
     test_profilo.cpp \
     test_deep_ptr.cpp \
-    test_model.cpp
+    test_model.cpp \
+    basic.cpp

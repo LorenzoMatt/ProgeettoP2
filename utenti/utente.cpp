@@ -19,8 +19,8 @@ Utente::Utente(const Utente &u):credenziali(u.credenziali),pf(u.pf)
 }
 
 
-Utente::Utente(std::string username, std::string password, std::string nome, std::string cognome, std::string email)
-    :credenziali(Accesso(username,password)),pf(Profilo(nome,cognome,email)),risposte_date(0){}
+Utente::Utente(std::string username, std::string password, std::string nome, std::string cognome, std::string email, unsigned int punti)
+    :credenziali(Accesso(username,password)),pf(Profilo(nome,cognome,email)),risposte_date(0),punti(punti){}
 
 Profilo Utente::get_profilo() const  //OK
 {

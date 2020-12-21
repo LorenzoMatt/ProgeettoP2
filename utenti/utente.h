@@ -21,16 +21,16 @@ private:
     container<Utente*> amici;
     container<Utente*> seguaci;
     container<Domanda*> domande;
-    unsigned int punti=0; // punti presenti nell'account
-
     unsigned int risposte_date=0; //serve per ottenere un bonus
     void aggiungi_seguace(Utente& utente);
     void togli_amico_ausiliario(Utente* utente);
     void togli_seguace_ausiliario(Utente* utente);
+protected:
+    unsigned int punti=0; // punti presenti nell'account
 public:
-    Utente();
+    Utente();//dovra essere =delete;
     Utente(const Utente& u);
-    Utente(string username,string password,string nome,string cognome,string email);
+    Utente(string username,string password,string nome,string cognome,string email,unsigned int=0);
     Profilo get_profilo() const;//OK
     Accesso get_credenziali() const;//OK
 

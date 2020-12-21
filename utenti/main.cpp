@@ -20,7 +20,7 @@ int main()
 //    w.show();
 //    return a.exec();
 //test_deep_ptr();
-//test_domande();
+test_domande();
 //test_model();
 //test_profilo();
 //test_utenti();
