@@ -1,5 +1,8 @@
 #include "utente.h"
 
+
+unsigned int Utente::punti_domanda_fatta_utente=10;
+
 std::ostream &operator<<(std::ostream &os, const Utente &u) //OK
 {
     os<<u.pf<<endl;
@@ -175,6 +178,12 @@ for(auto it=seguaci.begin();it!=seguaci.end() && !tolto;++it)
 
 }
 
+void Utente::get_punti_domanda()
+{
+    punti+=punti_domanda_fatta_utente;
+    risposte_date++;
+}
+
 container<std::string> Utente::split(const std::string & text, const std::string & delims)
 {
        container<string> tokens;
@@ -222,7 +231,7 @@ const container<Utente *>& Utente::get_seguaci() const // OK
     return seguaci;
 }
 
-const container<Domanda *> &Utente::get_domande()
+container<Domanda *> &Utente::get_domande()
 {
     return domande;
 }
@@ -237,7 +246,12 @@ void Utente::scrivi_commento(Domanda *d, std::string risposta)
     d->aggiungi_commento(Commento(risposta,this));
 }
 
-container<Domanda *> Utente::cerca_domanda(const std::string & domanda, const Model & m)
+void Utente::dai_punti(Utente* utente) const
+{
+    utente->get_punti();
+}
+
+container<Domanda *> Utente::cerca_domanda(const std::string & domanda, const Model & m)//OK, manca da implementare un insertion_sort in modo da avere una lista ordinata doi domande
 /*container<Domanda*> d;
 for(auto it=amici.begin();it!=amici.end();++it)
 {

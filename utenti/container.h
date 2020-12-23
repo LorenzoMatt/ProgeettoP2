@@ -87,7 +87,9 @@ public:
         const T &operator*() const;
         const T *operator->() const;
         const_iterator &operator++();
+        const_iterator operator++(int);
         const_iterator &operator--();
+        const_iterator operator--(int);
         bool operator==(const const_iterator &x) const;
         bool operator!=(const const_iterator &x) const;
         bool operator<=(const const_iterator &x) const;
@@ -403,6 +405,28 @@ typename container<T>::const_iterator &container<T>::const_iterator::operator++(
 }
 
 template <class T>
+typename container<T>::const_iterator container<T>::const_iterator::operator++(int)
+{
+    iterator aux=*this;
+    if (ptr != nullptr)
+    {
+        if (!pastTheEnd)
+        {
+            if (ptr->next == nullptr)
+            {
+                ++ptr; //chiamata al ++ prefisso sugli interi: ptr è un indirizzo
+                pastTheEnd = true;
+            }
+            else
+            {
+                ptr = ptr->next;
+            }
+        }
+    }
+    return aux;
+}
+
+template <class T>
 typename container<T>::const_iterator &container<T>::const_iterator::operator--()
 {
     if (ptr != nullptr)
@@ -418,6 +442,22 @@ typename container<T>::const_iterator &container<T>::const_iterator::operator--(
     return *this;
 }
 
+template <class T>
+typename container<T>::const_iterator container<T>::const_iterator::operator--(int)
+{
+  iterator aux=*this;
+  if (ptr != nullptr)
+  {
+      if (pastTheEnd)
+      {
+          --ptr;
+          pastTheEnd = false;
+      }
+      else
+          ptr = ptr->prev;
+  }
+  return aux;
+}
 template <class T>
 bool container<T>::const_iterator::operator==(const container<T>::const_iterator &x) const
 {
@@ -494,6 +534,7 @@ typename container<T>::iterator &container<T>::iterator::operator++()
     }
     return *this;
 }
+
 template <class T>
 typename container<T>::iterator container<T>::iterator::operator++(int)
 {
@@ -504,7 +545,7 @@ typename container<T>::iterator container<T>::iterator::operator++(int)
       {
           if (ptr->next == nullptr)
           {
-              ptr++; //chiamata al ++ prefisso sugli interi: ptr è un indirizzo
+              ++ptr; //chiamata al ++ prefisso sugli interi: ptr è un indirizzo
               pastTheEnd = true;
           }
           else
@@ -515,6 +556,7 @@ typename container<T>::iterator container<T>::iterator::operator++(int)
   }
   return aux;
 }
+
 template <class T>
 typename container<T>::iterator &container<T>::iterator::operator--()
 {

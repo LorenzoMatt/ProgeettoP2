@@ -49,7 +49,7 @@ int test_model()
     Mirko->fai_domanda(new Domanda("perchè sono stupido",Mirko,1));
 //    for(auto it=Mirko->get_domande().begin();it!=Mirko->get_domande().end();++it)
 //        cout<<**it<<endl;
-    container<Domanda*>dom= Pikachu->cerca_domanda("perchè sono",m);
+    container<Domanda*>dom= Pikachu->cerca_domanda("stupido perchè",m);
     cout<<dom.countElements()<<endl;
 
 //    for(auto it=dom.begin();it!=dom.end();++it)

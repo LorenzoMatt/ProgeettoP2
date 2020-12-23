@@ -8,8 +8,6 @@
 #include "amico_non_presente.h"
 #include "non_autore_domanda.h"
 #include "togliere_te_stesso_dagli_amici.h"
-#include <list>
-using std::list;
 class Domanda;
 class Model;
 class Utente
@@ -21,12 +19,10 @@ private:
     container<Utente*> amici;
     container<Utente*> seguaci;
     container<Domanda*> domande;
-    unsigned int risposte_date=0; //serve per ottenere un bonus
-    void aggiungi_seguace(Utente& utente);
-    void togli_amico_ausiliario(Utente* utente);
-    void togli_seguace_ausiliario(Utente* utente);
-protected:
-    unsigned int punti=0; // punti presenti nell'account
+    void aggiungi_seguace(Utente& utente); //OK
+    void togli_amico_ausiliario(Utente* utente); //OK
+    void togli_seguace_ausiliario(Utente* utente); //OK
+    static unsigned int punti_domanda_fatta_utente; //dovrà essere cancellata
 public:
     Utente();//dovra essere =delete;
     Utente(const Utente& u);
@@ -36,29 +32,32 @@ public:
 
     const container<Utente *>& get_amici() const ;
     const container<Utente*>& get_seguaci() const;
-    const container<Domanda *> &get_domande();
+    container<Domanda *> &get_domande();
 
     unsigned int get_punti() const;//OK
-    void fai_domanda(Domanda* domanda);
     //void fai_domanda(const string& domanda,unsigned int priorita=0);
     void aggiungi_amico(Utente& utente);
     void togli_amico(Utente* utente);
     void togli_seguace(Utente* utente);
-
-    void cerca_utente(const string&,const Model&, container<string>&,int) const;//OK quando implementeremo le classi polimorfe dovrà andare tolto l'ultimo intero da passare alla funzione
-    //virtual Utente* clone(return new Utente(t));
     void AggiungiCompetenza(const string&); //OK
     void AggiungiTitoloDiStudio (const string&); //OK
     void set_nome_profilo(const string&);
-    void scrivi_commento(Domanda* d, string risposta);// OK
-
-    container<Domanda*> cerca_domanda(const string&,const Model&);//OK per adesso contiene un container di domande, in utente basic la domanda viene cercata solo negli amici mentre negli account a pagamento nel modello
-
-    static container<string> split(const string&,const string&);
-
+    void dai_punti(Utente*) const;
     string get_username_amici() const; //OK
+    void scrivi_commento(Domanda* d, string risposta);
+
+
+                /*virtual*/
+    void cerca_utente(const string&,const Model&, container<string>&,int) const;//OK quando implementeremo le classi polimorfe dovrà andare tolto l'ultimo intero da passare alla funzione
+    void get_punti_domanda(); //virtual
+    container<Domanda*> cerca_domanda(const string&,const Model&);//OK per adesso contiene un container di domande, in utente basic la domanda viene cercata solo negli amici mentre negli account a pagamento nel modello
+    void fai_domanda(Domanda* domanda);
+    //virtual Utente* clone(return new Utente(t));
 
 protected:
+    unsigned int punti=0; // punti presenti nell'account
+    unsigned int risposte_date=0; //serve per ottenere un bonus
+    static container<string> split(const string&,const string&); //OK
     //Classe Funtore utilizzata per la ricerca polimorfa dell'utente
     class Funtore
     {
@@ -97,5 +96,4 @@ protected:
     };
 
 };
-
 #endif // UTENTE_H
