@@ -64,6 +64,8 @@ public:
         iterator operator--(int);
         bool operator==(const iterator &x) const;
         bool operator!=(const iterator &x) const;
+        bool operator <=(const iterator &x) const;
+        bool operator >=(const iterator &x) const;
     };
     iterator begin();
     iterator end();
@@ -88,6 +90,8 @@ public:
         const_iterator &operator--();
         bool operator==(const const_iterator &x) const;
         bool operator!=(const const_iterator &x) const;
+        bool operator<=(const const_iterator &x) const;
+        bool operator>=(const const_iterator &x) const;
     };
     const_iterator begin() const;
     const_iterator end() const;
@@ -554,6 +558,18 @@ bool container<T>::iterator::operator!=(const container<T>::iterator &x) const
 {
     return ptr != x.ptr;
 }
+template <class T>
+bool container<T>::iterator::operator<=(const container<T>::iterator &x) const
+{
+    return ptr <= x.ptr;
+}
+
+template <class T>
+bool container<T>::iterator::operator>=(const container<T>::iterator &x) const
+{
+    return ptr >= x.ptr;
+}
+
 
 template <class T> //dichiarazione perché è necessario che compaia quando viene dichiarata l'amicizia su trialbero
 std::ostream &operator<<(std::ostream &os, const container<T> &l)
