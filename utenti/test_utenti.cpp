@@ -163,14 +163,34 @@ int test_utenti()
     Utente t(*ut);
     cout<<t.get_amici().countElements()<<" "<<ut->get_amici().countElements()<<endl;
     ut->fai_domanda(new Domanda("micio miao?",ut,2));
+    /*
     for (auto it=t.get_domande().begin();it!=t.get_domande().end();++it)
         cout<<**it<<endl;
-
+*/
 
     Utente* f=ut->clone();
-    cout<<f->get_domande().countElements()<<endl;
-    f->fai_domanda(new Domanda("come faccio ad essere così bello?",f,2));
-    cout<<ut->get_domande().countElements()<<endl;
-    cout<<f->get_domande().countElements()<<endl;
+    Utente* f2=new Utente("Mirko","dioboia","diostronzo","porco","dio");
+    Utente* f3=new Utente("Elton","dioboia","diostronzo","porco","dio");
+    Utente* f4=new Utente("Francesca","dioboia","diostronzo","porco","dio");
+    Utente* f5=new Utente("Prova","dioboia","diostronzo","porco","dio");
+    Utente* f6=new Utente("Giorgio","dioboia","diostronzo","porco","dio");
+    f5->aggiungi_amico(*f2);
+    f5->aggiungi_amico(*f3);
+    f5->aggiungi_amico(*f4);
+    f5->aggiungi_amico(*f6);
+
+    f2->fai_domanda(new Domanda("il cielo è arancio?",f2,1));
+    f3->fai_domanda(new Domanda("il cielo è arancio?",f3,2));
+    f4->fai_domanda(new Domanda("il cielo è arancio?",f4,3));
+    f6->fai_domanda(new Domanda("il cielo è arancio?",f6,2));
+    container<Domanda*> domande=f5->cerca_domanda("il cielo è arancio",Model());
+    cout<<domande.countElements()<<endl;
+    for(auto it=domande.begin();it!=domande.end();++it)
+        cout<<**it<<endl;
+
+//    cout<<f->get_domande().countElements()<<endl;
+//    f->fai_domanda(new Domanda("dio bastardo",f,2));
+//    cout<<ut->get_domande().countElements()<<endl;
+//    cout<<f->get_domande().countElements()<<endl;
     return 0;
 }

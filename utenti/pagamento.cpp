@@ -37,7 +37,7 @@ container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const
              }
             if(count>=(lunghezza_parola_esaminata*0.6))// basterebbe ==
             {
-                domande_trovate_amici.push_back(*it);
+                domande_trovate_amici.insertion_sort(*it);
             }
         }
 
@@ -70,7 +70,7 @@ container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const
                  }
                 if(count>=(lunghezza_parola_esaminata*0.6))// basterebbe ==
                 {
-                    domande_trovate_modello.push_back(*it);
+                    domande_trovate_modello.insertion_sort(*it);
                 }
             }
         }

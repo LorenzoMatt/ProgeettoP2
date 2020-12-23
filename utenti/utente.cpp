@@ -308,7 +308,7 @@ return d;*/
              }
             if(count>=(lunghezza_parola_esaminata*0.6))// basterebbe ==
             {
-                domande_trovate.push_back(*it);
+                domande_trovate.insertion_sort(*it);
             }
         }
 
