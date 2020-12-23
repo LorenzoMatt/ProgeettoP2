@@ -19,7 +19,7 @@ public:
     void aggiungi_utente_gratuito();
     void aggiungi_utente_premium();
     void aggiungi_utente_gold();
-    container<DeepPtr<Utente>> get_utenti() const;
+    const container<DeepPtr<Utente>>& get_utenti() const;
     Utente *get_utente(const string&) const;
     DeepPtr<Utente> *get_utente_deep(const string&username);
 };

@@ -68,7 +68,7 @@ void Model::aggiungi_utente_gold()
 
 }
 
-container<DeepPtr<Utente> > Model::get_utenti() const
+const container<DeepPtr<Utente>>& Model::get_utenti() const
 {
     return utenti;
 }

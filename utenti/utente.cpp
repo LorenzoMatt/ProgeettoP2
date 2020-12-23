@@ -178,6 +178,18 @@ for(auto it=seguaci.begin();it!=seguaci.end() && !tolto;++it)
 
 }
 
+bool Utente::check_presenza_amico(const std::string & username) const
+{
+    bool trovato=false;
+    for(auto it=amici.begin();it!=amici.end() && !trovato;++it)
+    {
+        if((*it)->get_credenziali().get_username()==username)
+            trovato=true;
+    }
+    return trovato;
+
+}
+
 void Utente::get_punti_domanda()
 {
     punti+=punti_domanda_fatta_utente;

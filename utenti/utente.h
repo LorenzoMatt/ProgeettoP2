@@ -58,6 +58,7 @@ protected:
     unsigned int punti=0; // punti presenti nell'account
     unsigned int risposte_date=0; //serve per ottenere un bonus
     static container<string> split(const string&,const string&); //OK
+    bool check_presenza_amico(const string&) const;
     //Classe Funtore utilizzata per la ricerca polimorfa dell'utente
     class Funtore
     {
