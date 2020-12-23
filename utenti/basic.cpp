@@ -3,7 +3,6 @@
 unsigned int Basic::limiteDomandeVisualizzate=5;
 unsigned int Basic::puntiDetrattiDomandaFatta=10;
 unsigned int Basic::puntiPerDomandaData=15;
-unsigned int Basic::limitePerAverePuntiBonus=200;
 unsigned int Basic::puntiBonus=30;
 
 Basic::Basic(std::string username, std::string password, std::string nome, std::string cognome, std::string email,unsigned int punti)
@@ -29,6 +28,7 @@ void Basic::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funzi
     }catch(non_autore_domanda){
         std::cerr<<"non è l'autore della domanda";
     }
+    // dovrà essere aggiunta il controllo per il punteggio
 }
 
 container<Domanda *> Basic::cerca_domanda(const std::string & domanda, const Model & m)

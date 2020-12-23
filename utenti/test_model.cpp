@@ -59,6 +59,38 @@ int test_model()
 //        cout<<**it<<endl;
 
 
-        return 0;
+    container<Domanda*> d1;
+    container<Domanda*> d2;
+    d1.push_back(new Domanda("gesu bastardo",Mirko,2));
+    d2.push_back(new Domanda("ciaooooooo",Elton,3));
+    d2.push_back(new Domanda("diobioa",Mirko,2));
+    container<Domanda*> d3=d1+d2;
+    cout<<d3.countElements()<<d2.countElements()<<d1.countElements()<<endl;
+    for(auto it=d3.begin();it!=d3.end();++it)
+    {
+        cout<<**it<<endl;
+        Mirko->scrivi_commento(*it,"boia la madonna");
+    }
+    cout<<endl;
+
+    for(auto it=d2.begin();it!=d2.end();++it)
+    {
+
+        cout<<**it<<endl;
+        Mirko->scrivi_commento(*it,"idsjiijsjisdjisi");
+
+
+    }
+    for(auto it=d3.begin();it!=d3.end();++it)
+    {
+        (*it)->RimuoviCommento(Commento("idsjiijsjisdjisi",Mirko));
+        cout<<**it<<endl;
+    }
+    for(auto it=d2.begin();it!=d2.end();++it)
+    {
+
+        cout<<**it<<endl;
+    }
+    return 0;
 
 }

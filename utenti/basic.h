@@ -5,7 +5,6 @@
 class Basic : public Utente
 {
 private:
-    static unsigned int limitePerAverePuntiBonus;
     static unsigned int puntiPerDomandaData;
     static unsigned int puntiDetrattiDomandaFatta;
     static unsigned int limiteDomandeVisualizzate;

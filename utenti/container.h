@@ -36,6 +36,7 @@ public:
     container(unsigned int k, const T &t);
     container();
     container &operator=(const container &d);
+    container operator+(const container &d);
     void push_front(const T &t);
     void push_back(const T &t);
     void pop_front();
@@ -165,6 +166,22 @@ container<T> &container<T>::operator=(const container<T> &d)
     }
     return *this;
 }
+
+template<class T>
+container<T> container<T>::operator+(const container<T> &d)
+{
+    if(d.countElements()==0)
+        return container<T>(*this);
+    if(this->countElements()==0)
+        return container<T>(d);
+    container<T> aux;
+    aux.first=copy(this->first,aux.last);
+    aux.last->next=copy(d.first,aux.last);
+    aux.last=d.last;
+    return aux;
+
+}
+
 
 template <class T>
 void container<T>::push_front(const T &t)

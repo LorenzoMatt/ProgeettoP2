@@ -25,7 +25,7 @@ public:
     void aggiungi_commento(const Commento&);//OK
     void RimuoviCommento(const Commento&);//OK
     Utente* get_autore_domanda() const;//OK
-    string get_testo() const;
+    string get_testo() const; //OK
     bool operator <=(const Domanda&) const;
     bool operator >=(const Domanda&) const;
 };
