@@ -132,13 +132,13 @@ int test_utenti()
     cout<<"modifica del profilo di ut tramite una copia--------------------------------------------"<<endl;
     container<Utente*> dd= ut.get_amici();
     for(container<Utente*>::iterator it=dd.begin();it!=dd.end();++it){
-        (*it)->set_profilo("gesu bastardo");
+        (*it)->set_nome_profilo("gesu bastardo");
         cout<<**it<<endl;
     }
     cout<<endl<<endl<<endl<<"dvnssdvnijndjsnvjdvnsjdvnskisdvnjdvnvjdfsbn dvs";
     //container<Utente*> dd2=ut.get_amici();
     for(container<Utente*>::const_iterator it=ut.get_amici().begin();it!=ut.get_amici().end();++it){
-        (*it)->set_profilo("madonna bastarda");
+        (*it)->set_nome_profilo("madonna bastarda");
         cout<<**it<<endl;
     }
     for(container<Utente*>::iterator it=dd.begin();it!=dd.end();++it){

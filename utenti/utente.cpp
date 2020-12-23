@@ -174,6 +174,23 @@ for(auto it=seguaci.begin();it!=seguaci.end() && !tolto;++it)
 
 
 }
+
+container<std::string> Utente::split(const std::string & text, const std::string & delims)
+{
+       container<string> tokens;
+        std::size_t start = text.find_first_not_of(delims), end = 0;
+
+        while((end = text.find_first_of(delims, start)) != std::string::npos)
+        {
+            tokens.push_back(text.substr(start, end - start));
+            start = text.find_first_not_of(delims, end);
+        }
+        if(start != std::string::npos)
+            tokens.push_back(text.substr(start));
+
+        return tokens;
+
+}
 void Utente::togli_seguace(Utente *utente) // OK, toglie un suo seguace dalla coda se è presente e l'utente che ha rimosso il
 //seguace viene a sua volta tolto dalla lista degli amici dell'ex seguace
 {
@@ -210,7 +227,7 @@ const container<Domanda *> &Utente::get_domande()
     return domande;
 }
 
-void Utente::set_profilo(const string & nome)
+void Utente::set_nome_profilo(const string & nome)
 {
     pf.SetNome(nome);
 }
@@ -221,19 +238,51 @@ void Utente::scrivi_commento(Domanda *d, std::string risposta)
 }
 
 container<Domanda *> Utente::cerca_domanda(const std::string & domanda, const Model & m)
+/*container<Domanda*> d;
+for(auto it=amici.begin();it!=amici.end();++it)
 {
-    container<Domanda*> d;
-    for(auto it=amici.begin();it!=amici.end();++it)
+    const container<Domanda*>& domande_utente=(*it)->get_domande();
+    for(auto it=domande_utente.begin();it!=domande_utente.end();++it)
     {
-        const container<Domanda*>& domande_utente=(*it)->get_domande();
-        for(auto it=domande_utente.begin();it!=domande_utente.end();++it)
-        {
-            cout<<**it<<endl;
-            if(((*it)->get_testo()).find(domanda)!=string::npos)
-                d.push_back(*it);
-        }
+        cout<<**it<<endl;
+        if(((*it)->get_testo()).find(domanda)!=string::npos)
+            d.push_back(*it);
     }
-    return d;
+}
+return d;*/
+{
+    container<string> domanda_fatta=split(domanda," ");// divido la stringa domanda per spazi
+    container<Domanda*> domande_trovate;
+    for(auto it=amici.begin();it!=amici.end();++it)//scorro gli amici
+    {
+        const container<Domanda*>& domande_utente=(*it)->get_domande();//lista di domande dell'amico esaminato
+        for(auto it=domande_utente.begin();it!=domande_utente.end();++it)// scorro la lista delle domande dell'amico corrente
+        {
+            container<string> domanda_esaminata=split((*it)->get_testo()," ");// divido la domanda corrente per spazi
+            unsigned int lunghezza_parola_esaminata=domanda_esaminata.countElements();
+            unsigned int count=0;//numero di parole che matchano fra domanda_fatta e domande_esaminata
+            for(auto ut=domanda_esaminata.begin();ut!=domanda_esaminata.end() && count<=(lunghezza_parola_esaminata*0.6);++ut)
+                //scorri le parole della domanda_esaminata
+            {
+                bool ok=false;
+                for(auto d=domanda_fatta.begin();d!=domanda_fatta.end() && !ok;++d)//scorro le parole  della domanda fatta
+                {
+                    if(*ut==*d)//confronto fra parola della domanda_esaminata e della parola della domanda_fatta
+                    {
+                        ok=true;
+                        count++;//incremento il numero di parole uguali fra la domanda fatta e quella esaminata
+                    }
+                }
+
+             }
+            if(count>=(lunghezza_parola_esaminata*0.6))// basterebbe ==
+            {
+                domande_trovate.push_back(*it);
+            }
+        }
+
+    }
+    return domande_trovate;
 }
 
 

@@ -36,7 +36,7 @@ int test_model()
     cout<<"conpetenze Giorgia "<<Giorgia->get_profilo().competenze_toString()<<endl;
     //p->set_profilo("dvjdvndfjvnjvnjd");
     //cout<<ut->get_profilo().GetNome()<<endl;
-    m.get_utente("Mirko")->set_profilo("ffffffffff");
+    m.get_utente("Mirko")->set_nome_profilo("ffffffffff");
     for(auto it=Pikachu->get_amici().begin();it!=Pikachu->get_amici().end();++it)
         cout<<**it;
     container<string> l;
@@ -50,12 +50,13 @@ int test_model()
 //    for(auto it=Mirko->get_domande().begin();it!=Mirko->get_domande().end();++it)
 //        cout<<**it<<endl;
     container<Domanda*>dom= Pikachu->cerca_domanda("perchè sono",m);
-    cout<<dom.countElements();
-    for(auto it=dom.begin();it!=dom.end();++it)
-        Pikachu->scrivi_commento(*it,"dio boia arrangiati");
+    cout<<dom.countElements()<<endl;
 
-    for(auto it=Mirko->get_domande().begin();it!=Mirko->get_domande().end();++it)
-        cout<<**it<<endl;
+//    for(auto it=dom.begin();it!=dom.end();++it)
+//        Pikachu->scrivi_commento(*it,"dio boia arrangiati");
+
+//    for(auto it=Mirko->get_domande().begin();it!=Mirko->get_domande().end();++it)
+//        cout<<**it<<endl;
 
 
         return 0;

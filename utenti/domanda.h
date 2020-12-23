@@ -26,7 +26,8 @@ public:
     void RimuoviCommento(const Commento&);//OK
     Utente* get_autore_domanda() const;//OK
     string get_testo() const;
-
+    bool operator <=() const;
+    bool operator >=() const;
 };
 
 #endif // DOMANDA_H

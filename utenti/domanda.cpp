@@ -27,6 +27,16 @@ std::string Domanda::get_testo() const
     return testo;
 }
 
+bool Domanda::operator <=(const Domanda &d) const
+{
+    return priorita<=d.priorita;
+}
+
+bool Domanda::operator >=(const Domanda &d) const
+{
+    return priorita >=d.priorita;
+}
+
 
 std::ostream &operator<<(std::ostream & os, const Domanda& d){
 

@@ -54,6 +54,7 @@ public:
 
     container<Domanda*> cerca_domanda(const string&,const Model&);//OK per adesso contiene un container di domande, in utente basic la domanda viene cercata solo negli amici mentre negli account a pagamento nel modello
 
+    static container<string> split(const string&,const string&);
 
     string get_username_amici() const; //OK
 

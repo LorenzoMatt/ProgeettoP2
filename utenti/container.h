@@ -425,6 +425,16 @@ bool container<T>::const_iterator::operator!=(const container<T>::const_iterator
 {
     return ptr != x.ptr;
 }
+template <class T>
+bool container<T>::const_iterator::operator<=(const container<T>::const_iterator &x) const
+{
+    return ptr <= x.ptr;
+}
+template <class T>
+bool container<T>::const_iterator::operator>=(const container<T>::const_iterator &x) const
+{
+    return ptr >= x.ptr;
+}
 
 /**********************************ITERATOR**********************************/
 
