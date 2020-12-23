@@ -7,7 +7,7 @@ class Basic : public Utente
 private:
     static unsigned int puntiPerDomandaData;
     static unsigned int puntiDetrattiDomandaFatta;
-    static unsigned int limiteDomandeVisualizzate;
+    static unsigned int supplementoDomandaPriorita;
     static unsigned int puntiBonus;
 public:
     Basic(string username,string password,string nome,string cognome,string email,unsigned int punti=puntiBonus);

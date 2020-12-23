@@ -8,6 +8,7 @@
 #include "amico_non_presente.h"
 #include "non_autore_domanda.h"
 #include "togliere_te_stesso_dagli_amici.h"
+#include "punti_non_sufficienti.h"
 class Domanda;
 class Model;
 class Utente
@@ -52,7 +53,7 @@ public:
     void get_punti_domanda(); //virtual
     container<Domanda*> cerca_domanda(const string&,const Model&);//OK per adesso contiene un container di domande, in utente basic la domanda viene cercata solo negli amici mentre negli account a pagamento nel modello
     void fai_domanda(Domanda* domanda);
-    //virtual Utente* clone(return new Utente(t));
+    Utente* clone();
 
 protected:
     unsigned int punti=0; // punti presenti nell'account

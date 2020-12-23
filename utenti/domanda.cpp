@@ -5,6 +5,11 @@
 
 Domanda::Domanda(const string& t, Utente* autore, unsigned int priorita):testo(t),autore_domanda(autore),priorita(priorita){}
 
+//Domanda::Domanda(const Domanda &d) :
+//{
+
+//}
+
 void Domanda::aggiungi_commento(const Commento& c){
     commenti.push_back(c);
 }
@@ -35,6 +40,11 @@ bool Domanda::operator <=(const Domanda &d) const
 bool Domanda::operator >=(const Domanda &d) const
 {
     return priorita >=d.priorita;
+}
+
+unsigned int Domanda::get_priorita() const
+{
+    return priorita;
 }
 
 

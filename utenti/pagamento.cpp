@@ -5,11 +5,6 @@ Pagamento::Pagamento()
 
 }
 
-void Pagamento::get_punti_bonus()
-{
-
-}
-
 container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const Model & m)
 {
     container<string> domanda_fatta=split(domanda," ");// divido la stringa domanda per spazi
@@ -77,10 +72,6 @@ container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const
         }
 
     }
-
-
-
     return domande_trovate_amici+domande_trovate_modello;
-
-
 }
+

@@ -22,12 +22,14 @@ private:
 public:
     Domanda()=delete;
     Domanda(const string&,Utente*,unsigned int);
+    Domanda(const Domanda&);
     void aggiungi_commento(const Commento&);//OK
     void RimuoviCommento(const Commento&);//OK
     Utente* get_autore_domanda() const;//OK
     string get_testo() const; //OK
     bool operator <=(const Domanda&) const;
     bool operator >=(const Domanda&) const;
+    unsigned int get_priorita() const;
 };
 
 #endif // DOMANDA_H

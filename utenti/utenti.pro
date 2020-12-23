@@ -38,7 +38,10 @@ HEADERS += accesso.h \
     test_profilo.h \
     test_utenti.h \
     basic.h \
-    pagamento.h
+    pagamento.h \
+    gold.h \
+    punti_non_sufficienti.h \
+    premium.h
 FORMS += home.ui
 SOURCES += accesso.cpp \
            amico_non_presente.cpp \
@@ -58,4 +61,7 @@ SOURCES += accesso.cpp \
     test_deep_ptr.cpp \
     test_model.cpp \
     basic.cpp \
-    pagamento.cpp
+    pagamento.cpp \
+    gold.cpp \
+    punti_non_sufficienti.cpp \
+    premium.cpp

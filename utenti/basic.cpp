@@ -1,9 +1,10 @@
 #include "basic.h"
 
-unsigned int Basic::limiteDomandeVisualizzate=5;
 unsigned int Basic::puntiDetrattiDomandaFatta=10;
 unsigned int Basic::puntiPerDomandaData=15;
 unsigned int Basic::puntiBonus=30;
+unsigned int Basic::supplementoDomandaPriorita=5;
+
 
 Basic::Basic(std::string username, std::string password, std::string nome, std::string cognome, std::string email,unsigned int punti)
     :Utente(username,password,nome,cognome,email,punti)
@@ -22,11 +23,29 @@ void Basic::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funzi
 {
     try{
         if(this==domanda->get_autore_domanda())
-            get_domande().push_back(domanda);
+        {
+            if(domanda->get_priorita()==1)
+            {
+                get_domande().push_back(domanda);
+            }
+            else
+            {
+                if(supplementoDomandaPriorita*(domanda->get_priorita()-1)>punti)
+                    throw punti_non_sufficienti();
+                else{
+                    get_domande().push_back(domanda);
+                    punti-=(domanda->get_priorita()-1)*supplementoDomandaPriorita;
+                }
+
+            }
+        }
         else
             throw non_autore_domanda();
     }catch(non_autore_domanda){
         std::cerr<<"non è l'autore della domanda";
+    }
+    catch(punti_non_sufficienti){
+        std::cerr<<"punti per fare la domanda non sufficienti";
     }
     // dovrà essere aggiunta il controllo per il punteggio
 }

@@ -10,7 +10,7 @@
 int test_utenti()
 {
     cout<<"TEST UTENTI"<<endl<<endl;
-    Utente ut("Pikachu","dioboia","diostronzo","porco","dio");
+    /*Utente ut("Pikachu","dioboia","diostronzo","porco","dio");
     ut.get_profilo().AggiungiCompetenza("stare a letto");
     ut.get_profilo().AggiungiCompetenza("stare a letto");
     cout<<ut.get_profilo();
@@ -39,7 +39,7 @@ int test_utenti()
     x4.aggiungi_amico(x);
     x4.aggiungi_amico(x2);
     x4.aggiungi_amico(x3);
-    // x4.togli_amico(&x4);*/
+    // x4.togli_amico(&x4);
     int i=1;
 
     Utente j("ciao","dd","t","g","w");
@@ -154,6 +154,23 @@ int test_utenti()
     //model c(d);
     //cout<<c.get_utenti();
     cout<<endl<<endl<<"username degli amici di ut"<<endl<<endl;
-    cout<<x.get_username_amici(); //OK
+    cout<<x.get_username_amici(); //OK*/
+    Utente* ut=new Utente("Lorenzo","dioboia","diostronzo","porco","dio");
+    ut->fai_domanda(new Domanda("come faccio ad essere così bello?",ut,2));
+    ut->fai_domanda(new Domanda("il cielo è arancio?",ut,2));
+    Utente* g=new Utente();
+    ut->aggiungi_amico(*g);
+    Utente t(*ut);
+    cout<<t.get_amici().countElements()<<" "<<ut->get_amici().countElements()<<endl;
+    ut->fai_domanda(new Domanda("micio miao?",ut,2));
+    for (auto it=t.get_domande().begin();it!=t.get_domande().end();++it)
+        cout<<**it<<endl;
+
+
+    Utente* f=ut->clone();
+    cout<<f->get_domande().countElements()<<endl;
+    f->fai_domanda(new Domanda("come faccio ad essere così bello?",f,2));
+    cout<<ut->get_domande().countElements()<<endl;
+    cout<<f->get_domande().countElements()<<endl;
     return 0;
 }

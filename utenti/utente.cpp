@@ -16,7 +16,7 @@ Utente::Utente():pf(Profilo("ciao","ciao","ciao")),credenziali(Accesso("lorenzo"
 
 }
 
-Utente::Utente(const Utente &u):credenziali(u.credenziali),pf(u.pf)
+Utente::Utente(const Utente &u):credenziali(u.credenziali),pf(u.pf),domande(u.domande),amici(),seguaci()
 {
 
 }
@@ -50,6 +50,11 @@ void Utente::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funz
     }catch(non_autore_domanda){
         std::cerr<<"non è l'autore della domanda";
     }
+}
+
+Utente *Utente::clone()
+{
+    return new Utente(*this);
 }
 void Utente::togli_amico_ausiliario(Utente *utente) // funziona ma il codice commentato non funziona e non so perchè
 {
