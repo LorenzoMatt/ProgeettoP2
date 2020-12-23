@@ -4,7 +4,11 @@ Pagamento::Pagamento()
 {
 
 }
+Pagamento::Pagamento(std::string username, std::string password, std::string nome, std::string cognome, std::string email,unsigned int punti)
+    :Utente(username,password,nome,cognome,email,punti)
+{
 
+}
 container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const Model & m)
 {
     container<string> domanda_fatta=split(domanda," ");// divido la stringa domanda per spazi

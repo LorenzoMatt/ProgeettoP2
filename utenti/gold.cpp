@@ -14,7 +14,7 @@ Gold::Gold()
 }
 
 Gold::Gold(std::string username, std::string password, std::string nome, std::string cognome, std::string email,unsigned int punti)
-    :Utente(username,password,nome,cognome,email,punti)
+    :Pagamento(username,password,nome,cognome,email,punti)
 {
 
 }

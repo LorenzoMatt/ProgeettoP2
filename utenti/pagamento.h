@@ -6,6 +6,7 @@ class Pagamento : public Utente
 {
 public:
     Pagamento();
+    Pagamento(string username,string password,string nome,string cognome,string email,unsigned int punti);
     // virtual void get_punti_bonus()=0; //dovrà essere virtuale
     // virtual void cerca_utente(const string&,const Model&, container<string>&,int) const=0;//OK quando implementeremo le classi polimorfe dovrà andare tolto l'ultimo intero da passare alla funzione
     //virtual void get_punti_domanda()=0;

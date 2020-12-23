@@ -1,8 +1,8 @@
 #ifndef GOLD_H
 #define GOLD_H
-#include "utente.h"
+#include "pagamento.h"
 
-class Gold : public Utente
+class Gold : public Pagamento
 {
 private:
     static unsigned int puntiPerDomandaData;
