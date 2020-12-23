@@ -14,9 +14,11 @@ int test_domande()
         Utente* ut=m.get_utente("Lorenzo");
         Utente* ut2=m.get_utente("Mirko");
         Domanda* d=new Domanda("perchè il cielo è blu",ut,2);
-        ut->fai_domanda(*d);
+        ut->fai_domanda(d);
         ut2->scrivi_commento(d,"dioboia");
         cout<<*d;
+        for(auto it=ut->get_domande().begin();it!=ut->get_domande().end();++it)
+            cout<<**it;
         /*Domanda* domanda=new Domanda("ho una domanda",&ut,0);
         cout<<"autore domanda "<<endl;
         cout<<*domanda->get_autore_domanda();// OK

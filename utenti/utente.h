@@ -36,21 +36,23 @@ public:
 
     const container<Utente *>& get_amici() const ;
     const container<Utente*>& get_seguaci() const;
-    container<Domanda *> &get_domande();
+    const container<Domanda *> &get_domande();
 
     unsigned int get_punti() const;//OK
-    void fai_domanda(Domanda& domanda);
+    void fai_domanda(Domanda* domanda);
     //void fai_domanda(const string& domanda,unsigned int priorita=0);
     void aggiungi_amico(Utente& utente);
     void togli_amico(Utente* utente);
     void togli_seguace(Utente* utente);
 
-    void cerca_utente(const Model&, const string&, container<string>&,int) const;// quando implementeremo le classi polimorfe dovrà andare tolto l'ultimo intero da passare alla funzione
+    void cerca_utente(const string&,const Model&, container<string>&,int) const;//OK quando implementeremo le classi polimorfe dovrà andare tolto l'ultimo intero da passare alla funzione
     //virtual Utente* clone(return new Utente(t));
     void AggiungiCompetenza(const string&); //OK
     void AggiungiTitoloDiStudio (const string&); //OK
-    void set_profilo(const string&);
-    void scrivi_commento(Domanda* d, string risposta);
+    void set_nome_profilo(const string&);
+    void scrivi_commento(Domanda* d, string risposta);// OK
+
+    container<Domanda*> cerca_domanda(const string&,const Model&);//OK per adesso contiene un container di domande, in utente basic la domanda viene cercata solo negli amici mentre negli account a pagamento nel modello
 
 
     string get_username_amici() const; //OK

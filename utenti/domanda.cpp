@@ -22,6 +22,11 @@ Utente* Domanda::get_autore_domanda() const
     return autore_domanda;
 }
 
+std::string Domanda::get_testo() const
+{
+    return testo;
+}
+
 
 std::ostream &operator<<(std::ostream & os, const Domanda& d){
 

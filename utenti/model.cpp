@@ -24,7 +24,7 @@ Model::Model(const container<DeepPtr<Utente> > &u):utenti(u)
 void Model::aggiungi_utente(const DeepPtr<Utente> &utente)
 {
     try{
-        if(!check_presenza((*utente).get_credenziali().get_username()))
+        if(!check_presenza(utente->get_credenziali().get_username()))
             utenti.push_back(utente);
         else
             throw utente_gia_presente();

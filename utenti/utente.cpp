@@ -37,11 +37,11 @@ unsigned int Utente::get_punti() const
     return punti;
 }
 
-void Utente::fai_domanda(Domanda& domanda)// il sollevamento dell'eccezione funziona a dovere
+void Utente::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funziona a dovere
 {
     try{
-        if(this==domanda.get_autore_domanda())
-            domande.push_back(&domanda);
+        if(this==domanda->get_autore_domanda())
+            domande.push_back(domanda);
         else
             throw non_autore_domanda();
     }catch(non_autore_domanda){
@@ -205,7 +205,7 @@ const container<Utente *>& Utente::get_seguaci() const // OK
     return seguaci;
 }
 
-container<Domanda *>& Utente::get_domande()
+const container<Domanda *> &Utente::get_domande()
 {
     return domande;
 }
@@ -220,6 +220,22 @@ void Utente::scrivi_commento(Domanda *d, std::string risposta)
     d->aggiungi_commento(Commento(risposta,this));
 }
 
+container<Domanda *> Utente::cerca_domanda(const std::string & domanda, const Model & m)
+{
+    container<Domanda*> d;
+    for(auto it=amici.begin();it!=amici.end();++it)
+    {
+        const container<Domanda*>& domande_utente=(*it)->get_domande();
+        for(auto it=domande_utente.begin();it!=domande_utente.end();++it)
+        {
+            cout<<**it<<endl;
+            if(((*it)->get_testo()).find(domanda)!=string::npos)
+                d.push_back(*it);
+        }
+    }
+    return d;
+}
+
 
 string Utente::get_username_amici() const //OK
 {
@@ -229,7 +245,7 @@ string Utente::get_username_amici() const //OK
     return username;
 }
 
-void Utente::cerca_utente(const Model & model, const string & username, container<std::string> &lista_di_elementi,int numero_funtore) const
+void Utente::cerca_utente(const string & username, const Model & model, container<std::string> &lista_di_elementi, int numero_funtore) const
 {
     Utente* utente = model.get_utente(username);
     Utente::Funtore f(numero_funtore);//nelle funzioni polimorfe il numero_funtore sarà sostituito con 1 in account gratuito,2 in gold e 3 in premium
