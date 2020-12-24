@@ -25,17 +25,22 @@ private:
     void togli_seguace_ausiliario(Utente* utente); //OK
     static unsigned int punti_domanda_fatta_utente; //dovrà essere cancellata
 public:
+
+            /*costruttori e distruttori*/
     Utente();//dovra essere =delete;
+    virtual ~Utente();
     Utente(const Utente& u);
     Utente(string username,string password,string nome,string cognome,string email,unsigned int=0);
+
+                     /*getter*/
     Profilo get_profilo() const;//OK
     Accesso get_credenziali() const;//OK
-
-    const container<Utente *>& get_amici() const ;
+    const container<Utente*>& get_amici() const ;
     const container<Utente*>& get_seguaci() const;
-    container<Domanda *> &get_domande();
-
+    container<Domanda*> &get_domande();
     unsigned int get_punti() const;//OK
+
+
     //void fai_domanda(const string& domanda,unsigned int priorita=0);
     void aggiungi_amico(Utente& utente);
     void togli_amico(Utente* utente);
@@ -65,36 +70,9 @@ protected:
     {
     public:
         int search;
-        Funtore(int x=0) : search(x) {}
-        void operator() (const Utente* ut, container<string>& l) const
-        {
-            switch(search)
-            {
-                case 1:
-                    l.push_back(ut->credenziali.get_username());
-                    l.push_back(ut->pf.GetNome());
-                    l.push_back(ut->pf.GetCognome());
-                    l.push_back(ut->pf.GetEmail());
-                    break;
+        Funtore(int x=0);
+        void operator() (const Utente* ut, container<string>& l) const;
 
-                case 2:
-                    l.push_back(ut->credenziali.get_username());
-                    l.push_back(ut->pf.GetNome());
-                    l.push_back(ut->pf.GetCognome());
-                    l.push_back(ut->pf.GetEmail());
-                    l.push_back(ut->pf.competenze_toString());
-                    break;
-
-                case 3:
-                    l.push_back(ut->credenziali.get_username());
-                    l.push_back(ut->pf.GetNome());
-                    l.push_back(ut->pf.GetCognome());
-                    l.push_back(ut->pf.GetEmail());
-                    l.push_back(ut->pf.competenze_toString());
-                    l.push_back(ut->get_username_amici());
-                    break;
-            }
-        }
     };
 
 };

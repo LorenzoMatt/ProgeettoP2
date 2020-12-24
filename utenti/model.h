@@ -9,7 +9,6 @@ class Model
 {
 private:
     container<DeepPtr<Utente>> utenti;
-    container<Domanda> domande;
     bool check_presenza(const string&);
 public:
     Model();

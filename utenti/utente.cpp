@@ -16,6 +16,11 @@ Utente::Utente():pf(Profilo("ciao","ciao","ciao")),credenziali(Accesso("lorenzo"
 
 }
 
+Utente::~Utente()
+{
+
+}
+
 Utente::Utente(const Utente &u):credenziali(u.credenziali),pf(u.pf),domande(u.domande),amici(),seguaci()
 {
 
@@ -342,3 +347,40 @@ void Utente::AggiungiTitoloDiStudio(const std::string & titolo)
     pf.AggiungiTitoloDiStudio(titolo);
 }
 
+
+Utente::Funtore::Funtore(int x) : search(x)
+{
+
+}
+
+void Utente::Funtore::operator()(const Utente *ut, container<std::string> &l) const
+{
+    {
+        switch(search)
+        {
+            case 1:
+                l.push_back(ut->credenziali.get_username());
+                l.push_back(ut->pf.GetNome());
+                l.push_back(ut->pf.GetCognome());
+                l.push_back(ut->pf.GetEmail());
+                break;
+
+            case 2:
+                l.push_back(ut->credenziali.get_username());
+                l.push_back(ut->pf.GetNome());
+                l.push_back(ut->pf.GetCognome());
+                l.push_back(ut->pf.GetEmail());
+                l.push_back(ut->pf.competenze_toString());
+                break;
+
+            case 3:
+                l.push_back(ut->credenziali.get_username());
+                l.push_back(ut->pf.GetNome());
+                l.push_back(ut->pf.GetCognome());
+                l.push_back(ut->pf.GetEmail());
+                l.push_back(ut->pf.competenze_toString());
+                l.push_back(ut->get_username_amici());
+                break;
+        }
+    }
+}

@@ -7,8 +7,8 @@ class Accesso
 private:
     string username;
     string password;
-    Accesso();
 public:
+    Accesso()=delete;
     Accesso(string,string);
     void set_username(string);
     void set_password(string);
