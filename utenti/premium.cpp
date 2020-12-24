@@ -83,7 +83,7 @@ void Premium::get_punti_bonus()
 }
 
 
-Premium *Premium::clone()
+Premium *Premium::clone() const
 {
     return new Premium(*this);
 }

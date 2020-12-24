@@ -63,10 +63,10 @@ void Utente::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funz
     }
 }
 
-Utente *Utente::clone()
-{
-    return new Utente(*this);
-}
+//Utente *Utente::clone()
+//{
+//    return new Utente(*this);
+//}
 void Utente::togli_amico_ausiliario(Utente *utente) // funziona ma il codice commentato non funziona e non so perchè
 {
     bool tolto=false;

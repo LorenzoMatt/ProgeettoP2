@@ -22,7 +22,7 @@ int main()
 //test_deep_ptr();
 //test_domande();
 test_model();
-//test_profilo();
+test_profilo();
 //test_utenti();
 
 

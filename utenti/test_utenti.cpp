@@ -1,7 +1,9 @@
 #include "test_utenti.h"
 #include "home.h"
 #include <QApplication>
-#include "utente.h"
+#include "premium.h"
+#include "gold.h"
+#include "basic.h"
 #include "model.h"
 #include <list>
 #include "deepptr.h"
@@ -155,7 +157,7 @@ int test_utenti()
     //cout<<c.get_utenti();
     cout<<endl<<endl<<"username degli amici di ut"<<endl<<endl;
     cout<<x.get_username_amici(); //OK*/
-    Utente* ut=new Utente("Lorenzo","dioboia","diostronzo","porco","dio");
+    /*Utente* ut=new Premium("Lorenzo","dioboia","diostronzo","porco","dio");
     ut->fai_domanda(new Domanda("come faccio ad essere così bello?",ut,2));
     ut->fai_domanda(new Domanda("il cielo è arancio?",ut,2));
     Utente* g=new Utente();
@@ -168,17 +170,17 @@ int test_utenti()
         cout<<**it<<endl;
 */
 
-    Utente* f=ut->clone();
-    Utente* f2=new Utente("Mirko","dioboia","diostronzo","porco","dio");
-    Utente* f3=new Utente("Elton","dioboia","diostronzo","porco","dio");
-    Utente* f4=new Utente("Francesca","dioboia","diostronzo","porco","dio");
-    Utente* f5=new Utente("Prova","dioboia","diostronzo","porco","dio");
-    Utente* f6=new Utente("Giorgio","dioboia","diostronzo","porco","dio");
+    Utente* f2=new Premium("Mirko","dioboia","diostronzo","porco","dio");
+    Utente* f3=new Basic("Elton","dioboia","diostronzo","porco","dio");
+    Utente* f4=new Gold("Francesca","dioboia","diostronzo","porco","dio");
+    Utente* f5=new Gold("Prova","dioboia","diostronzo","porco","dio");
+    Utente* f6=new Premium("Giorgio","dioboia","diostronzo","porco","dio");
     f5->aggiungi_amico(*f2);
     f5->aggiungi_amico(*f3);
     f5->aggiungi_amico(*f4);
     f5->aggiungi_amico(*f6);
-
+    Utente* ut=f2->clone();
+    Utente* f=ut->clone();
     f2->fai_domanda(new Domanda("il cielo è arancio?",f2,1));
     f3->fai_domanda(new Domanda("il cielo è arancio?",f3,2));
     f4->fai_domanda(new Domanda("il cielo è arancio?",f4,3));
@@ -188,9 +190,9 @@ int test_utenti()
     for(auto it=domande.begin();it!=domande.end();++it)
         cout<<**it<<endl;
 
-//    cout<<f->get_domande().countElements()<<endl;
-//    f->fai_domanda(new Domanda("dio bastardo",f,2));
-//    cout<<ut->get_domande().countElements()<<endl;
-//    cout<<f->get_domande().countElements()<<endl;
+    cout<<f->get_domande().countElements()<<endl;
+    f->fai_domanda(new Domanda("dio bastardo",f,2));
+    cout<<ut->get_domande().countElements()<<endl;
+    cout<<f->get_domande().countElements()<<endl;
     return 0;
 }

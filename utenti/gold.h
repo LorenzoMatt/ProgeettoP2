@@ -19,7 +19,7 @@ public:
     void get_punti_domanda(); //virtual
     void fai_domanda(Domanda* domanda);
     void get_punti_bonus();
-    Gold* clone();
+    Gold* clone() const;
 };
 
 #endif // GOLD_H

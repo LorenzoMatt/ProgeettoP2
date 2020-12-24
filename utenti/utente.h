@@ -60,7 +60,7 @@ public:
     virtual void get_punti_domanda(); //virtual
     virtual container<Domanda*> cerca_domanda(const string&,const Model&);//OK per adesso contiene un container di domande, in utente basic la domanda viene cercata solo negli amici mentre negli account a pagamento nel modello
     virtual void fai_domanda(Domanda* domanda);
-    virtual Utente* clone();
+    virtual Utente* clone() const=0;
 
 protected:
     unsigned int punti=0; // punti presenti nell'account

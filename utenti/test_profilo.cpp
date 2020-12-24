@@ -1,6 +1,8 @@
 #include "home.h"
 #include <QApplication>
-#include "utente.h"
+#include "premium.h"
+#include "gold.h"
+#include "basic.h"
 #include "model.h"
 #include <list>
 #include "deepptr.h"
@@ -12,7 +14,7 @@ int test_profilo()
 
     // /////////////////////////////////////////////////////// TEST PROFILO //////////////////////////////////////////
      cout<<endl<<endl<<endl<<"TEST PROFILO"<<endl<<endl;
-     Utente ut("Pikachu","dioboia","diostronzo","porco","dio");
+     Premium* ut=new Premium("Pikachu","dioboia","diostronzo","porco","dio");
 
      Profilo e("porco","dio","bastardo");
      e.AggiungiCompetenza("farsi le seghe");
@@ -29,7 +31,7 @@ int test_profilo()
      profili.push_back(&e4);
      for(container<Profilo*>::iterator it=profili.begin();it!=profili.end();++it)
          cout<<**it<<endl;
-     ut.get_profilo().SetNome("giovanni");
-     cout<<"profilo di ut"<<endl<<ut.get_profilo();//ok modifica correttamente
+     ut->get_profilo().SetNome("giovanni");
+     cout<<"profilo di ut"<<endl<<ut->get_profilo();//ok modifica correttamente
     return 0;
 }

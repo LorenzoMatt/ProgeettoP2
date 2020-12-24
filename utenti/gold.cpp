@@ -92,7 +92,7 @@ void Gold::get_punti_bonus()
     punti+=puntiBonus;
 }
 
-Gold *Gold::clone()
+Gold *Gold::clone() const
 {
     return new Gold(*this);
 }

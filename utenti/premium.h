@@ -18,7 +18,7 @@ public:
     void get_punti_domanda(); //virtual
     void fai_domanda(Domanda* domanda);
     void get_punti_bonus();
-    Premium* clone();
+    Premium* clone() const;
 };
 
 #endif // PREMIUM_H
