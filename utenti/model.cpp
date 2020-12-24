@@ -108,27 +108,7 @@ void Model::cambia_piano(Utente *utente, const std::string &piano)
     {
         std::cerr<<"utente non trovato";
     }
-}/*
-    bool trovato=false;
-    vector<Utente*>::iterator it;
-    for(it=db.begin(); it!=db.end() && !trovato; ++it)
-    {
-     if((*it)->getUsername()==user)
-        {
-            Profilo pf=(*it)->getProfilo();
-            Username u=(*it)->getUsername();
-            Rete* r=new Rete(*((*it)->getRete()));
-             delete *it;
-            if(tipoUtente=="Utente Basic")
-                *it=new UtenteBasic(pf, u, r);
-             if(tipoUtente=="Utente Business")
-                *it=new UtenteBusiness(pf, u, r);
-            if(tipoUtente=="Utente Executive")
-                *it=new UtenteExecutive(pf, u, r);
-            trovato=true;
-        }
-    }
-}*/
+}
 
 const container<DeepPtr<Utente>>& Model::get_utenti() const
 {

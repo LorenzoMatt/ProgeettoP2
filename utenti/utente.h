@@ -74,7 +74,6 @@ protected:
         int search;
         Funtore(int x=0);
         void operator() (const Utente* ut, container<string>& l) const;
-
     };
 
 };
