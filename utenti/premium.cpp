@@ -82,6 +82,11 @@ void Premium::get_punti_bonus()
     punti+=puntiBonus;
 }
 
+unsigned int Premium::get_punti() const
+{
+    return puntiBonus;
+}
+
 Premium *Premium::clone()
 {
     return new Premium(*this);

@@ -1,14 +1,16 @@
 #include "home.h"
 #include <QApplication>
-#include "utente.h"
 #include "model.h"
 #include <list>
 #include "deepptr.h"
 #include <memory>
 #include "prova.h"
+#include "premium.h"
+#include "gold.h"
+#include "basic.h"
 int test_model()
 {
-
+    /*
     Model m;
     m.aggiungi_utente(new Utente("Pikachu","dioboia","diostronzo","porco","dio"));
     m.aggiungi_utente(new Utente("Lorenzo","stronzo","diostronzo","porco","dio"));
@@ -90,7 +92,28 @@ int test_model()
     {
 
         cout<<**it<<endl;
-    }
+    }*/
+
+    Model m;
+    m.aggiungi_utente(new Utente("Pikachu","dioboia","diostronzo","porco","dio"));
+    m.aggiungi_utente(new Utente("Lorenzo","stronzo","diostronzo","porco","dio"));
+    m.aggiungi_utente(new Utente("Elton","diocan","diostronzo","porco","dio"));
+    m.aggiungi_utente(new Utente("Francesca","diobestia","diostronzo","porco","dio"));
+    m.aggiungi_utente(new Utente("Mirko","dioluamaro","diostronzo","porco","dio"));
+    m.aggiungi_utente(DeepPtr<Utente>(new Utente("Giorgia","dioluamaro","diostronzo","porco","dio")));
+    Utente* Lorenzo=m.get_utente("Lorenzo");
+    Utente* Elton=m.get_utente("Elton");
+    Utente* Francesca=m.get_utente("Mirko");
+    //Utente* Pikachu=m.get_utente("Pikachu");
+    m.cambia_piano(m.get_utente("Pikachu"),"Premium");
+    //Utente* Pikachu=m.get_utente("Pikachu");
+    Utente* Pikachu=m.get_utente("Pikachu");
+
+    cout<<Pikachu->get_punti();
+    //Pikachu=m.get_utente("Pikachu");
+    //Pikachu=new Premium("Francesca","diobestia","diostronzo","porco","dio");
+    //cout<<Pikachu->get_punti();
+    DeepPtr<Utente> t=new Basic("Giorgia","dioluamaro","diostronzo","porco","dio");
     return 0;
 
 }

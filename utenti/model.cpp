@@ -92,15 +92,14 @@ void Model::cambia_piano(Utente *utente, const std::string &piano)
                 Profilo pf=(*it)->get_profilo();
                 Accesso credenziali=(*it)->get_credenziali();
                 container<Domanda*> domande=(*it)->get_domande();
-                const container<Utente*> amici=(*it)->get_amici();
-                const container<Utente*> seguaci=(*it)->get_seguaci();
-                delete &**it;
+                container<Utente*> amici=(*it)->get_amici();
+                container<Utente*> seguaci=(*it)->get_seguaci();
                 if(piano=="Basic")
-                    *it=new Basic(pf,credenziali,amici,seguaci,domande);
+                    utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Basic(pf,credenziali,amici,seguaci,domande)));
                 if(piano=="Gold")
-                    *it=new Gold(pf,credenziali,amici,seguaci,domande);
+                    utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Gold(pf,credenziali,amici,seguaci,domande)));
                 if(piano=="Premium")
-                    *it=new Premium(pf,credenziali,amici,seguaci,domande);
+                    utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Premium(pf,credenziali,amici,seguaci,domande)));
             }
         }
         if(!trovato)

@@ -36,10 +36,10 @@ public:
                      /*getter*/
     Profilo get_profilo() const;//OK
     Accesso get_credenziali() const;//OK
-    const container<Utente*>& get_amici() const ;
-    const container<Utente*>& get_seguaci() const;
-    container<Domanda*> &get_domande();
-    unsigned int get_punti() const;//OK
+    container<Utente*> get_amici() const ;
+    container<Utente*> get_seguaci() const;
+    container<Domanda*> get_domande() const;
+    virtual unsigned int get_punti() const;//OK
 
 
     //void fai_domanda(const string& domanda,unsigned int priorita=0);

@@ -18,6 +18,7 @@ public:
     void get_punti_domanda(); //virtual
     void fai_domanda(Domanda* domanda);
     void get_punti_bonus();
+    unsigned int get_punti() const;
     Premium* clone();
 };
 

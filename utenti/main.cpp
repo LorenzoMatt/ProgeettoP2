@@ -21,9 +21,9 @@ int main()
 //    return a.exec();
 //test_deep_ptr();
 //test_domande();
-//test_model();
+test_model();
 //test_profilo();
-test_utenti();
+//test_utenti();
 
 
 

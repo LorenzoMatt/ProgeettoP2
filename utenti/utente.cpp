@@ -249,17 +249,17 @@ void Utente::togli_seguace(Utente *utente) // OK, toglie un suo seguace dalla co
 }
 
 
-const container<Utente *>& Utente::get_amici() const //OK
+container<Utente *> Utente::get_amici() const //OK
 {
     return amici;
 }
 
-const container<Utente *>& Utente::get_seguaci() const // OK
+container<Utente *> Utente::get_seguaci() const // OK
 {
     return seguaci;
 }
 
-container<Domanda *> &Utente::get_domande()
+container<Domanda *> Utente::get_domande() const
 {
     return domande;
 }
