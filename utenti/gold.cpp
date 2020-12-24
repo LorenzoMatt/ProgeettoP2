@@ -19,6 +19,12 @@ Gold::Gold(std::string username, std::string password, std::string nome, std::st
 
 }
 
+Gold::Gold(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d)
+    :Pagamento(p,c,a,s,d)
+{
+
+}
+
 void Gold::cerca_utente(const std::string & username, const Model & model, container<std::string> & lista_di_elementi) const
 {
     try

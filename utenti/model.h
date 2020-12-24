@@ -13,14 +13,14 @@ private:
 public:
     Model();
     Model(const container<DeepPtr<Utente>>&);
-    void aggiungi_utente(const DeepPtr<Utente> &);
-    void aggiungi_utente(Utente *);
-    void aggiungi_utente_gratuito();
-    void aggiungi_utente_premium();
-    void aggiungi_utente_gold();
     const container<DeepPtr<Utente>>& get_utenti() const;
     Utente *get_utente(const string&) const;
     DeepPtr<Utente> *get_utente_deep(const string&username);
+    void aggiungi_utente(const DeepPtr<Utente> &);
+    void aggiungi_utente(Utente* utente);
+    void togli_utente(Utente* utente);
+    void cambia_piano(Utente* utente,const string& piano);
+
 };
 
 #endif // MODEL_H

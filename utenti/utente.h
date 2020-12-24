@@ -31,6 +31,7 @@ public:
     virtual ~Utente();
     Utente(const Utente& u);
     Utente(string username,string password,string nome,string cognome,string email,unsigned int=0);
+    Utente(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,container<Domanda*> d);
 
                      /*getter*/
     Profilo get_profilo() const;//OK

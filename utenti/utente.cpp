@@ -30,6 +30,12 @@ Utente::Utente(const Utente &u):credenziali(u.credenziali),pf(u.pf),domande(u.do
 Utente::Utente(std::string username, std::string password, std::string nome, std::string cognome, std::string email, unsigned int punti)
     :credenziali(Accesso(username,password)),pf(Profilo(nome,cognome,email)),risposte_date(0),punti(punti){}
 
+Utente::Utente(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d)
+    :pf(p),credenziali(c),amici(a),seguaci(s),domande(d)
+{
+
+}
+
 Profilo Utente::get_profilo() const  //OK
 {
     return pf;
@@ -68,7 +74,7 @@ void Utente::togli_amico_ausiliario(Utente *utente) // funziona ma il codice com
     for(auto it=amici.begin();it!=amici.end() && !tolto;++it)
         if((*it)==utente)
         {
-            amici.remove(it);
+            amici.erase(it);
             tolto=true;
             cout<<"trovatooooooooooooo!!!!";
         }
@@ -126,7 +132,7 @@ void Utente::togli_amico(Utente *utente) // OK, serve a togliere un utente dalla
         for(auto it=amici.begin();it!=amici.end() && !tolto;++it)
             if((*it)==utente)
             {
-                amici.remove(it);
+                amici.erase(it);
                 tolto=true;
                 utente->togli_seguace_ausiliario(this); // tolto dai seguaci di utente
             }
@@ -161,7 +167,7 @@ void Utente::togli_seguace_ausiliario(Utente *utente) // È stato testato, ma no
 for(auto it=seguaci.begin();it!=seguaci.end() && !tolto;++it)
     if((*it)==utente)
     {
-        seguaci.remove(it);
+        seguaci.erase(it);
         tolto=true;
         cout<<"trovatooooooooooooo!!!!";
     }
@@ -230,7 +236,7 @@ void Utente::togli_seguace(Utente *utente) // OK, toglie un suo seguace dalla co
     for(auto it=seguaci.begin();it!=seguaci.end() && !tolto;++it)
         if((*it)==utente)
         {
-            seguaci.remove(it);
+            seguaci.erase(it);
             tolto=true;
             utente->togli_amico_ausiliario(this);
         }

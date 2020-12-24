@@ -1,12 +1,14 @@
 #ifndef PAGAMENTO_H
 #define PAGAMENTO_H
 #include "utente.h"
-
+class Model;
 class Pagamento : public Utente
 {
 public:
     Pagamento();
     Pagamento(string username,string password,string nome,string cognome,string email,unsigned int punti);
+    Pagamento(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,container<Domanda*> d);
+
     // virtual void get_punti_bonus()=0; //dovrà essere virtuale
     // virtual void cerca_utente(const string&,const Model&, container<string>&,int) const=0;//OK quando implementeremo le classi polimorfe dovrà andare tolto l'ultimo intero da passare alla funzione
     //virtual void get_punti_domanda()=0;

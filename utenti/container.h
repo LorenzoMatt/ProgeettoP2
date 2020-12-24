@@ -72,7 +72,7 @@ public:
     iterator begin();
     iterator end();
     iterator insert(iterator i, const T &t);
-    iterator remove(iterator i);
+    iterator erase(iterator i);
 
     class const_iterator
     {
@@ -322,7 +322,7 @@ typename container<T>::iterator container<T>::insert(iterator i, const T &t) //i
 }
 
 template <class T>
-typename container<T>::iterator container<T>::remove(iterator i) //rimuove il nodo puntato da i iteratore valido, restituisce l'iteratore al nodo successivo
+typename container<T>::iterator container<T>::erase(iterator i) //rimuove il nodo puntato da i iteratore valido, restituisce l'iteratore al nodo successivo
 {
     if (i != end())
     {

@@ -17,7 +17,7 @@ void Domanda::RimuoviCommento(const Commento& c){
     bool sent=false;
     for(auto it=commenti.begin();it!=commenti.end() && !sent;++it)
         if((*it)==c){
-            commenti.remove(it);
+            commenti.erase(it);
             sent=true;
         }
 }

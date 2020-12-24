@@ -4,7 +4,6 @@
 #include <iostream>
 #include "utente.h"
 class Utente;
-
 using std::string;
 class Commento
 {

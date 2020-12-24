@@ -12,6 +12,12 @@ Basic::Basic(std::string username, std::string password, std::string nome, std::
 
 }
 
+Basic::Basic(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d)
+    :Utente(p,c,a,s,d)
+{
+
+}
+
 void Basic::cerca_utente(const Model & model, const std::string & username, container<std::string> & lista_di_elementi) const
 {
     Utente* utente = model.get_utente(username);

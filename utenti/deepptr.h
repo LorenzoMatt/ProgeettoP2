@@ -32,7 +32,7 @@ DeepPtr<T>& DeepPtr<T>::operator =(const DeepPtr<T>& d)
 {
     if(this!=&d){
         delete oggetto;
-        oggetto=d.oggetto ? new T(d.oggetto) : 0; // andrà sostituito con d.oggetto ? d.oggetto->clone() : 0
+        oggetto=d.oggetto ? new T(*d) : 0; // andrà sostituito con d.oggetto ? d.oggetto->clone() : 0
     }
     return *this;
 }
