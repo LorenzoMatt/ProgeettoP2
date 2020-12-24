@@ -26,6 +26,7 @@ private:
     static unsigned int punti_domanda_fatta_utente; //dovrà essere cancellata
 public:
 
+
             /*costruttori e distruttori*/
     Utente();//dovra essere =delete;
     virtual ~Utente();
@@ -39,7 +40,7 @@ public:
     container<Utente*> get_amici() const ;
     container<Utente*> get_seguaci() const;
     container<Domanda*> get_domande() const;
-    virtual unsigned int get_punti() const;//OK
+    unsigned int get_punti() const;//OK
 
 
     //void fai_domanda(const string& domanda,unsigned int priorita=0);
@@ -55,11 +56,11 @@ public:
 
 
                 /*virtual*/
-    void cerca_utente(const string&,const Model&, container<string>&,int) const;//OK quando implementeremo le classi polimorfe dovrà andare tolto l'ultimo intero da passare alla funzione
-    void get_punti_domanda(); //virtual
-    container<Domanda*> cerca_domanda(const string&,const Model&);//OK per adesso contiene un container di domande, in utente basic la domanda viene cercata solo negli amici mentre negli account a pagamento nel modello
-    void fai_domanda(Domanda* domanda);
-    Utente* clone();
+    virtual void cerca_utente(const string&,const Model&, container<string>&,int) const;//OK quando implementeremo le classi polimorfe dovrà andare tolto l'ultimo intero da passare alla funzione
+    virtual void get_punti_domanda(); //virtual
+    virtual container<Domanda*> cerca_domanda(const string&,const Model&);//OK per adesso contiene un container di domande, in utente basic la domanda viene cercata solo negli amici mentre negli account a pagamento nel modello
+    virtual void fai_domanda(Domanda* domanda);
+    virtual Utente* clone();
 
 protected:
     unsigned int punti=0; // punti presenti nell'account

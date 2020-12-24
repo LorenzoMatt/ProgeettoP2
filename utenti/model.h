@@ -16,10 +16,10 @@ public:
     const container<DeepPtr<Utente>>& get_utenti() const;
     Utente *get_utente(const string&) const;
     DeepPtr<Utente> *get_utente_deep(const string&username);
-    void aggiungi_utente(const DeepPtr<Utente> &);
-    void aggiungi_utente(Utente* utente);
-    void togli_utente(Utente* utente);
-    void cambia_piano(Utente* utente,const string& piano);
+    void aggiungi_utente(const DeepPtr<Utente> &);//OK
+    void aggiungi_utente(Utente* utente);//OK
+    void togli_utente(Utente* utente);//OK
+    void cambia_piano(Utente* utente,const string& piano);//OK
 
 };
 

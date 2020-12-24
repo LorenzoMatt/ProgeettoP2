@@ -104,11 +104,24 @@ int test_model()
     Utente* Lorenzo=m.get_utente("Lorenzo");
     Utente* Elton=m.get_utente("Elton");
     Utente* Francesca=m.get_utente("Mirko");
-    //Utente* Pikachu=m.get_utente("Pikachu");
-    m.cambia_piano(m.get_utente("Pikachu"),"Premium");
-    //Utente* Pikachu=m.get_utente("Pikachu");
     Utente* Pikachu=m.get_utente("Pikachu");
-
+    Pikachu->fai_domanda(new Domanda("ciao",Pikachu,1));
+    Pikachu->fai_domanda(new Domanda("dio",Pikachu,1));
+    cout<<Pikachu->get_domande().countElements()<<endl;
+    cout<<m.get_utenti().countElements()<<endl;
+    m.cambia_piano(m.get_utente("Pikachu"),"Premium");
+    cout<<m.get_utenti().countElements()<<endl;
+    //Utente* Pikachu=m.get_utente("Pikachu");
+    Pikachu=m.get_utente("Pikachu");
+    cout<<Pikachu->get_domande().countElements()<<endl;
+    m.aggiungi_utente(new Premium("rrr","dioluamaro","diostronzo","porco","dio"));
+    for(auto it=m.get_utenti().begin();it!=m.get_utenti().end();++it)
+    {
+        if(dynamic_cast<Premium*> (&**it))
+            cout<<"OK,tipo premium"<<endl;
+        else
+            cout<<"conversione non avvenuta"<<endl;
+    }
     cout<<Pikachu->get_punti();
     //Pikachu=m.get_utente("Pikachu");
     //Pikachu=new Premium("Francesca","diobestia","diostronzo","porco","dio");

@@ -21,7 +21,7 @@ template<class T>
 DeepPtr<T>::DeepPtr(T *t):oggetto(t){}
 
 template<class T>
-DeepPtr<T>::DeepPtr(const DeepPtr<T>& t):oggetto(t.oggetto ? new T(*t) : 0){} //andrà sostituita con oggetto(t.oggetto ? t.oggetto->clone() : 0)
+DeepPtr<T>::DeepPtr(const DeepPtr<T>& t):oggetto(t.oggetto ? t.oggetto->clone() : 0){}
 
 template<class T>
 DeepPtr<T>::~DeepPtr()
@@ -32,7 +32,7 @@ DeepPtr<T>& DeepPtr<T>::operator =(const DeepPtr<T>& d)
 {
     if(this!=&d){
         delete oggetto;
-        oggetto=d.oggetto ? new T(*d) : 0; // andrà sostituito con d.oggetto ? d.oggetto->clone() : 0
+        oggetto=d.oggetto ? d.oggetto->clone() : 0;
     }
     return *this;
 }

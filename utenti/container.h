@@ -71,7 +71,7 @@ public:
     };
     iterator begin();
     iterator end();
-    iterator insert(iterator i, const T &t);
+    iterator insert(iterator i, const T &t);//inserisce t prima del nodo puntato da i e ritorna l'iteratore che punta al nuovo nodo
     iterator erase(iterator i);
 
     class const_iterator
