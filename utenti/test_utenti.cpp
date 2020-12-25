@@ -169,16 +169,16 @@ int test_utenti()
     for (auto it=t.get_domande().begin();it!=t.get_domande().end();++it)
         cout<<**it<<endl;
 */
-
+/*
     Utente* f2=new Premium("Mirko","dioboia","diostronzo","porco","dio");
     Utente* f3=new Basic("Elton","dioboia","diostronzo","porco","dio");
     Utente* f4=new Gold("Francesca","dioboia","diostronzo","porco","dio");
     Utente* f5=new Gold("Prova","dioboia","diostronzo","porco","dio");
     Utente* f6=new Premium("Giorgio","dioboia","diostronzo","porco","dio");
-    f5->aggiungi_amico(f2);
-    f5->aggiungi_amico(f3);
-    f5->aggiungi_amico(f4);
-    f5->aggiungi_amico(f6);
+    f5->aggiungi_amico(*f2);
+    f5->aggiungi_amico(*f3);
+    f5->aggiungi_amico(*f4);
+    f5->aggiungi_amico(*f6);
     Utente* ut=f2->clone();
     Utente* f=ut->clone();
     f2->fai_domanda(new Domanda("il cielo è arancio?",f2,1));
@@ -193,6 +193,6 @@ int test_utenti()
     cout<<f->get_domande().countElements()<<endl;
     f->fai_domanda(new Domanda("dio bastardo",f,2));
     cout<<ut->get_domande().countElements()<<endl;
-    cout<<f->get_domande().countElements()<<endl;
+    cout<<f->get_domande().countElements()<<endl;*/
     return 0;
 }

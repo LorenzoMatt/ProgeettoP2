@@ -53,7 +53,7 @@ container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const
     container<Domanda*> domande_trovate_modello;
     for(auto it=m.get_utenti().begin();it!=m.get_utenti().end();++it)
     {
-        if(!(check_presenza_amico((*it)->get_credenziali().get_username())))
+        if(&**it!=this)
         {
             const container<Domanda*>& domande_utente=(*it)->get_domande();//lista di domande dell'amico esaminato
             for(auto it=domande_utente.begin();it!=domande_utente.end();++it)// scorro la lista delle domande dell'amico corrente
@@ -71,17 +71,16 @@ container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const
                         {
                             ok=true;
                             count++;//incremento il numero di parole uguali fra la domanda fatta e quella esaminata
-             }
+                        }
                     }
 
-                 }
+                }
                 if(count>=(lunghezza_parola_esaminata*0.6))// basterebbe ==
                 {
                     domande_trovate_modello.insertion_sort(*it);
                 }
             }
         }
-
     }
     return domande_trovate_amici+domande_trovate_modello;
 }

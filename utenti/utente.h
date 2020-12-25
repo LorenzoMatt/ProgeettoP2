@@ -45,7 +45,7 @@ public:
 
 
     //void fai_domanda(const string& domanda,unsigned int priorita=0);
-    void aggiungi_amico(Utente*);
+    void aggiungi_amico(Utente *);
     void togli_amico(Utente*);
     void togli_seguace(Utente*);
     void AggiungiCompetenza(const string&); //OK

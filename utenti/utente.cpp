@@ -102,23 +102,31 @@ void Utente::aggiungi_seguace(Utente& utente) //OK
     seguaci.push_back(&utente);
     }
 }
-void Utente::aggiungi_amico(Utente *utente) //OK
+void Utente::aggiungi_amico(Utente* utente) //OK
 {
-    try
+    if(this!=utente)
     {
-        if(this!=utente)
-        {
-            amici.push_back(utente);
-            utente->aggiungi_seguace(*this);
-        }else
-        {
-            throw(amico_non_presente());
-        }
-    }catch(amico_non_presente)
-    {
-        std::cerr<<"non ti puoi aggiungere fra gli amici!";
-        return;    }
+    amici.push_back(utente);
+    utente->aggiungi_seguace(*this);
+    }
 }
+
+//    try
+//    {
+//        if(this!=utente)
+//        {
+//            //amici.push_back(utente);
+//            utente->aggiungi_seguace(*this);
+//        }else
+//        {
+//            throw(amico_non_presente());
+//        }
+//    }catch(amico_non_presente)
+//    {
+//        std::cerr<<"non ti puoi aggiungere fra gli amici!";
+//        return;
+//    }
+//}
 
 void Utente::togli_amico(Utente *utente) // OK, serve a togliere un utente dalla sua lista degli amici se presente e
 //l'utente che ha tolto l'amico dalla lista viene rimosso dalla lista dei seguaci dell'ex amico

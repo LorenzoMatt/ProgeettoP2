@@ -94,77 +94,77 @@ int test_model()
 //        cout<<**it<<endl;
 //    }
 
-    m.aggiungi_utente(new Premium("Pikachu","dioboia","diostronzo","porco","dio"));
-    m.aggiungi_utente(new Basic("Lorenzo","stronzo","diostronzo","porco","dio"));
-    m.aggiungi_utente(new Premium("Elton","diocan","diostronzo","porco","dio"));
-    m.aggiungi_utente(new Basic("Francesca","diobestia","diostronzo","porco","dio"));
-    m.aggiungi_utente(new Gold("Mirko","dioluamaro","diostronzo","porco","dio"));
-    m.aggiungi_utente(DeepPtr<Utente>(new Premium("Giorgia","dioluamaro","diostronzo","porco","dio")));
-    Utente* Lorenzo=m.get_utente("Lorenzo");
-    Utente* Elton=m.get_utente("Elton");
-    Utente* Mirko=m.get_utente("Mirko");
-    Utente* Pikachu=m.get_utente("Pikachu");
-    Utente* Francesca=m.get_utente("Francesca");
-    cout<<"punti "<<m.get_utente("Pikachu")->get_punti()<<endl;
-    Pikachu->fai_domanda(new Domanda("ciao",Pikachu,1));
-    Pikachu->fai_domanda(new Domanda("dio",Pikachu,1));
-    cout<<"punti "<<m.get_utente("Pikachu")->get_punti()<<endl;
+//    m.aggiungi_utente(new Premium("Pikachu","dioboia","diostronzo","porco","dio"));
+//    m.aggiungi_utente(new Basic("Lorenzo","stronzo","diostronzo","porco","dio"));
+//    m.aggiungi_utente(new Premium("Elton","diocan","diostronzo","porco","dio"));
+//    m.aggiungi_utente(new Basic("Francesca","diobestia","diostronzo","porco","dio"));
+//    m.aggiungi_utente(new Gold("Mirko","dioluamaro","diostronzo","porco","dio"));
+//    m.aggiungi_utente(DeepPtr<Utente>(new Premium("Giorgia","dioluamaro","diostronzo","porco","dio")));
+//    Utente* Lorenzo=m.get_utente("Lorenzo");
+//    Utente* Elton=m.get_utente("Elton");
+//    Utente* Mirko=m.get_utente("Mirko");
+//    Utente* Pikachu=m.get_utente("Pikachu");
+//    Utente* Francesca=m.get_utente("Francesca");
+//    cout<<"punti "<<m.get_utente("Pikachu")->get_punti()<<endl;
+//    Pikachu->fai_domanda(new Domanda("ciao",Pikachu,1));
+//    Pikachu->fai_domanda(new Domanda("dio",Pikachu,1));
+//    cout<<"punti "<<m.get_utente("Pikachu")->get_punti()<<endl;
 
-    cout<<Pikachu->get_domande().countElements()<<endl;
-    cout<<m.get_utenti().countElements()<<endl;
-    m.cambia_piano(m.get_utente("Pikachu"),"Premium");
-    cout<<m.get_utenti().countElements()<<endl;
-    //Utente* Pikachu=m.get_utente("Pikachu");
-    Pikachu=m.get_utente("Pikachu");
-    m.aggiungi_utente(new Premium("rrr","dioluamaro","diostronzo","porco","dio"));
-    for(auto it=m.get_utenti().begin();it!=m.get_utenti().end();++it)
-    {
-        if(dynamic_cast<Pagamento*> (&**it))
-            cout<<"OK,tipo Pagamento"<<endl;
-        else
-            cout<<"conversione non avvenuta"<<endl;
-    }
-    cout<<Pikachu->get_punti();
-    //Pikachu=m.get_utente("Pikachu");
-    //Pikachu=new Premium("Francesca","diobestia","diostronzo","porco","dio");
-    //cout<<Pikachu->get_punti();
-    DeepPtr<Utente> t=new Gold("dio","dioluamaro","diostronzo","porco","dio");
-    cout<<endl<<t->get_punti();
-    t->fai_domanda(new Domanda("dio boia",&*t,1));
-    t->aggiungi_amico(Pikachu);
-    Utente* ff=new Gold(Profilo("d","s","s"),Accesso("r","t"),container<Utente*>(),container<Utente*>(),container<Domanda*>(),33,5);
-    cout<<endl<<ff->get_punti()<<endl;
-    ff->fai_domanda(new Domanda("dio boia",ff,1));
-    cout<<" n. domande ff "<<ff->get_domande().countElements()<<endl;
-    m.aggiungi_utente(t);
-    cout<<m.get_utente("dio")->get_domande().countElements()<<" amici di dio "<<m.get_utente("dio")->get_amici().countElements()<<endl;
-    cout<<t->get_punti();
-    cout<<endl<<ff->get_punti();
-    Premium* p=new Premium("zzz","dioluamaro","diostronzo","porco","di");
-    p->fai_domanda(new Domanda("dio boia",p,1));
-    p->fai_domanda(new Domanda("dio boia",p,1));
-    for(auto it=p->get_domande().begin();it!=p->get_domande().end();++it)
-        (*it)->aggiungi_commento(Commento("ciaooo",Elton));
-    Utente* z=new Premium(*p);
-    cout<<endl<<z->get_amici().countElements()<<endl;
-    z->aggiungi_amico(Elton);
-    cout<<endl<<z->get_amici().countElements()<<endl;
-    cout<<endl<<p->get_amici().countElements()<<endl;
-    p->aggiungi_amico(Elton);
-    p->fai_domanda(new Domanda("dio boia",p,1));
-    cout<<endl<<z->get_domande().countElements()<<endl;
-    cout<<endl<<p->get_domande().countElements()<<endl;
-    for(auto it=z->get_domande().begin();it!=z->get_domande().end();++it)
-    {
-        (*it)->aggiungi_commento(Commento("dio porco",Francesca));
-        cout<<**it<<endl;
-        (*it)->rimuovi_commento(Commento("dio porco",Francesca));
-    }
-    cout<<"domande di p"<<endl<<endl;
-    for(auto it=p->get_domande().begin();it!=p->get_domande().end();++it)
-    {
-        cout<<**it<<endl;
-    }
+//    cout<<Pikachu->get_domande().countElements()<<endl;
+//    cout<<m.get_utenti().countElements()<<endl;
+//    m.cambia_piano(m.get_utente("Pikachu"),"Premium");
+//    cout<<m.get_utenti().countElements()<<endl;
+//    //Utente* Pikachu=m.get_utente("Pikachu");
+//    Pikachu=m.get_utente("Pikachu");
+//    m.aggiungi_utente(new Premium("rrr","dioluamaro","diostronzo","porco","dio"));
+//    for(auto it=m.get_utenti().begin();it!=m.get_utenti().end();++it)
+//    {
+//        if(dynamic_cast<Pagamento*> (&**it))
+//            cout<<"OK,tipo Pagamento"<<endl;
+//        else
+//            cout<<"conversione non avvenuta"<<endl;
+//    }
+//    cout<<Pikachu->get_punti();
+//    //Pikachu=m.get_utente("Pikachu");
+//    //Pikachu=new Premium("Francesca","diobestia","diostronzo","porco","dio");
+//    //cout<<Pikachu->get_punti();
+//    DeepPtr<Utente> t=new Gold("dio","dioluamaro","diostronzo","porco","dio");
+//    cout<<endl<<t->get_punti();
+//    t->fai_domanda(new Domanda("dio boia",&*t,1));
+//    t->aggiungi_amico(*Pikachu);
+//    Utente* ff=new Gold(Profilo("d","s","s"),Accesso("r","t"),container<Utente*>(),container<Utente*>(),container<Domanda*>(),33,5);
+//    cout<<endl<<ff->get_punti()<<endl;
+//    ff->fai_domanda(new Domanda("dio boia",ff,1));
+//    cout<<" n. domande ff "<<ff->get_domande().countElements()<<endl;
+//    m.aggiungi_utente(t);
+//    cout<<m.get_utente("dio")->get_domande().countElements()<<" amici di dio "<<m.get_utente("dio")->get_amici().countElements()<<endl;
+//    cout<<t->get_punti();
+//    cout<<endl<<ff->get_punti();
+//    Premium* p=new Premium("zzz","dioluamaro","diostronzo","porco","di");
+//    p->fai_domanda(new Domanda("dio boia",p,1));
+//    p->fai_domanda(new Domanda("dio boia",p,1));
+//    for(auto it=p->get_domande().begin();it!=p->get_domande().end();++it)
+//        (*it)->aggiungi_commento(Commento("ciaooo",Elton));
+//    Utente* z=new Premium(*p);
+//    cout<<endl<<z->get_amici().countElements()<<endl;
+//    z->aggiungi_amico(*Elton);
+//    cout<<endl<<z->get_amici().countElements()<<endl;
+//    cout<<endl<<p->get_amici().countElements()<<endl;
+//    p->aggiungi_amico(*Elton);
+//    p->fai_domanda(new Domanda("dio boia",p,1));
+//    cout<<endl<<z->get_domande().countElements()<<endl;
+//    cout<<endl<<p->get_domande().countElements()<<endl;
+//    for(auto it=z->get_domande().begin();it!=z->get_domande().end();++it)
+//    {
+//        (*it)->aggiungi_commento(Commento("dio porco",Francesca));
+//        cout<<**it<<endl;
+//        (*it)->rimuovi_commento(Commento("dio porco",Francesca));
+//    }
+//    cout<<"domande di p"<<endl<<endl;
+//    for(auto it=p->get_domande().begin();it!=p->get_domande().end();++it)
+//    {
+//        cout<<**it<<endl;
+//    }
 
 
     return 0;
