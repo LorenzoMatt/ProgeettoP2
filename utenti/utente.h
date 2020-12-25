@@ -36,9 +36,10 @@ public:
                      /*getter*/
     Profilo get_profilo() const;//OK
     Accesso get_credenziali() const;//OK
-    container<Utente*> get_amici() const ;
-    container<Utente*> get_seguaci() const;
+    container<Utente*>& get_amici();
+    const container<Utente *> &get_seguaci() const;
     container<Domanda *> &get_domande();
+    const container<Utente* > & get_amici() const;
     unsigned int get_punti() const;//OK
     unsigned int get_risposte_date() const; //serve per ottenere un bonus
 
@@ -59,7 +60,7 @@ public:
                 /*virtual*/
     virtual void cerca_utente(const string&,const Model&, container<string>&) const =0;//OK quando implementeremo le classi polimorfe dovrà andare tolto l'ultimo intero da passare alla funzione
     virtual void get_punti_domanda() =0; //virtual
-    virtual container<Domanda*> cerca_domanda(const string&,const Model&) const=0;//OK per adesso contiene un container di domande, in utente basic la domanda viene cercata solo negli amici mentre negli account a pagamento nel modello
+    virtual container<Domanda*> cerca_domanda(const string&,const Model&)=0;//OK per adesso contiene un container di domande, in utente basic la domanda viene cercata solo negli amici mentre negli account a pagamento nel modello
     virtual void fai_domanda(Domanda* domanda)=0;
     virtual Utente* clone() const=0;
 

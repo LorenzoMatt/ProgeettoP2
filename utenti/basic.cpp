@@ -72,7 +72,7 @@ void Basic::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funzi
     }
 }
 
-container<Domanda *> Basic::cerca_domanda(const std::string & domanda, const Model & m) const
+container<Domanda *> Basic::cerca_domanda(const std::string & domanda, const Model & m)
 {
         container<string> domanda_fatta=split(domanda," ");// divido la stringa domanda per spazi
         container<Domanda*> domande_trovate;

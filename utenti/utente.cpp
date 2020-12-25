@@ -215,12 +215,12 @@ void Utente::togli_seguace(Utente *utente) // OK, toglie un suo seguace dalla co
 }
 
 
-container<Utente *> Utente::get_amici() const //OK
+container<Utente *> &Utente::get_amici()//OK
 {
     return amici;
 }
 
-container<Utente *> Utente::get_seguaci() const // OK
+const container<Utente *>& Utente::get_seguaci() const // OK
 {
     return seguaci;
 }
@@ -228,6 +228,11 @@ container<Utente *> Utente::get_seguaci() const // OK
 container<Domanda *>& Utente::get_domande()
 {
     return domande;
+}
+
+const container<Utente *> &Utente::get_amici() const
+{
+    return amici;
 }
 
 void Utente::set_nome_profilo(const string & nome)
