@@ -40,7 +40,7 @@ int test_polimorfismo()
     for(auto it=p->get_amici().begin();it!=b->get_amici().end();++it)
         cout<<endl<<**it;
     //container<Domanda*> domande_b=p->cerca_domanda("dio boia",m);
-    for(auto it=domande_b.begin();it!=domande_b.end();++it)
-        cout<<endl<<**it<<endl;
-    cout<<endl<<endl<<b->get_punti()<<endl<<g->get_punti()<<endl<<p->get_punti();
+//    for(auto it=domande_b.begin();it!=domande_b.end();++it)
+//        cout<<endl<<**it<<endl;
+//    cout<<endl<<endl<<b->get_punti()<<endl<<g->get_punti()<<endl<<p->get_punti();
 }
