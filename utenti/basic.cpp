@@ -6,23 +6,38 @@ unsigned int Basic::puntiBonus=30;
 unsigned int Basic::supplementoDomandaPriorita=5;
 
 
-Basic::Basic(std::string username, std::string password, std::string nome, std::string cognome, std::string email,unsigned int punti)
-    :Utente(username,password,nome,cognome,email,punti)
+Basic::~Basic()
 {
 
 }
 
-Basic::Basic(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d)
-    :Utente(p,c,a,s,d)
+Basic::Basic(std::string username, std::string password, std::string nome, std::string cognome, std::string email)
+    :Utente(username,password,nome,cognome,email,puntiBonus)
 {
 
 }
 
-void Basic::cerca_utente(const Model & model, const std::string & username, container<std::string> & lista_di_elementi) const
+Basic::Basic(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d,unsigned int punti,unsigned int risposte)
+    :Utente(p,c,a,s,d,punti < puntiBonus ? puntiBonus : punti,risposte)
 {
-    Utente* utente = model.get_utente(username);
-    Utente::Funtore f(1);//nelle funzioni polimorfe il numero_funtore sarà sostituito con 1 in account gratuito,2 in gold e 3 in premium
-    f(utente, lista_di_elementi);
+
+}
+
+void Basic::cerca_utente(const std::string & username, const Model & model, container<std::string> & lista_di_elementi) const
+{
+    try
+    {
+        Utente* utente = model.get_utente(username);
+        if(utente)
+        {
+            Utente::Funtore f(1);//nelle funzioni polimorfe il numero_funtore sarà sostituito con 1 in account gratuito,2 in gold e 3 in premium
+            f(utente, lista_di_elementi);
+        }else
+            throw amico_non_presente();
+    }catch(amico_non_presente)
+    {
+        std::cerr<<"utente non presente";
+    }
 }
 
 void Basic::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funziona a dovere
@@ -30,33 +45,34 @@ void Basic::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funzi
     try{
         if(this==domanda->get_autore_domanda())
         {
-            if(domanda->get_priorita()==1)
+            unsigned int punti_da_sottrarre=puntiDetrattiDomandaFatta;
+            if(domanda->get_priorita()>1)
             {
+                punti_da_sottrarre+=(supplementoDomandaPriorita*(domanda->get_priorita()-1));
+            }
+            if(punti>=punti_da_sottrarre)
+            {
+                punti-=punti_da_sottrarre;
                 get_domande().push_back(domanda);
             }
             else
             {
-                if(supplementoDomandaPriorita*(domanda->get_priorita()-1)>punti)
-                    throw punti_non_sufficienti();
-                else{
-                    get_domande().push_back(domanda);
-                    punti-=(domanda->get_priorita()-1)*supplementoDomandaPriorita;
-                }
-
+                throw punti_non_sufficienti();
             }
         }
         else
+        {
             throw non_autore_domanda();
+        }
     }catch(non_autore_domanda){
         std::cerr<<"non è l'autore della domanda";
     }
     catch(punti_non_sufficienti){
         std::cerr<<"punti per fare la domanda non sufficienti";
     }
-    // dovrà essere aggiunta il controllo per il punteggio
 }
 
-container<Domanda *> Basic::cerca_domanda(const std::string & domanda, const Model & m)
+container<Domanda *> Basic::cerca_domanda(const std::string & domanda, const Model & m) const
 {
         container<string> domanda_fatta=split(domanda," ");// divido la stringa domanda per spazi
         container<Domanda*> domande_trovate;

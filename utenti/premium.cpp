@@ -4,19 +4,21 @@ unsigned int Premium::puntiDetrattiDomandaFatta=5;
 unsigned int Premium::puntiPerDomandaData=20;
 unsigned int Premium::puntiBonus=60;
 unsigned int Premium::limitePerAverePuntiBonus=15;
-Premium::Premium()
+unsigned int Premium::supplementoDomandaPriorita=3;
+
+//Premium::Premium(const Premium &p): Pagamento(p)
+//{
+
+//}
+
+Premium::Premium(std::string username, std::string password, std::string nome, std::string cognome, std::string email)
+    :Pagamento(username,password,nome,cognome,email,puntiBonus)
 {
 
 }
 
-Premium::Premium(std::string username, std::string password, std::string nome, std::string cognome, std::string email,unsigned int punti)
-    :Pagamento(username,password,nome,cognome,email,punti)
-{
-
-}
-
-Premium::Premium(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d)
-    :Pagamento(p,c,a,s,d)
+Premium::Premium(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d, unsigned int punti, unsigned int risposte)
+    :Pagamento(p,c,a,s,d,punti< puntiBonus ? puntiBonus : punti,risposte)
 {
 
 }
@@ -53,27 +55,37 @@ void Premium::get_punti_domanda()
 
 void Premium::fai_domanda(Domanda *domanda)
 {
-    try
-    {
+    try{
         if(this==domanda->get_autore_domanda())
         {
-            if(punti>=puntiDetrattiDomandaFatta)
+            unsigned int punti_da_sottrarre=puntiDetrattiDomandaFatta;
+            if(domanda->get_priorita()>=3)
             {
+                punti_da_sottrarre+=(supplementoDomandaPriorita*(domanda->get_priorita()-3));
+            }
+            else
+            {
+                domanda->set_priorita(3);
+            }
+            if(punti>=punti_da_sottrarre)
+            {
+                punti-=punti_da_sottrarre;
                 get_domande().push_back(domanda);
-                punti-=puntiDetrattiDomandaFatta;
             }
             else
             {
                 throw punti_non_sufficienti();
             }
-        }else
+        }
+        else
+        {
             throw non_autore_domanda();
+        }
     }catch(non_autore_domanda){
         std::cerr<<"non è l'autore della domanda";
     }
-    catch(punti_non_sufficienti)
-    {
-        std::cerr<<"punti non sufficienti";
+    catch(punti_non_sufficienti){
+        std::cerr<<"punti per fare la domanda non sufficienti";
     }
 }
 

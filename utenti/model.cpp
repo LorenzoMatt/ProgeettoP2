@@ -3,6 +3,12 @@
 #include "gold.h"
  #include "premium.h"
 
+
+Model::Model()
+{
+
+}
+
 bool Model::check_presenza(const std::string &username)
 {
     bool trovato=false;
@@ -12,11 +18,6 @@ bool Model::check_presenza(const std::string &username)
             trovato=true;
     }
     return trovato;
-}
-
-Model::Model()
-{
-
 }
 
 Model::Model(const container<DeepPtr<Utente> > &u):utenti(u)
@@ -42,9 +43,8 @@ void Model::aggiungi_utente(Utente* utente)
 {
     try
     {
-        // da implementare il check se è presente un utente con l'username uguale
         if(!check_presenza(utente->get_credenziali().get_username()))
-            utenti.push_back(DeepPtr<Utente>(utente));
+            utenti.push_back(utente);//utilizzo implicito del costruttore a un argomento di DeepPtr
         else
             throw utente_gia_presente();
     }catch(utente_gia_presente)
@@ -94,12 +94,14 @@ void Model::cambia_piano(Utente *utente, const std::string &piano)
                 container<Domanda*> domande=(*it)->get_domande();
                 container<Utente*> amici=(*it)->get_amici();
                 container<Utente*> seguaci=(*it)->get_seguaci();
+                unsigned int risposte_date=(*it)->get_risposte_date();
+                unsigned int punti=(*it)->get_punti();
                 if(piano=="Basic")
-                    utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Basic(pf,credenziali,amici,seguaci,domande)));
+                    utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Basic(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                 if(piano=="Gold")
-                    utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Gold(pf,credenziali,amici,seguaci,domande)));
+                    utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Gold(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                 if(piano=="Premium")
-                    utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Premium(pf,credenziali,amici,seguaci,domande)));
+                    utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Premium(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
             }
         }
         if(!trovato)
@@ -154,16 +156,3 @@ DeepPtr<Utente> *Model::get_utente_deep(const std::string & username)
     }
     return 0;
 }
-/*Utente* DB::find(const Username& u) const
-{
-    vector<Utente*>::const_iterator i;
-    for(i=db.begin(); i!=db.end(); ++i)
-    {
-        if((*i)->getUsername()==u)
-        {
-            return *i;
-        }
-    }
-    return 0;
-}*/
-

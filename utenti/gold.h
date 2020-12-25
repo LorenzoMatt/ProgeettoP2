@@ -12,14 +12,15 @@ private:
     static unsigned int supplementoDomandaPriorita;
     static unsigned int limitePerAverePuntiBonus;
 public:
-    Gold();// =delete
-    Gold(string username,string password,string nome,string cognome,string email,unsigned int punti=puntiBonus);
-    Gold(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,container<Domanda*> d);
-    void cerca_utente(const string&,const Model&, container<string>&) const;//OK quando implementeremo le classi polimorfe dovrà andare tolto l'ultimo intero da passare alla funzione
-    void get_punti_domanda(); //virtual
-    void fai_domanda(Domanda* domanda);
-    void get_punti_bonus();
-    Gold* clone() const;
+    Gold()=delete;
+    //Gold(const Gold &);
+    Gold(string username,string password,string nome,string cognome,string email);
+    Gold(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,container<Domanda*> d,unsigned int punti,unsigned int risposte);
+    void cerca_utente(const string&,const Model&, container<string>&) const override;
+    void get_punti_domanda() override; //virtual
+    void fai_domanda(Domanda* domanda) override;
+    void get_punti_bonus() override;
+    Gold* clone() const override;
 };
 
 #endif // GOLD_H

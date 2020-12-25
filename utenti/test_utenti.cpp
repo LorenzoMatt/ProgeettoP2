@@ -175,10 +175,10 @@ int test_utenti()
     Utente* f4=new Gold("Francesca","dioboia","diostronzo","porco","dio");
     Utente* f5=new Gold("Prova","dioboia","diostronzo","porco","dio");
     Utente* f6=new Premium("Giorgio","dioboia","diostronzo","porco","dio");
-    f5->aggiungi_amico(*f2);
-    f5->aggiungi_amico(*f3);
-    f5->aggiungi_amico(*f4);
-    f5->aggiungi_amico(*f6);
+    f5->aggiungi_amico(f2);
+    f5->aggiungi_amico(f3);
+    f5->aggiungi_amico(f4);
+    f5->aggiungi_amico(f6);
     Utente* ut=f2->clone();
     Utente* f=ut->clone();
     f2->fai_domanda(new Domanda("il cielo è arancio?",f2,1));

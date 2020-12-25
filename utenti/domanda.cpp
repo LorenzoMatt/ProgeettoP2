@@ -13,7 +13,7 @@ Domanda::Domanda(const string& t, Utente* autore, unsigned int priorita):testo(t
 void Domanda::aggiungi_commento(const Commento& c){
     commenti.push_back(c);
 }
-void Domanda::RimuoviCommento(const Commento& c){
+void Domanda::rimuovi_commento(const Commento& c){
     bool sent=false;
     for(auto it=commenti.begin();it!=commenti.end() && !sent;++it)
         if((*it)==c){
@@ -30,6 +30,11 @@ Utente* Domanda::get_autore_domanda() const
 std::string Domanda::get_testo() const
 {
     return testo;
+}
+
+void Domanda::set_priorita(unsigned int p)
+{
+    priorita=p;
 }
 
 bool Domanda::operator <=(const Domanda &d) const

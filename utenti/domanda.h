@@ -21,15 +21,16 @@ private:
     unsigned int priorita;
 public:
     Domanda()=delete;
-    Domanda(const string&,Utente*,unsigned int);
-    Domanda(const Domanda&);
+    Domanda(const string&,Utente*,unsigned int);//OK
+    Domanda(const Domanda&);//OK
     void aggiungi_commento(const Commento&);//OK
-    void RimuoviCommento(const Commento&);//OK
+    void rimuovi_commento(const Commento&);//OK
     Utente* get_autore_domanda() const;//OK
     string get_testo() const; //OK
-    bool operator <=(const Domanda&) const;
-    bool operator >=(const Domanda&) const;
-    unsigned int get_priorita() const;
+    void set_priorita(unsigned int); //OK
+    bool operator <=(const Domanda&) const; //OK
+    bool operator >=(const Domanda&) const;//OK
+    unsigned int get_priorita() const;//OK
 };
 
 #endif // DOMANDA_H

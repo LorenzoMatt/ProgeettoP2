@@ -60,6 +60,7 @@ public:
         iterator();
         T &operator*() const;
         T *operator->() const;
+        T& operator[](unsigned int) const;
         iterator &operator++();
         iterator operator++(int);
         iterator &operator--();
@@ -88,6 +89,7 @@ public:
         const_iterator(iterator &i); //conversione iterator->const_iterator
         const T &operator*() const;
         const T *operator->() const;
+        const T& operator[](unsigned int) const;
         const_iterator &operator++();
         const_iterator operator++(int);
         const_iterator &operator--();
@@ -108,7 +110,7 @@ public:
 /**********************************NODO**********************************/
 
 template <class T>
-container<T>::nodo::nodo(const T &t, container<T>::nodo *p, container::nodo *n) : info(t), prev(p), next(n) {}
+container<T>::nodo::nodo(const T &t, container<T>::nodo *p, container<T>::nodo *n) : info(t), prev(p), next(n) {}
 
 template <class T>
 container<T>::nodo::~nodo() {
@@ -422,6 +424,11 @@ const T *container<T>::const_iterator::operator->() const
 }
 
 template <class T>
+const T& container<T>::const_iterator::operator[](unsigned int index) const {
+  return *(ptr + index);
+}
+
+template <class T>
 typename container<T>::const_iterator &container<T>::const_iterator::operator++()
 {
     if (ptr != nullptr)
@@ -550,6 +557,11 @@ template <class T>
 T *container<T>::iterator::operator->() const
 {
     return &(ptr->info);
+}
+
+template <class T>
+T& container<T>::iterator::operator[](unsigned int index) const {
+  return *(ptr + index);
 }
 
 template <class T>

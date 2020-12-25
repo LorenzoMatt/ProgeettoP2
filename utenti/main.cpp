@@ -11,7 +11,7 @@
 #include "test_domande.h"
 #include "test_model.h"
 #include "test_profilo.h"
-
+#include "test_polimorfismo.h"
 int main()
 {
 
@@ -21,9 +21,10 @@ int main()
 //    return a.exec();
 //test_deep_ptr();
 //test_domande();
-test_model();
-test_profilo();
+//test_model();
+//test_profilo();
 //test_utenti();
+test_polimorfismo();
 
 
 

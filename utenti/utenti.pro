@@ -41,7 +41,8 @@ HEADERS += accesso.h \
     pagamento.h \
     gold.h \
     punti_non_sufficienti.h \
-    premium.h
+    premium.h \
+    test_polimorfismo.h
 FORMS += home.ui
 SOURCES += accesso.cpp \
            amico_non_presente.cpp \
@@ -64,4 +65,5 @@ SOURCES += accesso.cpp \
     pagamento.cpp \
     gold.cpp \
     punti_non_sufficienti.cpp \
-    premium.cpp
+    premium.cpp \
+    test_polimorfismo.cpp

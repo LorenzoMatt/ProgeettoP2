@@ -8,19 +8,19 @@ unsigned int Gold::puntiBonus=50;
 unsigned int Gold::supplementoDomandaPriorita=4;
 unsigned int Gold::limitePerAverePuntiBonus=20;
 
-Gold::Gold()
+//Gold::Gold(const Gold & g) : Pagamento(g)
+//{
+
+//}
+
+Gold::Gold(std::string username, std::string password, std::string nome, std::string cognome, std::string email)
+    :Pagamento(username,password,nome,cognome,email,puntiBonus)
 {
 
 }
 
-Gold::Gold(std::string username, std::string password, std::string nome, std::string cognome, std::string email,unsigned int punti)
-    :Pagamento(username,password,nome,cognome,email,punti)
-{
-
-}
-
-Gold::Gold(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d)
-    :Pagamento(p,c,a,s,d)
+Gold::Gold(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d,unsigned int punti,unsigned int risposte)
+    :Pagamento(p,c,a,s,d,punti<puntiBonus ? puntiBonus : punti,risposte)
 {
 
 }
@@ -60,30 +60,35 @@ void Gold::fai_domanda(Domanda *domanda)
     try{
         if(this==domanda->get_autore_domanda())
         {
-            if(domanda->get_priorita()<=2)
+            unsigned int punti_da_sottrarre=puntiDetrattiDomandaFatta;
+            if(domanda->get_priorita()>=2)
             {
+                punti_da_sottrarre+=(supplementoDomandaPriorita*(domanda->get_priorita()-2));
+            }
+            else
+            {
+                domanda->set_priorita(2);
+            }
+            if(punti>=punti_da_sottrarre)
+            {
+                punti-=punti_da_sottrarre;
                 get_domande().push_back(domanda);
             }
             else
             {
-                if(supplementoDomandaPriorita*(domanda->get_priorita()-1)>punti)
-                    throw punti_non_sufficienti();
-                else{
-                    get_domande().push_back(domanda);
-                    punti-=(domanda->get_priorita()-1)*supplementoDomandaPriorita;
-                }
-
+                throw punti_non_sufficienti();
             }
         }
         else
+        {
             throw non_autore_domanda();
+        }
     }catch(non_autore_domanda){
         std::cerr<<"non è l'autore della domanda";
     }
     catch(punti_non_sufficienti){
         std::cerr<<"punti per fare la domanda non sufficienti";
     }
-    // dovrà essere aggiunta il controllo per il punteggio
 }
 
 

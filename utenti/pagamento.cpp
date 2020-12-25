@@ -1,17 +1,18 @@
 #include "pagamento.h"
 
-Pagamento::Pagamento()
-{
+//Pagamento::Pagamento(const Pagamento & p) : Utente(p)
+//{
 
-}
+//}
+
 Pagamento::Pagamento(std::string username, std::string password, std::string nome, std::string cognome, std::string email,unsigned int punti)
     :Utente(username,password,nome,cognome,email,punti)
 {
 
 }
 
-Pagamento::Pagamento(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d)
-    :Utente(p,c,a,s,d)
+Pagamento::Pagamento(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d,unsigned int punti, unsigned int risposte)
+    :Utente(p,c,a,s,d,punti,risposte)
 {
 
 }

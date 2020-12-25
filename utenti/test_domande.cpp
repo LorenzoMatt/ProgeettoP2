@@ -33,8 +33,8 @@ int test_domande()
         domanda->aggiungi_commento(Commento("non ho commenti da aggiungere",nullptr)); //OK
         domanda->aggiungi_commento(commento1);//OK
         cout<<*domanda; //OK
-        domanda->RimuoviCommento(Commento("non ho commenti da aggiungere",nullptr)); //OK
-        domanda->RimuoviCommento(commento1);//OK
+        domanda->rimuovi_commento(Commento("non ho commenti da aggiungere",nullptr)); //OK
+        domanda->rimuovi_commento(commento1);//OK
         cout<<endl<<*domanda;
         ut->fai_domanda(domanda);
         // ut.fai_domanda("ma come mai il cielo è blu?");
