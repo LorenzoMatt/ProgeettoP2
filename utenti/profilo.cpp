@@ -92,6 +92,14 @@ std::string Profilo::competenze_toString() const
     return c;
 }
 
+std::string Profilo::titoli_di_studio_toString() const
+{
+    string t;
+    for(container<string>::const_iterator it=titoli_di_studio.cbegin();it!=titoli_di_studio.cend();++it)
+        t=t+" " + *it;
+    return t;
+}
+
 container<string> Profilo::GetCompetenze() const{
     return competenze;
 }

@@ -116,6 +116,7 @@ public:
     string GetCognome() const; //OK
     string GetEmail() const;//OK
     string competenze_toString() const;
+    string titoli_di_studio_toString() const;
 
     container<string> GetCompetenze() const; //OK
     container<string> GetTitoliDiStudio() const; //OK

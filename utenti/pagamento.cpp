@@ -53,7 +53,8 @@ container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const
     container<Domanda*> domande_trovate_modello;
     for(auto it=m.get_utenti().begin();it!=m.get_utenti().end();++it)
     {
-        if(&**it!=this)
+        if(&**it!=this && (!(check_presenza_amico((*it)->get_credenziali().get_username()))))
+// se non è se stesso e se l'utente esaminato non è fra gli amici
         {
             const container<Domanda*>& domande_utente=(*it)->get_domande();//lista di domande dell'amico esaminato
             for(auto it=domande_utente.begin();it!=domande_utente.end();++it)// scorro la lista delle domande dell'amico corrente

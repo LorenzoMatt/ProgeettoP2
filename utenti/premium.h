@@ -17,10 +17,10 @@ public:
     Premium(string username,string password,string nome,string cognome,string email);
     Premium(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,container<Domanda*> d,unsigned int punti,unsigned int risposte);
     void cerca_utente(const string&,const Model&, container<string>&) const override;//OK quando implementeremo le classi polimorfe dovrà andare tolto l'ultimo intero da passare alla funzione
-    void get_punti_domanda() override; //virtual
-    void fai_domanda(Domanda* domanda) override;
-    void get_punti_bonus() override;
-    Premium* clone() const override;
+    void get_punti_domanda() override; //OK
+    void fai_domanda(Domanda* domanda) override;//OK
+    void get_punti_bonus() override;//OK
+    Premium* clone() const override;//OK
 };
 
 #endif // PREMIUM_H

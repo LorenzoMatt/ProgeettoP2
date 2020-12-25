@@ -6,7 +6,7 @@ unsigned int Gold::puntiDetrattiDomandaFatta=8;
 unsigned int Gold::puntiPerDomandaData=17;
 unsigned int Gold::puntiBonus=50;
 unsigned int Gold::supplementoDomandaPriorita=4;
-unsigned int Gold::limitePerAverePuntiBonus=20;
+unsigned int Gold::limitePerAverePuntiBonus=25;
 
 //Gold::Gold(const Gold & g) : Pagamento(g)
 //{
@@ -52,6 +52,7 @@ void Gold::get_punti_domanda()
     if(risposte_date>=limitePerAverePuntiBonus)
     {
         get_punti_bonus();
+        risposte_date=0;
     }
 }
 

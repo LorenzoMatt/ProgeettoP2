@@ -50,6 +50,7 @@ void Premium::get_punti_domanda()
     if(risposte_date>=limitePerAverePuntiBonus)
     {
         get_punti_bonus();
+        risposte_date=0;
     }
 }
 

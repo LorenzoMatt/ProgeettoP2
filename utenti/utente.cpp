@@ -335,6 +335,7 @@ void Utente::Funtore::operator()(const Utente *ut, container<std::string> &l) co
                 l.push_back(ut->pf.GetNome());
                 l.push_back(ut->pf.GetCognome());
                 l.push_back(ut->pf.GetEmail());
+                l.push_back(ut->pf.titoli_di_studio_toString());
                 l.push_back(ut->pf.competenze_toString());
                 break;
 
@@ -344,6 +345,7 @@ void Utente::Funtore::operator()(const Utente *ut, container<std::string> &l) co
                 l.push_back(ut->pf.GetCognome());
                 l.push_back(ut->pf.GetEmail());
                 l.push_back(ut->pf.competenze_toString());
+                l.push_back(ut->pf.titoli_di_studio_toString());
                 l.push_back(ut->get_username_amici());
                 break;
         }

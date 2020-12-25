@@ -16,11 +16,11 @@ public:
     //Gold(const Gold &);
     Gold(string username,string password,string nome,string cognome,string email);
     Gold(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,container<Domanda*> d,unsigned int punti,unsigned int risposte);
-    void cerca_utente(const string&,const Model&, container<string>&) const override;
-    void get_punti_domanda() override; //virtual
-    void fai_domanda(Domanda* domanda) override;
-    void get_punti_bonus() override;
-    Gold* clone() const override;
+    void cerca_utente(const string&,const Model&, container<string>&) const override;//OK
+    void get_punti_domanda() override; //OK
+    void fai_domanda(Domanda* domanda) override;//OK
+    void get_punti_bonus() override; //OK
+    Gold* clone() const override;//OK
 };
 
 #endif // GOLD_H
