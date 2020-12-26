@@ -14,14 +14,14 @@ Utente::~Utente()
 
 }
 
-Utente::Utente(const Utente &u):credenziali(u.credenziali),pf(u.pf),domande(u.domande),amici(u.amici),seguaci(u.seguaci),risposte_date(u.risposte_date),punti(u.punti)
+Utente::Utente(const Utente &u):pf(u.pf),credenziali(u.credenziali),amici(u.amici),seguaci(u.seguaci),domande(u.domande),punti(u.punti),risposte_date(u.risposte_date)
 {
 
 }
 
 
 Utente::Utente(std::string username, std::string password, std::string nome, std::string cognome, std::string email, unsigned int punti)
-    :credenziali(Accesso(username,password)),pf(Profilo(nome,cognome,email)),risposte_date(0),punti(punti){}
+    :pf(Profilo(nome,cognome,email)),credenziali(Accesso(username,password)),punti(punti),risposte_date(0){}
 
 Utente::Utente(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d, unsigned int punti, unsigned int risposte)
     :pf(p),credenziali(c),amici(a),seguaci(s),domande(d),punti(punti),risposte_date(risposte)
@@ -74,26 +74,7 @@ void Utente::togli_amico_ausiliario(Utente *utente) // funziona ma il codice com
         {
             amici.erase(it);
             tolto=true;
-            cout<<"trovatooooooooooooo!!!!";
         }
-/*
-    try{
-        bool tolto=false;
-
-    for(auto it=amici.begin();it!=amici.end() && !tolto;++it)
-        if((*it)==utente)
-        {
-            amici.remove(it);
-            tolto=true;
-            cout<<"trovatooooooooooooo!!!!";
-        }
-    if(!tolto)
-        throw amico_non_presente();
-    }catch(amico_non_presente){
-        std::cerr<<"seguace non trovato";
-        return;
-    }
-    */
 }
 void Utente::aggiungi_seguace(Utente& utente) //OK
 {
@@ -192,7 +173,6 @@ container<std::string> Utente::split(const std::string & text, const std::string
             tokens.push_back(text.substr(start));
 
         return tokens;
-
 }
 void Utente::togli_seguace(Utente *utente) // OK, toglie un suo seguace dalla coda se è presente e l'utente che ha rimosso il
 //seguace viene a sua volta tolto dalla lista degli amici dell'ex seguace
@@ -220,12 +200,12 @@ container<Utente *> &Utente::get_amici()//OK
     return amici;
 }
 
-const container<Utente *>& Utente::get_seguaci() const // OK
+const container<Utente *> &Utente::get_seguaci() const // OK
 {
     return seguaci;
 }
 
-container<Domanda *>& Utente::get_domande()
+container<Domanda *> &Utente::get_domande()
 {
     return domande;
 }
@@ -344,8 +324,8 @@ void Utente::Funtore::operator()(const Utente *ut, container<std::string> &l) co
                 l.push_back(ut->pf.GetNome());
                 l.push_back(ut->pf.GetCognome());
                 l.push_back(ut->pf.GetEmail());
-                l.push_back(ut->pf.competenze_toString());
                 l.push_back(ut->pf.titoli_di_studio_toString());
+                l.push_back(ut->pf.competenze_toString());
                 l.push_back(ut->get_username_amici());
                 break;
         }

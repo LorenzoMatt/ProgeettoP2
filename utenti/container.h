@@ -60,7 +60,6 @@ public:
         iterator();
         T &operator*() const;
         T *operator->() const;
-        T& operator[](unsigned int) const;
         iterator &operator++();
         iterator operator++(int);
         iterator &operator--();
@@ -89,7 +88,6 @@ public:
         const_iterator(iterator &i); //conversione iterator->const_iterator
         const T &operator*() const;
         const T *operator->() const;
-        const T& operator[](unsigned int) const;
         const_iterator &operator++();
         const_iterator operator++(int);
         const_iterator &operator--();
@@ -180,7 +178,6 @@ container<T> container<T>::operator+(const container<T> &d)
     container<T> aux;
     aux.first=copy(this->first,aux.last);
     aux.last->next=copy(d.first,aux.last);
-    aux.last=d.last;
     return aux;
 
 }
@@ -423,10 +420,6 @@ const T *container<T>::const_iterator::operator->() const
     return &(ptr->info);
 }
 
-template <class T>
-const T& container<T>::const_iterator::operator[](unsigned int index) const {
-  return *(ptr + index);
-}
 
 template <class T>
 typename container<T>::const_iterator &container<T>::const_iterator::operator++()
@@ -557,11 +550,6 @@ template <class T>
 T *container<T>::iterator::operator->() const
 {
     return &(ptr->info);
-}
-
-template <class T>
-T& container<T>::iterator::operator[](unsigned int index) const {
-  return *(ptr + index);
 }
 
 template <class T>

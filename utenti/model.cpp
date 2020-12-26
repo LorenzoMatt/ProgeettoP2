@@ -39,22 +39,22 @@ void Model::aggiungi_utente(const DeepPtr<Utente> &utente)
 
 }
 
-void Model::aggiungi_utente(Utente* utente)
-{
-    try
-    {
-        if(!check_presenza(utente->get_credenziali().get_username()))
-            utenti.push_back(utente);//utilizzo implicito del costruttore a un argomento di DeepPtr
-        else
-            throw utente_gia_presente();
-    }catch(utente_gia_presente)
-    {
-        std::cerr<<"utente con questo username già presente";
-    }
+//void Model::aggiungi_utente(Utente* utente)
+//{
+//    try
+//    {
+//        if(!check_presenza(utente->get_credenziali().get_username()))
+//            utenti.push_back(utente);//utilizzo implicito del costruttore a un argomento di DeepPtr
+//        else
+//            throw utente_gia_presente();
+//    }catch(utente_gia_presente)
+//    {
+//        std::cerr<<"utente con questo username già presente";
+//    }
 
 
 
-}
+//}
 
 void Model::togli_utente(Utente *utente)
 {
@@ -79,7 +79,7 @@ void Model::togli_utente(Utente *utente)
     }
 }
 
-void Model::cambia_piano(Utente *utente, const std::string &piano)
+Utente* Model::cambia_piano(Utente *utente, const std::string &piano)
 {
     bool trovato=false;
     try
@@ -88,6 +88,7 @@ void Model::cambia_piano(Utente *utente, const std::string &piano)
         {
             if(&(**it)==utente)
             {
+                DeepPtr<Utente> copia=*it;
                 trovato=true;
                 Profilo pf=(*it)->get_profilo();
                 Accesso credenziali=(*it)->get_credenziali();
@@ -97,11 +98,12 @@ void Model::cambia_piano(Utente *utente, const std::string &piano)
                 unsigned int risposte_date=(*it)->get_risposte_date();
                 unsigned int punti=(*it)->get_punti();
                 if(piano=="Basic")
-                    utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Basic(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
+                    it=utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Basic(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                 if(piano=="Gold")
-                    utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Gold(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
+                    it=utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Gold(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                 if(piano=="Premium")
-                    utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Premium(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
+                    it=utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Premium(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
+                return &**it;
             }
         }
         if(!trovato)
@@ -110,6 +112,7 @@ void Model::cambia_piano(Utente *utente, const std::string &piano)
     {
         std::cerr<<"utente non trovato";
     }
+    return nullptr;
 }
 
 const container<DeepPtr<Utente>>& Model::get_utenti() const

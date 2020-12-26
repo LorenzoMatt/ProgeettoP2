@@ -15,8 +15,8 @@ class Domanda
 {
     friend std::ostream &operator<<(std::ostream &, const Domanda&);
 private:
-    Utente* autore_domanda;
     string testo;
+    Utente* autore_domanda;
     container<Commento> commenti;
     unsigned int priorita;
 public:
