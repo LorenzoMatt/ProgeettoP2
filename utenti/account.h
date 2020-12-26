@@ -28,7 +28,7 @@ public:
     void cambia_piano(const string&); //OK
     void modifica_password(const string&);
     container<Domanda *> ricerca_domanda(const string&);
-    void fai_domanda(const string&,unsigned int);
+    void fai_domanda(const string&,unsigned int =1);
     void fai_commento(Domanda* domanda,const string&) const;
     container<std::string> ricerca_contatto(const string&) const;
     container<Domanda*> get_domande_amici() const;

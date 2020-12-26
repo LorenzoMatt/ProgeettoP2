@@ -86,6 +86,30 @@ void Model::togli_utente(Utente *utente)
     }
 }
 
+void Model::togli_utente(const std::string & username)
+{
+        bool trovato=false;
+        try
+        {
+            for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
+            {
+                if((*it)->get_credenziali().get_username()==username)
+                {
+                    sistema_amici_seguaci(&(**it));
+                    utenti.erase(it);
+                    trovato=true;
+                }
+            }
+            if(!trovato)
+            {
+                throw amico_non_presente();
+            }
+        }catch(amico_non_presente)
+        {
+            std::cerr<<"utente non presente";
+        }
+}
+
 Utente* Model::cambia_piano(Utente *utente, const std::string &piano)
 {
     bool trovato=false;
@@ -145,8 +169,6 @@ Utente* Model::get_utente(const string& username) const
         std::cerr<<"utente non presente";
     }
     return 0;
-
-
 }
 
 DeepPtr<Utente> *Model::get_utente_deep(const std::string & username)
