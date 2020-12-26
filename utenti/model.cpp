@@ -20,9 +20,32 @@ bool Model::check_presenza(const std::string &username)
     return trovato;
 }
 
+void Model::sistema_amici_seguaci(Utente* utente)
+{
+        for(auto it=utente->seguaci.begin();it!=utente->seguaci.end();++it)
+        {
+            (*it)->togli_amico_ausiliario(utente);
+        }
+        for(auto it=utente->amici.begin();it!=utente->amici.end();++it)
+        {
+            (*it)->togli_seguace_ausiliario(utente);
+        }
+}
+
+void Model::reverse_seguaci_amici(Utente* utente)
+{
+        for(auto it=utente->seguaci.begin();it!=utente->seguaci.end();++it)
+        {
+            (*it)->amici.push_back(utente);
+        }
+        for(auto it=utente->amici.begin();it!=utente->amici.end();++it)
+        {
+            (*it)->seguaci.push_back(utente);
+        }
+}
+
 Model::Model(const container<DeepPtr<Utente> > &u):utenti(u)
 {
-
 }
 
 void Model::aggiungi_utente(const DeepPtr<Utente> &utente)
@@ -39,23 +62,6 @@ void Model::aggiungi_utente(const DeepPtr<Utente> &utente)
 
 }
 
-//void Model::aggiungi_utente(Utente* utente)
-//{
-//    try
-//    {
-//        if(!check_presenza(utente->get_credenziali().get_username()))
-//            utenti.push_back(utente);//utilizzo implicito del costruttore a un argomento di DeepPtr
-//        else
-//            throw utente_gia_presente();
-//    }catch(utente_gia_presente)
-//    {
-//        std::cerr<<"utente con questo username già presente";
-//    }
-
-
-
-//}
-
 void Model::togli_utente(Utente *utente)
 {
     bool trovato=false;
@@ -65,6 +71,7 @@ void Model::togli_utente(Utente *utente)
         {
             if(&(**it)==utente)
             {
+                sistema_amici_seguaci(utente);
                 utenti.erase(it);
                 trovato=true;
             }
@@ -88,7 +95,7 @@ Utente* Model::cambia_piano(Utente *utente, const std::string &piano)
         {
             if(&(**it)==utente)
             {
-                DeepPtr<Utente> copia=*it;
+                sistema_amici_seguaci(utente);
                 trovato=true;
                 Profilo pf=(*it)->get_profilo();
                 Accesso credenziali=(*it)->get_credenziali();
@@ -103,7 +110,8 @@ Utente* Model::cambia_piano(Utente *utente, const std::string &piano)
                     it=utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Gold(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                 if(piano=="Premium")
                     it=utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Premium(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
-                return &**it;
+                reverse_seguaci_amici(&(**it));
+                return &(**it);
             }
         }
         if(!trovato)

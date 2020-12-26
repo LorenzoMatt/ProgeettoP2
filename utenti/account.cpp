@@ -1,29 +1,5 @@
 #include "account.h"
 
-void Account::sistema_amici_seguaci()
-{
-    for(auto it=utente->seguaci.begin();it!=utente->seguaci.end();++it)
-    {
-        (*it)->togli_amico_ausiliario(utente);
-    }
-    for(auto it=utente->amici.begin();it!=utente->amici.end();++it)
-    {
-        (*it)->togli_seguace_ausiliario(utente);
-    }
-}
-
-void Account::reverse_seguaci_amici()
-{
-    for(auto it=utente->seguaci.begin();it!=utente->seguaci.end();++it)
-    {
-        (*it)->amici.push_back(utente);
-    }
-    for(auto it=utente->amici.begin();it!=utente->amici.end();++it)
-    {
-        (*it)->seguaci.push_back(utente);
-    }
-}
-
 Account::Account()
 {
 
@@ -98,9 +74,38 @@ container<string> Account::ricerca_utente(const string & u)
 
 void Account::cambia_piano(const std::string & piano)
 {
-    sistema_amici_seguaci();
     utente=model->cambia_piano(utente,piano);
-    reverse_seguaci_amici();
 }
 
+void Account::modifica_password(const std::string & pw)
+{
+    utente->modifica_password(pw);
+}
 
+container<Domanda*> Account::ricerca_domanda(const std::string & testo)
+{
+    return utente->cerca_domanda(testo,*model);
+}
+
+void Account::fai_domanda(const std::string & domanda, unsigned int priorita)
+{
+    utente->fai_domanda(new Domanda(domanda,utente,priorita));
+}
+
+void Account::fai_commento(Domanda* domanda, const std::string & t) const
+{
+    Commento c(t,utente);
+    domanda->aggiungi_commento(c);
+}
+
+container<string> Account::ricerca_contatto(const std::string & username) const
+{
+    container<string> aux;
+    utente->cerca_amico(username,aux);
+    return aux;
+}
+
+container<Domanda *> Account::get_domande_amici() const
+{
+    return utente->get_domande_amici();
+}

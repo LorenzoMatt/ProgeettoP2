@@ -49,6 +49,11 @@ unsigned int Utente::get_risposte_date() const
     return risposte_date;
 }
 
+void Utente::modifica_password(const std::string & pw)
+{
+    credenziali.set_password(pw);
+}
+
 //void Utente::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funziona a dovere
 //{
 //    try{
@@ -133,6 +138,39 @@ void Utente::togli_amico(Utente *utente) // OK, serve a togliere un utente dalla
         return;
     }
 }
+
+void Utente::cerca_amico(const std::string & username, container<std::string>& lista_di_elementi) const{
+
+    try
+    {
+            Utente* utente;
+            bool trovato=false;
+            for(auto it=amici.begin();it!=amici.end() && !trovato;++it)
+                if((*it)->get_credenziali().get_username()==username){
+                    trovato=true;
+                    utente=*it;
+                }
+            if(!trovato){
+                throw amico_non_presente();
+            }
+
+            Utente::Funtore f(3);//nelle funzioni polimorfe il numero_funtore sarà sostituito con 1 in account gratuito,2 in gold e 3 in premium
+            f(utente, lista_di_elementi);
+    }
+    catch(amico_non_presente){
+        std::cerr<<"utente non presente";
+    }
+}
+
+container<Domanda *> Utente::get_domande_amici() const
+{
+    container<Domanda *> domande;
+    for(auto it=amici.begin();it!=amici.end();++it){
+       domande=domande+(*it)->get_domande();
+    }
+    return domande;
+}
+
 void Utente::togli_seguace_ausiliario(Utente *utente) // È stato testato, ma non so perchè se tolgo il booleano non funziona
 // serve a togliere un seguace dalla propria lista. È una funzione utilizzata da togli_amico
 {

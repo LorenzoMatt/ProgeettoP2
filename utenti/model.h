@@ -10,6 +10,8 @@ class Model
 private:
     container<DeepPtr<Utente>> utenti;
     bool check_presenza(const string&);
+    void sistema_amici_seguaci(Utente*);
+    void reverse_seguaci_amici(Utente*);
 public:
     Model();
     Model(const container<DeepPtr<Utente>>&);

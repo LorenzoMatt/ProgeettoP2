@@ -9,13 +9,11 @@
 #include "non_autore_domanda.h"
 #include "togliere_te_stesso_dagli_amici.h"
 #include "punti_non_sufficienti.h"
-#include "account.h"
 class Domanda;
 class Model;
-class Account;
 class Utente
 {
-    friend class Account;
+    friend class Model;
     friend std::ostream& operator<<(std::ostream& os,const Utente& u);
 private:
     Profilo pf;
@@ -49,8 +47,11 @@ public:
 
 
     //void fai_domanda(const string& domanda,unsigned int priorita=0);
+    void modifica_password(const string &);
     void aggiungi_amico(Utente *);
     void togli_amico(Utente*);
+    void cerca_amico(const string&,container<string>&) const;
+    container<Domanda*> get_domande_amici() const;
     void togli_seguace(Utente*);
     void AggiungiCompetenza(const string&); //OK
     void AggiungiTitoloDiStudio (const string&); //OK
@@ -58,6 +59,7 @@ public:
     void dai_punti(Utente*) const;
     string get_username_amici() const; //OK
     void scrivi_commento(Domanda* d, string risposta);
+
 
 
                 /*virtual*/

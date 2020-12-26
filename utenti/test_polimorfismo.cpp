@@ -112,4 +112,5 @@ int test_polimorfismo()
 //    d2.push_back(new Domanda("dio boia",p,1));
 //    d2.push_back(new Domanda("dio boia",p,1));
 //    container<Domanda*> d3=d1+d2;
+    return 0;
 }
