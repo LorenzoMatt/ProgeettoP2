@@ -20,7 +20,7 @@ Accesso Account::get_credenziali() const
     return utente->get_credenziali();
 }
 
-container<Domanda *> &Account::get_domande() const
+container<Domanda *>& Account::get_domande()
 {
     return utente->get_domande();
 }
@@ -65,6 +65,19 @@ void Account::dai_punti(Utente *u) const
     utente->dai_punti(u);
 }
 
+void Account::dai_punti(const std::string & username) const
+{
+    try
+    {
+        Utente* u=model->get_utente(username);
+        u->get_punti_domanda();
+    }catch(amico_non_presente)
+    {
+        std::cerr<<"amico non presente";
+    }
+
+}
+
 container<string> Account::ricerca_utente(const string & u)
 {
     container<string> lista_attributi;
@@ -84,6 +97,7 @@ void Account::modifica_password(const std::string & pw)
 
 container<Domanda*> Account::ricerca_domanda(const std::string & testo)
 {
+    utente->cerca_domanda(testo,*model);
     return utente->cerca_domanda(testo,*model);
 }
 
@@ -108,4 +122,17 @@ container<string> Account::ricerca_contatto(const std::string & username) const
 container<Domanda *> Account::get_domande_amici() const
 {
     return utente->get_domande_amici();
+}
+
+Domanda *Account::get_domanda(const container<Domanda *>& d, unsigned int i) const
+{
+    if(i>d.countElements())
+        throw std::runtime_error("domanda non presente");
+    else
+    {
+        container<Domanda*>::const_iterator it=d.begin();
+        for(;it!=d.end() && i>0;++it,i--)
+        {}//corpo vuoto
+        return *it;
+    }
 }

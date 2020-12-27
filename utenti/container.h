@@ -11,11 +11,15 @@ class container;
 
 template <class T>
 std::ostream &operator<<(std::ostream &, const container<T> &);
+template <class T>
+std::ostream &operator<<(std::ostream &, const container<T*> &);
 
 template <class T>
 class container
 {
-    friend std::ostream &operator << <T>(std::ostream &, const container <T> &);
+    friend std::ostream &operator<< <T>(std::ostream &, const container <T> &);
+    friend std::ostream &operator<< <T>(std::ostream &, const container<T*> &);
+
 private:
     class nodo
     {
@@ -37,6 +41,7 @@ public:
     container();
     container &operator=(const container &d);
     container operator+(const container &d);
+    T &operator[](unsigned int i);
     void push_front(const T &t);
     void push_back(const T &t);
     void insertion_sort(const T &t);
@@ -176,12 +181,19 @@ container<T> container<T>::operator+(const container<T> &d)
     if(this->countElements()==0)
         return container<T>(d);
     container<T> aux;
-    aux.first=copy(this->first,aux.last);
+    aux.first=copy(first,aux.last);
     aux.last->next=copy(d.first,aux.last);
     return aux;
-
 }
 
+template<class T>
+T& container<T>::operator[](unsigned int i) //non molto adatto per una lista
+{
+    container<T>::iterator it=this->begin();
+    for(;it!=this->end() && i>0;++it,--i)
+    {}//corpo vuoto
+    return *it;
+}
 
 template <class T>
 void container<T>::push_front(const T &t)
@@ -654,12 +666,20 @@ bool container<T>::iterator::operator>=(const container<T>::iterator &x) const
 template <class T> //dichiarazione perché è necessario che compaia quando viene dichiarata l'amicizia su trialbero
 std::ostream &operator<<(std::ostream &os, const container<T> &l)
 {
-    for (typename container<T>::const_iterator c = l.cbegin(); c != l.cend(); ++c)
+    for (auto c = l.cbegin(); c != l.cend(); ++c)
         std::cout << *c << ' ';
     std::cout << std::endl;
     return os;
 }
 
+template <class T> //dichiarazione perché è necessario che compaia quando viene dichiarata l'amicizia su trialbero
+std::ostream &operator<<(std::ostream &os, const container<T*> &l)
+{
+    for (auto c = l.cbegin(); c != l.cend(); ++c)
+        std::cout << **c <<endl;
+    std::cout << std::endl;
+    return os;
+}
 
 /*
 DONE:

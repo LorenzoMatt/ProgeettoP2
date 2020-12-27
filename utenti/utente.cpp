@@ -11,13 +11,8 @@ std::ostream &operator<<(std::ostream &os, const Utente &u) //OK
 
 Utente::~Utente()
 {
-    unsigned int i=1;
-    for(auto it=domande.begin();it!=domande.end();++it,i++)
-    {
-        Domanda* d=*it;
-        delete d;
-        cout<<"delete domanda n. "<<i<<endl;
-    }
+    for(auto it=domande.begin();it!=domande.end();++it)
+        delete *it;
 }
 
 Utente::Utente(const Utente &u):pf(u.pf),credenziali(u.credenziali),amici(u.amici),seguaci(u.seguaci),domande(u.domande),punti(u.punti),risposte_date(u.risposte_date)
@@ -60,22 +55,6 @@ void Utente::modifica_password(const std::string & pw)
     credenziali.set_password(pw);
 }
 
-//void Utente::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funziona a dovere
-//{
-//    try{
-//        if(this==domanda->get_autore_domanda())
-//            domande.push_back(domanda);
-//        else
-//            throw non_autore_domanda();
-//    }catch(non_autore_domanda){
-//        std::cerr<<"non è l'autore della domanda";
-//    }
-//}
-
-//Utente *Utente::clone()
-//{
-//    return new Utente(*this);
-//}
 void Utente::togli_amico_ausiliario(Utente *utente) // funziona ma il codice commentato non funziona e non so perchè
 {
     bool tolto=false;
@@ -170,11 +149,11 @@ void Utente::cerca_amico(const std::string & username, container<std::string>& l
 
 container<Domanda *> Utente::get_domande_amici() const
 {
-    container<Domanda *> domande;
+    container<Domanda *> d;
     for(auto it=amici.begin();it!=amici.end();++it){
-       domande=domande+(*it)->get_domande();
+       d=d+(*it)->domande;
     }
-    return domande;
+    return d;
 }
 
 void Utente::togli_seguace_ausiliario(Utente *utente) // È stato testato, ma non so perchè se tolgo il booleano non funziona
@@ -271,45 +250,8 @@ void Utente::scrivi_commento(Domanda *d, std::string risposta)
 
 void Utente::dai_punti(Utente* utente) const
 {
-    utente->get_punti();
+    utente->get_punti_domanda();
 }
-
-//container<Domanda *> Utente::cerca_domanda(const std::string & domanda, const Model & m)//OK, manca da implementare un insertion_sort in modo da avere una lista ordinata doi domande
-//{
-//    container<string> domanda_fatta=split(domanda," ");// divido la stringa domanda per spazi
-//    container<Domanda*> domande_trovate;
-//    for(auto it=amici.begin();it!=amici.end();++it)//scorro gli amici
-//    {
-//        const container<Domanda*>& domande_utente=(*it)->get_domande();//lista di domande dell'amico esaminato
-//        for(auto it=domande_utente.begin();it!=domande_utente.end();++it)// scorro la lista delle domande dell'amico corrente
-//        {
-//            container<string> domanda_esaminata=split((*it)->get_testo()," ");// divido la domanda corrente per spazi
-//            unsigned int lunghezza_parola_esaminata=domanda_esaminata.countElements();
-//            unsigned int count=0;//numero di parole che matchano fra domanda_fatta e domande_esaminata
-//            for(auto ut=domanda_esaminata.begin();ut!=domanda_esaminata.end() && count<=(lunghezza_parola_esaminata*0.6);++ut)
-//                //scorri le parole della domanda_esaminata
-//            {
-//                bool ok=false;
-//                for(auto d=domanda_fatta.begin();d!=domanda_fatta.end() && !ok;++d)//scorro le parole  della domanda fatta
-//                {
-//                    if(*ut==*d)//confronto fra parola della domanda_esaminata e della parola della domanda_fatta
-//                    {
-//                        ok=true;
-//                        count++;//incremento il numero di parole uguali fra la domanda fatta e quella esaminata
-//                    }
-//                }
-
-//             }
-//            if(count>=(lunghezza_parola_esaminata*0.6))// basterebbe ==
-//            {
-//                domande_trovate.insertion_sort(*it);
-//            }
-//        }
-
-//    }
-//    return domande_trovate;
-//}
-
 
 string Utente::get_username_amici() const //OK
 {
@@ -318,13 +260,6 @@ string Utente::get_username_amici() const //OK
         username=username+" "+(*it)->get_credenziali().get_username();
     return username;
 }
-
-//void Utente::cerca_utente(const string & username, const Model & model, container<std::string> &lista_di_elementi, int numero_funtore) const
-//{
-//    Utente* utente = model.get_utente(username);
-//    Utente::Funtore f(numero_funtore);//nelle funzioni polimorfe il numero_funtore sarà sostituito con 1 in account gratuito,2 in gold e 3 in premium
-//    f(utente, lista_di_elementi);
-//}
 
 void Utente::AggiungiCompetenza(const std::string & competenza)
 {

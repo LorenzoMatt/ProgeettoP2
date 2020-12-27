@@ -15,7 +15,6 @@ int test_profilo()
     // /////////////////////////////////////////////////////// TEST PROFILO //////////////////////////////////////////
      cout<<endl<<endl<<endl<<"TEST PROFILO"<<endl<<endl;
      Premium* ut=new Premium("Pikachu","dioboia","diostronzo","porco","dio");
-
      Profilo e("porco","dio","bastardo");
      e.AggiungiCompetenza("farsi le seghe");
      e.AggiungiCompetenza("bestemmiare");

@@ -13,7 +13,8 @@
 #include "test_profilo.h"
 #include "test_polimorfismo.h"
 #include "test_account.h"
-int main()
+#include "QPushButton"
+int main(int argc ,char** argv)
 {
 
 //    QApplication a(argc, argv);

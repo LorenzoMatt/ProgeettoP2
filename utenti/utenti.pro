@@ -45,7 +45,7 @@ HEADERS += accesso.h \
     test_polimorfismo.h \
     account.h \
     test_account.h
-FORMS += home.ui
+FORMS +=
 SOURCES += accesso.cpp \
            amico_non_presente.cpp \
            commento.cpp \

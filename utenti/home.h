@@ -2,21 +2,17 @@
 #define HOME_H
 
 #include <QMainWindow>
-
-namespace Ui {
-class Home;
-}
-
+#include <QPushButton>
+#include <QLabel>
+#include <QVBoxLayout>
 class Home : public QMainWindow
 {
     Q_OBJECT
-
 public:
     explicit Home(QWidget *parent = 0);
     ~Home();
 
 private:
-    Ui::Home *ui;
 };
 
 #endif // HOME_H

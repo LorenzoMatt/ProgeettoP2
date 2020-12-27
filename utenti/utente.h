@@ -39,7 +39,7 @@ public:
     Accesso get_credenziali() const;//OK
     container<Utente*>& get_amici();
     const container<Utente *> &get_seguaci() const;
-    container<Domanda *> &get_domande();
+    container<Domanda *>& get_domande();
     const container<Utente* > & get_amici() const;
     unsigned int get_punti() const;//OK
     unsigned int get_risposte_date() const; //serve per ottenere un bonus
@@ -51,7 +51,7 @@ public:
     void aggiungi_amico(Utente *);
     void togli_amico(Utente*);
     void cerca_amico(const string&,container<string>&) const;
-    container<Domanda*> get_domande_amici() const;
+    container<Domanda *> get_domande_amici() const;
     void togli_seguace(Utente*);
     void AggiungiCompetenza(const string&); //OK
     void AggiungiTitoloDiStudio (const string&); //OK

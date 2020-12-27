@@ -1,7 +1,7 @@
 #include "model.h"
 #include "basic.h"
 #include "gold.h"
- #include "premium.h"
+#include "premium.h"
 
 
 Model::Model()
@@ -155,7 +155,7 @@ const container<DeepPtr<Utente>>& Model::get_utenti() const
 Utente* Model::get_utente(const string& username) const
 {
     bool trovato=false;
-    try{
+
         for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
             if((*it)->get_credenziali().get_username()==username)
             {
@@ -164,11 +164,8 @@ Utente* Model::get_utente(const string& username) const
             }
         if(!trovato)
             throw amico_non_presente();
-    }catch(amico_non_presente)
-    {
-        std::cerr<<"utente non presente";
-    }
     return 0;
+
 }
 
 DeepPtr<Utente> *Model::get_utente_deep(const std::string & username)
