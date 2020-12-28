@@ -45,6 +45,7 @@ public:
     void push_front(const T &t);
     void push_back(const T &t);
     void insertion_sort(const T &t);
+    void insertion_sort_pointer(const T *t);
     void pop_front();
     void pop_back();
     bool empty() const;
@@ -230,14 +231,14 @@ void container<T>::push_back(const T &t)
 template <class T>
 void container<T>::insertion_sort(const T &t)
 {
-    if(empty() || t<this->last->info)
+    if(empty() || this->last->info>t)
         push_back(t);
     else
     {
         bool sent=false;
         for(auto it=this->begin();it!=this->end() && !sent;++it)
         {
-            if(t>=*it)
+            if(*it<=t)
             {
                 insert(it,t);
                 sent=true;
@@ -246,6 +247,24 @@ void container<T>::insertion_sort(const T &t)
     }
 }
 
+template <class T>
+void container<T>::insertion_sort_pointer(const T *t)
+{
+    if(empty() || *(this->last->info)>**t)
+        push_back(*t);
+    else
+    {
+        bool sent=false;
+        for(auto it=this->begin();it!=this->end() && !sent;++it)
+        {
+            if(**it<=**t)
+            {
+                insert(it,*t);
+                sent=true;
+            }
+        }
+    }
+}
 
 template <class T>
 void container<T>::pop_front()

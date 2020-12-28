@@ -10,7 +10,6 @@ class Commento;
 using std::string;
 using std::endl;
 class Utente;
-
 class Domanda
 {
     friend std::ostream &operator<<(std::ostream &, const Domanda&);
@@ -28,8 +27,10 @@ public:
     Utente* get_autore_domanda() const;//OK
     string get_testo() const; //OK
     void set_priorita(unsigned int); //OK
+    bool operator <(const Domanda&) const;
     bool operator <=(const Domanda&) const; //OK
     bool operator >=(const Domanda&) const;//OK
+    bool operator >(const Domanda&) const;
     unsigned int get_priorita() const;//OK
 };
 

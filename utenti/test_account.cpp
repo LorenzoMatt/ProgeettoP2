@@ -19,7 +19,7 @@ int test_account()
     m.aggiungi_utente(new Basic("b","password","nome","cogmone","email"));
     m.aggiungi_utente(new Gold("gio","password","nome","cogmone","email"));
     m.aggiungi_utente(new Premium("p","password","nome","cogmone","email"));
-    m.aggiungi_utente(new Premium("p2","password","nome","cogmone","email"));
+    m.aggiungi_utente(new Basic("p2","password","nome","cogmone","email"));
     m.aggiungi_utente(new Basic("dio","password","nome","cogmone","email"));
     m.aggiungi_utente(new Premium("gesu","password","nome","cogmone","email"));
     m.aggiungi_utente(new Premium("maria","password","nome","cogmone","email"));
@@ -62,7 +62,7 @@ int test_account()
 //                 cout<<endl<<**it;
 
 //    cout<<A.get_utente()->get_punti()<<endl;
-    p.cambia_piano("Premium");
+    p2.cambia_piano("Premium");
 //    if(dynamic_cast<Premium*>(A.get_utente()))
 //        cout<<"OK"<<endl;
 //    else
@@ -75,15 +75,49 @@ int test_account()
 //            cout<<endl<<**it;
 
 //    m.togli_utente(g);
-    maria.fai_domanda("can dio");
-    p.fai_domanda("dio can");
-    b.fai_domanda("dio can");
-    dio.fai_domanda("dio can");
-    p2.fai_domanda("dio can");
-    gio.fai_domanda("dio can");
-    gesu.fai_domanda("dio can");
+    b.fai_domanda("dio can",4);
+    maria.fai_domanda("can dio",5);
+    p.fai_domanda("dio can",3);
+    dio.fai_domanda("dio can",4);
+    p2.fai_domanda("dio can",2);
+    gio.fai_domanda("dio can",6);
+    gesu.fai_domanda("dio can",3);
+
     dio.aggiungi_amico(p.get_utente());
-    cout<<*p.get_domanda(p.get_domande_amici(),2);
+    container<Domanda*> d=p.ricerca_domanda("dio can");
+    for(auto it=d.begin();it!=d.end();++it)
+        cout<<(*it)->get_priorita()<<endl;
+//    Domanda s("cazzo",nullptr,2);
+//    Domanda f("cazzo",nullptr,1);
+    Domanda* d1=new Domanda("s",maria.get_utente(),2);
+    Domanda* d2=new Domanda("f",maria.get_utente(),3);
+    Domanda* d3=new Domanda("f",maria.get_utente(),5);
+    Domanda* d4=new Domanda("f",maria.get_utente(),8);
+    Domanda* d5=new Domanda("f",maria.get_utente(),2);
+    Domanda* d6=new Domanda("f",maria.get_utente(),7);
+    Domanda* d7=new Domanda("f",maria.get_utente(),3);
+    Domanda* d8=new Domanda("f",maria.get_utente(),3);
+    Domanda* d9=new Domanda("f",maria.get_utente(),9);
+    Domanda* d10=new Domanda("f",maria.get_utente(),10);
+
+    container<Domanda*> q;
+    q.insertion_sort_pointer(&d1);
+    q.insertion_sort_pointer(&d2);
+    q.insertion_sort_pointer(&d3);
+    q.insertion_sort_pointer(&d4);
+    q.insertion_sort_pointer(&d5);
+    q.insertion_sort_pointer(&d6);
+    q.insertion_sort_pointer(&d7);
+    q.insertion_sort_pointer(&d8);
+    q.insertion_sort_pointer(&d9);
+    q.insertion_sort_pointer(&d10);
+
+//    for(auto it=q.begin();it!=q.end();++it)
+//        cout<<**it<<endl;
+//    if(s>f)
+//        cout<<endl<<"OK"<<endl;
+//    else
+//        cout<<endl<<"non ok"<<endl;
 //    cout<<dio.ricerca_contatto("p");
 //    dio.togli_amico(p.get_utente());
 //    cout<<dio.ricerca_contatto("p");

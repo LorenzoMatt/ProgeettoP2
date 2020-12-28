@@ -151,7 +151,10 @@ container<Domanda *> Utente::get_domande_amici() const
 {
     container<Domanda *> d;
     for(auto it=amici.begin();it!=amici.end();++it){
-       d=d+(*it)->domande;
+       for(auto ut=(*it)->domande.begin();ut!=(*it)->domande.end();++ut)
+       {
+           d.insertion_sort_pointer(&*ut);
+       }
     }
     return d;
 }

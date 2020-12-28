@@ -37,6 +37,11 @@ void Domanda::set_priorita(unsigned int p)
     priorita=p;
 }
 
+bool Domanda::operator <(const Domanda & d) const
+{
+    return priorita<d.priorita;
+}
+
 bool Domanda::operator <=(const Domanda &d) const
 {
     return priorita<=d.priorita;
@@ -47,11 +52,15 @@ bool Domanda::operator >=(const Domanda &d) const
     return priorita >=d.priorita;
 }
 
+bool Domanda::operator >(const Domanda &d) const
+{
+    return priorita>d.priorita;
+}
+
 unsigned int Domanda::get_priorita() const
 {
     return priorita;
 }
-
 
 std::ostream &operator<<(std::ostream & os, const Domanda& d){
 

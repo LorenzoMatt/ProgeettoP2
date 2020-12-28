@@ -23,9 +23,9 @@ container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const
     for(auto it=get_amici().begin();it!=get_amici().end();++it)//scorro gli amici
     {
         const container<Domanda*>& domande_utente=(*it)->get_domande();//lista di domande dell'amico esaminato
-        for(auto it=domande_utente.begin();it!=domande_utente.end();++it)// scorro la lista delle domande dell'amico corrente
+        for(auto dt=domande_utente.begin();dt!=domande_utente.end();++dt)// scorro la lista delle domande dell'amico corrente
         {
-            container<string> domanda_esaminata=split((*it)->get_testo()," ");// divido la domanda corrente per spazi
+            container<string> domanda_esaminata=split((*dt)->get_testo()," ");// divido la domanda corrente per spazi
             unsigned int lunghezza_parola_esaminata=domanda_esaminata.countElements();
             unsigned int count=0;//numero di parole che matchano fra domanda_fatta e domande_esaminata
             for(auto ut=domanda_esaminata.begin();ut!=domanda_esaminata.end() && count<=(lunghezza_parola_esaminata*0.6);++ut)
@@ -44,7 +44,7 @@ container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const
              }
             if(count>=(lunghezza_parola_esaminata*0.6))// basterebbe ==
             {
-                domande_trovate_amici.insertion_sort(*it);
+                domande_trovate_amici.insertion_sort_pointer(&*dt);
             }
         }
 
@@ -57,9 +57,9 @@ container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const
 // se non è se stesso e se l'utente esaminato non è fra gli amici
         {
             const container<Domanda*>& domande_utente=(*it)->get_domande();//lista di domande dell'amico esaminato
-            for(auto it=domande_utente.begin();it!=domande_utente.end();++it)// scorro la lista delle domande dell'amico corrente
+            for(auto dt=domande_utente.begin();dt!=domande_utente.end();++dt)// scorro la lista delle domande dell'amico corrente
             {
-                container<string> domanda_esaminata=split((*it)->get_testo()," ");// divido la domanda corrente per spazi
+                container<string> domanda_esaminata=split((*dt)->get_testo()," ");// divido la domanda corrente per spazi
                 unsigned int lunghezza_parola_esaminata=domanda_esaminata.countElements();
                 unsigned int count=0;//numero di parole che matchano fra domanda_fatta e domande_esaminata
                 for(auto ut=domanda_esaminata.begin();ut!=domanda_esaminata.end() && count<=(lunghezza_parola_esaminata*0.6);++ut)
@@ -78,7 +78,7 @@ container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const
                 }
                 if(count>=(lunghezza_parola_esaminata*0.6))// basterebbe ==
                 {
-                    domande_trovate_modello.insertion_sort(*it);
+                    domande_trovate_modello.insertion_sort_pointer(&*dt);
                 }
             }
         }
