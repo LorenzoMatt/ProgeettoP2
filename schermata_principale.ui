@@ -26,7 +26,7 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <layout class="QHBoxLayout" name="layuoutcerca" stretch="1,5,4,1">
+      <layout class="QHBoxLayout" name="layuoutcerca" stretch="1,6,1,4,1">
        <property name="leftMargin">
         <number>14</number>
        </property>
@@ -47,7 +47,18 @@
        <item>
         <widget class="QLineEdit" name="lineEdit_2">
          <property name="placeholderText">
-          <string>carca domande</string>
+          <string>cerca domande</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_13">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>cerca.png</normaloff>cerca.png</iconset>
          </property>
         </widget>
        </item>
@@ -2506,11 +2517,11 @@ p, li { white-space: pre-wrap; }
         </attribute>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,4,0">
+          <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,4,3">
            <item>
             <widget class="QLabel" name="label_7">
              <property name="text">
-              <string>hai scritto 5 domande</string>
+              <string>5 domande presenti</string>
              </property>
             </widget>
            </item>
@@ -2530,7 +2541,7 @@ p, li { white-space: pre-wrap; }
            <item>
             <widget class="QPushButton" name="pushButton_7">
              <property name="text">
-              <string>Scrivi una nuova domanda</string>
+              <string>nuova domanda</string>
              </property>
             </widget>
            </item>
