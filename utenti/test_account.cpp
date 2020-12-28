@@ -18,7 +18,7 @@ int test_account()
     Model m;
     m.aggiungi_utente(new Basic("b","password","nome","cogmone","email"));
     m.aggiungi_utente(new Gold("gio","password","nome","cogmone","email"));
-    m.aggiungi_utente(new Premium("p","password","nome","cogmone","email"));
+    m.aggiungi_utente(new Basic("p","password","nome","cogmone","email"));
     m.aggiungi_utente(new Basic("p2","password","nome","cogmone","email"));
     m.aggiungi_utente(new Basic("dio","password","nome","cogmone","email"));
     m.aggiungi_utente(new Premium("gesu","password","nome","cogmone","email"));
