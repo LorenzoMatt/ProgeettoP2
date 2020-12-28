@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>727</width>
-    <height>512</height>
+    <height>545</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -26,7 +26,7 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <layout class="QHBoxLayout" name="layuoutcerca" stretch="1,4,2,2">
+      <layout class="QHBoxLayout" name="layuoutcerca" stretch="1,5,4,1">
        <property name="leftMargin">
         <number>14</number>
        </property>
@@ -45,19 +45,6 @@
         </widget>
        </item>
        <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
         <widget class="QLineEdit" name="lineEdit_2">
          <property name="placeholderText">
           <string>carca domande</string>
@@ -68,6 +55,17 @@
         <widget class="QLineEdit" name="lineEdit">
          <property name="placeholderText">
           <string>cerca utente</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>cerca.png</normaloff>cerca.png</iconset>
          </property>
         </widget>
        </item>
@@ -96,7 +94,7 @@
        <property name="currentIndex">
         <number>1</number>
        </property>
-       <widget class="QWidget" name="tabWidgetPage1" native="true">
+       <widget class="QWidget" name="tabWidgetPage1">
         <attribute name="title">
          <string>Domande amici</string>
         </attribute>
