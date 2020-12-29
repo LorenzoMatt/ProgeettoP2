@@ -1,11 +1,10 @@
 #include "test_polimorfismo.h"
-#include "home.h"
+#include "log.h"
 #include <QApplication>
 #include "model.h"
 #include <list>
 #include "deepptr.h"
 #include <memory>
-#include "prova.h"
 #include "premium.h"
 #include "gold.h"
 #include "basic.h"
@@ -13,7 +12,7 @@
 
 int test_polimorfismo()
 {
-    Model m;
+    Database m;
     m.aggiungi_utente(new Basic("b","password","nome","cogmone","email"));
     m.aggiungi_utente(new Gold("gio","password","nome","cogmone","email"));
     m.aggiungi_utente(new Premium("p","password","nome","cogmone","email"));

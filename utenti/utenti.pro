@@ -24,14 +24,12 @@ HEADERS += accesso.h \
            container.h \
            deepptr.h \
            domanda.h \
-           home.h \
            model.h \
            non_autore_domanda.h \
            profilo.h \
            togliere_te_stesso_dagli_amici.h \
            utente.h \
     utente_gia_presente.h \
-    prova.h \
     test_deep_ptr.h \
     test_domande.h \
     test_model.h \
@@ -44,20 +42,20 @@ HEADERS += accesso.h \
     premium.h \
     test_polimorfismo.h \
     account.h \
-    test_account.h
+    test_account.h \
+    log.h \
+    vista_utente.h
 FORMS +=
 SOURCES += accesso.cpp \
            amico_non_presente.cpp \
            commento.cpp \
            domanda.cpp \
-           home.cpp \
            main.cpp \
            model.cpp \
            non_autore_domanda.cpp \
            profilo.cpp \
            utente.cpp \
     utente_gia_presente.cpp \
-    prova.cpp \
     test_domande.cpp \
     test_utenti.cpp \
     test_profilo.cpp \
@@ -70,4 +68,6 @@ SOURCES += accesso.cpp \
     premium.cpp \
     test_polimorfismo.cpp \
     account.cpp \
-    test_account.cpp
+    test_account.cpp \
+    log.cpp \
+    vista_utente.cpp

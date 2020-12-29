@@ -1,17 +1,16 @@
-#include "home.h"
+#include "log.h"
 #include <QApplication>
 #include "model.h"
 #include <list>
 #include "deepptr.h"
 #include <memory>
-#include "prova.h"
 #include "premium.h"
 #include "gold.h"
 #include "basic.h"
 int test_model()
 {
 
-    Model m;
+    Database m;
 //    m.aggiungi_utente(new Premium("Pikachu","dioboia","diostronzo","porco","dio"));
 //    m.aggiungi_utente(new Gold("Lorenzo","stronzo","diostronzo","porco","dio"));
 //    m.aggiungi_utente(new Basic("Elton","diocan","diostronzo","porco","dio"));

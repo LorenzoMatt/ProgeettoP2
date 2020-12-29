@@ -16,7 +16,7 @@ Pagamento::Pagamento(Profilo p, Accesso c, container<Utente *> a, container<Uten
 {
 
 }
-container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const Model & m) const
+container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const Database & m) const
 {
     container<string> domanda_fatta=split(domanda," ");// divido la stringa domanda per spazi
     container<Domanda*> domande_trovate_amici;

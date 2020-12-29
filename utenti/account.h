@@ -2,15 +2,15 @@
 #define ACCOUNT_H
 #include "utente.h"
 #include "model.h"
-class Model;
+class Database;
 class Account
 {
 private:
     Utente* utente;
-    Model* model;
+    Database* model;
 public:
     Account();
-    Account(Utente *, Model *);
+    Account(Utente *, Database *);
            /* getter*/
     Profilo get_profilo() const;//OK
     Accesso get_credenziali() const;//OK

@@ -4,12 +4,12 @@
 #include "premium.h"
 
 
-Model::Model()
+Database::Database()
 {
 
 }
 
-bool Model::check_presenza(const std::string &username)
+bool Database::check_presenza(const std::string &username)
 {
     bool trovato=false;
     for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
@@ -20,7 +20,7 @@ bool Model::check_presenza(const std::string &username)
     return trovato;
 }
 
-void Model::sistema_amici_seguaci(Utente* utente)
+void Database::sistema_amici_seguaci(Utente* utente)
 {
         for(auto it=utente->seguaci.begin();it!=utente->seguaci.end();++it)
         {
@@ -32,7 +32,7 @@ void Model::sistema_amici_seguaci(Utente* utente)
         }
 }
 
-void Model::reverse_seguaci_amici(Utente* utente)
+void Database::reverse_seguaci_amici(Utente* utente)
 {
         for(auto it=utente->seguaci.begin();it!=utente->seguaci.end();++it)
         {
@@ -44,11 +44,11 @@ void Model::reverse_seguaci_amici(Utente* utente)
         }
 }
 
-Model::Model(const container<DeepPtr<Utente> > &u):utenti(u)
+Database::Database(const container<DeepPtr<Utente> > &u):utenti(u)
 {
 }
 
-void Model::aggiungi_utente(const DeepPtr<Utente> &utente)
+void Database::aggiungi_utente(const DeepPtr<Utente> &utente)
 {
     try{
         if(!check_presenza(utente->get_credenziali().get_username()))
@@ -62,7 +62,7 @@ void Model::aggiungi_utente(const DeepPtr<Utente> &utente)
 
 }
 
-void Model::togli_utente(Utente *utente)
+void Database::togli_utente(Utente *utente)
 {
     bool trovato=false;
     try
@@ -86,7 +86,7 @@ void Model::togli_utente(Utente *utente)
     }
 }
 
-void Model::togli_utente(const std::string & username)
+void Database::togli_utente(const std::string & username)
 {
         bool trovato=false;
         try
@@ -110,7 +110,7 @@ void Model::togli_utente(const std::string & username)
         }
 }
 
-Utente* Model::cambia_piano(Utente *utente, const std::string &piano)
+Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
 {
     bool trovato=false;
     try
@@ -147,12 +147,12 @@ Utente* Model::cambia_piano(Utente *utente, const std::string &piano)
     return nullptr;
 }
 
-const container<DeepPtr<Utente>>& Model::get_utenti() const
+const container<DeepPtr<Utente>>& Database::get_utenti() const
 {
     return utenti;
 }
 
-Utente* Model::get_utente(const string& username) const
+Utente* Database::get_utente(const string& username) const
 {
     bool trovato=false;
 
@@ -168,7 +168,7 @@ Utente* Model::get_utente(const string& username) const
 
 }
 
-DeepPtr<Utente> *Model::get_utente_deep(const std::string & username)
+DeepPtr<Utente> *Database::get_utente_deep(const std::string & username)
 {
     bool trovato=false;
     try{

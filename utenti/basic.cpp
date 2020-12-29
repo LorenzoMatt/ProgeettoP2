@@ -23,7 +23,7 @@ Basic::Basic(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s,
 
 }
 
-void Basic::cerca_utente(const std::string & username, const Model & model, container<std::string> & lista_di_elementi) const
+void Basic::cerca_utente(const std::string & username, const Database & model, container<std::string> & lista_di_elementi) const
 {
     try
     {
@@ -72,7 +72,7 @@ void Basic::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funzi
     }
 }
 
-container<Domanda *> Basic::cerca_domanda(const std::string & domanda, const Model & m) const
+container<Domanda *> Basic::cerca_domanda(const std::string & domanda, const Database & m) const
 {
         container<string> domanda_fatta=split(domanda," ");// divido la stringa domanda per spazi
         container<Domanda*> domande_trovate;

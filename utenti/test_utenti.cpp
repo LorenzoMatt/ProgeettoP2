@@ -1,5 +1,5 @@
 #include "test_utenti.h"
-#include "home.h"
+#include "log.h"
 #include <QApplication>
 #include "premium.h"
 #include "gold.h"
@@ -8,7 +8,6 @@
 #include <list>
 #include "deepptr.h"
 #include <memory>
-#include "prova.h"
 int test_utenti()
 {
     cout<<"TEST UTENTI"<<endl<<endl;

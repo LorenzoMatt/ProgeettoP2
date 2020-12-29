@@ -23,7 +23,7 @@ Premium::Premium(Profilo p, Accesso c, container<Utente *> a, container<Utente *
 
 }
 
-void Premium::cerca_utente(const std::string &username, const Model &model, container<std::string> &lista_di_elementi) const
+void Premium::cerca_utente(const std::string &username, const Database &model, container<std::string> &lista_di_elementi) const
 {
     try
     {

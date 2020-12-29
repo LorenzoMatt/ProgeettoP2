@@ -5,7 +5,7 @@ Account::Account()
 
 }
 
-Account::Account(Utente *u, Model *m) : utente(u),model(m)
+Account::Account(Utente *u, Database *m) : utente(u),model(m)
 {
 
 }
