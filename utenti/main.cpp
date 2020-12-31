@@ -5,36 +5,38 @@
 #include <list>
 #include "deepptr.h"
 #include <memory>
-#include "test_utenti.h"
-#include "test_deep_ptr.h"
-#include "test_domande.h"
-#include "test_model.h"
-#include "test_profilo.h"
-#include "test_polimorfismo.h"
-#include "test_account.h"
-#include "QPushButton"
-#include "vista_utente.h"
-#include "vista_domanda.h"
-#include "controller.h"
+//#include "test_utenti.h"
+//#include "test_deep_ptr.h"
+//#include "test_domande.h"
+//#include "test_model.h"
+//#include "test_profilo.h"
+//#include "test_polimorfismo.h"
+//#include "test_account.h"
+//#include "QPushButton"
+//#include "vista_utente.h"
+//#include "vista_domanda.h"
+//#include "controller.h"
 #include "account.h"
 #include "basic.h"
+#include "gold.h"
+#include "premium.h"
 #include "vista_amministratore.h"
 int main(int argc ,char** argv)
 {
 
-    QApplication x(argc, argv);
-//    Database d;
-//    Account a(new Basic("pippo","1234","mirko","stella","ing_mirko@genioincompreso.com"),&d);
-//    cout<<*a.get_utente();
-//    cout<<endl<<d.get_utenti().countElements()<<endl;
-    vista_amministratore w;
+//    QApplication x(argc, argv);
+////    Database d;
+////    Account a(new Basic("pippo","1234","mirko","stella","ing_mirko@genioincompreso.com"),&d);
+////    cout<<*a.get_utente();
+////    cout<<endl<<d.get_utenti().countElements()<<endl;
+//    vista_amministratore w;
 
-//    c.setModel(&a);
-//    c.setVista(&w);
-//    w.setController(&c);
+////    c.setModel(&a);
+////    c.setVista(&w);
+////    w.setController(&c);
 
-    w.show();
-    return x.exec();
+//    w.show();
+//    return x.exec();
 //test_deep_ptr();
 //test_domande();
 //test_model();
@@ -42,7 +44,16 @@ int main(int argc ,char** argv)
 //test_utenti();
 //test_polimorfismo();
 //test_account();
+    Database m;
+    m.aggiungi_utente(new Basic("b","password","nome","cogmone","email"));
+    m.aggiungi_utente(new Gold("gio","password","nome","cogmone","email"));
+    m.aggiungi_utente(new Basic("p","password","nome","cogmone","email"));
+    m.aggiungi_utente(new Basic("p2","password","nome","cogmone","email"));
+    m.aggiungi_utente(new Basic("dio","password","nome","cogmone","email"));
+    m.aggiungi_utente(new Premium("gesu","password","nome","cogmone","email"));
+    m.aggiungi_utente(new Premium("maria","password","nome","cogmone","email"));
 
+    m.exportdati();
 
 
 

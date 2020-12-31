@@ -3,6 +3,14 @@
 #include "utente.h"
 #include "deepptr.h"
 #include "utente_gia_presente.h"
+
+#include <QSettings>
+#include <QFile>
+#include <QDomDocument>
+#include <QMessageBox>
+#include <QXmlStreamWriter>
+
+
 class Utente;
 class Domanda;
 class Database
@@ -22,7 +30,9 @@ public:
     void togli_utente(Utente* utente);//OK
     void togli_utente(const string&);
     Utente* cambia_piano(Utente* utente,const string& piano);//OK
-
+    Utente* check_credenziali(const string&, const string&) const;
+    void importdati();
+    void exportdati();
 };
 
 #endif // MODEL_H

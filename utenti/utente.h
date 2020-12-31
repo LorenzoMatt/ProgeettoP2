@@ -21,6 +21,9 @@ private:
     container<Utente*> amici;
     container<Utente*> seguaci;
     container<Domanda*> domande;
+
+    //unsigned int punti;
+    //unsigned int risposte_date;
     void aggiungi_seguace(Utente& utente); //OK
     void togli_amico_ausiliario(Utente* utente); //OK
     void togli_seguace_ausiliario(Utente* utente); //OK

@@ -7,6 +7,7 @@
 #include <QVBoxLayout>
 #include <QLineEdit>
 #include <QFormLayout>
+#include<QErrorMessage>
 class Login : public QWidget
 {
     Q_OBJECT
@@ -24,6 +25,7 @@ private slots:
     void login_user();
     void login_admin();
     void registrazione();
+    void build_vista_utente(const QString&,const QString&,const QString&,const QString&,const QString&,const QString&);
 };
 
 #endif // HOME_H

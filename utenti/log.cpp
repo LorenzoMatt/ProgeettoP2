@@ -1,6 +1,7 @@
 #include "log.h"
-
-
+#include "creautente.h"
+#include "vista_utente.h"
+#include "vista_amministratore.h"
 Login::Login(QWidget *parent)
 {
     setWindowTitle("Login");
@@ -55,18 +56,49 @@ Login::Login(QWidget *parent)
 
 Login::~Login()
 {
+
 }
+
 
 void Login::login_user()
 {
+//    string user=username->text().toStdString();
+//    string pw=password->text().toStdString();
+//    Utente* utente=db.check_credenziali(user,pw);
+    if(true)
+    {
+        VistaUtente* v=new VistaUtente();
+        v->show();
+        close();
+    }
+    else
+    {
+        QErrorMessage * e=new QErrorMessage();
+        e->showMessage("Username o Password non corretti");
+    }
 }
 
 void Login::login_admin()
 {
-
+//    vista_amministratore* v=new vista_amministratore();
+//    v->show();
+//    close();
 }
 
 void Login::registrazione()
+{
+//    creautente* utente=new creautente(this);
+//    utente->setWindowTitle("aggiungi un utente");
+
+//    utente->show();
+//    connect(utente,SIGNAL(invia(const QString&,const QString&,const QString&,const QString&,const QString&,const QString&)),
+//            this, SLOT(aggiungi_utente(const QString&,const QString&,const QString&,const QString&,const QString&,const QString&)));
+//    connect(utente,SIGNAL(invia(const QString&,const QString&,const QString&,const QString&,const QString&,const QString&)),
+//            this,SLOT(build_vista_utente(const QString&,const QString&,const QString&,const QString&,const QString&,const QString&)));
+}
+
+void Login::build_vista_utente(const QString& username,const QString& pw,const QString& nome,
+                               const QString& cognome,const QString& email,const QString& piano)
 {
 
 }

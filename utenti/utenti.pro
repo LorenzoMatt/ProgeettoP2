@@ -10,6 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 # feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
+QT += xml
 DEFINES += QT_DEPRECATED_WARNINGS
 
 # You can also make your code fail to compile if you use deprecated APIs.
@@ -47,8 +48,9 @@ HEADERS += accesso.h \
     vista_domanda.h \
     vista_utente.h \
     creautente.h \
-    database.h \
-    vista_amministratore.h
+    vista_amministratore.h \
+    controller_admin.h \
+    funzioni_globali.h
 FORMS +=
 SOURCES += accesso.cpp \
            amico_non_presente.cpp \
@@ -78,4 +80,5 @@ SOURCES += accesso.cpp \
     vista_utente.cpp \
     creautente.cpp \
     database.cpp \
-    vista_amministratore.cpp
+    vista_amministratore.cpp \
+    controller_admin.cpp

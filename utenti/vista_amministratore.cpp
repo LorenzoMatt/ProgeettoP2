@@ -1,5 +1,7 @@
 #include "vista_amministratore.h"
 #include "basic.h"
+#include "gold.h"
+#include "premium.h"
 void vista_amministratore::build_buttons()
 {
     aggiungi=new QPushButton("Aggiungi utente");
@@ -18,6 +20,8 @@ void vista_amministratore::build_buttons()
 void vista_amministratore::finestra_aggiungi_utente()
 {
     creautente* utente=new creautente(this);
+    utente->setWindowTitle("aggiungi un utente");
+
     utente->show();
     connect(utente,SIGNAL(invia(const QString&,const QString&,const QString&,const QString&,const QString&,const QString&)),
             this, SLOT(aggiungi_utente(const QString&,const QString&,const QString&,const QString&,const QString&,const QString&)));
@@ -54,7 +58,7 @@ void vista_amministratore::aggiungi_utente(const QString & username, const QStri
 void vista_amministratore::creazione_tabella()
 {
     tabella_utenti=new QTableWidget();
-    tabella_utenti->setColumnCount(6);
+    tabella_utenti->setColumnCount(7);
     horizontalheader=new QStringList();
     horizontalheader->append("Username");
     horizontalheader->append("Nome");
@@ -62,6 +66,7 @@ void vista_amministratore::creazione_tabella()
     horizontalheader->append("E-mail");
     horizontalheader->append("Competenze");
     horizontalheader->append("Titoli di studio");
+    horizontalheader->append("Piano");
     tabella_utenti->setEditTriggers(0);
     tabella_utenti->setHorizontalHeaderLabels(*horizontalheader);
     tabella_utenti->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -157,13 +162,20 @@ void vista_amministratore::aggiorna_tabella()
         QTableWidgetItem* email=new QTableWidgetItem(QString::fromStdString((*it)->get_profilo().get_email()));
         QTableWidgetItem* Competenze=new QTableWidgetItem(QString::fromStdString((*it)->get_profilo().competenze_toString()));
         QTableWidgetItem* Titoli=new QTableWidgetItem(QString::fromStdString((*it)->get_profilo().titoli_di_studio_toString()));
-
+        QTableWidgetItem* Piano=new QTableWidgetItem();
+        if(dynamic_cast<Basic*>(&**it))
+            Piano->setText("Basic");
+        if(dynamic_cast<Gold*>(&**it))
+            Piano->setText("Gold");
+        if(dynamic_cast<Premium*>(&**it))
+            Piano->setText("Premium");
         tabella_utenti->setItem(row,0,Username);
         tabella_utenti->setItem(row,1,Nome);
         tabella_utenti->setItem(row,2,Cognome);
         tabella_utenti->setItem(row,3,email);
         tabella_utenti->setItem(row,4,Competenze);
         tabella_utenti->setItem(row,5,Titoli);
+        tabella_utenti->setItem(row,6,Piano);
     }
 
 }
@@ -171,15 +183,15 @@ void vista_amministratore::aggiorna_tabella()
 void vista_amministratore::crea_lista_utenti(Database& c)
 {
     c.aggiungi_utente(new Basic("lorenzo99","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
-    c.aggiungi_utente(new Basic("lorenzo98","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
-    c.aggiungi_utente(new Basic("lorenzo97","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
-    c.aggiungi_utente(new Basic("lorenzo96","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
-    c.aggiungi_utente(new Basic("lorenzo95","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
+    c.aggiungi_utente(new Gold("lorenzo98","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
+    c.aggiungi_utente(new Premium("lorenzo97","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
+    c.aggiungi_utente(new Premium("lorenzo96","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
+    c.aggiungi_utente(new Gold("lorenzo95","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
     c.aggiungi_utente(new Basic("lorenzo94","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
-    c.aggiungi_utente(new Basic("lorenzo93","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
+    c.aggiungi_utente(new Premium("lorenzo93","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
     c.aggiungi_utente(new Basic("lorenzo92","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
     c.aggiungi_utente(new Basic("lorenzo91","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
-    c.aggiungi_utente(new Basic("lorenzo90","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
+    c.aggiungi_utente(new Gold("lorenzo90","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
 
 
     Utente* lorenzo99=c.get_utente("lorenzo99");
