@@ -54,51 +54,59 @@ int main(int argc ,char** argv)
 //    m.aggiungi_utente(new Premium("maria","password","nome","cogmone","email"));
 
     Database m;
-    m.aggiungi_utente(new Premium("Pikachu","dioboia","diostronzo","porco","dio"));
-    m.aggiungi_utente(new Gold("Lorenzo","stronzo","diostronzo","porco","dio"));
-    m.aggiungi_utente(new Basic("Elton","diocan","diostronzo","porco","dio"));
-    m.aggiungi_utente(new Gold("Francesca","diobestia","diostronzo","porco","dio"));
-    m.aggiungi_utente(new Premium("Mirko","dioluamaro","diostronzo","porco","dio"));
-    m.aggiungi_utente(DeepPtr<Utente>(new Basic("Giorgia","dioluamaro","diostronzo","porco","dio")));
-    Utente* Pikachu=m.get_utente("Pikachu");
-    Utente* Lorenzo=m.get_utente("Lorenzo");
-    Utente* Elton=m.get_utente("Elton");
-    Utente* Francesca=m.get_utente("Francesca");
-    Utente* Mirko=m.get_utente("Mirko");
-    Utente* Giorgia=m.get_utente("Giorgia");
-    //Pikachu->aggiungi_amico(*Pikachu); funziona
-    Pikachu->aggiungi_amico(Lorenzo);
-    Pikachu->aggiungi_amico(Elton);
-    Pikachu->aggiungi_amico(Mirko);
-    Pikachu->aggiungi_amico(Giorgia);
-    Giorgia->AggiungiCompetenza("masturbarsi");
-    Giorgia->AggiungiCompetenza("masturbarsi");
+//    m.aggiungi_utente(new Premium("Pikachu","dioboia","diostronzo","porco","dio"));
+//    m.aggiungi_utente(new Gold("Lorenzo","stronzo","diostronzo","porco","dio"));
+//    m.aggiungi_utente(new Basic("Elton","diocan","diostronzo","porco","dio"));
+//    m.aggiungi_utente(new Gold("Francesca","diobestia","diostronzo","porco","dio"));
+//    m.aggiungi_utente(new Premium("Mirko","dioluamaro","diostronzo","porco","dio"));
+//    m.aggiungi_utente(DeepPtr<Utente>(new Basic("Giorgia","dioluamaro","diostronzo","porco","dio")));
+//    Utente* Pikachu=m.get_utente("Pikachu");
+//    Utente* Lorenzo=m.get_utente("Lorenzo");
+//    Utente* Elton=m.get_utente("Elton");
+//    Utente* Francesca=m.get_utente("Francesca");
+//    Utente* Mirko=m.get_utente("Mirko");
+//    Utente* Giorgia=m.get_utente("Giorgia");
+//    //Pikachu->aggiungi_amico(*Pikachu); funziona
+//    Pikachu->aggiungi_amico(Lorenzo);
+//    Pikachu->aggiungi_amico(Elton);
+//    Pikachu->aggiungi_amico(Mirko);
+//    Pikachu->aggiungi_amico(Giorgia);
+//    Giorgia->AggiungiCompetenza("masturbarsi");
+//    Giorgia->AggiungiCompetenza("masturbarsi");
 
-    Domanda* domanda1=new Domanda("prova a fare una domanda",Pikachu,2);
-    Domanda* domanda2=new Domanda("prova a fare una domanda",Pikachu,2);
-    Domanda* domanda3=new Domanda("prova a fare una domanda",Pikachu,2);
-    Domanda* domanda4=new Domanda("prova a fare una domanda",Pikachu,2);
-    Domanda* domanda5=new Domanda("prova a fare una domanda",Pikachu,2);
+//    Domanda* domanda1=new Domanda("prova a fare una domanda",Pikachu,2);
+//    Domanda* domanda2=new Domanda("prova a fare una domanda",Pikachu,2);
+//    Domanda* domanda3=new Domanda("prova a fare una domanda",Pikachu,2);
+//    Domanda* domanda4=new Domanda("prova a fare una domanda",Pikachu,2);
+//    Domanda* domanda5=new Domanda("prova a fare una domanda",Pikachu,2);
 
-    Pikachu->fai_domanda(domanda1);
-    Pikachu->fai_domanda(domanda2);
-    Pikachu->fai_domanda(domanda3);
-    Pikachu->fai_domanda(domanda4);
-    Pikachu->fai_domanda(domanda5);
-    Pikachu->fai_domanda(new Domanda("prova a fare una domanda",Pikachu,2));
-    Pikachu->fai_domanda(new Domanda("prova a fare una domanda",Pikachu,2));
-    Giorgia->fai_domanda(new Domanda("prova a fare una domanda",Giorgia,1));
-    Giorgia->fai_domanda(new Domanda("prova a fare una domanda",Giorgia,1));
-    Giorgia->fai_domanda(new Domanda("prova a fare una domanda",Giorgia,1));
+//    Pikachu->fai_domanda(domanda1);
+//    Pikachu->fai_domanda(domanda2);
+//    Pikachu->fai_domanda(domanda3);
+//    Pikachu->fai_domanda(domanda4);
+//    Pikachu->fai_domanda(domanda5);
+//    Pikachu->fai_domanda(new Domanda("prova a fare una domanda",Pikachu,2));
+//    Pikachu->fai_domanda(new Domanda("prova a fare una domanda",Pikachu,2));
+//    Giorgia->fai_domanda(new Domanda("prova a fare una domanda",Giorgia,1));
+//    Giorgia->fai_domanda(new Domanda("prova a fare una domanda",Giorgia,1));
+//    Giorgia->fai_domanda(new Domanda("prova a fare una domanda",Giorgia,1));
 
-    Giorgia->scrivi_commento(domanda1,"prova per un commento");
-    Giorgia->scrivi_commento(domanda1,"prova per un commento");
-    Giorgia->scrivi_commento(domanda1,"prova per un commento");
-    Giorgia->scrivi_commento(domanda2,"prova per un commento");
-    Giorgia->scrivi_commento(domanda3,"prova per un commento");
-    Giorgia->scrivi_commento(domanda2,"prova per un commento");
+//    Giorgia->scrivi_commento(domanda1,"prova per un commento");
+//    Giorgia->scrivi_commento(domanda1,"prova per un commento");
+//    Giorgia->scrivi_commento(domanda1,"prova per un commento");
+//    Giorgia->scrivi_commento(domanda2,"prova per un commento");
+//    Giorgia->scrivi_commento(domanda3,"prova per un commento");
+//    Giorgia->scrivi_commento(domanda2,"prova per un commento");
 
-    m.exportdati();
+//    m.exportdati();
+    m.importdati();
+    cout<<m.get_utenti().size();
+//    cout<<endl<<m.get_utenti().size()<<endl;
+
+//    for(auto it=m.get_utenti().begin();it!=m.get_utenti().end();++it)
+//    {
+//        cout<<endl<<**it;
+//    }
 
 
 //    m.aggiungi_utente(new Premium("Pikachu","dioboia","diostronzo","porco","dio"));

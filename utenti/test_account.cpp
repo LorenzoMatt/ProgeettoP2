@@ -44,9 +44,9 @@ int test_account()
     p2.AggiungiCompetenza("dioboia");
     p2.AggiungiTitoloDiStudio("diocan");
     cout<<"amici di p"<<endl;
-    cout<<p.get_utente()->get_amici().countElements()<<endl;
+    cout<<p.get_utente()->get_amici().size()<<endl;
     //m.togli_utente("gesu");
-    cout<<p.get_utente()->get_amici().countElements()<<endl;
+    cout<<p.get_utente()->get_amici().size()<<endl;
     cout<<"seguaci di maria"<<maria.get_utente()->get_seguaci()<<endl;
     cout<<"seguaci di maria"<<maria.get_utente()->get_seguaci()<<endl;
     cout<<"punti di maria "<<maria.get_punti()<<endl;

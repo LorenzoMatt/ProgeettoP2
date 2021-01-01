@@ -34,7 +34,7 @@ public:
     Utente() =delete;
     virtual ~Utente();
     Utente(const Utente& u);
-    Utente(string username,string password,string nome,string cognome,string email,unsigned int);
+    Utente(string username,string password,string nome,string cognome,string email,unsigned int,unsigned int =0);
     Utente(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,container<Domanda*> d,unsigned int punti,unsigned int risposte);
 
                      /*getter*/
@@ -48,6 +48,10 @@ public:
     unsigned int get_risposte_date() const; //serve per ottenere un bonus
 
 
+    //caricamento su file
+    void carica_competenze(const string&);
+    void carica_titoli(const string&);
+    void carica_amici(const string& amici, Database d);
 
     //void fai_domanda(const string& domanda,unsigned int priorita=0);
     void modifica_password(const string &);

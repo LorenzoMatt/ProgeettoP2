@@ -32,8 +32,6 @@ private:
 
     nodo *last, *first; // lista vuota iff first==last==nullptr    per garantire inserimento in testa e coda in tempo costante
     static nodo *copy(nodo *p, nodo *&l);
-    static bool is_less(nodo *d1, nodo *d2);
-
 public:
     ~container();
     container(const container &d);
@@ -41,7 +39,7 @@ public:
     container();
     container &operator=(const container &d);
     container operator+(const container &d);
-    T &operator[](unsigned int i);
+    T &operator[](unsigned int i); //non buono in una lista ma presente lo stesso
     void push_front(const T &t);
     void push_back(const T &t);
     void insertion_sort(const T &t);
@@ -49,9 +47,7 @@ public:
     void pop_front();
     void pop_back();
     bool empty() const;
-    unsigned int countElements() const;
-    bool operator<(const container &d) const;
-
+    unsigned int size() const;
     class iterator
     {
         friend class container<T>;
@@ -145,19 +141,6 @@ typename container<T>::nodo *container<T>::copy(nodo *p, nodo *&l) //si passa la
 }
 
 template <class T>
-bool container<T>::is_less(nodo *d1, nodo *d2)
-{
-    if (d2 == nullptr)
-        return false;
-    // d2 NON e' vuota
-    if (d1 == nullptr)
-        return true;
-    // d1 e d2 NON vuote
-    return d1->info < d2->info ||
-           (d1->info == d2->info && is_less(d1->next, d2->next));
-}
-
-template <class T>
 container<T>::container(const container<T> &d) : first(copy(d.first, last)) // first è ritornato dalla funzione, last viene modificato da copy
 {                                                               //grazie all'aliasing
     // first=copy(d.first,last);
@@ -177,9 +160,9 @@ container<T> &container<T>::operator=(const container<T> &d)
 template<class T>
 container<T> container<T>::operator+(const container<T> &d)
 {
-    if(d.countElements()==0)
+    if(d.size()==0)
         return container<T>(*this);
-    if(this->countElements()==0)
+    if(this->size()==0)
         return container<T>(d);
     container<T> aux;
     aux.first=copy(first,aux.last);
@@ -313,7 +296,7 @@ bool container<T>::empty() const
 }
 
 template <class T>
-unsigned int container<T>::countElements() const
+unsigned int container<T>::size() const
 {
     unsigned int cont=0;
     for (auto i=begin(); i!=end();++i)
@@ -392,12 +375,6 @@ template <class T>
 container<T>::~container()
 {
     delete first;
-}
-
-template <class T>
-bool container<T>::operator<(const container<T> &d) const
-{
-    return is_less(first, d.first);
 }
 
 /**********************************CONST_ITERATOR**********************************/

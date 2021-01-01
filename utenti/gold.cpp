@@ -13,8 +13,8 @@ unsigned int Gold::limitePerAverePuntiBonus=25;
 
 //}
 
-Gold::Gold(std::string username, std::string password, std::string nome, std::string cognome, std::string email)
-    :Pagamento(username,password,nome,cognome,email,puntiBonus)
+Gold::Gold(std::string username, std::string password, std::string nome, std::string cognome, std::string email, unsigned int punti, unsigned int risposte_date)
+    :Pagamento(username,password,nome,cognome,email,punti,risposte_date)
 {
 
 }

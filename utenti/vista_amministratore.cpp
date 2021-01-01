@@ -151,7 +151,7 @@ void vista_amministratore::aggiorna_tabella()
 //    auto c=controller->get_utenti();
     Database c;
     crea_lista_utenti(c);
-    tabella_utenti->setRowCount(c.get_utenti().countElements());
+    tabella_utenti->setRowCount(c.get_utenti().size());
 
     int row=0;
     for(auto it=c.get_utenti().begin();it!=c.get_utenti().end();++it,++row)

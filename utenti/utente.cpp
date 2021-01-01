@@ -21,8 +21,8 @@ Utente::Utente(const Utente &u):pf(u.pf),credenziali(u.credenziali),amici(u.amic
 }
 
 
-Utente::Utente(std::string username, std::string password, std::string nome, std::string cognome, std::string email, unsigned int punti)
-    :pf(Profilo(nome,cognome,email)),credenziali(Accesso(username,password)),punti(punti),risposte_date(0){}
+Utente::Utente(std::string username, std::string password, std::string nome, std::string cognome, std::string email, unsigned int punti, unsigned int risposte)
+    :pf(Profilo(nome,cognome,email)),credenziali(Accesso(username,password)),punti(punti),risposte_date(risposte){}
 
 Utente::Utente(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d, unsigned int punti, unsigned int risposte)
     :pf(p),credenziali(c),amici(a),seguaci(s),domande(d),punti(punti),risposte_date(risposte)
@@ -49,6 +49,72 @@ unsigned int Utente::get_risposte_date() const
 {
     return risposte_date;
 }
+
+void Utente::carica_amici(const std::string &amici, Database d)
+{
+    string amico;
+    for(unsigned int i=0; i<amici.size(); i++)
+    {
+        if(amici[i]!=' ')
+        {
+            amico=amico+amici[i];
+        }
+        else
+        {
+            aggiungi_amico(d.get_utente(amico));
+            amico="";
+        }
+        if(i==amici.size()-1)
+        {
+            aggiungi_amico(d.get_utente(amico));
+        }
+    }
+}
+
+void Utente::carica_titoli(const string& titoli)
+{
+    string tit;
+    for(unsigned int i=0; i<titoli.size(); i++)
+    {
+        if(titoli[i]!=' ')
+        {
+            tit=tit+titoli[i];
+        }
+        else
+        {
+            AggiungiTitoloDiStudio(tit);
+            tit="";
+        }
+        if(i==titoli.size()-1)
+        {
+            AggiungiTitoloDiStudio(tit);
+        }
+    }
+}
+
+void Utente::carica_competenze(const string& competenze)
+{
+
+    string competenza;
+    for(unsigned int i=0; i<competenze.size(); i++)
+    {
+        if(competenze[i]!=' ')
+        {
+            competenza=competenza+competenze[i];
+        }
+        else
+        {
+            AggiungiCompetenza(competenza);
+            competenza="";
+        }
+        if(i==competenze.size()-1)
+        {
+            AggiungiCompetenza(competenza);
+        }
+    }
+
+}
+
 
 void Utente::modifica_password(const std::string & pw)
 {
@@ -260,7 +326,7 @@ string Utente::get_username_amici() const //OK
 {
     string username;
     for(container<Utente*>::const_iterator it=amici.begin();it!=amici.end();++it)
-        username=(*it)->get_credenziali().get_username()+" "+username;
+        username=username+" "+(*it)->get_credenziali().get_username();
     return username;
 }
 

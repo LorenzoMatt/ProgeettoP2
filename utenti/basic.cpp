@@ -11,8 +11,8 @@ Basic::~Basic()
 
 }
 
-Basic::Basic(std::string username, std::string password, std::string nome, std::string cognome, std::string email)
-    :Utente(username,password,nome,cognome,email,puntiBonus)
+Basic::Basic(std::string username, std::string password, std::string nome, std::string cognome, std::string email, unsigned int punti, unsigned int risposte_date)
+    :Utente(username,password,nome,cognome,email,punti,risposte_date)
 {
 
 }
@@ -82,7 +82,7 @@ container<Domanda *> Basic::cerca_domanda(const std::string & domanda, const Dat
             for(auto dt=domande_utente.begin();dt!=domande_utente.end();++dt)// scorro la lista delle domande dell'amico corrente
             {
                 container<string> domanda_esaminata=split((*dt)->get_testo()," ");// divido la domanda corrente per spazi
-                unsigned int lunghezza_parola_esaminata=domanda_esaminata.countElements();
+                unsigned int lunghezza_parola_esaminata=domanda_esaminata.size();
                 unsigned int count=0;//numero di parole che matchano fra domanda_fatta e domande_esaminata
                 for(auto ut=domanda_esaminata.begin();ut!=domanda_esaminata.end() && count<=(lunghezza_parola_esaminata*0.6);++ut)
                     //scorri le parole della domanda_esaminata

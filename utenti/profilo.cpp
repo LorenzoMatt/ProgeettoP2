@@ -88,7 +88,7 @@ std::string Profilo::competenze_toString() const
 {
     string c;
     for(container<string>::const_iterator it=competenze.cbegin();it!=competenze.cend();++it)
-        c=*it+" "+c;
+        c=c+" "+*it;
     return c;
 }
 
@@ -96,7 +96,7 @@ std::string Profilo::titoli_di_studio_toString() const
 {
     string t;
     for(container<string>::const_iterator it=titoli_di_studio.cbegin();it!=titoli_di_studio.cend();++it)
-        t=*it+" "+t;
+        t=t+" "+*it;
     return t;
 }
 

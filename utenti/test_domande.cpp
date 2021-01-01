@@ -54,7 +54,7 @@ int test_domande()
     u2.push_back(new Basic("Lorenzo","dioboia","diostronzo","porco","dio"));
     u2.push_back(new Basic("Lorenzo","dioboia","diostronzo","porco","dio"));
     u2.push_back(new Basic("Lorenzo","dioboia","diostronzo","porco","dio"));
-    cout<<u.countElements()<<endl<<u2.countElements()<<endl;
+    cout<<u.size()<<endl<<u2.size()<<endl;
     unsigned int i=1;
     for(auto it=u.begin();it!=u.end();++it,++i)
         cout<<"domanda n. "<<i<<endl<<**it<<endl;

@@ -200,11 +200,6 @@ DeepPtr<Utente> *Database::get_utente_deep(const std::string & username)
     return 0;
 }
 
-void Database::importdati()
-{
-
-}
-
 void Database::exportdati()
 {
     QFile* file = new QFile("../database.xml");
@@ -256,7 +251,9 @@ void Database::exportdati()
             inp->writeStartElement("domande_e_amici");
             for(auto it=utenti.begin();it!=utenti.end();++it)
             {
-                inp->writeStartElement(QString::fromStdString(((*it)->get_credenziali()).get_username()));
+                inp->writeStartElement("utente");
+                inp->writeTextElement("username",QString::fromStdString(((*it)->get_credenziali()).get_username()));
+//                inp->writeStartElement(QString::fromStdString(((*it)->get_credenziali()).get_username()));
                 inp->writeTextElement("amici",QString::fromStdString((*it)->get_username_amici()));
 
                 for(auto d=(*it)->get_domande().begin();d!=(*it)->get_domande().end();++d)
@@ -293,148 +290,325 @@ void Database::exportdati()
 
 }
 
-//    void DB::load()
-//    {
-//        QFile* file = new QFile("../database.xml");
-//            if(file->exists()){
-//                if(!file->open(QFile::ReadOnly | QFile::Text)){
-//                    QMessageBox err;
-//                    err.setText("Errore nell'apertura del file");
-//                    err.exec();
+void Database::importdati()
+{
+        QFile* file=new QFile("../database.xml");
+        if (!file->open(QFile::ReadOnly | QFile::Text))
+        {
+            throw std::runtime_error("errore nell'apertura del file");
+        }
+        else
+        {
+            QDomDocument documento;
+            if(!documento.setContent(file)){
+                return;
+            }
+            QDomElement root = documento.documentElement();//salvo la radice del file
+            QDomNodeList nodes = root.elementsByTagName("utente");
+            for(int i=0; i<nodes.count(); ++i)
+            {
+                QDomElement el = nodes.at(i).toElement();
+                QDomNode nodo = el.firstChild();
+                QString tipo,user, psw, nome, cognome,email, comp, titoli, punti, risposte;
+                while (!nodo.isNull()) {
+                    QDomElement elemento = nodo.toElement();
+                    QString tagName = elemento.tagName();
+                    if(tagName=="tipoutente")
+                    {
+                        tipo=elemento.text();
+                    }
+                    if(tagName=="username")
+                    {
+                        user=elemento.text();
+                    }
+                    if(tagName=="password")
+                    {
+                        psw=elemento.text();
+                    }
+                    if(tagName=="nome")
+                    {
+                        nome=elemento.text();
+                    }
+                    if(tagName=="cognome")
+                    {
+                        cognome=elemento.text();
+                    }
+                    if(tagName=="email")
+                    {
+                        email=elemento.text();
+                    }
+                    if(tagName=="competenze")
+                    {
+                        comp=elemento.text();
+                    }
+                    if(tagName=="titoli_di_studio")
+                    {
+                        titoli=elemento.text();
+                    }
+                    if(tagName=="punti")
+                    {
+                        punti=elemento.text();
+                    }
+                    if(tagName=="risposte_date")
+                    {
+                        risposte=elemento.text();
+                    }
+                    nodo=nodo.nextSibling();
+                }
+
+                Utente* utente=0;
+                unsigned short int punt=std::stoi(punti.toStdString());
+                unsigned short int risp=std::stoi(risposte.toStdString());
+                if(tipo=="Basic")
+                    utente=new Basic(user.toStdString(),psw.toStdString(),nome.toStdString(),
+                                     cognome.toStdString(),email.toStdString(),punt,risp);
+
+                if(tipo=="Gold")
+                    utente=new Gold(user.toStdString(),psw.toStdString(),nome.toStdString(),
+                                     cognome.toStdString(),email.toStdString(),punt,risp);
+                if(tipo=="Premium")
+                    utente=new Premium(user.toStdString(),psw.toStdString(),nome.toStdString(),
+                                     cognome.toStdString(),email.toStdString(),punt,risp);
+
+                if(comp.size()!=0)
+                   utente->carica_competenze(comp.toStdString());
+                if(titoli.size()!=0)
+                   utente->carica_titoli(titoli.toStdString());
+                aggiungi_utente(utente);
+            }
+            file->close();
+        }
+}
+
+
+////////////////
+//void DB::load()
+//{
+//    QFile* file = new QFile("../database.xml");
+//        if(file->exists()){
+//            if(!file->open(QFile::ReadOnly | QFile::Text)){
+//                QMessageBox err;
+//                err.setText("Errore nell'apertura del file");
+//                err.exec();
+//            }
+//            else{
+//                /*
+//                  The QDomDocument class represents an XML document.
+//                  The QDomDocument class represents the entire XML document.
+//                  Conceptually, it is the root of the document tree, and provides the
+//                  primary access to the document's data.
+//                */
+//                QDomDocument doc;
+//                /*
+//                  This is an overloaded function.
+//                  This function reads the XML document from the IO device dev,
+//                  returning true if the content was successfully parsed; otherwise returns false.
+//                */
+//                if(!doc.setContent(file)){
+//                    return;
 //                }
-//                else{
-//                    /*
-//                      The QDomDocument class represents an XML document.
-//                      The QDomDocument class represents the entire XML document.
-//                      Conceptually, it is the root of the document tree, and provides the
-//                      primary access to the document's data.
-//                    */
-//                    QDomDocument doc;
-//                    /*
-//                      This is an overloaded function.
-//                      This function reads the XML document from the IO device dev,
-//                      returning true if the content was successfully parsed; otherwise returns false.
-//                    */
-//                    if(!doc.setContent(file)){
-//                        return;
+//                //The QDomElement class represents one element in the DOM tree.
+//                QDomElement docElem = doc.documentElement();
+//                /*
+//                  The QDomNodeList class is a list of QDomNode objects.
+//                  Lists can be obtained by QDomDocument::elementsByTagName() and QDomNode::childNodes().
+//                  The Document Object Model (DOM) requires these lists to be "live": whenever you change
+//                  the underlying document, the contents of the list will get updated.
+//                */
+//                QDomNodeList nodes = docElem.elementsByTagName("utente");
+//                for(int i=0; i<nodes.count(); ++i)
+//                {
+//                    QDomElement el = nodes.at(i).toElement();
+//                    QDomNode nodo = el.firstChild();
+//                    QString n, c, u, e, esp, comp, l, tit, tu, cont;
+//                    while (!nodo.isNull()) {
+//                        QDomElement elemento = nodo.toElement();
+//                        QString tagName = elemento.tagName();
+
+//                        if(tagName=="nome")
+//                        {
+//                            n=elemento.text();
+//                        }
+//                        if(tagName=="cognome")
+//                        {
+//                            c=elemento.text();
+//                        }
+//                        if(tagName=="username")
+//                        {
+//                            u=elemento.text();
+//                        }
+//                        if(tagName=="email")
+//                        {
+//                            e=elemento.text();
+//                        }
+//                        if(tagName=="tipoutente")
+//                        {
+//                            tu=elemento.text();
+//                        }
+//                        if(tagName=="esperienze")
+//                        {
+//                            esp=elemento.text();
+//                        }
+//                        if(tagName=="competenze")
+//                        {
+//                            comp=elemento.text();
+//                        }
+//                        if(tagName=="lingue")
+//                        {
+//                            l=elemento.text();
+//                        }
+//                        if(tagName=="titolistudio")
+//                        {
+//                            tit=elemento.text();
+//                        }
+//                        if(tagName=="contatti")
+//                        {
+//                            cont=elemento.text();
+//                        }
+//                        nodo=nodo.nextSibling();
 //                    }
-//                    //The QDomElement class represents one element in the DOM tree.
-//                    QDomElement docElem = doc.documentElement();
-//                    /*
-//                      The QDomNodeList class is a list of QDomNode objects.
-//                      Lists can be obtained by QDomDocument::elementsByTagName() and QDomNode::childNodes().
-//                      The Document Object Model (DOM) requires these lists to be "live": whenever you change
-//                      the underlying document, the contents of the list will get updated.
-//                    */
-//                    QDomNodeList nodes = docElem.elementsByTagName("utente");
-//                    for(int i=0; i<nodes.count(); ++i)
+//                    Utente* ut = 0;
+//                    if(tu == "Utente Basic")
 //                    {
-//                        QDomElement el = nodes.at(i).toElement();
-//                        QDomNode nodo = el.firstChild();
-//                        QString n, c, u, e, esp, comp, l, tit, tu, cont;
-//                        while (!nodo.isNull()) {
-//                            QDomElement elemento = nodo.toElement();
-//                            QString tagName = elemento.tagName();
+//                        Profilo prof(n.toStdString(), c.toStdString(), e.toStdString());
+//                        Username us(u.toStdString());
+//                        ut=new UtenteBasic(prof, us);
 
-//                            if(tagName=="nome")
-//                            {
-//                                n=elemento.text();
-//                            }
-//                            if(tagName=="cognome")
-//                            {
-//                                c=elemento.text();
-//                            }
-//                            if(tagName=="username")
-//                            {
-//                                u=elemento.text();
-//                            }
-//                            if(tagName=="email")
-//                            {
-//                                e=elemento.text();
-//                            }
-//                            if(tagName=="tipoutente")
-//                            {
-//                                tu=elemento.text();
-//                            }
-//                            if(tagName=="esperienze")
-//                            {
-//                                esp=elemento.text();
-//                            }
-//                            if(tagName=="competenze")
-//                            {
-//                                comp=elemento.text();
-//                            }
-//                            if(tagName=="lingue")
-//                            {
-//                                l=elemento.text();
-//                            }
-//                            if(tagName=="titolistudio")
-//                            {
-//                                tit=elemento.text();
-//                            }
-//                            if(tagName=="contatti")
-//                            {
-//                                cont=elemento.text();
-//                            }
-//                            nodo=nodo.nextSibling();
-//                        }
-//                        Utente* ut = 0;
-//                        if(tu == "Utente Basic")
-//                        {
-//                            Profilo prof(n.toStdString(), c.toStdString(), e.toStdString());
-//                            Username us(u.toStdString());
-//                            ut=new UtenteBasic(prof, us);
-
-//                            if(esp.size()!=0)
-//                               ut->loadEsperienze(esp.toStdString());
-//                            if(comp.size()!=0)
-//                               ut->loadCompetenze(comp.toStdString());
-//                            if(l.size()!=0)
-//                               ut->loadLingue(l.toStdString());
-//                            if(tit.size()!=0)
-//                               ut->loadTitoliStudio(tit.toStdString());
-//                            if(cont.size()!=0)
-//                               ut->loadContatti(cont.toStdString());
-//                        }
-//                        if( tu == "Utente Business")
-//                        {
-//                            Profilo prof(n.toStdString(), c.toStdString(), e.toStdString());
-//                            Username us(u.toStdString());
-//                            ut=new UtenteBusiness(prof, us);
-
-//                            if(esp.size()!=0)
-//                               ut->loadEsperienze(esp.toStdString());
-//                            if(comp.size()!=0)
-//                               ut->loadCompetenze(comp.toStdString());
-//                            if(l.size()!=0)
-//                               ut->loadLingue(l.toStdString());
-//                            if(tit.size()!=0)
-//                               ut->loadTitoliStudio(tit.toStdString());
-//                            if(cont.size()!=0)
-//                               ut->loadContatti(cont.toStdString());
-//                        }
-//                        if( tu == "Utente Executive")
-//                        {
-//                            Profilo prof(n.toStdString(), c.toStdString(), e.toStdString());
-//                            Username us(u.toStdString());
-//                            ut=new UtenteExecutive(prof, us);
-
-//                            if(esp.size()!=0)
-//                               ut->loadEsperienze(esp.toStdString());
-//                            if(comp.size()!=0)
-//                               ut->loadCompetenze(comp.toStdString());
-//                            if(l.size()!=0)
-//                               ut->loadLingue(l.toStdString());
-//                            if(tit.size()!=0)
-//                               ut->loadTitoliStudio(tit.toStdString());
-//                            if(cont.size()!=0)
-//                               ut->loadContatti(cont.toStdString());
-//                        }
-
-//                        db.push_back(ut);
+//                        if(esp.size()!=0)
+//                           ut->loadEsperienze(esp.toStdString());
+//                        if(comp.size()!=0)
+//                           ut->loadCompetenze(comp.toStdString());
+//                        if(l.size()!=0)
+//                           ut->loadLingue(l.toStdString());
+//                        if(tit.size()!=0)
+//                           ut->loadTitoliStudio(tit.toStdString());
+//                        if(cont.size()!=0)
+//                           ut->loadContatti(cont.toStdString());
 //                    }
-//                    file->close();
+//                    if( tu == "Utente Business")
+//                    {
+//                        Profilo prof(n.toStdString(), c.toStdString(), e.toStdString());
+//                        Username us(u.toStdString());
+//                        ut=new UtenteBusiness(prof, us);
+
+//                        if(esp.size()!=0)
+//                           ut->loadEsperienze(esp.toStdString());
+//                        if(comp.size()!=0)
+//                           ut->loadCompetenze(comp.toStdString());
+//                        if(l.size()!=0)
+//                           ut->loadLingue(l.toStdString());
+//                        if(tit.size()!=0)
+//                           ut->loadTitoliStudio(tit.toStdString());
+//                        if(cont.size()!=0)
+//                           ut->loadContatti(cont.toStdString());
+//                    }
+//                    if( tu == "Utente Executive")
+//                    {
+//                        Profilo prof(n.toStdString(), c.toStdString(), e.toStdString());
+//                        Username us(u.toStdString());
+//                        ut=new UtenteExecutive(prof, us);
+
+//                        if(esp.size()!=0)
+//                           ut->loadEsperienze(esp.toStdString());
+//                        if(comp.size()!=0)
+//                           ut->loadCompetenze(comp.toStdString());
+//                        if(l.size()!=0)
+//                           ut->loadLingue(l.toStdString());
+//                        if(tit.size()!=0)
+//                           ut->loadTitoliStudio(tit.toStdString());
+//                        if(cont.size()!=0)
+//                           ut->loadContatti(cont.toStdString());
+//                    }
+
+//                    db.push_back(ut);
 //                }
-//          }
+//                file->close();
+//            }
+//      }
+//}
+
+//void  DB::load(){
+
+//    QString filename("../DB.xml");
+//    QFile file(filename);
+//    if (!file.open(QFile::ReadOnly | QFile::Text))
+//     std::cerr << "Error: Cannot read file " << qPrintable(filename)<< ": " << qPrintable(file.errorString())<< std::endl;
+
+//    QDomDocument doc;
+//    if(!doc.setContent(&file))
+//        return;
+//    //salvo la radice del documento
+//    QDomElement docElem = doc.documentElement();
+//    // creo una lista dei nodi utenti identificati dal tag "user"
+//    QDomNodeList nodes = docElem.elementsByTagName("Utente");
+//    // scorro la lista nodo per nodo
+//    for(int i=0; i<nodes.count(); ++i){
+
+//        //salvo l'elemento contenuto nel nodo, in posizione i, in un oggetto xml
+//        QDomElement el = nodes.at(i).toElement();
+//        // mi sposto sul primo figlio
+//        QDomNode nodo = el.firstChild();
+//        // creo le variabili per l'oggetto user
+//        QString n, s, un, pw, l,lc,fs,ep, d, t;
+//        // scorro tutti i tag del nodo e li salvo nelle rispettive variabili
+//        vector<Username> contacts;
+//        while (!nodo.isNull()) {
+//            QDomElement elemento = nodo.toElement();
+//            QString tagName = elemento.tagName();
+//            if(tagName=="Nome"){
+//                n=elemento.text();
+//            }
+//            if(tagName=="Cognome"){
+//                s=elemento.text();
+//            }
+//            if(tagName=="Username"){
+//                un=elemento.text();
+//            }
+//            if(tagName=="Password"){
+//                pw=elemento.text();
+//            }
+//            if(tagName=="Data_di_Nascita"){
+//                d=elemento.text();
+//            }
+//            if(tagName=="Luogo_di_Nascita"){
+//                l=elemento.text();
+//            }
+//            if(tagName=="Lingue_conosciute"){
+//                lc=elemento.text();
+//            }
+//            if(tagName=="Formazione_Scolastica"){
+//                fs=elemento.text();
+//            }
+//            if(tagName=="Esperienze_Professionali"){
+//                ep=elemento.text();
+//            }
+//            if(tagName=="Tipo_di_Utente"){
+//                t=elemento.text();
+//            }
+//            if(tagName=="Rete_Contatti"){
+//               {QDomNode nodocontact = elemento.firstChild();
+//                  while (!nodocontact.isNull())
+//                  {QDomElement el = nodocontact.toElement();
+//                   contacts.push_back(Username(el.text().toStdString()));
+//                   nodocontact=nodocontact.nextSibling();}
+//               }
+//            }
+//             //mi sposto sul tag successivo
+//            nodo=nodo.nextSibling();
+//        }
+//        Utente* u;
+//        Info in(n.toStdString(),s.toStdString(),d.toStdString(),l.toStdString(),lc.toStdString(),fs.toStdString(),ep.toStdString());
+//        if (t=="Utente Basic")
+//         u=new UtenteBasic(Username(un.toStdString(),pw.toStdString()),in);
+//       if (t=="Utente Business")
+//         u=new UtenteBusiness(Username(un.toStdString(),pw.toStdString()),in);
+//       if (t=="Utente Executive")
+//         u=new UtenteExecutive(Username(un.toStdString(),pw.toStdString()),in);
+//       u->getRete()->setvector(contacts);
+
+//       db.push_back(u);
 //    }
+//    file.close();
+
+//}
 

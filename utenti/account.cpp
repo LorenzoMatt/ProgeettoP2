@@ -127,7 +127,7 @@ container<Domanda *> Account::get_domande_amici() const
 
 Domanda *Account::get_domanda(const container<Domanda *>& d, unsigned int i) const
 {
-    if(i>d.countElements())
+    if(i>d.size())
         throw std::runtime_error("domanda non presente");
     else
     {

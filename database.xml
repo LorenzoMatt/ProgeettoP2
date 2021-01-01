@@ -67,106 +67,10 @@
         <nome>diostronzo</nome>
         <cognome>porco</cognome>
         <email>dio</email>
-        <competenze>masturbarsi masturbarsi </competenze>
+        <competenze> masturbarsi masturbarsi</competenze>
         <titoli_di_studio></titoli_di_studio>
         <punti>0</punti>
         <risposte_date>0</risposte_date>
     </utente>
 </campi_dati_utenti>
-<domande_e_amici>
-    <Pikachu>
-        <amici>Giorgia Mirko Elton Lorenzo </amici>
-        <domanda>
-            <priorita>3</priorita>
-            <testo>prova a fare una domanda</testo>
-            <commenti>
-                <commento>
-                    <testo>prova per un commento</testo>
-                    <utente>Giorgia</utente>
-                </commento>
-                <commento>
-                    <testo>prova per un commento</testo>
-                    <utente>Giorgia</utente>
-                </commento>
-                <commento>
-                    <testo>prova per un commento</testo>
-                    <utente>Giorgia</utente>
-                </commento>
-            </commenti>
-        </domanda>
-        <domanda>
-            <priorita>3</priorita>
-            <testo>prova a fare una domanda</testo>
-            <commenti>
-                <commento>
-                    <testo>prova per un commento</testo>
-                    <utente>Giorgia</utente>
-                </commento>
-                <commento>
-                    <testo>prova per un commento</testo>
-                    <utente>Giorgia</utente>
-                </commento>
-            </commenti>
-        </domanda>
-        <domanda>
-            <priorita>3</priorita>
-            <testo>prova a fare una domanda</testo>
-            <commenti>
-                <commento>
-                    <testo>prova per un commento</testo>
-                    <utente>Giorgia</utente>
-                </commento>
-            </commenti>
-        </domanda>
-        <domanda>
-            <priorita>3</priorita>
-            <testo>prova a fare una domanda</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>3</priorita>
-            <testo>prova a fare una domanda</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>3</priorita>
-            <testo>prova a fare una domanda</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>3</priorita>
-            <testo>prova a fare una domanda</testo>
-            <commenti/>
-        </domanda>
-    </Pikachu>
-    <Lorenzo>
-        <amici></amici>
-    </Lorenzo>
-    <Elton>
-        <amici></amici>
-    </Elton>
-    <Francesca>
-        <amici></amici>
-    </Francesca>
-    <Mirko>
-        <amici></amici>
-    </Mirko>
-    <Giorgia>
-        <amici></amici>
-        <domanda>
-            <priorita>1</priorita>
-            <testo>prova a fare una domanda</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>1</priorita>
-            <testo>prova a fare una domanda</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>1</priorita>
-            <testo>prova a fare una domanda</testo>
-            <commenti/>
-        </domanda>
-    </Giorgia>
-</domande_e_amici>
+

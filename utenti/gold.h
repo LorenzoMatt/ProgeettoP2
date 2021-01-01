@@ -14,7 +14,7 @@ private:
 public:
     Gold()=delete;
     //Gold(const Gold &);
-    Gold(string username,string password,string nome,string cognome,string email);
+    Gold(string username,string password,string nome,string cognome,string email, unsigned int= puntiBonus,unsigned int =0);
     Gold(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,container<Domanda*> d,unsigned int punti,unsigned int risposte);
     void cerca_utente(const string&,const Database&, container<string>&) const override;//OK
     void get_punti_domanda() override; //OK
