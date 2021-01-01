@@ -260,7 +260,7 @@ string Utente::get_username_amici() const //OK
 {
     string username;
     for(container<Utente*>::const_iterator it=amici.begin();it!=amici.end();++it)
-        username=username+" "+(*it)->get_credenziali().get_username();
+        username=(*it)->get_credenziali().get_username()+" "+username;
     return username;
 }
 

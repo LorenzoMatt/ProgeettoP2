@@ -14,8 +14,8 @@ private:
 public:
     Commento(const string&,Utente *);
     bool operator==(const Commento&) const;
-    string GetCommento() const;
-    Utente* GetAutore() const;
+    string get_testo() const;
+    Utente* get_autore() const;
 };
 
 #endif // COMMENTO_H

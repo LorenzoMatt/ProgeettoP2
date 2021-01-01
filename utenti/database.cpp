@@ -222,13 +222,12 @@ void Database::exportdati()
         {
             QXmlStreamWriter* inp = new QXmlStreamWriter;
             inp->setAutoFormatting(true);
-            //Sets the current device to device.
             inp->setDevice(file);
             inp->writeStartDocument();
-            inp->writeStartElement("campi_dati_utenti");
+            inp->writeStartElement("campi_dati_utenti"); // inizio dei campi dati utenti
             for(auto it=utenti.begin();it!=utenti.end();++it)
             {
-                inp->writeStartElement("utente");
+                inp->writeStartElement("utente");// inizio singolo utente
                 if(dynamic_cast<Basic*>(&**it))
                 {
                     inp->writeTextElement("tipoutente", QString::fromStdString("Basic"));
@@ -250,9 +249,39 @@ void Database::exportdati()
                 inp->writeTextElement("titoli_di_studio", QString::fromStdString(((*it)->get_profilo()).titoli_di_studio_toString()));
                 inp->writeTextElement("punti", QString::fromStdString(std::to_string(((*it)->get_punti()))));
                 inp->writeTextElement("risposte_date", QString::fromStdString(std::to_string(((*it)->get_risposte_date()))));
-                inp->writeEndElement();
+                inp->writeEndElement();// fine di un utente
             }
-            inp->writeEndElement();
+            inp->writeEndElement();// fine campi dati degli utenti
+
+            inp->writeStartElement("domande_e_amici");
+            for(auto it=utenti.begin();it!=utenti.end();++it)
+            {
+                inp->writeStartElement(QString::fromStdString(((*it)->get_credenziali()).get_username()));
+                inp->writeTextElement("amici",QString::fromStdString((*it)->get_username_amici()));
+
+                for(auto d=(*it)->get_domande().begin();d!=(*it)->get_domande().end();++d)
+                {
+                    inp->writeStartElement("domanda");
+                    inp->writeTextElement("priorita",QString::fromStdString(std::to_string((*d)->get_priorita())));
+                    inp->writeTextElement("testo",QString::fromStdString(((*d)->get_testo())));
+                    inp->writeStartElement("commenti");
+                    container<Commento> commenti=(*d)->get_commenti();
+                    for(auto c=commenti.begin();c!=commenti.end();++c)
+                    {
+                        inp->writeStartElement("commento");// inizio commento
+                        inp->writeTextElement("testo",QString::fromStdString(((*c).get_testo())));
+                        inp->writeTextElement("utente",QString::fromStdString((*c).get_autore()->get_credenziali().get_username()));
+                        inp->writeEndElement();// fine commento
+                    }
+
+                    inp->writeEndElement();//fine commenti
+                    inp->writeEndElement();//fine domanda
+
+                }
+                inp->writeEndElement();// fine utente
+            }
+            inp->writeEndElement();// fine domande_amici
+
             inp->writeEndDocument();
             file->close();
         }
@@ -263,62 +292,6 @@ void Database::exportdati()
     }
 
 }
-//        QMessageBox msgBox;
-//        msgBox.setText("Salvataggio avvenuto con successo");
-//        msgBox.exec();
-
-
-//        QFile* file = new QFile("../database.xml");
-
-//        if(!file->open(QIODevice::WriteOnly | QIODevice::Text))
-//        {
-//           QMessageBox err;
-//           err.setText("Errore nell'apertura del file");
-//           err.exec();
-//        }
-//        else
-//        {
-//           QXmlStreamWriter* inp = new QXmlStreamWriter;
-//           inp->setAutoFormatting(true);
-//           //Sets the current device to device.
-//           inp->setDevice(file);
-//           inp->writeStartDocument();
-//           inp->writeStartElement("utenti");
-//           for(vector<Utente*>::const_iterator it = db.begin(); it != db.end(); ++it)
-//           {
-//               inp->writeStartElement("utente");
-//               inp->writeTextElement("nome", QString::fromStdString(((*it)->getProfilo()).getNome()));
-//               inp->writeTextElement("cognome", QString::fromStdString(((*it)->getProfilo()).getCognome()));
-//               inp->writeTextElement("username", QString::fromStdString(((*it)->getUsername()).getLogin()));
-//               inp->writeTextElement("email", QString::fromStdString(((*it)->getProfilo()).getEmail()));
-//               if(dynamic_cast<UtenteBasic*>(*(it)))
-//               {
-//                   inp->writeTextElement("tipoutente", QString::fromStdString("Utente Basic"));
-//               }
-//               else if(dynamic_cast<UtenteBusiness*>(*(it)))
-//               {
-//                   inp->writeTextElement("tipoutente", QString::fromStdString("Utente Business"));
-//               }
-//               else
-//               {
-//                   inp->writeTextElement("tipoutente", QString::fromStdString("Utente Executive"));
-//               }
-//               inp->writeTextElement("competenze", QString::fromStdString((*it)->getProfilo().tutteCompetenze()));
-//               inp->writeTextElement("esperienze", QString::fromStdString((*it)->getProfilo().tutteEsperienze()));
-//               inp->writeTextElement("lingue", QString::fromStdString((*it)->getProfilo().tutteLingue()));
-//               inp->writeTextElement("titolistudio", QString::fromStdString((*it)->getProfilo().tuttiTitoliStudio()));
-//               inp->writeTextElement("contatti", QString::fromStdString(((*it)->getRete())->tuttiContatti()));
-//               inp->writeEndElement();
-//            }
-//            inp->writeEndElement();
-//            inp->writeEndDocument();
-//            file->close();
-
-//            QMessageBox msgBox;
-//            msgBox.setText("Salvataggio avvenuto con successo");
-//            msgBox.exec();
-//        }
-
 
 //    void DB::load()
 //    {

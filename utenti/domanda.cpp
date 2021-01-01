@@ -3,6 +3,11 @@
 
 
 
+container<Commento> Domanda::get_commenti() const
+{
+    return commenti;
+}
+
 Domanda::Domanda(const string& t, Utente* autore, unsigned int priorita):testo(t),autore_domanda(autore),priorita(priorita > 0 ? priorita: 1){}
 
 //Domanda::Domanda(const Domanda &d) :
