@@ -168,7 +168,8 @@ const container<DeepPtr<Utente>>& Database::get_utenti() const
 Utente* Database::get_utente(const string& username) const
 {
     bool trovato=false;
-
+    try
+    {
         for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
             if((*it)->get_credenziali().get_username()==username)
             {
@@ -177,6 +178,11 @@ Utente* Database::get_utente(const string& username) const
             }
         if(!trovato)
             throw amico_non_presente();
+    }
+    catch(amico_non_presente)
+    {
+        std::cerr<<"utente "<<username<<" non presente"<<endl;
+    }
     return 0;
 
 }
@@ -202,10 +208,11 @@ DeepPtr<Utente> *Database::get_utente_deep(const std::string & username)
 
 void Database::exportdati()
 {
-    QFile* file = new QFile("../database.xml");
+
 
     try
     {
+        QFile* file = new QFile("../database.xml");
         if(!file->open(QIODevice::WriteOnly | QIODevice::Text))
         {
             throw std::runtime_error("il file non è stato aperto");
@@ -248,7 +255,26 @@ void Database::exportdati()
             }
             inp->writeEndElement();// fine campi dati degli utenti
 
-            inp->writeStartElement("domande_e_amici");
+            inp->writeEndDocument();
+            file->close();
+        }
+
+            ////// file per gli amici e le domande
+            QFile* file2 = new QFile("../database_domande_e_amici.xml");
+            if(!file2->open(QIODevice::WriteOnly | QIODevice::Text))
+            {
+                throw std::runtime_error("il file non è stato aperto");
+                //       QMessageBox err;
+                //       err.setText("Errore nell'apertura del file");
+                //       err.exec();
+            }
+            else
+            {
+                QXmlStreamWriter* inp = new QXmlStreamWriter;
+                inp->setAutoFormatting(true);
+                inp->setDevice(file2);
+                inp->writeStartDocument();
+                inp->writeStartElement("domande_e_amici");
             for(auto it=utenti.begin();it!=utenti.end();++it)
             {
                 inp->writeStartElement("utente");
@@ -267,7 +293,7 @@ void Database::exportdati()
                     {
                         inp->writeStartElement("commento");// inizio commento
                         inp->writeTextElement("testo",QString::fromStdString(((*c).get_testo())));
-                        inp->writeTextElement("utente",QString::fromStdString((*c).get_autore()->get_credenziali().get_username()));
+                        inp->writeTextElement("autore_commento",QString::fromStdString((*c).get_autore()->get_credenziali().get_username()));
                         inp->writeEndElement();// fine commento
                     }
 
@@ -280,7 +306,7 @@ void Database::exportdati()
             inp->writeEndElement();// fine domande_amici
 
             inp->writeEndDocument();
-            file->close();
+            file2->close();
         }
     }
     catch(std::runtime_error& r)
@@ -292,91 +318,203 @@ void Database::exportdati()
 
 void Database::importdati()
 {
-        QFile* file=new QFile("../database.xml");
-        if (!file->open(QFile::ReadOnly | QFile::Text))
+    QFile* file=new QFile("../database.xml");
+    if (!file->open(QFile::ReadOnly | QFile::Text))
+    {
+        throw std::runtime_error("errore nell'apertura del file");
+    }
+    else
+    {
+        QDomDocument documento;
+        if(!documento.setContent(file)){
+            return;
+        }
+        QDomElement root = documento.documentElement();//salvo la radice del file
+        QDomNodeList nodes = root.elementsByTagName("utente");
+        for(int i=0; i<nodes.count(); ++i)
+        {
+            QDomElement el = nodes.at(i).toElement();
+            QDomNode nodo = el.firstChild();
+            QString tipo,user, psw, nome, cognome,email, comp, titoli, punti, risposte;
+            while (!nodo.isNull()) {
+                QDomElement elemento = nodo.toElement();
+                QString tagName = elemento.tagName();
+                if(tagName=="tipoutente")
+                {
+                    tipo=elemento.text();
+                }
+                if(tagName=="username")
+                {
+                    user=elemento.text();
+                }
+                if(tagName=="password")
+                {
+                    psw=elemento.text();
+                }
+                if(tagName=="nome")
+                {
+                    nome=elemento.text();
+                }
+                if(tagName=="cognome")
+                {
+                    cognome=elemento.text();
+                }
+                if(tagName=="email")
+                {
+                    email=elemento.text();
+                }
+                if(tagName=="competenze")
+                {
+                    comp=elemento.text();
+                }
+                if(tagName=="titoli_di_studio")
+                {
+                    titoli=elemento.text();
+                }
+                if(tagName=="punti")
+                {
+                    punti=elemento.text();
+                }
+                if(tagName=="risposte_date")
+                {
+                    risposte=elemento.text();
+                }
+                nodo=nodo.nextSibling();
+            }
+
+            Utente* utente=0;
+            unsigned short int punt=std::stoi(punti.toStdString());
+            unsigned short int risp=std::stoi(risposte.toStdString());
+            if(tipo=="Basic")
+                utente=new Basic(user.toStdString(),psw.toStdString(),nome.toStdString(),
+                                 cognome.toStdString(),email.toStdString(),punt,risp);
+
+            if(tipo=="Gold")
+                utente=new Gold(user.toStdString(),psw.toStdString(),nome.toStdString(),
+                                 cognome.toStdString(),email.toStdString(),punt,risp);
+            if(tipo=="Premium")
+                utente=new Premium(user.toStdString(),psw.toStdString(),nome.toStdString(),
+                                 cognome.toStdString(),email.toStdString(),punt,risp);
+
+            if(comp.size()!=0)
+               utente->carica_competenze(comp.toStdString());
+            if(titoli.size()!=0)
+               utente->carica_titoli(titoli.toStdString());
+            aggiungi_utente(utente);
+        }
+        file->close();
+    }
+
+        /********import domande e amici********/
+        QFile* file2=new QFile("../database_domande_e_amici.xml");
+        if (!file2->open(QFile::ReadOnly | QFile::Text))
         {
             throw std::runtime_error("errore nell'apertura del file");
         }
         else
         {
             QDomDocument documento;
-            if(!documento.setContent(file)){
+            if(!documento.setContent(file2)){
+                file2->close();
                 return;
             }
+            file2->close();
             QDomElement root = documento.documentElement();//salvo la radice del file
-            QDomNodeList nodes = root.elementsByTagName("utente");
-            for(int i=0; i<nodes.count(); ++i)
+            QDomNodeList nodi_utenti = root.elementsByTagName("utente");
+            for(int i=0; i<nodi_utenti.count(); ++i)
             {
-                QDomElement el = nodes.at(i).toElement();
+                QDomElement el = nodi_utenti.at(i).toElement();
                 QDomNode nodo = el.firstChild();
-                QString tipo,user, psw, nome, cognome,email, comp, titoli, punti, risposte;
+                QString user,amici;
+                container<Domanda*> domande_utente;
                 while (!nodo.isNull()) {
                     QDomElement elemento = nodo.toElement();
                     QString tagName = elemento.tagName();
-                    if(tagName=="tipoutente")
+                    if(tagName=="amici")
                     {
-                        tipo=elemento.text();
+                        amici=elemento.text();
                     }
                     if(tagName=="username")
                     {
                         user=elemento.text();
                     }
-                    if(tagName=="password")
+                    if(tagName=="domanda")
                     {
-                        psw=elemento.text();
-                    }
-                    if(tagName=="nome")
-                    {
-                        nome=elemento.text();
-                    }
-                    if(tagName=="cognome")
-                    {
-                        cognome=elemento.text();
-                    }
-                    if(tagName=="email")
-                    {
-                        email=elemento.text();
-                    }
-                    if(tagName=="competenze")
-                    {
-                        comp=elemento.text();
-                    }
-                    if(tagName=="titoli_di_studio")
-                    {
-                        titoli=elemento.text();
-                    }
-                    if(tagName=="punti")
-                    {
-                        punti=elemento.text();
-                    }
-                    if(tagName=="risposte_date")
-                    {
-                        risposte=elemento.text();
-                    }
+                        QDomElement domande=elemento.firstChild();//elementi della domanda
+                        QString testo_domanda,priorita;
+                        container<Commento> commenti_totali;
+                        while(!domande.isNull())
+                        {
+                            QDomElement elemento_domande = domande.toElement();
+                            QString tagNameDomande = elemento_domande.tagName();
+                            if(tagNameDomande=="priorita")
+                            {
+                                priorita=elemento_domande.text();
+                            }
+                            if(tagNameDomande=="testo")
+                            {
+                                testo_domanda=elemento_domande.text();
+                            }
+                            if(tagNameDomande=="commenti")
+                            {
+
+                                Domanda* domanda=new Domanda(testo_domanda.toStdString(),get_utente(user.toStdString())
+                                                             ,std::stoi(priorita.toStdString()));
+                                QDomElement commenti=elemento_domande.toElement();
+                                container<Commento> com;
+                                while(!commenti.isNull())
+                                {
+                                    QDomElement commento=elemento_domande.firstChild(); //che è comento
+                                    QString testo_commento, autore_commento;
+                                    QDomElement elementi_del_commento=commento.firstChild();
+                                    while (!elementi_del_commento.isNull())
+                                    {
+                                        QDomElement elemento_commento=elementi_del_commento.toElement(); //che è comento
+                                        QString tagNameCommento = elemento_commento.tagName();
+                                        if(tagNameCommento=="testo")
+                                        {
+                                            testo_commento=elemento_commento.text();
+                                        }
+                                        if(tagNameCommento=="autore_commento")
+                                        {
+                                            autore_commento=elemento_commento.text();
+                                        }
+                                        elementi_del_commento=elementi_del_commento.nextSibling();
+                                    }
+                                    com.push_back(Commento(testo_commento,get_utente(autore_commento.toStdString())));
+
+                                }
+
+                                while(!commento.isNull())
+                                {
+
+                                    QDomElement elemento_commento=commento.toElement();
+
+//                                    QString tagNameCommento=elemento.tagName();
+//                                    if(tagNameCommento=="testo")
+//                                    {
+//                                        testo_commento=elemento_commento.text();
+//                                    }
+//                                    if(tagNameCommento=="utente")
+//                                    {
+//                                        utente_commento=elemento_commento.text();
+//                                    }
+//                                    commento=commento.nextSibling();
+//                                }
+//                                Utente* u=get_utente(utente_commento.toStdString());
+//                                u->scrivi_commento(domanda,testo_commento.toStdString());
+//                            }
+//                            domande=domande.nextSibling();
+//                        }
+
+
+//                        //pushare la domanda nel container
+//                    }
                     nodo=nodo.nextSibling();
                 }
-
-                Utente* utente=0;
-                unsigned short int punt=std::stoi(punti.toStdString());
-                unsigned short int risp=std::stoi(risposte.toStdString());
-                if(tipo=="Basic")
-                    utente=new Basic(user.toStdString(),psw.toStdString(),nome.toStdString(),
-                                     cognome.toStdString(),email.toStdString(),punt,risp);
-
-                if(tipo=="Gold")
-                    utente=new Gold(user.toStdString(),psw.toStdString(),nome.toStdString(),
-                                     cognome.toStdString(),email.toStdString(),punt,risp);
-                if(tipo=="Premium")
-                    utente=new Premium(user.toStdString(),psw.toStdString(),nome.toStdString(),
-                                     cognome.toStdString(),email.toStdString(),punt,risp);
-
-                if(comp.size()!=0)
-                   utente->carica_competenze(comp.toStdString());
-                if(titoli.size()!=0)
-                   utente->carica_titoli(titoli.toStdString());
-                aggiungi_utente(utente);
+                Utente* utente=get_utente(user.toStdString());
+                utente->carica_amici(amici.toStdString(),*this);
             }
-            file->close();
         }
 }
 
