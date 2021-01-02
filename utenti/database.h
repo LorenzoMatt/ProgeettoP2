@@ -7,10 +7,8 @@
 #include <QSettings>
 #include <QFile>
 #include <QDomDocument>
-#include <QMessageBox>
 #include <QXmlStreamWriter>
-
-
+#include <QXmlStreamReader>
 class Utente;
 class Domanda;
 class Database
@@ -31,8 +29,10 @@ public:
     void togli_utente(const string&);
     Utente* cambia_piano(Utente* utente,const string& piano);//OK
     Utente* check_credenziali(const string&, const string&) const;
-    void importdati();
-    void exportdati();
+    void importa_dati_utenti();
+    void importa_amici_utenti();
+    void exportdati() const;
+    void fai_domanda(const string&,const string&,unsigned int);
 };
 
 #endif // MODEL_H

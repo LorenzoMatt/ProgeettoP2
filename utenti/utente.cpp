@@ -317,6 +317,16 @@ void Utente::scrivi_commento(Domanda *d, std::string risposta)
     d->aggiungi_commento(Commento(risposta,this));
 }
 
+void Utente::fai_domanda(const std::string & testo, unsigned int priorita)
+{
+    domande.push_back(new Domanda(testo,this,priorita));
+}
+
+void Utente::set_domande(container<Domanda *> d)
+{
+    domande=d;
+}
+
 void Utente::dai_punti(Utente* utente) const
 {
     utente->get_punti_domanda();

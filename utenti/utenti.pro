@@ -49,8 +49,7 @@ HEADERS += accesso.h \
     vista_utente.h \
     creautente.h \
     vista_amministratore.h \
-    controller_admin.h \
-    funzioni_globali.h
+    controller_admin.h
 FORMS +=
 SOURCES += accesso.cpp \
            amico_non_presente.cpp \

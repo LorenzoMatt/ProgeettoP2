@@ -19,7 +19,7 @@ private:
     container<Commento> commenti;
     unsigned int priorita;
 public:
-    Domanda()=delete;
+    Domanda();
     Domanda(const string&,Utente*,unsigned int);//OK
     Domanda(const Domanda&);//OK
     void aggiungi_commento(const Commento&);//OK
@@ -33,6 +33,7 @@ public:
     bool operator >(const Domanda&) const;
     unsigned int get_priorita() const;//OK
     container<Commento> get_commenti() const;//OK
+    void set_commenti(const container<Commento>);
 };
 
 #endif // DOMANDA_H

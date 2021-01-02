@@ -99,8 +99,21 @@ int main(int argc ,char** argv)
 //    Giorgia->scrivi_commento(domanda2,"prova per un commento");
 
 //    m.exportdati();
-    m.importdati();
-    cout<<m.get_utenti().size();
+    m.aggiungi_utente(new Gold("dioo","password","nome","cogmone","email"));
+    m.importa_dati_utenti();
+    m.importa_amici_utenti();
+
+
+    cout<<m.get_utente("Pikachu")->get_amici().size();
+//    for(auto it=m.get_utenti().begin();it!=m.get_utenti().end();++it)
+//        cout<<**it<<endl;
+//    cout<<"ciaoooo"<<endl;
+//    cout<<m.get_utenti()<<endl;
+//    cout<<m.get_utente("Giorgia")->get_domande();
+//    cout<<m.get_utente("Giorgia")->get_profilo().competenze_toString();
+//    m.funzione_prova("Pikachu");
+//    cout<<Pikachu->get_punti();
+//    cout<<m.get_utenti().size();
 //    cout<<endl<<m.get_utenti().size()<<endl;
 
 //    for(auto it=m.get_utenti().begin();it!=m.get_utenti().end();++it)

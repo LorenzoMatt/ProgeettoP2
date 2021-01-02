@@ -66,7 +66,8 @@ public:
     void dai_punti(Utente*) const;
     string get_username_amici() const; //OK
     void scrivi_commento(Domanda* d, string risposta);
-
+    void fai_domanda(const string&, unsigned int);
+    void set_domande(container<Domanda*>);
 
 
                 /*virtual*/
