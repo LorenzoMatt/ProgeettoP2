@@ -109,6 +109,8 @@ public:
     void set_nome(const string&); // OK
     void set_cognome(const string&); //OK
     void set_email(const string&); //OK
+    void set_competenze(const container<string>&);
+    void set_titoli_di_studio(const container<string>&);
     void aggiungi_competenza(const string&); //OK
     void aggiungi_titolo_di_studio (const string&); //OK
 

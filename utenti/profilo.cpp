@@ -72,6 +72,16 @@ void Profilo::set_nome(const string& n){nome=n;}
 void Profilo::set_cognome(const string& c){cognome=c;}
 void Profilo::set_email(const string& e){email=e;}
 
+void Profilo::set_competenze(const container<std::string> &c)
+{
+    competenze=c;
+}
+
+void Profilo::set_titoli_di_studio(const container<std::string> &t)
+{
+    titoli_di_studio=t;
+}
+
 void Profilo::aggiungi_competenza(const string& c){
     competenze.push_back(c);
 }

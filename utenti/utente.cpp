@@ -52,67 +52,52 @@ unsigned int Utente::get_risposte_date() const
 
 void Utente::carica_amici(const std::string &amici, Database d)
 {
-    string amico;
-    for(unsigned int i=0; i<amici.size(); i++)
-    {
-        if(amici[i]!=' ')
-        {
-            amico=amico+amici[i];
-        }
-        else
-        {
-            aggiungi_amico(d.get_utente(amico));
-            amico="";
-        }
-        if(i==amici.size()-1)
-        {
-            aggiungi_amico(d.get_utente(amico));
-        }
-    }
+//    string amico;
+//    for(unsigned int i=0; i<amici.size(); i++)
+//    {
+//        if(amici[i]!=' ')
+//        {
+//            amico=amico+amici[i];
+//        }
+//        else
+//        {
+//            aggiungi_amico(d.get_utente(amico));
+//            amico="";
+//        }
+//        if(i==amici.size()-1)
+//        {
+//            aggiungi_amico(d.get_utente(amico));
+//        }
+//    }
+
+    container<string> tokens;
+
+     std::size_t start = amici.find_first_not_of(" "), end = 0;
+
+     while((end = amici.find_first_of(" ", start)) != std::string::npos)
+     {
+         tokens.push_back(amici.substr(start, end - start));
+         start = amici.find_first_not_of(" ", end);
+     }
+     if(start != std::string::npos)
+         tokens.push_back(amici.substr(start));
+
+     for(auto it=tokens.begin();it!=tokens.end();++it)
+     {
+         aggiungi_amico(d.get_utente(*it));
+     }
 }
 
 void Utente::carica_titoli(const string& titoli)
 {
-    string tit;
-    for(unsigned int i=0; i<titoli.size(); i++)
-    {
-        if(titoli[i]!=' ')
-        {
-            tit=tit+titoli[i];
-        }
-        else
-        {
-            AggiungiTitoloDiStudio(tit);
-            tit="";
-        }
-        if(i==titoli.size()-1)
-        {
-            AggiungiTitoloDiStudio(tit);
-        }
-    }
+    container<string> tit=split(titoli," ");
+    pf.set_titoli_di_studio(tit);
 }
 
 void Utente::carica_competenze(const string& competenze)
 {
-
-    string competenza;
-    for(unsigned int i=0; i<competenze.size(); i++)
-    {
-        if(competenze[i]!=' ')
-        {
-            competenza=competenza+competenze[i];
-        }
-        else
-        {
-            AggiungiCompetenza(competenza);
-            competenza="";
-        }
-        if(i==competenze.size()-1)
-        {
-            AggiungiCompetenza(competenza);
-        }
-    }
-
+    container<string> c=split(competenze," ");
+    pf.set_competenze(c);
 }
 
 

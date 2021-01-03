@@ -73,6 +73,20 @@ int main(int argc ,char** argv)
 //    Pikachu->aggiungi_amico(Giorgia);
 //    Giorgia->AggiungiCompetenza("masturbarsi");
 //    Giorgia->AggiungiCompetenza("masturbarsi");
+//    Giorgia->AggiungiTitoloDiStudio("studiare");
+
+//    Giorgia->AggiungiTitoloDiStudio("mangiare");
+//    Giorgia->aggiungi_amico(Lorenzo);
+//    Giorgia->aggiungi_amico(Elton);
+//    Giorgia->aggiungi_amico(Mirko);
+//    Giorgia->aggiungi_amico(Pikachu);
+//    Francesca->AggiungiCompetenza("masturbarsi");
+//    Francesca->AggiungiCompetenza("masturbarsi");
+//    Francesca->aggiungi_amico(Lorenzo);
+//    Francesca->aggiungi_amico(Elton);
+//    Francesca->aggiungi_amico(Mirko);
+//    Francesca->aggiungi_amico(Pikachu);
+
 
 //    Domanda* domanda1=new Domanda("prova a fare una domanda",Pikachu,2);
 //    Domanda* domanda2=new Domanda("prova a fare una domanda",Pikachu,2);
@@ -102,7 +116,7 @@ int main(int argc ,char** argv)
 ////    m.aggiungi_utente(new Gold("dioo","password","nome","cogmone","email"));
     m.importa_dati_utenti();
     m.importa_amici_utenti();
-
+    m.importa_amici();
 //    cout<<m.get_utenti();
 
 //    cout<<"ciaoooo"<<endl;
@@ -113,7 +127,7 @@ int main(int argc ,char** argv)
 //    cout<<m.get_utenti().size();
 //    cout<<endl<<m.get_utenti().size()<<endl;
 
-    cout<<m.get_utente("Giorgia")->get_domande();
+    cout<<m.get_utente("Pikachu")->get_amici();
 //    for(auto it=m.get_utenti().begin();it!=m.get_utenti().end();++it)
 //    {
 //        cout<<endl<<(*it)->get_domande()<<endl;

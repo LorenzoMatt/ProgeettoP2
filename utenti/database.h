@@ -18,6 +18,7 @@ private:
     bool check_presenza(const string&);
     void sistema_amici_seguaci(Utente*);
     void reverse_seguaci_amici(Utente*);
+    void aggiungi_amici_ad_utente(const string&, const string&);
 public:
     Database();
     Database(const container<DeepPtr<Utente>>&);
@@ -30,7 +31,8 @@ public:
     Utente* cambia_piano(Utente* utente,const string& piano);//OK
     Utente* check_credenziali(const string&, const string&) const;
     void importa_dati_utenti();
-    void importa_amici_utenti();
+    void importa_amici_utenti(); //importa le domande e i commenti correttamente, ma gli amici no
+    void importa_amici();
     void exportdati() const;
     void fai_domanda(const string&,const string&,unsigned int);
 };
