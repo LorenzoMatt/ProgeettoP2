@@ -24,19 +24,19 @@
 int main(int argc ,char** argv)
 {
 
-//    QApplication x(argc, argv);
+    QApplication x(argc, argv);
 ////    Database d;
 ////    Account a(new Basic("pippo","1234","mirko","stella","ing_mirko@genioincompreso.com"),&d);
 ////    cout<<*a.get_utente();
 ////    cout<<endl<<d.get_utenti().countElements()<<endl;
-//    vista_amministratore w;
+    Login w;
 
 ////    c.setModel(&a);
 ////    c.setVista(&w);
 ////    w.setController(&c);
 
-//    w.show();
-//    return x.exec();
+    w.show();
+    return x.exec();
 //test_deep_ptr();
 //test_domande();
 //test_model();
@@ -53,7 +53,7 @@ int main(int argc ,char** argv)
 //    m.aggiungi_utente(new Premium("gesu","password","nome","cogmone","email"));
 //    m.aggiungi_utente(new Premium("maria","password","nome","cogmone","email"));
 
-    Database m;
+//    Database m;
 //    m.aggiungi_utente(new Premium("Pikachu","dioboia","diostronzo","porco","dio"));
 //    m.aggiungi_utente(new Gold("Lorenzo","stronzo","diostronzo","porco","dio"));
 //    m.aggiungi_utente(new Basic("Elton","diocan","diostronzo","porco","dio"));
@@ -114,7 +114,7 @@ int main(int argc ,char** argv)
 
 //    m.exportdati();
 ////    m.aggiungi_utente(new Gold("dioo","password","nome","cogmone","email"));
-    m.import();
+//    m.import();
 //    cout<<m.get_utenti();
 
 //    cout<<"ciaoooo"<<endl;
@@ -126,18 +126,18 @@ int main(int argc ,char** argv)
 //    cout<<endl<<m.get_utenti().size()<<endl;
 
 //    cout<<m.get_utente("Pikachu")->cerca_domanda("domanda a prova fare una",m);
-    cout<<"utenti presenti nel db"<<endl<<endl;
-    for(auto it=m.get_utenti().begin();it!=m.get_utenti().end();++it)
-    {
-        cout<<**it<<endl;
-    }
-    cout<<"domande degli utenti"<<endl<<endl;
+//    cout<<"utenti presenti nel db"<<endl<<endl;
+//    for(auto it=m.get_utenti().begin();it!=m.get_utenti().end();++it)
+//    {
+//        cout<<**it<<endl;
+//    }
+//    cout<<"domande degli utenti"<<endl<<endl;
 
-    for(auto it=m.get_utenti().begin();it!=m.get_utenti().end();++it)
-    {
-        if((*it)->get_domande().size()!=0)
-        cout<<(*it)->get_domande()<<endl;
-    }
+//    for(auto it=m.get_utenti().begin();it!=m.get_utenti().end();++it)
+//    {
+//        if((*it)->get_domande().size()!=0)
+//        cout<<(*it)->get_domande()<<endl;
+//    }
 
 
 //    m.aggiungi_utente(new Premium("Pikachu","dioboia","diostronzo","porco","dio"));

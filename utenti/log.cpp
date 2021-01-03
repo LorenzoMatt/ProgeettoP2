@@ -80,9 +80,9 @@ void Login::login_user()
 
 void Login::login_admin()
 {
-//    vista_amministratore* v=new vista_amministratore();
-//    v->show();
-//    close();
+    vista_amministratore* v=new vista_amministratore();
+    v->show();
+    close();
 }
 
 void Login::registrazione()
