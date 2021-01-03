@@ -30,7 +30,6 @@ int main(int argc ,char** argv)
 ////    cout<<*a.get_utente();
 ////    cout<<endl<<d.get_utenti().countElements()<<endl;
     Login w;
-
 ////    c.setModel(&a);
 ////    c.setVista(&w);
 ////    w.setController(&c);

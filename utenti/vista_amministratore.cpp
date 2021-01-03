@@ -208,7 +208,7 @@ void vista_amministratore::crea_lista_utenti(Database& c)
 }
 
 
-vista_amministratore::vista_amministratore(QWidget *parent) : QWidget(parent)
+vista_amministratore::vista_amministratore(controller_admin *c, QWidget *parent) :controller(c), QWidget(parent)
 {
 
     mainLyaout=new QVBoxLayout;

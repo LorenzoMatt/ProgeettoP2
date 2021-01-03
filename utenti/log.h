@@ -8,6 +8,8 @@
 #include <QLineEdit>
 #include <QFormLayout>
 #include<QErrorMessage>
+#include "controller_admin.h"
+class controller_admin;
 class Login : public QWidget
 {
     Q_OBJECT

@@ -23,7 +23,7 @@ HEADERS += accesso.h \
            amico_non_presente.h \
            commento.h \
            container.h \
-    controller.h \
+            controller.h \
            deepptr.h \
            domanda.h \
            non_autore_domanda.h \
@@ -80,4 +80,4 @@ SOURCES += accesso.cpp \
     creautente.cpp \
     database.cpp \
     vista_amministratore.cpp \
-    controller_admin.cpp
+    controller_admin.cpp \

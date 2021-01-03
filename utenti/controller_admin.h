@@ -2,10 +2,12 @@
 #define CONTROLLER_ADMIN_H
 #include "vista_amministratore.h"
 #include "database.h"
+class vista_amministratore;
 class controller_admin
 {
 public:
     controller_admin();
+    ~controller_admin();
 private:
     vista_amministratore* vista;
     Database* db;

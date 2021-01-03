@@ -21,7 +21,7 @@ class vista_amministratore : public QWidget
     Q_OBJECT
 
 public:
-    explicit vista_amministratore(QWidget *parent = 0);
+    explicit vista_amministratore(controller_admin* c, QWidget *parent = 0);
     ~vista_amministratore();
 private:
     controller_admin* controller;
