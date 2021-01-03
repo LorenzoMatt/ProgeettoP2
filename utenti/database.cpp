@@ -415,163 +415,160 @@ void Database::importa_dati_utenti()
 
 
 
-void Database::importa_amici_utenti()
-{
-    QFile file("../database_domande_e_amici.xml");
-    try
-    {
-        if (file.open(QFile::ReadOnly | QFile::Text))
-        {
-            QXmlStreamReader xmlInput(&file);
-            if (xmlInput.readNextStartElement())
-            {
-                if(xmlInput.name() == "domande_e_amici")
-                {
-                    if(xmlInput.readNextStartElement())
-                    {
-                        string username,amici;
-                        container<Domanda*> domande;
-                        while (xmlInput.readNextStartElement())
-                        {
-                            xmlInput.readNextStartElement();
-                            if (xmlInput.name() != QString::fromStdString("username"))
-                                throw new std::runtime_error("errore durante il parsing del documento");
-                            username=xmlInput.readElementText().toStdString();
-
-                            xmlInput.readNextStartElement();
-                            if (xmlInput.name() != QString::fromStdString("amici"))
-                                throw new std::runtime_error("errore durante il parsing del documento");
-                            if(!(xmlInput.readElementText().isEmpty()))
-                                amici=xmlInput.readElementText().toStdString();
-                            get_utente(username)->carica_amici(amici,*this);
-                            xmlInput.skipCurrentElement();
-                            //                        xmlInput.readNextStartElement();
-                            //                        while(xmlInput.name() == "domanda")
-                            //                        {
-
-                            //                        }
-
-                        }
-                    }
-                    else
-                        throw new std::runtime_error("errore durante il parsing del documento");
-
-                }
-                else
-                    throw new std::runtime_error("errore durante il parsing del documento");
-            }
-//            else
-//                throw new std::runtime_error("errore durante il parsing del documento");
-        }
-        else
-            throw new std::runtime_error("errore durante il parsing del documento");
-    }catch(std::runtime_error r)
-    {
-        std::cerr<<r.what();
-    }
-}
-
-
-
-
 //void Database::importa_amici_utenti()
 //{
-//    /********import domande e amici********/
-//    QFile* file=new QFile("../database_domande_e_amici.xml");
-//    if (!file->open(QFile::ReadOnly | QFile::Text))
+//    QFile file("../database_domande_e_amici.xml");
+//    try
 //    {
-//        throw std::runtime_error("errore nell'apertura del file");
-//    }
-//    else
-//    {
-//        QDomDocument documento;
-//        if(!documento.setContent(file)){
-//            file->close();
-//            return;
-//        }
-//        QDomElement root = documento.documentElement();//salvo la radice del file
-//        QDomNodeList nodi_utenti = root.elementsByTagName("utente");
-//        for(int i=0; i<nodi_utenti.count(); ++i)
+//        if (file.open(QFile::ReadOnly | QFile::Text))
 //        {
-//            QDomElement el = nodi_utenti.at(i).toElement();
-//            QDomNode nodo = el.firstChild();
-//            QString user,amici;
-//            container<Domanda*> domande_utente;
-//            while (!nodo.isNull()) {
-//                QDomElement elemento = nodo.toElement();
-//                QString tagName = elemento.tagName();
+//            QXmlStreamReader xmlInput(&file);
+//            if (xmlInput.readNextStartElement())
+//            {
+//                if(xmlInput.name() == "domande_e_amici")
+//                {
+//                    if(xmlInput.readNextStartElement())
+//                    {
+//                        string username,amici;
+//                        container<Domanda*> domande;
+//                        while (xmlInput.readNextStartElement())
+//                        {
+//                            xmlInput.readNextStartElement();
+//                            if (xmlInput.name() != QString::fromStdString("username"))
+//                                throw new std::runtime_error("errore durante il parsing del documento");
+//                            username=xmlInput.readElementText().toStdString();
+
+//                            xmlInput.readNextStartElement();
+//                            if (xmlInput.name() != QString::fromStdString("amici"))
+//                                throw new std::runtime_error("errore durante il parsing del documento");
+//                            if(!(xmlInput.readElementText().isEmpty()))
+//                                amici=xmlInput.readElementText().toStdString();
+//                            get_utente(username)->carica_amici(amici,*this);
+//                            xmlInput.skipCurrentElement();
+//                            //                        xmlInput.readNextStartElement();
+//                            //                        while(xmlInput.name() == "domanda")
+//                            //                        {
+
+//                            //                        }
+
+//                        }
+//                    }
+//                    else
+//                        throw new std::runtime_error("errore durante il parsing del documento");
+
+//                }
+//                else
+//                    throw new std::runtime_error("errore durante il parsing del documento");
+//            }
+////            else
+////                throw new std::runtime_error("errore durante il parsing del documento");
+//        }
+//        else
+//            throw new std::runtime_error("errore durante il parsing del documento");
+//    }catch(std::runtime_error r)
+//    {
+//        std::cerr<<r.what();
+//    }
+//}
+
+
+
+
+void Database::importa_amici_utenti()
+{
+    /********import domande e amici********/
+    QFile* file=new QFile("../database_domande_e_amici.xml");
+    if (!file->open(QFile::ReadOnly | QFile::Text))
+    {
+        throw std::runtime_error("errore nell'apertura del file");
+    }
+    else
+    {
+        QDomDocument documento;
+        if(!documento.setContent(file)){
+            file->close();
+            return;
+        }
+        QDomElement root = documento.documentElement();//salvo la radice del file
+        QDomNodeList nodi_utenti = root.elementsByTagName("utente");
+        for(int i=0; i<nodi_utenti.count(); ++i)
+        {
+            QDomElement el = nodi_utenti.at(i).toElement();
+            QDomNode nodo = el.firstChild();
+            QString user/*,amici*/;
+            container<Domanda*> domande_utente;
+            while (!nodo.isNull()) {
+                QDomElement elemento = nodo.toElement();
+                QString tagName = elemento.tagName();
 //                if(tagName=="amici")
 //                {
 //                    amici=elemento.text();
 //                }
-//                if(tagName=="username")
-//                {
-//                    user=elemento.text();
-//                }
-//                if(tagName=="domanda")
-//                {
-//                    QDomNode domande=elemento.firstChild();//elementi della domanda
-//                    QString testo_domanda,priorita;
-//                    container<Commento> commenti_totali;
-//                    while(!domande.isNull())
-//                    {
-//                        QDomElement elemento_domande = domande.toElement();
-//                        QString tagNameDomande = elemento_domande.tagName();
-//                        if(tagNameDomande=="priorita")
-//                        {
-//                            priorita=elemento_domande.text();
-//                        }
-//                        if(tagNameDomande=="testo")
-//                        {
-//                            testo_domanda=elemento_domande.text();
-//                        }
-//                        if(tagNameDomande=="commenti")
-//                        {
-
-//                            QDomElement commenti=elemento_domande.toElement();
-//                            QDomNodeList lista_commenti =commenti.elementsByTagName("commento");
-//                            for(int x=0; x<lista_commenti.count(); ++x)
-//                            {
-////                                    QDomElement commento=elemento_domande.firstChild(); //che è comento
-//                                QDomElement commento= lista_commenti.at(x).toElement();
-//                                QString testo_commento, autore_commento;
-//                                QDomNode elementi_del_commento=commento.firstChild();
-//                                while (!elementi_del_commento.isNull())
-//                                {
-//                                    QDomElement elemento_commento=elementi_del_commento.toElement(); //che è comento
-//                                    QString tagNameCommento = elemento_commento.tagName();
-//                                    if(tagNameCommento=="testo")
-//                                    {
-//                                        testo_commento=elemento_commento.text();
-//                                    }
-//                                    if(tagNameCommento=="autore_commento")
-//                                    {
-//                                        autore_commento=elemento_commento.text();
-//                                    }
-//                                    elementi_del_commento=elementi_del_commento.nextSibling();
-//                               }
-//                                commenti_totali.push_back(Commento(testo_commento.toStdString(),get_utente(autore_commento.toStdString())));
-//                        }
-//                    }
-//                        domande=domande.nextSibling();
-//                }
-//                    Domanda* domanda=0;
-//                    domanda=new Domanda(testo_domanda.toStdString(),get_utente(user.toStdString())
-//                                                 ,std::stoi(priorita.toStdString()));
-//                    domanda->set_commenti(commenti_totali);
-//                    domande_utente.push_back(domanda);
-
-//            }//fine singolo utente
-//                nodo=nodo.nextSibling();
-//            }
-//            Utente* utente=0;
-//            utente=get_utente(user.toStdString());
+                if(tagName=="username")
+                {
+                    user=elemento.text();
+                }
+                if(tagName=="domanda")
+                {
+                    QDomNode domande=elemento.firstChild();//elementi della domanda
+                    QString testo_domanda,priorita;
+                    container<Commento> commenti_totali;
+                    while(!domande.isNull())
+                    {
+                        QDomElement elemento_domande = domande.toElement();
+                        QString tagNameDomande = elemento_domande.tagName();
+                        if(tagNameDomande=="priorita")
+                        {
+                            priorita=elemento_domande.text();
+                        }
+                        if(tagNameDomande=="testo")
+                        {
+                            testo_domanda=elemento_domande.text();
+                        }
+                        if(tagNameDomande=="commenti")
+                        {
+                            QDomElement commenti=elemento_domande.toElement();
+                            QDomNodeList lista_commenti =commenti.elementsByTagName("commento");
+                            for(int x=0; x<lista_commenti.count(); ++x)
+                            {
+//                                    QDomElement commento=elemento_domande.firstChild(); //che è comento
+                                QDomElement commento= lista_commenti.at(x).toElement();
+                                QString testo_commento, autore_commento;
+                                QDomNode elementi_del_commento=commento.firstChild();
+                                while (!elementi_del_commento.isNull())
+                                {
+                                    QDomElement elemento_commento=elementi_del_commento.toElement(); //che è comento
+                                    QString tagNameCommento = elemento_commento.tagName();
+                                    if(tagNameCommento=="testo")
+                                    {
+                                        testo_commento=elemento_commento.text();
+                                    }
+                                    if(tagNameCommento=="autore_commento")
+                                    {
+                                        autore_commento=elemento_commento.text();
+                                    }
+                                    elementi_del_commento=elementi_del_commento.nextSibling();
+                               }
+                                commenti_totali.push_back(Commento(testo_commento.toStdString(),get_utente(autore_commento.toStdString())));
+                        }
+                    }
+                        domande=domande.nextSibling();
+                }
+                    Domanda* domanda=0;
+                    domanda=new Domanda(testo_domanda.toStdString(),get_utente(user.toStdString())
+                                                 ,std::stoi(priorita.toStdString()));
+                    domanda->set_commenti(commenti_totali);
+                    domande_utente.push_back(domanda);
+            }//fine singolo utente
+                nodo=nodo.nextSibling();
+            }
+            Utente* utente;
+            utente=get_utente(user.toStdString());
 //            utente->carica_amici(amici.toStdString(),*this);
-//            utente->set_domande(domande_utente);
-//        }//fine ciclo for
-
-//        file->close();
-//}
-//}
+            utente->set_domande(domande_utente);
+        }//fine ciclo for
+        file->close();
+    }
+}
 
 
