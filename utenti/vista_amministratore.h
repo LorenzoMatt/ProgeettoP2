@@ -19,7 +19,7 @@ class controller_admin;
 class vista_amministratore : public QWidget
 {
     Q_OBJECT
-
+    friend class controller_admin;
 public:
     explicit vista_amministratore(controller_admin* c, QWidget *parent = 0);
     ~vista_amministratore();

@@ -5,12 +5,12 @@
 
 Database::Database()
 {
-    import();
+//    import();
 }
 
 Database::~Database()
 {
-    exportdati();
+//    exportdati();
     //il depptr si proccupa di deallocare gli utenti
 }
 
@@ -62,7 +62,7 @@ void Database::aggiungi_utente(const DeepPtr<Utente> &utente)
             throw utente_gia_presente();
     }catch(utente_gia_presente)
     {
-        std::cerr<<"utente con questo username già presente";
+        std::cerr<<"utente "<<utente->get_credenziali().get_username() <<" già presente";
     }
 
 }
@@ -173,8 +173,8 @@ const container<DeepPtr<Utente>>& Database::get_utenti() const
 Utente* Database::get_utente(const string& username) const
 {
     bool trovato=false;
-    try
-    {
+//    try
+//    {
         for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
             if((*it)->get_credenziali().get_username()==username)
             {
@@ -182,13 +182,13 @@ Utente* Database::get_utente(const string& username) const
                 return &(**it);
             }
         if(!trovato)
-            throw amico_non_presente();
-    }
-    catch(amico_non_presente)
-    {
-        std::cerr<<"utente "<<username<<" non presente"<<endl;
-    }
-    return 0;
+            return 0;
+//            throw amico_non_presente();
+//    }
+//    catch(amico_non_presente)
+//    {
+//        std::cerr<<"utente "<<username<<" non presente"<<endl;
+//    }
 
 }
 

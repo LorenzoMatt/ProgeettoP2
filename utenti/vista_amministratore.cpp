@@ -2,7 +2,8 @@
 #include "basic.h"
 #include "gold.h"
 #include "premium.h"
-#include "controller_admin.h"
+//#include "controller_admin.h"
+#include "log.h"
 void vista_amministratore::build_buttons()
 {
     aggiungi=new QPushButton("Aggiungi utente");
@@ -30,7 +31,22 @@ void vista_amministratore::finestra_aggiungi_utente()
 
 void vista_amministratore::togli_utente()
 {
-
+    Utente* ut=controller->get_utente(togli_utente_line->text().toStdString());
+    if(ut)
+    {
+        controller->togli_utente(togli_utente_line->text().toStdString());
+        QMessageBox* messaggio=new QMessageBox(this);
+        messaggio->setWindowTitle("Utente rimosso");
+        messaggio->setText("utente "+togli_utente_line->text()+" rimosso");
+        messaggio->exec();
+        togli_utente_line->clear();
+    }
+    else
+    {
+        QErrorMessage * messaggio=new QErrorMessage(this);
+        messaggio->setWindowTitle("Utente non rimosso");
+        messaggio->showMessage("Utente "+togli_utente_line->text()+"non presente");
+    }
 }
 
 void vista_amministratore::cambio_piano()
@@ -40,17 +56,19 @@ void vista_amministratore::cambio_piano()
 
 void vista_amministratore::salva_db()
 {
-
+    controller->salva();
 }
 
 void vista_amministratore::logout()
 {
-
+    Login* log=new Login();
+    log->show();
+    close();
 }
 
 void vista_amministratore::aggiungi_utente(const QString & username, const QString & password, const QString & nome, const QString & cognome, const QString & email,const QString& piano)
 {
-
+    controller->aggiungi_utente(username.toStdString(),password.toStdString(),nome.toStdString(),cognome.toStdString(),email.toStdString(),piano.toStdString());
 }
 
 
@@ -150,12 +168,15 @@ void vista_amministratore::aggiorna_tabella()
 {
     tabella_utenti->clearContents();
 //    auto c=controller->get_utenti();
-    Database c;
-    crea_lista_utenti(c);
-    tabella_utenti->setRowCount(c.get_utenti().size());
+//    Database c;
+//    crea_lista_utenti(c);
+
+    tabella_utenti->setRowCount(controller->get_db()->get_utenti().size());
 
     int row=0;
-    for(auto it=c.get_utenti().begin();it!=c.get_utenti().end();++it,++row)
+//    for(auto it=c.get_utenti().begin();it!=c.get_utenti().end();++it,++row)
+//    {
+    for(auto it=controller->get_db()->get_utenti().begin();it!=controller->get_db()->get_utenti().end();++it,++row)
     {
         QTableWidgetItem* Username=new QTableWidgetItem(QString::fromStdString((*it)->get_credenziali().get_username()));
         QTableWidgetItem* Nome=new QTableWidgetItem(QString::fromStdString((*it)->get_profilo().get_nome()));
@@ -183,28 +204,28 @@ void vista_amministratore::aggiorna_tabella()
 
 void vista_amministratore::crea_lista_utenti(Database& c)
 {
-    c.aggiungi_utente(new Basic("lorenzo99","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
-    c.aggiungi_utente(new Gold("lorenzo98","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
-    c.aggiungi_utente(new Premium("lorenzo97","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
-    c.aggiungi_utente(new Premium("lorenzo96","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
-    c.aggiungi_utente(new Gold("lorenzo95","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
-    c.aggiungi_utente(new Basic("lorenzo94","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
-    c.aggiungi_utente(new Premium("lorenzo93","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
-    c.aggiungi_utente(new Basic("lorenzo92","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
-    c.aggiungi_utente(new Basic("lorenzo91","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
-    c.aggiungi_utente(new Gold("lorenzo90","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
+//    c.aggiungi_utente(new Basic("lorenzo99","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
+//    c.aggiungi_utente(new Gold("lorenzo98","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
+//    c.aggiungi_utente(new Premium("lorenzo97","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
+//    c.aggiungi_utente(new Premium("lorenzo96","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
+//    c.aggiungi_utente(new Gold("lorenzo95","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
+//    c.aggiungi_utente(new Basic("lorenzo94","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
+//    c.aggiungi_utente(new Premium("lorenzo93","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
+//    c.aggiungi_utente(new Basic("lorenzo92","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
+//    c.aggiungi_utente(new Basic("lorenzo91","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
+//    c.aggiungi_utente(new Gold("lorenzo90","000000","Lorenzo","Matterazzo","lorenzo.matterazzo@studenti.unipd.it"));
 
 
-    Utente* lorenzo99=c.get_utente("lorenzo99");
-    lorenzo99->AggiungiCompetenza("ciaooo");
-    lorenzo99->AggiungiCompetenza("ciaooo");
-    lorenzo99->AggiungiCompetenza("ciaooo");
-    lorenzo99->AggiungiCompetenza("ciaooo");
-    lorenzo99->AggiungiCompetenza("ciaooo");
-    lorenzo99->AggiungiTitoloDiStudio("ciaooo");
-    lorenzo99->AggiungiTitoloDiStudio("ciaooo");
-    lorenzo99->AggiungiTitoloDiStudio("ciaooo");
-    lorenzo99->AggiungiTitoloDiStudio("ciaooo");
+//    Utente* lorenzo99=c.get_utente("lorenzo99");
+//    lorenzo99->AggiungiCompetenza("ciaooo");
+//    lorenzo99->AggiungiCompetenza("ciaooo");
+//    lorenzo99->AggiungiCompetenza("ciaooo");
+//    lorenzo99->AggiungiCompetenza("ciaooo");
+//    lorenzo99->AggiungiCompetenza("ciaooo");
+//    lorenzo99->AggiungiTitoloDiStudio("ciaooo");
+//    lorenzo99->AggiungiTitoloDiStudio("ciaooo");
+//    lorenzo99->AggiungiTitoloDiStudio("ciaooo");
+//    lorenzo99->AggiungiTitoloDiStudio("ciaooo");
 }
 
 
@@ -239,5 +260,4 @@ vista_amministratore::vista_amministratore(controller_admin *c, QWidget *parent)
 
 vista_amministratore::~vista_amministratore()
 {
-
 }

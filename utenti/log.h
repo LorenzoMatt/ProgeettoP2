@@ -18,6 +18,8 @@ public:
     ~Login();
 
 private:
+    QFormLayout* accesso;
+    QVBoxLayout* mainLayout;
     QPushButton* accedi;
     QPushButton* accedi_come_admin;
     QPushButton* registrati;

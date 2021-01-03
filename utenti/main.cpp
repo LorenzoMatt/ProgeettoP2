@@ -29,7 +29,9 @@ int main(int argc ,char** argv)
 ////    Account a(new Basic("pippo","1234","mirko","stella","ing_mirko@genioincompreso.com"),&d);
 ////    cout<<*a.get_utente();
 ////    cout<<endl<<d.get_utenti().countElements()<<endl;
-    Login w;
+    vista_amministratore w(new controller_admin(&w));
+//    Login w;
+//    controller_admin w(new vista_amministratore(&w));
 ////    c.setModel(&a);
 ////    c.setVista(&w);
 ////    w.setController(&c);
@@ -117,7 +119,6 @@ int main(int argc ,char** argv)
 //    cout<<m.get_utenti();
 
 //    cout<<"ciaoooo"<<endl;
-//    cout<<m.get_utenti()<<endl;
 //    cout<<m.get_utente("Giorgia")->get_profilo().competenze_toString();
 //    m.funzione_prova("Pikachu");
 //    cout<<Pikachu->get_punti();

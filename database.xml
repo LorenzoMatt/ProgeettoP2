@@ -1,42 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <campi_dati_utenti>
     <utente>
-        <tipoutente>Premium</tipoutente>
-        <username>Pikachu</username>
-        <password>dioboia</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
-        <competenze></competenze>
-        <titoli_di_studio></titoli_di_studio>
-        <punti>25</punti>
-        <risposte_date>0</risposte_date>
-    </utente>
-    <utente>
-        <tipoutente>Gold</tipoutente>
-        <username>Lorenzo</username>
-        <password>stronzo</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
-        <competenze></competenze>
-        <titoli_di_studio></titoli_di_studio>
-        <punti>50</punti>
-        <risposte_date>0</risposte_date>
-    </utente>
-    <utente>
-        <tipoutente>Basic</tipoutente>
-        <username>Elton</username>
-        <password>diocan</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
-        <competenze></competenze>
-        <titoli_di_studio></titoli_di_studio>
-        <punti>30</punti>
-        <risposte_date>0</risposte_date>
-    </utente>
-    <utente>
         <tipoutente>Gold</tipoutente>
         <username>Francesca</username>
         <password>diobestia</password>
@@ -73,60 +37,24 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Basic</tipoutente>
-        <username>lorenzo99</username>
-        <password>000000</password>
-        <nome>Lorenzo</nome>
-        <cognome>Matterazzo</cognome>
-        <email>lorenzo.matterazzo@studenti.unipd.it</email>
-        <competenze> ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo</competenze>
-        <titoli_di_studio> ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo ciaooo</titoli_di_studio>
-        <punti>30</punti>
-        <risposte_date>0</risposte_date>
-    </utente>
-    <utente>
         <tipoutente>Gold</tipoutente>
-        <username>lorenzo98</username>
-        <password>000000</password>
-        <nome>Lorenzo</nome>
-        <cognome>Matterazzo</cognome>
-        <email>lorenzo.matterazzo@studenti.unipd.it</email>
+        <username>ss</username>
+        <password>ss</password>
+        <nome>ss</nome>
+        <cognome>ss</cognome>
+        <email>ss</email>
         <competenze></competenze>
         <titoli_di_studio></titoli_di_studio>
         <punti>50</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Premium</tipoutente>
-        <username>lorenzo97</username>
-        <password>000000</password>
-        <nome>Lorenzo</nome>
-        <cognome>Matterazzo</cognome>
-        <email>lorenzo.matterazzo@studenti.unipd.it</email>
-        <competenze></competenze>
-        <titoli_di_studio></titoli_di_studio>
-        <punti>60</punti>
-        <risposte_date>0</risposte_date>
-    </utente>
-    <utente>
-        <tipoutente>Premium</tipoutente>
-        <username>lorenzo96</username>
-        <password>000000</password>
-        <nome>Lorenzo</nome>
-        <cognome>Matterazzo</cognome>
-        <email>lorenzo.matterazzo@studenti.unipd.it</email>
-        <competenze></competenze>
-        <titoli_di_studio></titoli_di_studio>
-        <punti>60</punti>
-        <risposte_date>0</risposte_date>
-    </utente>
-    <utente>
         <tipoutente>Gold</tipoutente>
-        <username>lorenzo95</username>
-        <password>000000</password>
-        <nome>Lorenzo</nome>
-        <cognome>Matterazzo</cognome>
-        <email>lorenzo.matterazzo@studenti.unipd.it</email>
+        <username>rr</username>
+        <password>rr</password>
+        <nome>rr</nome>
+        <cognome>rr</cognome>
+        <email>rr</email>
         <competenze></competenze>
         <titoli_di_studio></titoli_di_studio>
         <punti>50</punti>
@@ -134,62 +62,14 @@
     </utente>
     <utente>
         <tipoutente>Basic</tipoutente>
-        <username>lorenzo94</username>
-        <password>000000</password>
-        <nome>Lorenzo</nome>
-        <cognome>Matterazzo</cognome>
-        <email>lorenzo.matterazzo@studenti.unipd.it</email>
+        <username>Elton</username>
+        <password>elton</password>
+        <nome>elton</nome>
+        <cognome>elton</cognome>
+        <email>elton</email>
         <competenze></competenze>
         <titoli_di_studio></titoli_di_studio>
         <punti>30</punti>
-        <risposte_date>0</risposte_date>
-    </utente>
-    <utente>
-        <tipoutente>Premium</tipoutente>
-        <username>lorenzo93</username>
-        <password>000000</password>
-        <nome>Lorenzo</nome>
-        <cognome>Matterazzo</cognome>
-        <email>lorenzo.matterazzo@studenti.unipd.it</email>
-        <competenze></competenze>
-        <titoli_di_studio></titoli_di_studio>
-        <punti>60</punti>
-        <risposte_date>0</risposte_date>
-    </utente>
-    <utente>
-        <tipoutente>Basic</tipoutente>
-        <username>lorenzo92</username>
-        <password>000000</password>
-        <nome>Lorenzo</nome>
-        <cognome>Matterazzo</cognome>
-        <email>lorenzo.matterazzo@studenti.unipd.it</email>
-        <competenze></competenze>
-        <titoli_di_studio></titoli_di_studio>
-        <punti>30</punti>
-        <risposte_date>0</risposte_date>
-    </utente>
-    <utente>
-        <tipoutente>Basic</tipoutente>
-        <username>lorenzo91</username>
-        <password>000000</password>
-        <nome>Lorenzo</nome>
-        <cognome>Matterazzo</cognome>
-        <email>lorenzo.matterazzo@studenti.unipd.it</email>
-        <competenze></competenze>
-        <titoli_di_studio></titoli_di_studio>
-        <punti>30</punti>
-        <risposte_date>0</risposte_date>
-    </utente>
-    <utente>
-        <tipoutente>Gold</tipoutente>
-        <username>lorenzo90</username>
-        <password>000000</password>
-        <nome>Lorenzo</nome>
-        <cognome>Matterazzo</cognome>
-        <email>lorenzo.matterazzo@studenti.unipd.it</email>
-        <competenze></competenze>
-        <titoli_di_studio></titoli_di_studio>
-        <punti>50</punti>
         <risposte_date>0</risposte_date>
     </utente>
 </campi_dati_utenti>

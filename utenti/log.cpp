@@ -4,7 +4,7 @@
 Login::Login(QWidget *parent)
 {
     setWindowTitle("Login");
-    QVBoxLayout* mainLayout=new QVBoxLayout();
+    mainLayout=new QVBoxLayout();
 
     /*******Pulsanti*******/
 
@@ -28,7 +28,7 @@ Login::Login(QWidget *parent)
 
      /*******layoutForm*******/
 
-     QFormLayout* accesso=new QFormLayout();
+     accesso=new QFormLayout();
      accesso->addRow(user_label,username);
      accesso->addRow(password_label,password);
      QVBoxLayout* a=new QVBoxLayout();
@@ -63,23 +63,26 @@ void Login::login_user()
 //    string user=username->text().toStdString();
 //    string pw=password->text().toStdString();
 //    Utente* utente=db.check_credenziali(user,pw);
-    if(true)
-    {
+
+
         VistaUtente* v=new VistaUtente();
         v->show();
         close();
-    }
-    else
-    {
-        QErrorMessage * e=new QErrorMessage();
-        e->showMessage("Username o Password non corretti");
-    }
+
+//    else
+//    {
+//        QErrorMessage * e=new QErrorMessage();
+//        e->showMessage("Username o Password non corretti");
+//    }
 }
 
 void Login::login_admin()
 {
-    controller_admin v;
-    close();
+//    this->hide();
+    vista_amministratore* v=new vista_amministratore(new controller_admin(v,new Database));
+    v->show();
+//    controller_admin v(new vista_amministratore(&v));
+//    close();
 }
 
 void Login::registrazione()
