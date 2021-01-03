@@ -2,6 +2,7 @@
 #include "basic.h"
 #include "gold.h"
 #include "premium.h"
+#include "controller_admin.h"
 void vista_amministratore::build_buttons()
 {
     aggiungi=new QPushButton("Aggiungi utente");

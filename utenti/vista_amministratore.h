@@ -15,8 +15,7 @@
 #include "creautente.h"
 
 #include "database.h"
-
-class Controller_admin;
+class controller_admin;
 class vista_amministratore : public QWidget
 {
     Q_OBJECT
@@ -25,6 +24,7 @@ public:
     explicit vista_amministratore(QWidget *parent = 0);
     ~vista_amministratore();
 private:
+    controller_admin* controller;
     QVBoxLayout* mainLyaout;
     QLabel* cambio_piano_label;
     QLabel* togli_utente_label;

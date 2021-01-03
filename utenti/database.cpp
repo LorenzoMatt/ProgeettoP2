@@ -5,7 +5,13 @@
 
 Database::Database()
 {
+    import();
+}
 
+Database::~Database()
+{
+    exportdati();
+    //il depptr si proccupa di deallocare gli utenti
 }
 
 bool Database::check_presenza(const std::string &username)

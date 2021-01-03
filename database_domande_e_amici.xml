@@ -101,4 +101,44 @@
             <commenti/>
         </domanda>
     </utente>
+    <utente>
+        <username>lorenzo99</username>
+        <amici></amici>
+    </utente>
+    <utente>
+        <username>lorenzo98</username>
+        <amici></amici>
+    </utente>
+    <utente>
+        <username>lorenzo97</username>
+        <amici></amici>
+    </utente>
+    <utente>
+        <username>lorenzo96</username>
+        <amici></amici>
+    </utente>
+    <utente>
+        <username>lorenzo95</username>
+        <amici></amici>
+    </utente>
+    <utente>
+        <username>lorenzo94</username>
+        <amici></amici>
+    </utente>
+    <utente>
+        <username>lorenzo93</username>
+        <amici></amici>
+    </utente>
+    <utente>
+        <username>lorenzo92</username>
+        <amici></amici>
+    </utente>
+    <utente>
+        <username>lorenzo91</username>
+        <amici></amici>
+    </utente>
+    <utente>
+        <username>lorenzo90</username>
+        <amici></amici>
+    </utente>
 </domande_e_amici>
