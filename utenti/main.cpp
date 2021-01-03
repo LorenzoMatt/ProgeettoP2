@@ -116,7 +116,7 @@ int main(int argc ,char** argv)
 ////    m.aggiungi_utente(new Gold("dioo","password","nome","cogmone","email"));
     m.importa_dati_utenti();
     m.importa_amici_utenti();
-    m.importa_amici();
+//    m.importa_amici();
 //    cout<<m.get_utenti();
 
 //    cout<<"ciaoooo"<<endl;

@@ -380,8 +380,6 @@ void Database::importa_dati_utenti()
                 {
                     risposte=elemento.text();
                 }
-//                get_utente("dioo")->get_domande().push_back(new Domanda("ciao",get_utente("dioo"),1));
-//                get_utente("Pikachu")->get_domande().push_back(new Domanda("ciao",get_utente("Pikachu"),1));
                 nodo=nodo.nextSibling();
             }
             Utente* utente;
@@ -403,10 +401,6 @@ void Database::importa_dati_utenti()
             if(titoli.size()!=0)
                utente->carica_titoli(titoli.toStdString());
             aggiungi_utente(utente);
-//            get_utente("dioo")->fai_domanda(new Domanda("ciao",get_utente("dioo"),1));
-        }
-        for(int i=0;i<30;++i)
-        {
         }
         file->close();
     }
@@ -564,7 +558,7 @@ void Database::importa_amici_utenti()
             }
             Utente* utente;
             utente=get_utente(user.toStdString());
-//            utente->carica_amici(amici.toStdString(),*this);
+            aggiungi_amici_ad_utente(amici.toStdString(),user.toStdString());
             utente->set_domande(domande_utente);
         }//fine ciclo for
         file->close();
