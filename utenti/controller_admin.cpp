@@ -2,7 +2,7 @@
 #include "basic.h"
 #include "gold.h"
 #include "premium.h"
-controller_admin::controller_admin(vista_amministratore* v,Database* d) :vista(v), db(d)
+controller_admin::controller_admin(/*vista_amministratore* v,*/Database* d) :/*vista(v),*/ db(d)
 {
     db->import();
     /*vista=new vista_amministratore(this)*/
@@ -22,7 +22,7 @@ Database *controller_admin::get_db() const
 void controller_admin::togli_utente(const std::string & utente)
 {
     db->togli_utente(utente);
-    vista->aggiorna_tabella();
+//    vista->aggiorna_tabella();
 }
 
 void controller_admin::salva() const
@@ -45,6 +45,6 @@ void controller_admin::aggiungi_utente(const std::string &username, const std::s
         db->aggiungi_utente(new Basic(username,password,nome,cognome,email));
     if(piano=="Premium")
         db->aggiungi_utente(new Premium(username,password,nome,cognome,email));
-    vista->aggiorna_tabella();
+//    vista->aggiorna_tabella();
 }
 

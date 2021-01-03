@@ -16,7 +16,6 @@ class Login : public QWidget
 public:
     explicit Login(QWidget *parent = 0);
     ~Login();
-
 private:
     QFormLayout* accesso;
     QVBoxLayout* mainLayout;

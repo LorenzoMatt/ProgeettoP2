@@ -49,24 +49,24 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Gold</tipoutente>
-        <username>rr</username>
-        <password>rr</password>
-        <nome>rr</nome>
-        <cognome>rr</cognome>
-        <email>rr</email>
-        <competenze></competenze>
-        <titoli_di_studio></titoli_di_studio>
-        <punti>50</punti>
-        <risposte_date>0</risposte_date>
-    </utente>
-    <utente>
         <tipoutente>Basic</tipoutente>
         <username>Elton</username>
         <password>elton</password>
         <nome>elton</nome>
         <cognome>elton</cognome>
         <email>elton</email>
+        <competenze></competenze>
+        <titoli_di_studio></titoli_di_studio>
+        <punti>30</punti>
+        <risposte_date>0</risposte_date>
+    </utente>
+    <utente>
+        <tipoutente>Basic</tipoutente>
+        <username>dd</username>
+        <password>ddd</password>
+        <nome>dd</nome>
+        <cognome>dd</cognome>
+        <email>dd</email>
         <competenze></competenze>
         <titoli_di_studio></titoli_di_studio>
         <punti>30</punti>

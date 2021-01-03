@@ -1,6 +1,7 @@
 #include "log.h"
 #include "creautente.h"
 #include "vista_utente.h"
+//#include "vista_amministratore.h"
 Login::Login(QWidget *parent)
 {
     setWindowTitle("Login");
@@ -79,10 +80,10 @@ void Login::login_user()
 void Login::login_admin()
 {
 //    this->hide();
-    vista_amministratore* v=new vista_amministratore(new controller_admin(v,new Database));
+    vista_amministratore* v=new vista_amministratore(new controller_admin());
     v->show();
 //    controller_admin v(new vista_amministratore(&v));
-//    close();
+    close();
 }
 
 void Login::registrazione()

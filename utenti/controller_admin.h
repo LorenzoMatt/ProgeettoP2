@@ -6,7 +6,7 @@ class vista_amministratore;
 class controller_admin
 {
 public:
-    controller_admin(vista_amministratore* =nullptr,Database* d=new Database());
+    controller_admin(/*vista_amministratore* =nullptr,*/Database* d=new Database());
     ~controller_admin();
     Database* get_db() const;
     void togli_utente(const string&);
@@ -15,7 +15,7 @@ public:
     void aggiungi_utente(const string & username, const string & password, const string & nome,
                          const string & cognome, const string & email,const string& piano);
 private:
-    vista_amministratore* vista;
+//    vista_amministratore* vista;
     Database* db;
 
 };

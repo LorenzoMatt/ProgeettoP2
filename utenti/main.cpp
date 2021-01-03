@@ -29,7 +29,7 @@ int main(int argc ,char** argv)
 ////    Account a(new Basic("pippo","1234","mirko","stella","ing_mirko@genioincompreso.com"),&d);
 ////    cout<<*a.get_utente();
 ////    cout<<endl<<d.get_utenti().countElements()<<endl;
-    vista_amministratore w(new controller_admin(&w));
+    vista_amministratore w(new controller_admin());
 //    Login w;
 //    controller_admin w(new vista_amministratore(&w));
 ////    c.setModel(&a);
