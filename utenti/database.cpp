@@ -404,6 +404,7 @@ void Database::importa_dati_utenti()
         }
         file->close();
     }
+    importa_amici_utenti();
 }
 
 
@@ -575,42 +576,42 @@ void Database::aggiungi_amici_ad_utente(const string& amici, const string& user)
     }
 }
 
-void Database::importa_amici()
-{
-    QFile* file=new QFile("../database_domande_e_amici.xml");
-    if (!file->open(QFile::ReadOnly | QFile::Text))
-    {
-        throw std::runtime_error("errore nell'apertura del file");
-    }
-    else
-    {
-        QDomDocument documento;
-        if(!documento.setContent(file)){
-            file->close();
-            return;
-        }
-        QDomElement root = documento.documentElement();//salvo la radice del file
-        QDomNodeList nodi_utenti = root.elementsByTagName("utente");
-        for(int i=0; i<nodi_utenti.count(); ++i)
-        {
-            QDomElement el = nodi_utenti.at(i).toElement();
-            QDomNode nodo = el.firstChild();
-            QString user,amici;
-//            container<Domanda*> domande_utente;
-            while (!nodo.isNull())
-            {
-                QDomElement elemento = nodo.toElement();
-                QString tagName = elemento.tagName();
-                if(tagName=="username")
-                    user=elemento.text();
-                if(tagName=="amici")
-                    amici=elemento.text();
-                nodo=nodo.nextSibling();
-            }
-            aggiungi_amici_ad_utente(amici.toStdString(), user.toStdString());
-        }
-    }
-    file->close();
-}
+//void Database::importa_amici()
+//{
+//    QFile* file=new QFile("../database_domande_e_amici.xml");
+//    if (!file->open(QFile::ReadOnly | QFile::Text))
+//    {
+//        throw std::runtime_error("errore nell'apertura del file");
+//    }
+//    else
+//    {
+//        QDomDocument documento;
+//        if(!documento.setContent(file)){
+//            file->close();
+//            return;
+//        }
+//        QDomElement root = documento.documentElement();//salvo la radice del file
+//        QDomNodeList nodi_utenti = root.elementsByTagName("utente");
+//        for(int i=0; i<nodi_utenti.count(); ++i)
+//        {
+//            QDomElement el = nodi_utenti.at(i).toElement();
+//            QDomNode nodo = el.firstChild();
+//            QString user,amici;
+////            container<Domanda*> domande_utente;
+//            while (!nodo.isNull())
+//            {
+//                QDomElement elemento = nodo.toElement();
+//                QString tagName = elemento.tagName();
+//                if(tagName=="username")
+//                    user=elemento.text();
+//                if(tagName=="amici")
+//                    amici=elemento.text();
+//                nodo=nodo.nextSibling();
+//            }
+//            aggiungi_amici_ad_utente(amici.toStdString(), user.toStdString());
+//        }
+//    }
+//    file->close();
+//}
 
 

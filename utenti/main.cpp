@@ -115,7 +115,7 @@ int main(int argc ,char** argv)
 //    m.exportdati();
 ////    m.aggiungi_utente(new Gold("dioo","password","nome","cogmone","email"));
     m.importa_dati_utenti();
-    m.importa_amici_utenti();
+//    m.importa_amici_utenti();
 //    m.importa_amici();
 //    cout<<m.get_utenti();
 
@@ -127,7 +127,7 @@ int main(int argc ,char** argv)
 //    cout<<m.get_utenti().size();
 //    cout<<endl<<m.get_utenti().size()<<endl;
 
-    cout<<m.get_utente("Pikachu")->get_amici();
+    cout<<m.get_utente("Pikachu")->get_domande_amici();
 //    for(auto it=m.get_utenti().begin();it!=m.get_utenti().end();++it)
 //    {
 //        cout<<endl<<(*it)->get_domande()<<endl;
