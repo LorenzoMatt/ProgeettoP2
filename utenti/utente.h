@@ -48,10 +48,9 @@ public:
     unsigned int get_risposte_date() const; //serve per ottenere un bonus
 
 
-    //caricamento su file
+    //caricamento da file
     void carica_competenze(const string&);
     void carica_titoli(const string&);
-    void carica_amici(const string& amici, Database d);
 
     //void fai_domanda(const string& domanda,unsigned int priorita=0);
     void modifica_password(const string &);

@@ -31,7 +31,8 @@ public:
     Utente* cambia_piano(Utente* utente,const string& piano);//OK
     Utente* check_credenziali(const string&, const string&) const;
     void importa_dati_utenti();
-    void importa_amici_utenti(); //importa le domande e i commenti correttamente, ma gli amici no
+    void importa_amici_e_domande_utenti(); //per ora funziona
+    void import();
 //    void importa_amici();
     void exportdati() const;
     void fai_domanda(const string&,const string&,unsigned int);

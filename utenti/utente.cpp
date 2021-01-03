@@ -50,44 +50,6 @@ unsigned int Utente::get_risposte_date() const
     return risposte_date;
 }
 
-void Utente::carica_amici(const std::string &amici, Database d)
-{
-//    string amico;
-//    for(unsigned int i=0; i<amici.size(); i++)
-//    {
-//        if(amici[i]!=' ')
-//        {
-//            amico=amico+amici[i];
-//        }
-//        else
-//        {
-//            aggiungi_amico(d.get_utente(amico));
-//            amico="";
-//        }
-//        if(i==amici.size()-1)
-//        {
-//            aggiungi_amico(d.get_utente(amico));
-//        }
-//    }
-
-    container<string> tokens;
-
-     std::size_t start = amici.find_first_not_of(" "), end = 0;
-
-     while((end = amici.find_first_of(" ", start)) != std::string::npos)
-     {
-         tokens.push_back(amici.substr(start, end - start));
-         start = amici.find_first_not_of(" ", end);
-     }
-     if(start != std::string::npos)
-         tokens.push_back(amici.substr(start));
-
-     for(auto it=tokens.begin();it!=tokens.end();++it)
-     {
-         aggiungi_amico(d.get_utente(*it));
-     }
-}
-
 void Utente::carica_titoli(const string& titoli)
 {
     container<string> tit=split(titoli," ");

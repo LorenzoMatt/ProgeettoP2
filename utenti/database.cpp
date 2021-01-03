@@ -315,8 +315,6 @@ void Database::exportdati() const
 
 }
 
-
-
 void Database::importa_dati_utenti()
 {
     QFile* file=new QFile("../database.xml");
@@ -404,7 +402,6 @@ void Database::importa_dati_utenti()
         }
         file->close();
     }
-    importa_amici_utenti();
 }
 
 
@@ -469,7 +466,7 @@ void Database::importa_dati_utenti()
 
 
 
-void Database::importa_amici_utenti()
+void Database::importa_amici_e_domande_utenti()
 {
     /********import domande e amici********/
     QFile* file=new QFile("../database_domande_e_amici.xml");
@@ -564,6 +561,12 @@ void Database::importa_amici_utenti()
         }//fine ciclo for
         file->close();
     }
+}
+
+void Database::import()
+{
+    importa_dati_utenti();
+    importa_amici_e_domande_utenti();
 }
 
 void Database::aggiungi_amici_ad_utente(const string& amici, const string& user)
