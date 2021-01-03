@@ -21,8 +21,9 @@ class vista_amministratore : public QWidget
     Q_OBJECT
     friend class controller_admin;
 public:
-    explicit vista_amministratore(controller_admin* c, QWidget *parent = 0);
+    explicit vista_amministratore(/*controller_admin* c=nullptr, */QWidget *parent = 0);
     ~vista_amministratore();
+    void set_controller(controller_admin* c);
 private:
     controller_admin* controller;
     QVBoxLayout* mainLyaout;
@@ -45,7 +46,6 @@ private:
     QFormLayout* cambio_piano_layout;
 
     void build_buttons();
-    void crea_lista_utenti(Database&);
     void creazione_tabella();
     void build_togli_utente();
     void build_cambio_piano();
@@ -55,14 +55,12 @@ private:
     void aggiorna_tabella();
 
 
-
 private slots:
     void finestra_aggiungi_utente();
     void togli_utente();
     void cambio_piano();
     void salva_db();
     void logout();
-
     void aggiungi_utente(const QString&, const QString&, const QString&, const QString&, const QString&, const QString&);
 
 

@@ -133,12 +133,13 @@ Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
                 container<Utente*> seguaci=(*it)->get_seguaci();
                 unsigned int risposte_date=(*it)->get_risposte_date();
                 unsigned int punti=(*it)->get_punti();
+                it=utenti.erase(it);
                 if(piano=="Basic")
-                    it=utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Basic(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
+                    it=utenti.insert(it,DeepPtr<Utente>(new Basic(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                 if(piano=="Gold")
-                    it=utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Gold(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
+                    it=utenti.insert(it,DeepPtr<Utente>(new Gold(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                 if(piano=="Premium")
-                    it=utenti.insert(utenti.erase(it),DeepPtr<Utente>(new Premium(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
+                    it=utenti.insert(it,DeepPtr<Utente>(new Premium(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                 reverse_seguaci_amici(&(**it));
                 return &(**it);
             }

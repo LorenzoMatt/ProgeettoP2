@@ -2,7 +2,7 @@
 #include "creautente.h"
 #include "vista_utente.h"
 //#include "vista_amministratore.h"
-Login::Login(QWidget *parent)
+Login::Login(QWidget *parent) : QWidget(parent)
 {
     setWindowTitle("Login");
     mainLayout=new QVBoxLayout();
@@ -79,10 +79,8 @@ void Login::login_user()
 
 void Login::login_admin()
 {
-//    this->hide();
-    vista_amministratore* v=new vista_amministratore(new controller_admin());
-    v->show();
-//    controller_admin v(new vista_amministratore(&v));
+    vista_amministratore* vista=new vista_amministratore();
+    vista->show();
     close();
 }
 

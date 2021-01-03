@@ -1,34 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <domande_e_amici>
     <utente>
-        <username>Francesca</username>
-        <amici>Mirko</amici>
-    </utente>
-    <utente>
-        <username>Mirko</username>
-        <amici></amici>
-    </utente>
-    <utente>
-        <username>Giorgia</username>
-        <amici>Mirko</amici>
+        <username>Pikachu</username>
+        <amici>Elton Giorgia Lorenzo Mirko</amici>
         <domanda>
-            <priorita>1</priorita>
+            <priorita>3</priorita>
+            <testo>prova a fare una domanda</testo>
+            <commenti>
+                <commento>
+                    <testo>prova per un commento</testo>
+                    <autore_commento>Giorgia</autore_commento>
+                </commento>
+                <commento>
+                    <testo>prova per un commento</testo>
+                    <autore_commento>Giorgia</autore_commento>
+                </commento>
+                <commento>
+                    <testo>prova per un commento</testo>
+                    <autore_commento>Giorgia</autore_commento>
+                </commento>
+            </commenti>
+        </domanda>
+        <domanda>
+            <priorita>3</priorita>
+            <testo>prova a fare una domanda</testo>
+            <commenti>
+                <commento>
+                    <testo>prova per un commento</testo>
+                    <autore_commento>Giorgia</autore_commento>
+                </commento>
+                <commento>
+                    <testo>prova per un commento</testo>
+                    <autore_commento>Giorgia</autore_commento>
+                </commento>
+            </commenti>
+        </domanda>
+        <domanda>
+            <priorita>3</priorita>
+            <testo>prova a fare una domanda</testo>
+            <commenti>
+                <commento>
+                    <testo>prova per un commento</testo>
+                    <autore_commento>Giorgia</autore_commento>
+                </commento>
+            </commenti>
+        </domanda>
+        <domanda>
+            <priorita>3</priorita>
             <testo>prova a fare una domanda</testo>
             <commenti/>
         </domanda>
         <domanda>
-            <priorita>1</priorita>
+            <priorita>3</priorita>
             <testo>prova a fare una domanda</testo>
             <commenti/>
         </domanda>
         <domanda>
-            <priorita>1</priorita>
+            <priorita>3</priorita>
+            <testo>prova a fare una domanda</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>3</priorita>
             <testo>prova a fare una domanda</testo>
             <commenti/>
         </domanda>
     </utente>
     <utente>
-        <username>ss</username>
+        <username>Lorenzo</username>
         <amici></amici>
     </utente>
     <utente>
@@ -36,7 +75,30 @@
         <amici></amici>
     </utente>
     <utente>
-        <username>dd</username>
+        <username>Francesca</username>
+        <amici>Elton Pikachu Lorenzo Mirko</amici>
+    </utente>
+    <utente>
+        <username>Mirko</username>
         <amici></amici>
+    </utente>
+    <utente>
+        <username>Giorgia</username>
+        <amici>Elton Pikachu Lorenzo Mirko</amici>
+        <domanda>
+            <priorita>1</priorita>
+            <testo>prova a fare una domanda</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>1</priorita>
+            <testo>prova a fare una domanda</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>1</priorita>
+            <testo>prova a fare una domanda</testo>
+            <commenti/>
+        </domanda>
     </utente>
 </domande_e_amici>
