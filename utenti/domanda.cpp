@@ -79,7 +79,7 @@ unsigned int Domanda::get_priorita() const
 
 std::ostream &operator<<(std::ostream & os, const Domanda& d){
 
-    return os<<"autore domanda "<<d.autore_domanda->get_credenziali().get_username()<<endl<<"domanda: "<<d.testo<<endl<<"commenti: "<<d.commenti;
+    return os<<"autore domanda "<<d.autore_domanda->get_credenziali().get_username()<<endl<<"domanda: "<<d.testo<<endl<<"commenti: "<<endl<<d.commenti;
 }
 
 

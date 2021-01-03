@@ -15,5 +15,5 @@ bool Commento:: operator==(const Commento& c) const{
 
 std::ostream &operator<<(std::ostream & os, const Commento& c){
 
-    return os<<"commento di: "<<c.autore->get_credenziali().get_username()<<endl<<c.testo;
+    return os<<"commento di: "<<c.autore->get_credenziali().get_username()<<endl<<"testo: "<<c.testo<<endl;
 }

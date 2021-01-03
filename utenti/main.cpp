@@ -115,8 +115,6 @@ int main(int argc ,char** argv)
 //    m.exportdati();
 ////    m.aggiungi_utente(new Gold("dioo","password","nome","cogmone","email"));
     m.import();
-//    m.importa_amici_utenti();
-//    m.importa_amici();
 //    cout<<m.get_utenti();
 
 //    cout<<"ciaoooo"<<endl;
@@ -127,11 +125,19 @@ int main(int argc ,char** argv)
 //    cout<<m.get_utenti().size();
 //    cout<<endl<<m.get_utenti().size()<<endl;
 
-    cout<<m.get_utente("Pikachu")->cerca_domanda("domanda a prova fare una",m);
-//    for(auto it=m.get_utenti().begin();it!=m.get_utenti().end();++it)
-//    {
-//        cout<<endl<<(*it)->get_domande()<<endl;
-//    }
+//    cout<<m.get_utente("Pikachu")->cerca_domanda("domanda a prova fare una",m);
+    cout<<"utenti presenti nel db"<<endl<<endl;
+    for(auto it=m.get_utenti().begin();it!=m.get_utenti().end();++it)
+    {
+        cout<<**it<<endl;
+    }
+    cout<<"domande degli utenti"<<endl<<endl;
+
+    for(auto it=m.get_utenti().begin();it!=m.get_utenti().end();++it)
+    {
+        if((*it)->get_domande().size()!=0)
+        cout<<(*it)->get_domande()<<endl;
+    }
 
 
 //    m.aggiungi_utente(new Premium("Pikachu","dioboia","diostronzo","porco","dio"));
