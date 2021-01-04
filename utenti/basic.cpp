@@ -53,7 +53,7 @@ void Basic::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funzi
             if(punti>=punti_da_sottrarre)
             {
                 punti-=punti_da_sottrarre;
-                get_domande().push_back(domanda);
+                get_domande().push_front(domanda);
             }
             else
             {

@@ -10,6 +10,7 @@ private:
     Database* model;
 public:
     Account();
+    Account(const string&);
     Account(Utente *, Database *);
            /* getter*/
     Profilo get_profilo() const;//OK

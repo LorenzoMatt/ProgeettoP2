@@ -14,18 +14,15 @@
 #include <vector>
 #include <QString>
 
-#include "account.h"
 #include "bottonevedicommento.h"
 
-#include "vistaprofilo.h"
 class Controller;
-class Domanda;
 
 class VistaUtente:public QWidget
 {
     Q_OBJECT
     Controller* c;
-    Account* a;
+
     QLabel* numeroDomandePersonali;
     QPushButton* aggiungiDomanda;
     QHBoxLayout* layoutBarraSuperiore;
@@ -40,9 +37,6 @@ class VistaUtente:public QWidget
     QVBoxLayout* layoutWidgetPagina1;
     QVBoxLayout* layoutWidgetPagina2;
 
-    Domanda* dom;
-
-
 //funzioni di utilitá
     void aggiungiAreaDomandaAmici();
     void aggiungiPulsanteDomandaPersonale();
@@ -51,8 +45,7 @@ class VistaUtente:public QWidget
     void buildTabella();
 
 public:
-    VistaUtente(Account*,QWidget* parent=nullptr);
-    void setController(Controller*);
+    VistaUtente(const QString&,QWidget* parent=nullptr);
 public slots:
     void vediProfilo();
 

@@ -21,71 +21,55 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # Input
 HEADERS += accesso.h \
            amico_non_presente.h \
+    bottonevedicommento.h \
+    database.h \
            commento.h \
            container.h \
-            controller.h \
+    controller.h \
            deepptr.h \
            domanda.h \
+    log.h \
            non_autore_domanda.h \
            profilo.h \
            togliere_te_stesso_dagli_amici.h \
            utente.h \
     utente_gia_presente.h \
-    test_deep_ptr.h \
-    test_domande.h \
-    test_model.h \
-    test_profilo.h \
-    test_utenti.h \
     basic.h \
     pagamento.h \
     gold.h \
     punti_non_sufficienti.h \
     premium.h \
-    test_polimorfismo.h \
     account.h \
-    test_account.h \
-    log.h \
     vista_domanda.h \
     vista_utente.h \
     creautente.h \
     vista_amministratore.h \
+    vistaProfilo.h \
     controller_admin.h \
-    bottonevedicommento.h \
-    vista_domanda.h \
-    vistaprofilo.h
+    funzioni_globali.h
 FORMS +=
 SOURCES += accesso.cpp \
            amico_non_presente.cpp \
+    bottonevedicommento.cpp \
            commento.cpp \
     controller.cpp \
            domanda.cpp \
+    log.cpp \
            main.cpp \
            non_autore_domanda.cpp \
            profilo.cpp \
            utente.cpp \
     utente_gia_presente.cpp \
-    test_domande.cpp \
-    test_utenti.cpp \
-    test_profilo.cpp \
-    test_deep_ptr.cpp \
-    test_model.cpp \
     basic.cpp \
     pagamento.cpp \
     gold.cpp \
     punti_non_sufficienti.cpp \
     premium.cpp \
-    test_polimorfismo.cpp \
     account.cpp \
-    test_account.cpp \
-    log.cpp \
     vista_domanda.cpp \
     vista_utente.cpp \
     creautente.cpp \
     database.cpp \
     vista_amministratore.cpp \
     controller_admin.cpp \
-    bottonevedicommento.cpp \
-    vista_domanda.cpp \
-    vistaprofilo.cpp
-
-DISTFILES +=
+    vistaProfilo.cpp

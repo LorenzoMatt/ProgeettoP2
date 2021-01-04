@@ -100,7 +100,7 @@ void Login::login_user()
 //    Utente* utente=db.check_credenziali(user,pw);
 
 
-        VistaUtente* v=new VistaUtente(new Account());
+        VistaUtente* v=new VistaUtente("Pikachu");
         v->show();
         close();
 
@@ -142,7 +142,7 @@ void Login::aggiungi_utente(const QString & username, const QString & password, 
         if(pi=="Premium")
             db->aggiungi_utente(new Premium(u,p,n,co,em));
         db->exportdati();
-        VistaUtente* v=new VistaUtente();//ci andra l'account appena creato
+        VistaUtente* v=new VistaUtente(username);//ci andra l'account appena creato
         v->show();
         close();
     }catch(utente_gia_presente)

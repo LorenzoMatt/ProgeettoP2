@@ -2,8 +2,9 @@
 #define CONTROLLER_H
 
 #include <QObject>
-#include "vista_utente.h"
 #include "account.h"
+#include "vista_utente.h"
+
 
 class Controller : public QObject
 {
@@ -12,10 +13,18 @@ private:
     VistaUtente* v;
     Account* a;
 public:
-    explicit Controller(QObject *parent = nullptr);
+    explicit Controller(const QString& ,VistaUtente*,QObject *parent = nullptr);
     void setModel(Account*);
     void setVista(VistaUtente*);
     void faiDomanda(const QString&);
+    Profilo getProfilo() const;
+    Accesso getAccesso() const;
+    container<Domanda *> getDomandeAmici() const;//OK
+
+
+
+
+public slots:
 
 signals:
 

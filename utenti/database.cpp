@@ -55,11 +55,15 @@ Database::Database(const container<DeepPtr<Utente> > &u):utenti(u)
 
 void Database::aggiungi_utente(const DeepPtr<Utente> &utente)
 {
+    try{
         if(!check_presenza(utente->get_credenziali().get_username()))
             utenti.push_back(utente);
         else
             throw utente_gia_presente();
-
+    }catch(utente_gia_presente)
+    {
+        std::cerr<<"utente "<<utente->get_credenziali().get_username() <<" già presente";
+    }
 
 }
 
@@ -131,11 +135,11 @@ Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
                 unsigned int punti=(*it)->get_punti();
                 it=utenti.erase(it);
                 if(piano=="Basic")
-                    it=utenti.insert(it,new Basic(pf,credenziali,amici,seguaci,domande,punti,risposte_date));
+                    it=utenti.insert(it,DeepPtr<Utente>(new Basic(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                 if(piano=="Gold")
-                    it=utenti.insert(it,new Gold(pf,credenziali,amici,seguaci,domande,punti,risposte_date));
+                    it=utenti.insert(it,DeepPtr<Utente>(new Gold(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                 if(piano=="Premium")
-                    it=utenti.insert(it,new Premium(pf,credenziali,amici,seguaci,domande,punti,risposte_date));
+                    it=utenti.insert(it,DeepPtr<Utente>(new Premium(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                 reverse_seguaci_amici(&(**it));
                 return &(**it);
             }
@@ -323,7 +327,7 @@ void Database::importa_dati_utenti()
     QFile* file=new QFile("../database.xml");
     if (!file->open(QFile::ReadOnly | QFile::Text))
     {
-        throw std::runtime_error("errore nell'apertura del file");
+        throw std::runtime_error("errore nell'apertura del file database");
     }
     else
     {
@@ -413,7 +417,7 @@ void Database::importa_amici_e_domande_utenti()
     QFile* file=new QFile("../database_domande_e_amici.xml");
     if (!file->open(QFile::ReadOnly | QFile::Text))
     {
-        throw std::runtime_error("errore nell'apertura del file");
+        throw std::runtime_error("errore nell'apertura del file database domande amici");
     }
     else
     {

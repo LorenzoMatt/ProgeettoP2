@@ -5,6 +5,13 @@ Account::Account()
 
 }
 
+Account::Account(const std::string & u)
+{
+    model=new Database();
+    model->import();
+    utente=model->get_utente(u);
+}
+
 Account::Account(Utente *u, Database *m) :model(m)
 {
     m->aggiungi_utente(u);

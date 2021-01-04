@@ -1,6 +1,6 @@
 #include "vistaprofilo.h"
 
-vistaProfilo::vistaProfilo(Account * acc):a(acc)
+vistaProfilo::vistaProfilo(Controller * c):a(c)
 {
     //creo il layout che contiene tutto
     QVBoxLayout* layoutTotale=new QVBoxLayout;
@@ -19,7 +19,7 @@ vistaProfilo::vistaProfilo(Account * acc):a(acc)
     QLabel* EtichettaNome=new QLabel("Nome:");
     QLineEdit* testoNome=new QLineEdit;
     testoNome->setReadOnly(true);
-    testoNome->setPlaceholderText(QString::fromStdString(a->get_profilo().get_nome()));
+    testoNome->setPlaceholderText(QString::fromStdString(a->getProfilo().get_nome()));
     QPushButton* confermaNome=new QPushButton("Conferma");
     confermaNome->setMaximumWidth(70);
     layoutNome->addWidget(EtichettaNome);
@@ -32,7 +32,7 @@ vistaProfilo::vistaProfilo(Account * acc):a(acc)
     QVBoxLayout* layoutCognome=new QVBoxLayout;
     QLabel* EtichettaCognome=new QLabel("Cognome:");
     QLineEdit* testoCognome=new QLineEdit;
-    testoCognome->setPlaceholderText(QString::fromStdString(a->get_profilo().get_cognome()));
+    testoCognome->setPlaceholderText(QString::fromStdString(a->getProfilo().get_cognome()));
     QPushButton* confermaCognome=new QPushButton("Conferma");
     layoutCognome->addWidget(EtichettaCognome);
     layoutCognome->addWidget(testoCognome);
@@ -44,7 +44,7 @@ vistaProfilo::vistaProfilo(Account * acc):a(acc)
     QVBoxLayout* layoutPassword=new QVBoxLayout;
     QLabel* etichettaPassword=new QLabel("Password:");
     QLineEdit* testoPassword=new QLineEdit;
-    testoPassword->setPlaceholderText(QString::fromStdString(a->get_credenziali().get_password()));
+    testoPassword->setPlaceholderText(QString::fromStdString(a->getAccesso().get_password()));
     QPushButton* confermaPassword=new QPushButton("Conferma");
     layoutPassword->addWidget(etichettaPassword);
     layoutPassword->addWidget(testoPassword);
@@ -56,7 +56,7 @@ vistaProfilo::vistaProfilo(Account * acc):a(acc)
     QVBoxLayout* layoutEmail=new QVBoxLayout;
     QLabel* etichettaEmail=new QLabel("Email:");
     QLineEdit* testoEmail=new QLineEdit;
-    testoEmail->setPlaceholderText(QString::fromStdString(a->get_profilo().get_email()));
+    testoEmail->setPlaceholderText(QString::fromStdString(a->getProfilo().get_email()));
     QPushButton* confermaEmail=new QPushButton("Conferma");
     layoutEmail->addWidget(etichettaEmail);
     layoutEmail->addWidget(testoEmail);
@@ -69,7 +69,7 @@ vistaProfilo::vistaProfilo(Account * acc):a(acc)
     QVBoxLayout* layoutAggiungiCompetenzaProfessionale=new QVBoxLayout;
     QLabel* etichettaAggiungiCompetenzaProfessionale=new QLabel("Aggiungi competenza professionale:");
     QTextEdit* testoAggiungiCompetenzaProfessionale=new QTextEdit;
-    container<string> competenze=a->get_profilo().GetCompetenze();
+    container<string> competenze=a->getProfilo().GetCompetenze();
     string testoCompetenze;
     for(auto it=competenze.cbegin();it!=competenze.cend();++it){
         testoCompetenze.append("-");
@@ -88,7 +88,7 @@ vistaProfilo::vistaProfilo(Account * acc):a(acc)
     QVBoxLayout* layoutAggiungiTitoloDiStudio=new QVBoxLayout;
     QLabel* EtichettaAggiungiTitoloDiStudio=new QLabel("Aggiungi titolo di studio:");
     QTextEdit* testoAggiungiTitoloDiStudio=new QTextEdit;
-    container<string> TitoliDiStudio=a->get_profilo().GetTitoliDiStudio();
+    container<string> TitoliDiStudio=a->getProfilo().GetTitoliDiStudio();
     string testoTitoliDiStudio;
     for(auto it=TitoliDiStudio.cbegin();it!=TitoliDiStudio.cend();++it){
         testoTitoliDiStudio.append("-");
@@ -112,7 +112,7 @@ vistaProfilo::vistaProfilo(Account * acc):a(acc)
 
     //pulsante torna alla home
     QPushButton* home=new QPushButton;
-    QPixmap pix("home.pgn");
+    QPixmap pix("../home.pgn");
     QIcon* iconaHome=new QIcon(pix);
     home->setIcon(*iconaHome);
 

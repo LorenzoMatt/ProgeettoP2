@@ -79,7 +79,4 @@ void creautente::crea_tasti()
     Cognome=new QLineEdit();
     Email=new QLineEdit();
     Piano=new QComboBox;
-    Piano->addItem("Basic");
-    Piano->addItem("Gold");
-    Piano->addItem("Premium");
 }

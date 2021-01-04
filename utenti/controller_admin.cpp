@@ -99,4 +99,3 @@ void controller_admin::set_vista(vista_amministratore *v)
 {
     vista=v;
 }
-

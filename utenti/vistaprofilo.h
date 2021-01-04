@@ -2,7 +2,6 @@
 #define VISTAPROFILO_H
 
 #include <QWidget>
-#include "account.h"
 #include <QVBoxLayout>
 #include <QPushButton>
 #include <QHBoxLayout>
@@ -10,15 +9,16 @@
 #include <QTextEdit>
 #include <QLineEdit>
 #include "container.h"
+#include "controller.h"
 
 
 
 class vistaProfilo:public QWidget
 {
     Q_OBJECT
-    Account* a;
+    Controller* a;
 public:
-    vistaProfilo(Account*);
+    vistaProfilo(Controller*);
 };
 
 #endif // VISTAPROFILO_H
