@@ -49,7 +49,10 @@ HEADERS += accesso.h \
     vista_utente.h \
     creautente.h \
     vista_amministratore.h \
-    controller_admin.h
+    controller_admin.h \
+    bottonevedicommento.h \
+    vista_domanda.h \
+    vistaprofilo.h
 FORMS +=
 SOURCES += accesso.cpp \
            amico_non_presente.cpp \
@@ -81,3 +84,8 @@ SOURCES += accesso.cpp \
     database.cpp \
     vista_amministratore.cpp \
     controller_admin.cpp \
+    bottonevedicommento.cpp \
+    vista_domanda.cpp \
+    vistaprofilo.cpp
+
+DISTFILES +=

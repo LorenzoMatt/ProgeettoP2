@@ -12,16 +12,20 @@
 #include <QLabel>
 #include <QScrollArea>
 #include <vector>
+#include <QString>
 
+#include "account.h"
+#include "bottonevedicommento.h"
+
+#include "vistaprofilo.h"
 class Controller;
-
-
+class Domanda;
 
 class VistaUtente:public QWidget
 {
     Q_OBJECT
     Controller* c;
-
+    Account* a;
     QLabel* numeroDomandePersonali;
     QPushButton* aggiungiDomanda;
     QHBoxLayout* layoutBarraSuperiore;
@@ -36,19 +40,21 @@ class VistaUtente:public QWidget
     QVBoxLayout* layoutWidgetPagina1;
     QVBoxLayout* layoutWidgetPagina2;
 
+    Domanda* dom;
+
 
 //funzioni di utilitá
-    QScrollArea *aggiungiAreaDomanda();
+    void aggiungiAreaDomandaAmici();
     void aggiungiPulsanteDomandaPersonale();
     void aggiungiPulsanteDomandaAmico();
     void buildBarraSuperiore();
     void buildTabella();
 
 public:
-    VistaUtente(QWidget* parent=nullptr);
+    VistaUtente(Account*,QWidget* parent=nullptr);
     void setController(Controller*);
-
-
+public slots:
+    void vediProfilo();
 
 };
 

@@ -25,7 +25,7 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Basic</tipoutente>
+        <tipoutente>Gold</tipoutente>
         <username>Elton</username>
         <password>diocan</password>
         <nome>diostronzo</nome>
@@ -33,7 +33,7 @@
         <email>dio</email>
         <competenze></competenze>
         <titoli_di_studio></titoli_di_studio>
-        <punti>30</punti>
+        <punti>50</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>

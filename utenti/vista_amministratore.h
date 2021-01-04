@@ -53,8 +53,7 @@ private:
     void scritta_utente();
     void creazione_mainLayout();
     void aggiorna_tabella();
-
-
+    void imposta_stile();
 private slots:
     void finestra_aggiungi_utente();
     void togli_utente();

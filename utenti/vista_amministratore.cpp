@@ -71,7 +71,7 @@ void vista_amministratore::logout()
 
 void vista_amministratore::aggiungi_utente(const QString & username, const QString & password, const QString & nome, const QString & cognome, const QString & email,const QString& piano)
 {
-    controller->aggiungi_utente(username.toStdString(),password.toStdString(),nome.toStdString(),cognome.toStdString(),email.toStdString(),piano.toStdString());
+    controller->aggiungi_utente(username,password,nome,cognome,email,piano);
 }
 
 
@@ -193,8 +193,18 @@ void vista_amministratore::set_controller(controller_admin *c)
     aggiorna_tabella();
 }
 
+void vista_amministratore::imposta_stile()
+{
+    QFile file("../style.css");
+    file.open(QFile::ReadOnly);
+    QString styleSheet = QLatin1String(file.readAll());
+    file.close();
+    setStyleSheet(styleSheet);
+}
+
 vista_amministratore::vista_amministratore(QWidget *parent) :controller(new controller_admin(this)), QWidget(parent)
 {
+    imposta_stile();
 
     mainLyaout=new QVBoxLayout;
 

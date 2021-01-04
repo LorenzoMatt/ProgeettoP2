@@ -11,25 +11,41 @@
 #include <QLabel>
 #include <QScrollArea>
 #include <QTextEdit>
-
+#include "domanda.h"
 
 class vista_domanda : public QWidget
 {
     Q_OBJECT
     QVBoxLayout* domanda;
+    QScrollArea* scrollarea;
+    QWidget* scrollwidget;
+    QVBoxLayout* scrollwidgetLayout;
+
+
+
+
+
+
+
+
+
 
     //funzioni di utilitá:
 
-    //ritorna un blocco autore/testo
-    QVBoxLayout* addAutoreDomanda();
+    //aggiunge allo scrollwidgetLayout il widget che contiene la domanda
+    void aggiungiWidgetDomanda(Domanda*);
 
-    //ritorna un blocco autore/testo/barra rimuovi e like
-    QVBoxLayout *addAutoreDomandaLike();
+    //aggiunge allo scrollWidgetLayout il widget che contiene tutti i commenti relativi alla domanda
+    void aggiungiWidgetCommenti(Domanda*);
+
+    //aggiunge una barra di testo editabile con il pulsante invio
+    void aggiungiBarraDiTesto();
+
+
+
 
 public:
-    explicit vista_domanda(QWidget *parent = nullptr);
-
-signals:
+    explicit vista_domanda(Domanda*,QWidget *parent = nullptr);
 
 };
 

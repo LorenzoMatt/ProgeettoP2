@@ -11,8 +11,7 @@ public:
     void togli_utente(const string&);
     void salva() const;
     Utente* get_utente(const string&) const;
-    void aggiungi_utente(const string & username, const string & password, const string & nome,
-                         const string & cognome, const string & email,const string& piano);
+    void aggiungi_utente(const QString &, const QString &, const QString &,const QString &, const QString &, const QString &);
     void cambia_piano(const QString&, const QString &);
     void set_vista(vista_amministratore* v);
 private:
