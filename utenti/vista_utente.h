@@ -43,6 +43,7 @@ class VistaUtente:public QWidget
     void aggiungiPulsanteDomandaAmico();
     void buildBarraSuperiore();
     void buildTabella();
+    void imposta_stile();
 
 public:
     VistaUtente(const QString&,QWidget* parent=nullptr);

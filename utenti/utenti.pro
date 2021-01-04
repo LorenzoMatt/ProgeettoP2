@@ -73,3 +73,5 @@ SOURCES += accesso.cpp \
     vista_amministratore.cpp \
     controller_admin.cpp \
     vistaProfilo.cpp
+
+RESOURCES +=

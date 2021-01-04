@@ -111,10 +111,10 @@ vistaProfilo::vistaProfilo(Controller * c):a(c)
 //    confermaTitoloDiStudio->setAlignment(Qt::AlignRight);
 
     //pulsante torna alla home
-    QPushButton* home=new QPushButton;
-    QPixmap pix("../home.pgn");
-    QIcon* iconaHome=new QIcon(pix);
-    home->setIcon(*iconaHome);
+//    QPixmap immagineProfilo("../profilo");
+    QIcon icona("../profilo");
+    QPushButton* home=new QPushButton(icona,"");
+
 
 
 

@@ -57,6 +57,7 @@ void VistaUtente::buildBarraSuperiore()
 
 //  pulsanti della barra di ricerca
     profilo=new QPushButton("profilo");
+    profilo->setObjectName("profilo");
     connect(profilo,SIGNAL(clicked()),this,SLOT(vediProfilo()));
     invioDomanda=new QPushButton("Cerca");
     invioUtente=new QPushButton("Cerca");
@@ -122,8 +123,19 @@ void VistaUtente::buildTabella()
 
 }
 
+void VistaUtente::imposta_stile()
+{
+    QFile file("../style.css");
+    file.open(QFile::ReadOnly);
+    QString styleSheet = QLatin1String(file.readAll());
+    file.close();
+    setStyleSheet(styleSheet);
+}
+
 VistaUtente::VistaUtente(const QString& utente, QWidget *parent):QWidget(parent),c(new Controller(utente,this))
 {
+    imposta_stile();
+
     QVBoxLayout* mainLayout=new QVBoxLayout();
 
     //creo gli elementi da aggiungere al mainLayout
