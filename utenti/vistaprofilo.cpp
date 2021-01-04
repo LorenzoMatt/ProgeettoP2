@@ -1,6 +1,6 @@
 #include "vistaprofilo.h"
 
-vistaProfilo::vistaProfilo(Controller * c):a(c)
+vistaProfilo::vistaProfilo(Controller * c,QWidget* parent):a(c),QWidget(parent)
 {
     //creo il layout che contiene tutto
     QVBoxLayout* layoutTotale=new QVBoxLayout;

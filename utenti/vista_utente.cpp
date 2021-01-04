@@ -2,6 +2,7 @@
 #include "vista_utente.h"
 #include "controller.h"
 #include "vistaprofilo.h"
+#include "vistacercautente.h"
 
 //aggiunge area domanda utente con pulsante commenti
 void VistaUtente::aggiungiAreaDomandaAmici()
@@ -10,6 +11,7 @@ void VistaUtente::aggiungiAreaDomandaAmici()
 
     QWidget* widgetDomandaAmici=new QWidget;
     QVBoxLayout* layoutWidgetDomandaAmici=new QVBoxLayout;
+
 
     container<Domanda*> contenitoreDomandeAmici=c->getDomandeAmici();
     for(unsigned int i=0;i<contenitoreDomandeAmici.size();i++){
@@ -53,13 +55,12 @@ void VistaUtente::buildBarraSuperiore()
 {
     layoutBarraSuperiore=new QHBoxLayout;
 
-
-
 //  pulsanti della barra di ricerca
     profilo=new QPushButton("profilo");
     connect(profilo,SIGNAL(clicked()),this,SLOT(vediProfilo()));
     invioDomanda=new QPushButton("Cerca");
     invioUtente=new QPushButton("Cerca");
+    connect(invioUtente,SIGNAL(clicked()),this,SLOT(buildCercaUtente()));
 
 //  linee di testo della barra di ricerca
     scriviDomanda=new QLineEdit();
@@ -113,7 +114,6 @@ void VistaUtente::buildTabella()
     layoutTotalePagina2->addWidget(pagina2);
 
     //nella pagina1 devo creare le domande con i commenti degli amici dell'utente
-
     aggiungiAreaDomandaAmici();
 
     //aggiungo le scrollArea alla tabella
@@ -140,7 +140,23 @@ void VistaUtente::vediProfilo()
     vistaProfilo* profilo=new vistaProfilo(c);
     profilo->setWindowTitle("Profilo");
     profilo->show();
+}
 
+void VistaUtente::buildCercaUtente()
+{
+    try
+    {
+        container<string> parametri=c->cercaUtente(scriviUtente->text());
+        vistaCercaUtente* v=new vistaCercaUtente(parametri);
+        v->show();
+        connect(v,SIGNAL(invia(const QString&)),c,SLOT(aggiungi_amico(const QString&)));
+    }
+    catch(amico_non_presente())
+    {
+        QErrorMessage* messaggio=new QErrorMessage(this);
+        messaggio->setWindowTitle("Utente non presente");
+        messaggio->showMessage("L'utente "+scriviUtente->text()+" non è stato trovato");
+    }
 }
 
 

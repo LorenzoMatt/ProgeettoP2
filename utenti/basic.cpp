@@ -25,8 +25,6 @@ Basic::Basic(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s,
 
 void Basic::cerca_utente(const std::string & username, const Database & model, container<std::string> & lista_di_elementi) const
 {
-    try
-    {
         Utente* utente = model.get_utente(username);
         if(utente)
         {
@@ -34,10 +32,7 @@ void Basic::cerca_utente(const std::string & username, const Database & model, c
             f(utente, lista_di_elementi);
         }else
             throw amico_non_presente();
-    }catch(amico_non_presente)
-    {
-        std::cerr<<"utente non presente";
-    }
+
 }
 
 void Basic::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funziona a dovere

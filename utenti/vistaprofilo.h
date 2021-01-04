@@ -18,7 +18,7 @@ class vistaProfilo:public QWidget
     Q_OBJECT
     Controller* a;
 public:
-    vistaProfilo(Controller*);
+    vistaProfilo(Controller*,QWidget* parent=nullptr);
 };
 
 #endif // VISTAPROFILO_H

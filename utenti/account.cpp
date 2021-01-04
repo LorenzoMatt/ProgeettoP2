@@ -38,6 +38,11 @@ Utente *Account::get_utente() const
     return utente;
 }
 
+Utente *Account::cerca_utente_per_nome(const std::string & utente)
+{
+    return model->get_utente(utente);
+}
+
 unsigned int Account::get_punti() const
 {
     return utente->get_punti();
@@ -88,9 +93,16 @@ void Account::dai_punti(const std::string & username) const
 
 container<string> Account::ricerca_utente(const string & u)
 {
-    container<string> lista_attributi;
-    utente->cerca_utente(u,*model,lista_attributi);
-    return lista_attributi;
+    try
+    {
+        container<string> lista_attributi;
+        utente->cerca_utente(u,*model,lista_attributi);
+        return lista_attributi;
+    }
+    catch(amico_non_presente)
+    {
+        throw amico_non_presente();
+    }
 }
 
 void Account::cambia_piano(const std::string & piano)
@@ -120,11 +132,17 @@ void Account::fai_commento(Domanda* domanda, const std::string & t) const
     domanda->aggiungi_commento(c);
 }
 
+void Account::salva() const
+{
+    model->exportdati();
+}
+
 container<string> Account::ricerca_contatto(const std::string & username) const
 {
     container<string> aux;
     utente->cerca_amico(username,aux);
     return aux;
+
 }
 
 container<Domanda *> Account::get_domande_amici() const

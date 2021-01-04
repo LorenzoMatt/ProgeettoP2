@@ -20,11 +20,9 @@ public:
     Profilo getProfilo() const;
     Accesso getAccesso() const;
     container<Domanda *> getDomandeAmici() const;//OK
-
-
-
-
+    container<std::string> cercaUtente(const QString&) const;
 public slots:
+    void aggiungi_amico(const QString&);
 
 signals:
 

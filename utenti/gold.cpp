@@ -27,9 +27,6 @@ Gold::Gold(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, c
 
 void Gold::cerca_utente(const std::string & username, const Database & model, container<std::string> & lista_di_elementi) const
 {
-    try
-    {
-
         Utente* utente = model.get_utente(username);
         if(utente)
         {
@@ -39,10 +36,6 @@ void Gold::cerca_utente(const std::string & username, const Database & model, co
         {
             throw amico_non_presente();
         }
-    }catch(amico_non_presente)
-    {
-        std::cerr<<"utente non presente"<<endl;
-    }
 }
 
 void Gold::get_punti_domanda()

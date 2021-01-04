@@ -61,8 +61,6 @@ private slots:
     void salva_db();
     void logout();
     void aggiungi_utente(const QString&, const QString&, const QString&, const QString&, const QString&, const QString&);
-
-
 };
 
 #endif // VISTA_AMMINISTRATORE_H

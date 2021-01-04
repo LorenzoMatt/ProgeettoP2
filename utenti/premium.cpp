@@ -25,10 +25,7 @@ Premium::Premium(Profilo p, Accesso c, container<Utente *> a, container<Utente *
 
 void Premium::cerca_utente(const std::string &username, const Database &model, container<std::string> &lista_di_elementi) const
 {
-    try
-    {
-
-        Utente* utente = model.get_utente(username);
+    Utente* utente = model.get_utente(username);
         if(utente)
         {
             Utente::Funtore f(3);//nelle funzioni polimorfe il numero_funtore sarà sostituito con 1 in account gratuito,2 in gold e 3 in premium
@@ -37,10 +34,7 @@ void Premium::cerca_utente(const std::string &username, const Database &model, c
         {
             throw amico_non_presente();
         }
-    }catch(amico_non_presente)
-    {
-        std::cerr<<"utente non presente"<<endl;
-    }
+
 }
 
 void Premium::get_punti_domanda()

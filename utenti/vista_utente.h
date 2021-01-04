@@ -13,7 +13,8 @@
 #include <QScrollArea>
 #include <vector>
 #include <QString>
-
+#include <QErrorMessage>
+#include <QMessageBox>
 #include "bottonevedicommento.h"
 
 class Controller;
@@ -21,6 +22,8 @@ class Controller;
 class VistaUtente:public QWidget
 {
     Q_OBJECT
+    friend class Controller;
+private:
     Controller* c;
 
     QLabel* numeroDomandePersonali;
@@ -46,8 +49,9 @@ class VistaUtente:public QWidget
 
 public:
     VistaUtente(const QString&,QWidget* parent=nullptr);
-public slots:
+private slots:
     void vediProfilo();
+    void buildCercaUtente();
 
 };
 

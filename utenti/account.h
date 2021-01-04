@@ -17,6 +17,7 @@ public:
     Accesso get_credenziali() const;//OK
     container<Domanda *>& get_domande();//OK
     Utente *get_utente() const;//OK
+    Utente* cerca_utente_per_nome(const string&);
     unsigned int get_punti() const;//OK
             /*funzioni*/
     void aggiungi_amico(Utente *);//OK
@@ -30,6 +31,7 @@ public:
     void modifica_password(const string&);//OK
     void fai_domanda(const string&,unsigned int =1);//OK
     void fai_commento(Domanda* domanda,const string&) const;
+    void salva() const;
     container<Domanda *> ricerca_domanda(const string&);//OK
     container<string> ricerca_utente(const string&); //OK
     container<std::string> ricerca_contatto(const string&) const;//OK
