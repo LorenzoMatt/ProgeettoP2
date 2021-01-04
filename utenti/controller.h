@@ -19,7 +19,8 @@ public:
     void faiDomanda(const QString&);
     Profilo getProfilo() const;
     Accesso getAccesso() const;
-    container<Domanda *> getDomandeAmici() const;//OK
+    container<Domanda *> getDomandeAmici() const;
+    int getPunti();
 
 
 

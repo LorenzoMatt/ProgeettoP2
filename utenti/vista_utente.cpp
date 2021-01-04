@@ -56,11 +56,13 @@ void VistaUtente::buildBarraSuperiore()
 
 
 //  pulsanti della barra di ricerca
-    profilo=new QPushButton("profilo");
-    profilo->setObjectName("profilo");
+    QIcon iconaProfilo("../profilo");
+    profilo=new QPushButton(iconaProfilo," Profilo");
     connect(profilo,SIGNAL(clicked()),this,SLOT(vediProfilo()));
-    invioDomanda=new QPushButton("Cerca");
-    invioUtente=new QPushButton("Cerca");
+
+    QIcon iconaCerca("../cerca");
+    invioDomanda=new QPushButton(iconaCerca,"");
+    invioUtente=new QPushButton(iconaCerca,"");
 
 //  linee di testo della barra di ricerca
     scriviDomanda=new QLineEdit();
@@ -151,6 +153,7 @@ void VistaUtente::vediProfilo()
 {
     vistaProfilo* profilo=new vistaProfilo(c);
     profilo->setWindowTitle("Profilo");
+    profilo->setMinimumWidth(500);
     profilo->show();
 
 }

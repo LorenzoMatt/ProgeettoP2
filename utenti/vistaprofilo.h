@@ -19,6 +19,7 @@ class vistaProfilo:public QWidget
     Controller* a;
 public:
     vistaProfilo(Controller*);
+
 };
 
 #endif // VISTAPROFILO_H
