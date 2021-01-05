@@ -54,7 +54,6 @@ void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
             valutaCommento->addWidget(like);
             connect(like, SIGNAL(clicked()), signalMapperLike,SLOT(map()));
             signalMapperLike->setMapping(like,num_commento);
-
         }
 
         bloccoCommenti->addLayout(valutaCommento);
@@ -81,6 +80,8 @@ void vista_domanda::aggiungiBarraDiTesto()
     scrollwidgetLayout->addLayout(inserisciCommento);
 
     connect(invio,SIGNAL(clicked()),this,SLOT(buildCommento()));
+    connect(testoCommento,SIGNAL(returnPressed()),this,SLOT(buildCommento()));
+
 }
 
 //costruttore
