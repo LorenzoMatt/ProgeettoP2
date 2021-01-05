@@ -47,7 +47,8 @@ HEADERS += accesso.h \
     vista_amministratore.h \
     vista_profilo.h \
     controller_admin.h \
-    funzioni_globali.h
+    funzioni_globali.h \
+    widgetcampodati.h
 FORMS +=
 SOURCES += accesso.cpp \
            amico_non_presente.cpp \
@@ -73,6 +74,7 @@ SOURCES += accesso.cpp \
     creautente.cpp \
     database.cpp \
     vista_amministratore.cpp \
-    controller_admin.cpp
+    controller_admin.cpp \
+    widgetcampodati.cpp
 
 RESOURCES +=

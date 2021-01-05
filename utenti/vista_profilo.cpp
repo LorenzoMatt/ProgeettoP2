@@ -1,12 +1,7 @@
 #include "vista_profilo.h"
 
-vistaProfilo::vistaProfilo(Controller * c):a(c)
+void vistaProfilo::creaCampoPunti()
 {
-    setStyleSheet(imposta_stile());
-    //creo il layout che contiene tutto
-    QVBoxLayout* layoutTotale=new QVBoxLayout;
-
-    //campo dati punti
     QHBoxLayout* layoutPunti=new QHBoxLayout;
     QLabel* etichettaPunti=new QLabel("PUNTI RESIDUI:");
     QLineEdit* testoPunti=new QLineEdit;
@@ -17,59 +12,57 @@ vistaProfilo::vistaProfilo(Controller * c):a(c)
     layoutPunti->addWidget(testoPunti);
     //set elementi
     etichettaPunti->setAlignment(Qt::AlignRight);
+    layoutTotale->addLayout(layoutPunti);
+}
+
+void vistaProfilo::creaCampoNome()
+{
+    QString stringaNome=QString::fromStdString(a->getProfilo().get_nome());
+    nome=new widgetCampoDati("Nome: ",stringaNome,1);
+}
+
+void vistaProfilo::creaCampoCognome()
+{
+    QString stringaCognome=QString::fromStdString(a->getProfilo().get_cognome());
+    cognome=new widgetCampoDati("Cognome: ",stringaCognome,2);
+}
+
+void vistaProfilo::creaCampoPassword()
+{
+    QString stringaPassword=QString::fromStdString(a->getAccesso().get_password());
+    password=new widgetCampoDati("Password: ",stringaPassword,3);
+}
+
+void vistaProfilo::creaCampoEmail()
+{
+    QString stringaEmail=QString::fromStdString(a->getProfilo().get_email());
+    email=new widgetCampoDati("Email: ",stringaEmail,4);
+}
+
+void vistaProfilo::creaTornaAllaHome()
+{
+    //pulsante torna alla home
+    QIcon icona("../home");
+    home=new QPushButton(icona," HOME");
+    connect(home,SIGNAL(clicked()),this,SLOT(close()));
+}
 
 
 
-    //campo dati nome
-    QVBoxLayout* layoutNome=new QVBoxLayout;
-    QLabel* EtichettaNome=new QLabel("Nome:");
-    testoNome=new QLineEdit;
-    testoNome->setText(QString::fromStdString(a->getProfilo().get_nome()));
-    testoNome->setReadOnly(true);
-    QPushButton* modNome=new QPushButton("Modifica");
+vistaProfilo::vistaProfilo(Controller * c):a(c),layoutTotale(new QVBoxLayout)
+{
+    setStyleSheet(imposta_stile());
 
-    connect(modNome,SIGNAL(clicked()),a,SLOT(modificaNome(testoNome)));
+    creaCampoPunti();
 
-    modNome->setMaximumWidth(70);
-    layoutNome->addWidget(EtichettaNome);
-    layoutNome->addWidget(testoNome);
-    layoutNome->addWidget(modNome,0,Qt::AlignRight);
+    creaCampoNome();
 
-    //campo dati cognome
-    QVBoxLayout* layoutCognome=new QVBoxLayout;
-    QLabel* EtichettaCognome=new QLabel("Cognome:");
-    QLineEdit* testoCognome=new QLineEdit;
-    testoCognome->setText(QString::fromStdString(a->getProfilo().get_cognome()));
-    testoCognome->setReadOnly(true);
-    QPushButton* modificaCognome=new QPushButton("Modifica");
-    modificaCognome->setMaximumWidth(70);
-    layoutCognome->addWidget(EtichettaCognome);
-    layoutCognome->addWidget(testoCognome);
-    layoutCognome->addWidget(modificaCognome,0,Qt::AlignRight);
+    creaCampoCognome();
 
-    //campo dati password
-    QVBoxLayout* layoutPassword=new QVBoxLayout;
-    QLabel* etichettaPassword=new QLabel("Password:");
-    QLineEdit* testoPassword=new QLineEdit;
-    testoPassword->setText(QString::fromStdString(a->getAccesso().get_password()));
-    testoPassword->setReadOnly(true);
-    QPushButton* modificaPassword=new QPushButton("Modifica");
-    modificaPassword->setMaximumWidth(70);
-    layoutPassword->addWidget(etichettaPassword);
-    layoutPassword->addWidget(testoPassword);
-    layoutPassword->addWidget(modificaPassword,0,Qt::AlignRight);
+    creaCampoPassword();
 
-    //campo dati email
-    QVBoxLayout* layoutEmail=new QVBoxLayout;
-    QLabel* etichettaEmail=new QLabel("Email:");
-    QLineEdit* testoEmail=new QLineEdit;
-    testoEmail->setText(QString::fromStdString(a->getProfilo().get_email()));
-    testoEmail->setReadOnly(true);
-    QPushButton* modificaEmail=new QPushButton("Modifica");
-    modificaEmail->setMaximumWidth(70);
-    layoutEmail->addWidget(etichettaEmail);
-    layoutEmail->addWidget(testoEmail);
-    layoutEmail->addWidget(modificaEmail,0,Qt::AlignRight);
+    creaCampoEmail();
+
 
     //campo dati aggiungi competenza
     QVBoxLayout* layoutCompetenzeProfessionali=new QVBoxLayout;
@@ -111,23 +104,26 @@ vistaProfilo::vistaProfilo(Controller * c):a(c)
     layoutTitoliDiStudio->addWidget(aggiungiTitoloDiStudio,0,Qt::AlignRight);
     layoutTitoliDiStudio->addSpacing(20);
 
-    //pulsante torna alla home
-    QIcon icona("../home");
-    QPushButton* home=new QPushButton(icona," HOME");
-    connect(home,SIGNAL(clicked()),this,SLOT(close()));
+
+    creaTornaAllaHome();
 
     //aggiungo tutto al layout principale
-    layoutTotale->addLayout(layoutPunti);
-    layoutTotale->addLayout(layoutNome);
-    layoutTotale->addLayout(layoutCognome);
-    layoutTotale->addLayout(layoutPassword);
-    layoutTotale->addLayout(layoutEmail);
-    layoutTotale->addLayout(layoutCompetenzeProfessionali);
-    layoutTotale->addLayout(layoutTitoliDiStudio);
+
+    layoutTotale->addWidget(nome);
+    layoutTotale->addWidget(cognome);
+    layoutTotale->addWidget(password);
+    layoutTotale->addWidget(email);
+
+
+
     layoutTotale->addWidget(home);
 
     //imposto il layout principale
     setLayout(layoutTotale);
 }
+
+
+
+
 
 
