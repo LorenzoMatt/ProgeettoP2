@@ -89,7 +89,7 @@ void vista_amministratore::creazione_tabella()
     horizontalheader->append("Competenze");
     horizontalheader->append("Titoli di studio");
     horizontalheader->append("Piano");
-    tabella_utenti->setEditTriggers(0);
+    tabella_utenti->setEditTriggers(QAbstractItemView::NoEditTriggers);
     tabella_utenti->setHorizontalHeaderLabels(*horizontalheader);
     tabella_utenti->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     QHeaderView* header = tabella_utenti->horizontalHeader();// adatta la larghezza delle colonne

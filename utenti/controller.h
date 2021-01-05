@@ -19,14 +19,21 @@ public:
     void faiDomanda(const QString&);
     Profilo getProfilo() const;
     Accesso getAccesso() const;
-    container<Domanda *> getDomandeAmici() const;//OK
+    container<Domanda *> getDomandeAmici() const;
+    container<Domanda *> getDomandePersonali() const;
+    int getPunti() const;
 
 
 
 
 public slots:
+    void modificaNome(const string&);
+    void modificaCognome(const string&);
+    void modificaEmail(const string&);
+    void modificaPassword(const string&);
 
-signals:
+    void aggiungiCompetenza(const string&);
+    void aggiungiTitoloDiStudio(const string&);
 
 };
 

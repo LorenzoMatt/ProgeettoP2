@@ -63,6 +63,7 @@ void vista_domanda::aggiungiBarraDiTesto()
     QLineEdit* testoCommento=new QLineEdit;
     testoCommento->setPlaceholderText("Scrivi un commento");
     QPushButton* invio=new QPushButton("invio");
+    inserisciCommento->addSpacing(20);
 
     inserisciCommento->addWidget(testoCommento);
     inserisciCommento->addWidget(invio);
@@ -74,7 +75,7 @@ void vista_domanda::aggiungiBarraDiTesto()
 vista_domanda::vista_domanda(Domanda * d, QWidget *parent) :QWidget(parent),domanda(new QVBoxLayout),
     scrollarea(new QScrollArea),scrollwidget(new QWidget),scrollwidgetLayout(new QVBoxLayout)
 {
-
+    setStyleSheet(imposta_stile());
     //aggiunge allo scrollWidgetLayout il widget che contiene la domanda
     aggiungiWidgetDomanda(d);
 
