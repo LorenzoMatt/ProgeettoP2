@@ -11,6 +11,7 @@
 #include <QLabel>
 #include <QScrollArea>
 #include <QTextEdit>
+#include <QSignalMapper>
 #include "domanda.h"
 #include "funzioniutili.h"
 #include "controller.h"
@@ -25,8 +26,9 @@ private:
     QVBoxLayout* scrollwidgetLayout;
 //    Controller* controller;
     QLineEdit* testoCommento;
-
-
+    QSignalMapper* signalMapperLike;
+    QSignalMapper* signalMapperRimuovi;
+    Domanda* dom;
 
     //funzioni di utilitá:
 
@@ -38,12 +40,13 @@ private:
 
     //aggiunge una barra di testo editabile con il pulsante invio
     void aggiungiBarraDiTesto();
+
 public:
     explicit vista_domanda(Domanda*, QWidget *parent = 0);
 signals:
-    void commento(const QString&);
-    void like(int);
-    void rimuovi(int);
+    void commento(const QString&,Domanda*);
+    void like(int,Domanda*);
+    void rimuovi(int,Domanda*);
 private slots:
     void buildCommento();
     void buildLike(int);// riceve la posizione del commento in cui inserire il like

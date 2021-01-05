@@ -29,6 +29,16 @@
         <amici>Pikachu</amici>
         <domanda>
             <priorita>2</priorita>
+            <testo>ciaoooo</testo>
+            <commenti>
+                <commento>
+                    <testo>Ciaoooo</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                </commento>
+            </commenti>
+        </domanda>
+        <domanda>
+            <priorita>2</priorita>
             <testo>sono Lorenzo?</testo>
             <commenti/>
         </domanda>
@@ -42,8 +52,12 @@
             <testo>sono magnanime?</testo>
             <commenti>
                 <commento>
-                    <testo>prova per un commento</testo>
-                    <autore_commento>Giorgia</autore_commento>
+                    <testo>Forse lo sei si</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                </commento>
+                <commento>
+                    <testo>ma ovvio che lo sei ahhahaha</testo>
+                    <autore_commento>Lorenzo</autore_commento>
                 </commento>
             </commenti>
         </domanda>

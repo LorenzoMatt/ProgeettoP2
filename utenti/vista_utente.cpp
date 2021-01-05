@@ -71,6 +71,9 @@ void VistaUtente::aggiungiAreaDomandePersonali()
     connect(commenti,SIGNAL(commento(const QString&,Domanda*)),c,SLOT(scrivi_commento(const QString&,Domanda*)));
     connect(commenti,SIGNAL(like(int,Domanda*)),c,SLOT(dai_like(int,Domanda*)));
     connect(commenti,SIGNAL(rimuovi(int,Domanda*)),c,SLOT(rimuovi_commento(int,Domanda*)));
+    connect(commenti,SIGNAL(commento(const QString&,Domanda*)),commenti,SLOT(vediCommenti()));//aggiorno la vista delle domande
+    connect(commenti,SIGNAL(like(int,Domanda*)),commenti,SLOT(vediCommenti()));
+    connect(commenti,SIGNAL(rimuovi(int,Domanda*)),commenti,SLOT(vediCommenti()));
     layoutScrollAreaPagina2->addWidget(commenti);
     layoutScrollAreaPagina2->setAlignment(commenti,Qt::AlignRight);
     }

@@ -49,10 +49,14 @@ void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
         QPushButton* like=new QPushButton("like");
         valutaCommento->addWidget(like);
         bloccoCommenti->addLayout(valutaCommento);
-        connect(like,SIGNAL(clicked()),this,SLOT(buildLike(num_commento)));
-        connect(rimuovi,SIGNAL(clicked()),this,SLOT(buildRimuovi(num_commento)));
-    }
+        connect(like, SIGNAL(clicked()), signalMapperLike,SLOT(map()));
+        connect(rimuovi,SIGNAL(clicked()),signalMapperRimuovi,SLOT(map()));
+        signalMapperLike->setMapping(like,num_commento);
+        signalMapperRimuovi->setMapping(rimuovi,num_commento);
 
+    }
+    connect(signalMapperLike,SIGNAL(mapped(int)),SLOT(buildLike(int)));
+    connect(signalMapperRimuovi,SIGNAL(mapped(int)),SLOT(buildRimuovi(int)));
     scrollwidgetLayout->addLayout(bloccoCommenti);
 }
 
@@ -73,16 +77,17 @@ void vista_domanda::aggiungiBarraDiTesto()
 }
 
 //costruttore
-vista_domanda::vista_domanda(Domanda * d, QWidget *parent) :QWidget(parent),domanda(new QVBoxLayout),
+vista_domanda::vista_domanda(Domanda * d, QWidget *parent) :QWidget(parent),domanda(new QVBoxLayout), dom(d),
     scrollarea(new QScrollArea),scrollwidget(new QWidget),scrollwidgetLayout(new QVBoxLayout)
 {
     setStyleSheet(imposta_stile());
-
+    signalMapperLike=new QSignalMapper;
+    signalMapperRimuovi=new QSignalMapper;
     //aggiunge allo scrollWidgetLayout il widget che contiene la domanda
-    aggiungiWidgetDomanda(d);
+    aggiungiWidgetDomanda(dom);
 
     //aggiunge allo scrollWidgetLayout il widget che contiene tutti i commenti relativi alla domanda
-    aggiungiWidgetCommenti(d);
+    aggiungiWidgetCommenti(dom);
 
     //aggiunge una barra di testo editabile con il pulsante invio
     aggiungiBarraDiTesto();
@@ -97,19 +102,29 @@ vista_domanda::vista_domanda(Domanda * d, QWidget *parent) :QWidget(parent),doma
 
 void vista_domanda::buildCommento()
 {
-    emit commento(testoCommento->text());
-    messaggio_informativo("commento aggiunto","Il messaggio è stato inserito correttamente",this);
+    if(!testoCommento->text().isEmpty())
+    {
+        emit commento(testoCommento->text(),dom);
+        close();
+        messaggio_informativo("commento aggiunto","Il messaggio è stato inserito correttamente",this);
+    }
+    else
+    {
+        messaggio_errore("commento vuoto","non è possibile scrivere un commento vuoto",this);
+    }
 }
 
 void vista_domanda::buildLike(int i)
 {
-    emit like(i);
+    emit like(i,dom);
+    close();
     messaggio_informativo("like aggiunto","l'utente apprezzerà il tuo like!",this);
 }
 
 void vista_domanda::buildRimuovi(int i)
 {
-    emit rimuovi(i);
+    emit rimuovi(i,dom);
+    close();
     messaggio_informativo("commento rimosso","hai rimosso il commento",this);
 }
 
