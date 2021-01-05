@@ -1,7 +1,7 @@
 #include "creautente.h"
 #include<QLabel>
 #include<QFormLayout>
-
+#include <QErrorMessage>
 creautente::creautente(QWidget *parent) :QDialog(parent)
 {
     crea_tasti();
@@ -49,8 +49,17 @@ creautente::creautente(QWidget *parent) :QDialog(parent)
 void creautente::dati()
 {
     const QString & user=Username->text(),password= Password->text(),nome=Nome->text(),cognome=Cognome->text(),email=Email->text(),piano=Piano->currentText();
-    emit  invia(user, password,nome,cognome,email,piano);
-    close();
+    if(user.isEmpty() ||password.isEmpty() ||nome.isEmpty() || cognome.isEmpty() || email.isEmpty() || piano.isEmpty())
+    {
+        QErrorMessage* messaggio=new QErrorMessage(this);
+        messaggio->setWindowTitle("campi vuoti presenti");
+        messaggio->showMessage("Non possono esserci campi vuoti");
+    }
+    else
+    {
+        emit  invia(user, password,nome,cognome,email,piano);
+        close();
+    }
 }
 creautente::~creautente()
 {
