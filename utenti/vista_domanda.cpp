@@ -43,15 +43,22 @@ void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
         bloccoCommenti->addWidget(autore);
         bloccoCommenti->addWidget(testoCommento);
 
+
         QHBoxLayout* valutaCommento=new QHBoxLayout;
         QPushButton* rimuovi=new QPushButton("rimuovi");
         valutaCommento->addWidget(rimuovi);
-        QPushButton* like=new QPushButton("like");
-        valutaCommento->addWidget(like);
+
+        if(autoreCommento!=QString::fromStdString(d->get_autore_domanda()->get_credenziali().get_username()))
+        {
+            QPushButton* like=new QPushButton("like");
+            valutaCommento->addWidget(like);
+            connect(like, SIGNAL(clicked()), signalMapperLike,SLOT(map()));
+            signalMapperLike->setMapping(like,num_commento);
+
+        }
+
         bloccoCommenti->addLayout(valutaCommento);
-        connect(like, SIGNAL(clicked()), signalMapperLike,SLOT(map()));
         connect(rimuovi,SIGNAL(clicked()),signalMapperRimuovi,SLOT(map()));
-        signalMapperLike->setMapping(like,num_commento);
         signalMapperRimuovi->setMapping(rimuovi,num_commento);
 
     }

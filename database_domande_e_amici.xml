@@ -112,6 +112,10 @@
                     <testo>prova per un commento</testo>
                     <autore_commento>Giorgia</autore_commento>
                 </commento>
+                <commento>
+                    <testo>ciao</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                </commento>
             </commenti>
         </domanda>
     </utente>
