@@ -162,6 +162,5 @@ void VistaUtente::buildCercaUtente()
             messaggio->setWindowTitle("Utente non presente");
             messaggio->showMessage("L'utente "+scriviUtente->text()+" non è stato trovato");
         }
-        scriviUtente->clear();
 }
 
