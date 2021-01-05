@@ -5,6 +5,13 @@ Account::Account()
 
 }
 
+Account::Account(const std::string & u)
+{
+    model=new Database();
+    model->import();
+    utente=model->get_utente(u);
+}
+
 Account::Account(Utente *u, Database *m) :model(m)
 {
     m->aggiungi_utente(u);
@@ -29,6 +36,11 @@ container<Domanda *>& Account::get_domande()
 Utente *Account::get_utente() const
 {
     return utente;
+}
+
+Utente *Account::cerca_utente_per_nome(const std::string & utente)
+{
+    return model->get_utente(utente);
 }
 
 unsigned int Account::get_punti() const
@@ -113,11 +125,17 @@ void Account::fai_commento(Domanda* domanda, const std::string & t) const
     domanda->aggiungi_commento(c);
 }
 
+void Account::salva() const
+{
+    model->exportdati();
+}
+
 container<string> Account::ricerca_contatto(const std::string & username) const
 {
     container<string> aux;
     utente->cerca_amico(username,aux);
     return aux;
+
 }
 
 container<Domanda *> Account::get_domande_amici() const
@@ -136,4 +154,11 @@ Domanda *Account::get_domanda(const container<Domanda *>& d, unsigned int i) con
         {}//corpo vuoto
         return *it;
     }
+}
+
+bool Account::check_presenza_amico(const std::string & user) const
+{
+    container<string> l;
+    utente->cerca_amico(user,l);
+    return !(l.empty()) ? true : false;// se la dimensione è 0 allora l'amico non è presente
 }

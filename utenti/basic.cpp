@@ -25,19 +25,12 @@ Basic::Basic(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s,
 
 void Basic::cerca_utente(const std::string & username, const Database & model, container<std::string> & lista_di_elementi) const
 {
-    try
-    {
         Utente* utente = model.get_utente(username);
         if(utente)
         {
             Utente::Funtore f(1);//nelle funzioni polimorfe il numero_funtore sarà sostituito con 1 in account gratuito,2 in gold e 3 in premium
             f(utente, lista_di_elementi);
-        }else
-            throw amico_non_presente();
-    }catch(amico_non_presente)
-    {
-        std::cerr<<"utente non presente";
-    }
+        }
 }
 
 void Basic::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funziona a dovere
@@ -53,7 +46,7 @@ void Basic::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funzi
             if(punti>=punti_da_sottrarre)
             {
                 punti-=punti_da_sottrarre;
-                get_domande().push_back(domanda);
+                get_domande().push_front(domanda);
             }
             else
             {

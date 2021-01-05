@@ -21,6 +21,7 @@ private:
     void aggiungi_amici_ad_utente(const string&, const string&);
 public:
     Database();
+    ~Database();
     Database(const container<DeepPtr<Utente>>&);
     const container<DeepPtr<Utente>>& get_utenti() const;
     Utente *get_utente(const string&) const; //OK

@@ -139,8 +139,6 @@ void Utente::togli_amico(Utente *utente) // OK, serve a togliere un utente dalla
 
 void Utente::cerca_amico(const std::string & username, container<std::string>& lista_di_elementi) const{
 
-    try
-    {
             Utente* utente;
             bool trovato=false;
             for(auto it=amici.begin();it!=amici.end() && !trovato;++it)
@@ -148,16 +146,10 @@ void Utente::cerca_amico(const std::string & username, container<std::string>& l
                     trovato=true;
                     utente=*it;
                 }
-            if(!trovato){
-                throw amico_non_presente();
+            if(trovato){
+                Utente::Funtore f(3);//nelle funzioni polimorfe il numero_funtore sarà sostituito con 1 in account gratuito,2 in gold e 3 in premium
+                f(utente, lista_di_elementi);
             }
-
-            Utente::Funtore f(3);//nelle funzioni polimorfe il numero_funtore sarà sostituito con 1 in account gratuito,2 in gold e 3 in premium
-            f(utente, lista_di_elementi);
-    }
-    catch(amico_non_presente){
-        std::cerr<<"utente non presente";
-    }
 }
 
 container<Domanda *> Utente::get_domande_amici() const
@@ -292,6 +284,19 @@ string Utente::get_username_amici() const //OK
     return username;
 }
 
+std::string Utente::get_username_seguaci() const
+{
+    string username;
+    for(container<Utente*>::const_iterator it=seguaci.begin();it!=seguaci.end();++it)
+    {
+        if(username.size()==0)
+            username=(*it)->get_credenziali().get_username();
+        else
+            username=username+" "+(*it)->get_credenziali().get_username();
+    }
+    return username;
+}
+
 void Utente::AggiungiCompetenza(const std::string & competenza)
 {
     pf.aggiungi_competenza(competenza);
@@ -337,6 +342,7 @@ void Utente::Funtore::operator()(const Utente *ut, container<std::string> &l) co
                 l.push_back(ut->pf.titoli_di_studio_toString());
                 l.push_back(ut->pf.competenze_toString());
                 l.push_back(ut->get_username_amici());
+                l.push_back(ut->get_username_seguaci());
                 break;
         }
     }

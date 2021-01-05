@@ -1,85 +1,94 @@
 #include "vista_domanda.h"
-
-QVBoxLayout* vista_domanda::addAutoreDomanda()
+//aggiunge la domanda
+void vista_domanda::aggiungiWidgetDomanda(Domanda* d)
 {
-    QVBoxLayout* layout_widget=new QVBoxLayout;
+    QVBoxLayout* bloccoDomanda=new QVBoxLayout;
 
-
-    //creo lo spazio che conterrá la domanda
-    QTextEdit* testoDomanda=new QTextEdit; //al momento della creazione verrá inserito il testo della domanda
+    QTextEdit* testoDomanda=new QTextEdit(QString::fromStdString(d->get_testo()));
     testoDomanda->setReadOnly(true);
 
+    QString autoreDomanda=QString::fromStdString(d->get_autore_domanda()->get_credenziali().get_username());
+    QLabel* autore=new QLabel(autoreDomanda);
+    autore->setBuddy(testoDomanda);
+    bloccoDomanda->addWidget(autore);
+    bloccoDomanda->addWidget(testoDomanda);
 
 
-    QLabel* autoreDomanda=new QLabel("Autore");
-    autoreDomanda->setBuddy(testoDomanda);
-    layout_widget->addWidget(autoreDomanda);
-    layout_widget->addWidget(testoDomanda);
-
-    return layout_widget;
+    scrollwidgetLayout->addLayout(bloccoDomanda);
 }
 
-QVBoxLayout* vista_domanda::addAutoreDomandaLike(){
-
-    QVBoxLayout* blocco=addAutoreDomanda();
-    QHBoxLayout* valutaCommento=new QHBoxLayout;
-    QPushButton* rimuovi=new QPushButton("rimuovi");
-    valutaCommento->addWidget(rimuovi);
-    QPushButton* like=new QPushButton("like");
-    valutaCommento->addWidget(like);
-    blocco->addLayout(valutaCommento);
-
-    return blocco;
-
-}
-vista_domanda::vista_domanda(QWidget *parent) :QWidget(parent),domanda(new QVBoxLayout)
+//aggiunge i commenti
+void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
 {
+    QVBoxLayout* bloccoCommenti=new QVBoxLayout;
 
-    QScrollArea* scrollarea=new QScrollArea;
-
-    //creo il widget da inserire dentro alla scrollArea
-    QWidget* scrollwidget=new QWidget;
-
-    QVBoxLayout* blocco=addAutoreDomanda();
-
-    scrollwidget->setLayout(blocco);
-
-
+    //etichetta commenti:
     QLabel* risposte=new QLabel("Commenti:");
-    blocco->addWidget(risposte);
+    bloccoCommenti->addWidget(risposte);
 
-    //aggiungo dei commenti alla domada
-    QVBoxLayout* bloccoCommenti=addAutoreDomandaLike();
-    blocco->addLayout(bloccoCommenti);
-    QVBoxLayout* bloccoCommenti1=addAutoreDomandaLike();
-    blocco->addLayout(bloccoCommenti1);
-    QVBoxLayout* bloccoCommenti2=addAutoreDomandaLike();
-    blocco->addLayout(bloccoCommenti2);
-    QVBoxLayout* bloccoCommenti3=addAutoreDomandaLike();
-    blocco->addLayout(bloccoCommenti3);
+    //contenitore che contiene tutti i commenti degli amici riguardanti la domanda
+    const container<Commento>& com=d->get_commenti();
 
+    for(auto it=com.cbegin();it!=com.cend();++it){
 
+        //testo commento
+        QTextEdit* testoCommento=new QTextEdit(QString::fromStdString(it->get_testo()));
+        testoCommento->setReadOnly(true);
 
-
-    scrollarea->setWidget(scrollwidget);
-    scrollarea->setWidgetResizable(true);
-
-
-    domanda->addWidget(scrollarea);
+        //etichetta autore domanda
+        QString autoreCommento=QString::fromStdString(it->get_autore()->get_credenziali().get_username());
+        QLabel* autore=new QLabel(autoreCommento);
+        autore->setBuddy(testoCommento);
+        bloccoCommenti->addWidget(autore);
+        bloccoCommenti->addWidget(testoCommento);
 
 
-    //aggiungo una barra di testo editabile con il pulsante invio
+        QHBoxLayout* valutaCommento=new QHBoxLayout;
+        QPushButton* rimuovi=new QPushButton("rimuovi");
+        valutaCommento->addWidget(rimuovi);
+        QPushButton* like=new QPushButton("like");
+        valutaCommento->addWidget(like);
+        bloccoCommenti->addLayout(valutaCommento);
+
+    }
+
+    scrollwidgetLayout->addLayout(bloccoCommenti);
+}
+
+//barra di testo
+void vista_domanda::aggiungiBarraDiTesto()
+{
     QHBoxLayout* inserisciCommento=new QHBoxLayout;
     QLineEdit* testoCommento=new QLineEdit;
     testoCommento->setPlaceholderText("Scrivi un commento");
-    //setto la dimensione della barra di testo
     QPushButton* invio=new QPushButton("invio");
 
     inserisciCommento->addWidget(testoCommento);
     inserisciCommento->addWidget(invio);
 
-    domanda->addLayout(inserisciCommento);
-    //setLayout(domanda);
+    scrollwidgetLayout->addLayout(inserisciCommento);
+}
 
+//costruttore
+vista_domanda::vista_domanda(Domanda * d, QWidget *parent) :QWidget(parent),domanda(new QVBoxLayout),
+    scrollarea(new QScrollArea),scrollwidget(new QWidget),scrollwidgetLayout(new QVBoxLayout)
+{
+    setStyleSheet(imposta_stile());
+
+    //aggiunge allo scrollWidgetLayout il widget che contiene la domanda
+    aggiungiWidgetDomanda(d);
+
+    //aggiunge allo scrollWidgetLayout il widget che contiene tutti i commenti relativi alla domanda
+    aggiungiWidgetCommenti(d);
+
+    //aggiunge una barra di testo editabile con il pulsante invio
+    aggiungiBarraDiTesto();
+
+    //settaggi
+    scrollwidget->setLayout(scrollwidgetLayout);
+    scrollarea->setWidget(scrollwidget);
+    scrollarea->setWidgetResizable(true);
+    domanda->addWidget(scrollarea);
+    setLayout(domanda);
 }
 

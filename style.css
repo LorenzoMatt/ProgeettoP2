@@ -1,0 +1,45 @@
+* {
+    background-color: rgb(63, 63, 63);
+    selection-background-color: rgb(36,98,124);
+    color: white;
+}
+
+QPushButton {
+    background-color: rgb(90, 70, 100);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+    min-width: 5em;
+    padding: 6px;
+}
+
+<<<<<<< HEAD
+
+QLineEdit{ 
+    background-color:rgb(200,200,200);
+=======
+QLineEdit{ 
+    background-color:rgb(202, 255, 227);
+>>>>>>> remotes/origin/mirkoGiusto
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    selection-background-color: darkgray;
+    font-size: 16px;
+}
+
+QLineEdit:focus { 
+background-color:rgb(192, 192, 255);
+}
+
+
+
+QPushButton:pressed {
+    background-color: rgb(224, 0, 0);
+    border-style: inset;
+}
+QPushButton:hover{background-color:rgb(214, 153, 39);}
+
+QPushButton:focus{background-color:rgb(255, 115, 0);}

@@ -64,6 +64,7 @@ public:
     void set_nome_profilo(const string&);
     void dai_punti(Utente*) const;
     string get_username_amici() const; //OK
+    string get_username_seguaci() const;
     void scrivi_commento(Domanda* d, string risposta);
     void fai_domanda(const string&, unsigned int);
     void set_domande(container<Domanda*>);

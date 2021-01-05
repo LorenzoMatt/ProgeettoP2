@@ -1,139 +1,93 @@
+
 #include "vista_utente.h"
 #include "controller.h"
+#include "vista_profilo.h"
+#include "vistacercautente.h"
+#include "stile.h"
 
-//costruttore
-//QScrollArea* VistaUtente::aggiungiAreaDomanda()
-//{
-//    QScrollArea* scrollarea=new QScrollArea;
+//aggiunge area domanda utente con pulsante commenti
+void VistaUtente::aggiungiAreaDomandaAmici()
+{
 
-//    //creo il widget da inserire dentro alla scrollArea
-//    QWidget* scrollwidget=new QWidget;
+    //creo il widget da inserire dentro alla scrollArea
 
-//    //costruisco il layout del widget che conterrá le domande che dovranno essere visualizzate e il pulsante
-//    //Vedi commenti
-//    QVBoxLayout* layout_widget=new QVBoxLayout;
-
-//    //creo lo spazio che conterrá la domanda
-//    QTextEdit* testoDomanda=new QTextEdit; //al momento della creazione verrá inserito il testo della domanda
-//    testoDomanda->setReadOnly(true);
-
-//    layout_widget->addWidget(testoDomanda);
-//    //creo la barra orizzontale con il pulsante per visualizzare i commenti
-//    QHBoxLayout* layVediCommenti=new QHBoxLayout;
-//    //pulsante per vedere i commenti
-//    QPushButton* commenti=new QPushButton("Vedi commenti");
-//    //inserisco il pulsante nel layout
-//    layVediCommenti->addWidget(commenti);
-//    layVediCommenti->setAlignment(commenti,Qt::AlignRight);
-//    //aggiungo la barra sotto al testo della domanda
-//    layout_widget->addLayout(layVediCommenti);
+    QWidget* widgetDomandaAmici=new QWidget;
+    QVBoxLayout* layoutWidgetDomandaAmici=new QVBoxLayout;
 
 
+    container<Domanda*> contenitoreDomandeAmici=c->getDomandeAmici();
+    for(unsigned int i=0;i<contenitoreDomandeAmici.size();i++){
+    //costruisco il layout del widget che conterrá le domande che dovranno essere visualizzate e il pulsante
+    //Vedi commenti
 
-//    //imposto come layout del widget il layout appena creato
-//    scrollwidget->setLayout(layout_widget);
-//    //imposto come widget della scollArea il widget appena creato
-//    scrollarea->setWidget(scrollwidget);
-//    //mettendo a true il layout del widget contenuto si adatta a quello della scrollArea
-//    scrollarea->setWidgetResizable(true);
+    string stringaAutore=c->getDomandeAmici()[i]->get_autore_domanda()->get_profilo().get_nome();
+    stringaAutore=stringaAutore+ " " +(c->getDomandeAmici()[i]->get_autore_domanda()->get_profilo().get_cognome());
+    QLabel* autoreDomanda=new QLabel(QString::fromStdString(stringaAutore));
 
-//    return scrollarea;
-//}
+    //creo lo spazio che conterrá la domanda
+    QTextEdit* testoDomanda=new QTextEdit(QString::fromStdString(c->getDomandeAmici()[i]->get_testo()));
+    testoDomanda->setReadOnly(true);
 
-//VistaUtente::VistaUtente(QWidget *parent):QWidget(parent)
-//{
-////    creo la label principale
-//    QVBoxLayout* mainLayout=new QVBoxLayout();
+    layoutWidgetDomandaAmici->addWidget(autoreDomanda);
+    layoutWidgetDomandaAmici->addWidget(testoDomanda);
+    //creo la barra orizzontale con il pulsante per visualizzare i commenti
 
-////  barra di ricerca superiore
-//    QHBoxLayout* barraDiRicerca=new QHBoxLayout();
+    bottoneVediCommento* commenti=new bottoneVediCommento(c->getDomandeAmici()[i],"vedi commenti");
+    //pulsante per vedere i commenti
+    connect(commenti,SIGNAL(clicked()),commenti,SLOT(vediCommenti()));
 
-////  pulsanti della barra di ricerca
-//    profilo=new QPushButton("profilo");
-//    invioDomanda=new QPushButton("Cerca");
-//    invioUtente=new QPushButton("Cerca");
+    //aggiungo il pulsante commenti sotto al testo della domanda
+    layoutWidgetDomandaAmici->addWidget(commenti);
+    layoutWidgetDomandaAmici->setAlignment(commenti,Qt::AlignRight);
 
-////  linee di testo della barra di ricerca
-//    scriviDomanda=new QLineEdit();
-//    scriviDomanda->setPlaceholderText("cerca domanda");
-//    scriviUtente=new QLineEdit();
-//    scriviUtente->setPlaceholderText("cerca utente");
+    }
 
-//    //aggiungo alla barra di ricerca gli elementi creati
-//    barraDiRicerca->addWidget(profilo);
-//    barraDiRicerca->addWidget(scriviDomanda);
-//    barraDiRicerca->addWidget(invioDomanda);
-//    barraDiRicerca->addWidget(scriviUtente);
-//    barraDiRicerca->addWidget(invioUtente);
+    //imposto come layout del widget il layout appena creato
+    widgetDomandaAmici->setLayout(layoutWidgetDomandaAmici);
+    layoutWidgetPagina1->addWidget(widgetDomandaAmici);
 
-//    //aggiungo al mainLayout la barra di ricerca
-//    mainLayout->addLayout(barraDiRicerca);
+}
 
-//    //creo la tabella ed il widget da inserire al suo interno alla prima pagina
-//    //il widget é totale e contiene la barra orizzontale e la scrollArea
-//    QTabWidget* tabella=new QTabWidget();
+void VistaUtente::aggiungiAreaDomandePersonali()
+{
+    QWidget* widgetScrollAreaPagina2=new QWidget;
+    QVBoxLayout* layoutScrollAreaPagina2=new QVBoxLayout;
 
-//    //creo l'area per visualizzare la domanda e i relativi commenti
-//    QScrollArea* pagina1=aggiungiAreaDomanda();
+    container<Domanda*> contenitoreDomandePersonali=c->getDomandePersonali();
 
-//    // costruisco il widget che contiene il layout orizzontale e la scrool area appena creata
-//    QWidget* totale=new QWidget;
-//    // layout che contiene la barra orizzontale e la scool area
-//    QVBoxLayout* laytotale=new QVBoxLayout;
-//    // layout che continene label e pushbutton
-//    QHBoxLayout* lay=new QHBoxLayout;
+    for(unsigned int i=0;i<contenitoreDomandePersonali.size();i++){
 
-//    lay->addWidget(new QLabel("numero di domande"));
-//    lay->addWidget(new QPushButton("fai domanda"));
+    //creo lo spazio che conterrá la domanda
+    QTextEdit* testoDomanda=new QTextEdit(QString::fromStdString(c->getDomandePersonali()[i]->get_testo()));
+    testoDomanda->setReadOnly(true);
 
-//    //aggiungo la barra orizzontale e la scrollArea al layout totale
-//    laytotale->addLayout(lay);
-//    laytotale->addWidget(pagina1);
-//    //imposto a totale il layout totale
-//    totale->setLayout(laytotale);
-//    //imposto come widget della tabella il totale appena creato
-//    tabella->addTab(totale,"Domande personali");
+    layoutScrollAreaPagina2->addWidget(testoDomanda);
+    //creo la barra orizzontale con il pulsante per visualizzare i commenti
 
+    bottoneVediCommento* commenti=new bottoneVediCommento(c->getDomandePersonali()[i],"vedi commenti");
+    //pulsante per vedere i commenti
+    connect(commenti,SIGNAL(clicked()),commenti,SLOT(vediCommenti()));
 
-//    //creo scrollArea della seconda pagina
-//    QScrollArea* pagina2=aggiungiAreaDomanda();
-//    //creo la Label che per indicare l'autore della domanda
-//    QLabel* autoreDomanda=new QLabel("Autore domanda");
-//    //creo il widget da inserire nella seconda pagina della tabella
-//    QWidget* totale2=new QWidget;
-//    //creo il layout che contiene la Label Autore domanda
-//    QHBoxLayout* lay2=new QHBoxLayout;
-//    //aggiungo la Label al layout
-//    lay2->addWidget(autoreDomanda);
-//    lay2->setAlignment(Qt::AlignLeft);
-//    //creo il layout di totale2
-//    QVBoxLayout* laytotale2=new QVBoxLayout;
-//    laytotale2->addLayout(lay2);
-//    laytotale2->addWidget(pagina2);
-//    totale2->setLayout(laytotale2);
+    layoutScrollAreaPagina2->addWidget(commenti);
+    layoutScrollAreaPagina2->setAlignment(commenti,Qt::AlignRight);
+    }
 
-//    //creo la seconda pagina della tabella
-//    tabella->addTab(totale2,"Domande amici");
-
-
-//    //aggiungo al mainLayout la tabella
-//    mainLayout->addWidget(tabella);
-
-
-//    //imposto il mainLayout come layout principale
-//    setLayout(mainLayout);
-//}
+    widgetScrollAreaPagina2->setLayout(layoutScrollAreaPagina2);
+    pagina2->setWidget(widgetScrollAreaPagina2);
+}
 
 void VistaUtente::buildBarraSuperiore()
 {
     layoutBarraSuperiore=new QHBoxLayout;
 
-
-
 //  pulsanti della barra di ricerca
-    profilo=new QPushButton("profilo");
+    QIcon iconaProfilo("../profilo");
+    profilo=new QPushButton(iconaProfilo," Profilo");
+    connect(profilo,SIGNAL(clicked()),this,SLOT(vediProfilo()));
+    QIcon iconaCerca("../cerca");
     invioDomanda=new QPushButton("Cerca");
     invioUtente=new QPushButton("Cerca");
+    connect(invioUtente,SIGNAL(clicked()),this,SLOT(buildCercaUtente()));
 
 //  linee di testo della barra di ricerca
     scriviDomanda=new QLineEdit();
@@ -154,16 +108,16 @@ void VistaUtente::buildBarraSuperiore()
 void VistaUtente::buildTabella()
 {
     tabella=new QTabWidget;
-    QScrollArea* pagina1=new QScrollArea;
-    QScrollArea* pagina2=new QScrollArea;
+    pagina1=new QScrollArea;
+    pagina2=new QScrollArea;
     pagina1->setWidgetResizable(true);
     pagina2->setWidgetResizable(true);
 
     //creo i widget che contengono le scrollArea delle pagine
     QWidget* widgetPagina1=new QWidget;
     QWidget* widgetPagina2=new QWidget;
-    layoutWidgetPagina1=new QVBoxLayout();
-    layoutWidgetPagina2=new QVBoxLayout();
+    layoutWidgetPagina1=new QVBoxLayout;
+    layoutWidgetPagina2=new QVBoxLayout;
 
     //creo layout totale per la tabella
     QWidget* totalePagina2=new QWidget;
@@ -185,13 +139,22 @@ void VistaUtente::buildTabella()
 
     layoutTotalePagina2->addLayout(layoutAggiungiDomanda);
     layoutTotalePagina2->addWidget(pagina2);
+
+    //nella pagina1 devo creare le domande con i commenti degli amici dell'utente
+    aggiungiAreaDomandaAmici();
+
+    //nella pagina2 devo creare le domande con i commenti delle domane personali
+    aggiungiAreaDomandePersonali();
+
     //aggiungo le scrollArea alla tabella
     tabella->addTab(pagina1,"Domande amici");
     tabella->addTab(totalePagina2,"Domande personali");
+
 }
 
-VistaUtente::VistaUtente(QWidget *parent):QWidget(parent)
+VistaUtente::VistaUtente(const QString& utente, QWidget *parent):QWidget(parent),c(new Controller(utente,this))
 {
+    setStyleSheet(imposta_stile());
     QVBoxLayout* mainLayout=new QVBoxLayout();
 
     //creo gli elementi da aggiungere al mainLayout
@@ -203,33 +166,31 @@ VistaUtente::VistaUtente(QWidget *parent):QWidget(parent)
     setLayout(mainLayout);
 }
 
-void VistaUtente::setController(Controller * controller)
+void VistaUtente::vediProfilo()
 {
-    c=controller;
+    vistaProfilo* profilo=new vistaProfilo(c);
+    profilo->setWindowTitle("Profilo");
+    profilo->setMinimumWidth(500);
+    profilo->show();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+void VistaUtente::buildCercaUtente()
+{
+        container<string> parametri=c->cercaUtente(scriviUtente->text());
+        if(!parametri.empty())
+        {
+            bool amico_presente=c->check_presenza_amico(scriviUtente->text());
+            vistaCercaUtente* v=new vistaCercaUtente(parametri,amico_presente);
+            v->show();
+            connect(v,SIGNAL(invia(const QString&)),c,SLOT(aggiungi_amico(const QString&)));
+            connect(v,SIGNAL(rimuovi(const QString&)),c,SLOT(togli_amico(const QString&)));
+            connect(v,SIGNAL(invia(const QString&)),this,SLOT(buildCercaUtente()));
+            connect(v,SIGNAL(rimuovi(const QString&)),this,SLOT(buildCercaUtente()));
+        }else
+        {
+            QErrorMessage* messaggio=new QErrorMessage(this);
+            messaggio->setWindowTitle("Utente non presente");
+            messaggio->showMessage("L'utente "+scriviUtente->text()+" non è stato trovato");
+        }
+}
 
