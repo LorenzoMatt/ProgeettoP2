@@ -11,6 +11,10 @@
                     <testo>ciao</testo>
                     <autore_commento>Lorenzo</autore_commento>
                 </commento>
+                <commento>
+                    <testo>ehi</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                </commento>
             </commenti>
         </domanda>
         <domanda>
@@ -41,7 +45,7 @@
                     <autore_commento>Lorenzo</autore_commento>
                 </commento>
                 <commento>
-                    <testo>ciao</testo>
+                    <testo>prova</testo>
                     <autore_commento>Lorenzo</autore_commento>
                 </commento>
             </commenti>
@@ -66,6 +70,10 @@
                 </commento>
                 <commento>
                     <testo>ma ovvio che lo sei ahhahaha</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                </commento>
+                <commento>
+                    <testo>giorgiooo</testo>
                     <autore_commento>Lorenzo</autore_commento>
                 </commento>
             </commenti>
