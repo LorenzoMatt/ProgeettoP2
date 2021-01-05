@@ -32,8 +32,8 @@ void VistaUtente::aggiungiAreaDomandaAmici()
     layoutWidgetDomandaAmici->addWidget(autoreDomanda);
     layoutWidgetDomandaAmici->addWidget(testoDomanda);
     //creo la barra orizzontale con il pulsante per visualizzare i commenti
-
-    bottoneVediCommento* commenti=new bottoneVediCommento(c->getDomandeAmici()[i],"vedi commenti");
+    QString u(QString::fromStdString(c->getAccesso().get_username()));
+    bottoneVediCommento* commenti=new bottoneVediCommento(c->getDomandeAmici()[i],u,"vedi commenti");
     //pulsante per vedere i commenti
     connect(commenti,SIGNAL(clicked()),commenti,SLOT(vediCommenti()));
 
@@ -65,8 +65,8 @@ void VistaUtente::aggiungiAreaDomandePersonali()
 
     layoutScrollAreaPagina2->addWidget(testoDomanda);
     //creo la barra orizzontale con il pulsante per visualizzare i commenti
-
-    bottoneVediCommento* commenti=new bottoneVediCommento(c->getDomandePersonali()[i],"vedi commenti");
+    QString u(QString::fromStdString(c->getAccesso().get_username()));
+    bottoneVediCommento* commenti=new bottoneVediCommento(c->getDomandePersonali()[i],u,"vedi commenti");
     //pulsante per vedere i commenti
     connect(commenti,SIGNAL(clicked()),commenti,SLOT(vediCommenti())); // visualizzo la domanda associata al pulsante
     connect(commenti,SIGNAL(commento(const QString&,Domanda*)),c,SLOT(scrivi_commento(const QString&,Domanda*)));

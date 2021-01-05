@@ -29,7 +29,7 @@ private:
     QSignalMapper* signalMapperLike;
     QSignalMapper* signalMapperRimuovi;
     Domanda* dom;
-
+    QString utente;
     //funzioni di utilitá:
 
     //aggiunge allo scrollwidgetLayout il widget che contiene la domanda
@@ -42,7 +42,7 @@ private:
     void aggiungiBarraDiTesto();
 
 public:
-    explicit vista_domanda(Domanda*, QWidget *parent = 0);
+    explicit vista_domanda(Domanda*,const QString&, QWidget *parent = 0);
 signals:
     void commento(const QString&,Domanda*);
     void like(int,Domanda*);
