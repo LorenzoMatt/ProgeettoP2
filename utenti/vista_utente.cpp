@@ -20,29 +20,25 @@ void VistaUtente::aggiungiAreaDomandaAmici()
     //costruisco il layout del widget che conterrá le domande che dovranno essere visualizzate e il pulsante
     //Vedi commenti
 
+    string stringaAutore=c->getDomandeAmici()[i]->get_autore_domanda()->get_profilo().get_nome();
+    stringaAutore=stringaAutore+ " " +(c->getDomandeAmici()[i]->get_autore_domanda()->get_profilo().get_cognome());
+    QLabel* autoreDomanda=new QLabel(QString::fromStdString(stringaAutore));
+
     //creo lo spazio che conterrá la domanda
-        QTextEdit* testoDomanda=new QTextEdit(QString::fromStdString(c->getDomandeAmici()[i]->get_testo())); //al momento della creazione verrá inserito il testo della domanda
+    QTextEdit* testoDomanda=new QTextEdit(QString::fromStdString(c->getDomandeAmici()[i]->get_testo()));
     testoDomanda->setReadOnly(true);
 
-
+    layoutWidgetDomandaAmici->addWidget(autoreDomanda);
     layoutWidgetDomandaAmici->addWidget(testoDomanda);
     //creo la barra orizzontale con il pulsante per visualizzare i commenti
-    QHBoxLayout* layVediCommenti=new QHBoxLayout;
-
-
 
     bottoneVediCommento* commenti=new bottoneVediCommento(c->getDomandeAmici()[i],"vedi commenti");
     //pulsante per vedere i commenti
     connect(commenti,SIGNAL(clicked()),commenti,SLOT(vediCommenti()));
-    //inserisco il pulsante nel layout
 
-
-
-
-    layVediCommenti->addWidget(commenti);
-    layVediCommenti->setAlignment(commenti,Qt::AlignRight);
-    //aggiungo la barra sotto al testo della domanda
-    layoutWidgetDomandaAmici->addLayout(layVediCommenti);
+    //aggiungo il pulsante commenti sotto al testo della domanda
+    layoutWidgetDomandaAmici->addWidget(commenti);
+    layoutWidgetDomandaAmici->setAlignment(commenti,Qt::AlignRight);
 
     }
 
@@ -52,13 +48,43 @@ void VistaUtente::aggiungiAreaDomandaAmici()
 
 }
 
+void VistaUtente::aggiungiAreaDomandePersonali()
+{
+    QWidget* widgetScrollAreaPagina2=new QWidget;
+    QVBoxLayout* layoutScrollAreaPagina2=new QVBoxLayout;
+
+    container<Domanda*> contenitoreDomandePersonali=c->getDomandePersonali();
+
+    for(unsigned int i=0;i<contenitoreDomandePersonali.size();i++){
+
+    //creo lo spazio che conterrá la domanda
+    QTextEdit* testoDomanda=new QTextEdit(QString::fromStdString(c->getDomandePersonali()[i]->get_testo()));
+    testoDomanda->setReadOnly(true);
+
+    layoutScrollAreaPagina2->addWidget(testoDomanda);
+    //creo la barra orizzontale con il pulsante per visualizzare i commenti
+
+    bottoneVediCommento* commenti=new bottoneVediCommento(c->getDomandePersonali()[i],"vedi commenti");
+    //pulsante per vedere i commenti
+    connect(commenti,SIGNAL(clicked()),commenti,SLOT(vediCommenti()));
+
+    layoutScrollAreaPagina2->addWidget(commenti);
+    layoutScrollAreaPagina2->setAlignment(commenti,Qt::AlignRight);
+    }
+
+    widgetScrollAreaPagina2->setLayout(layoutScrollAreaPagina2);
+    pagina2->setWidget(widgetScrollAreaPagina2);
+}
+
 void VistaUtente::buildBarraSuperiore()
 {
     layoutBarraSuperiore=new QHBoxLayout;
 
 //  pulsanti della barra di ricerca
-    profilo=new QPushButton("profilo");
+    QIcon iconaProfilo("../profilo");
+    profilo=new QPushButton(iconaProfilo," Profilo");
     connect(profilo,SIGNAL(clicked()),this,SLOT(vediProfilo()));
+    QIcon iconaCerca("../cerca");
     invioDomanda=new QPushButton("Cerca");
     invioUtente=new QPushButton("Cerca");
     connect(invioUtente,SIGNAL(clicked()),this,SLOT(buildCercaUtente()));
@@ -82,8 +108,8 @@ void VistaUtente::buildBarraSuperiore()
 void VistaUtente::buildTabella()
 {
     tabella=new QTabWidget;
-    QScrollArea* pagina1=new QScrollArea;
-    QScrollArea* pagina2=new QScrollArea;
+    pagina1=new QScrollArea;
+    pagina2=new QScrollArea;
     pagina1->setWidgetResizable(true);
     pagina2->setWidgetResizable(true);
 
@@ -117,6 +143,9 @@ void VistaUtente::buildTabella()
     //nella pagina1 devo creare le domande con i commenti degli amici dell'utente
     aggiungiAreaDomandaAmici();
 
+    //nella pagina2 devo creare le domande con i commenti delle domane personali
+    aggiungiAreaDomandePersonali();
+
     //aggiungo le scrollArea alla tabella
     tabella->addTab(pagina1,"Domande amici");
     tabella->addTab(totalePagina2,"Domande personali");
@@ -141,6 +170,7 @@ void VistaUtente::vediProfilo()
 {
     vistaProfilo* profilo=new vistaProfilo(c);
     profilo->setWindowTitle("Profilo");
+    profilo->setMinimumWidth(500);
     profilo->show();
 }
 

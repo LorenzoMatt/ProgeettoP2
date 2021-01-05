@@ -10,6 +10,7 @@
 #include <QLineEdit>
 #include "container.h"
 #include "controller.h"
+#include "stile.h"
 
 
 

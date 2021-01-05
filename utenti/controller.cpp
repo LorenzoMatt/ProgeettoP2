@@ -68,3 +68,12 @@ void Controller::togli_amico(const QString & user)
     a->salva();
     v->aggiungiAreaDomandaAmici();
 }
+container<Domanda *> Controller::getDomandePersonali() const
+{
+    return a->get_domande();
+}
+
+int Controller::getPunti()
+{
+    return a->get_punti();
+}

@@ -16,6 +16,7 @@
 #include <QErrorMessage>
 #include <QMessageBox>
 #include "bottonevedicommento.h"
+#include "stile.h"
 
 class Controller;
 
@@ -39,9 +40,12 @@ private:
     std::vector<QPushButton*> domandeAmici;
     QVBoxLayout* layoutWidgetPagina1;
     QVBoxLayout* layoutWidgetPagina2;
+    QScrollArea* pagina1;
+    QScrollArea* pagina2;
 
 //funzioni di utilitá
     void aggiungiAreaDomandaAmici();
+    void aggiungiAreaDomandePersonali();
     void aggiungiPulsanteDomandaPersonale();
     void aggiungiPulsanteDomandaAmico();
     void buildBarraSuperiore();
