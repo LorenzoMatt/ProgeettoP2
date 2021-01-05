@@ -20,6 +20,7 @@ public:
     Profilo getProfilo() const;
     Accesso getAccesso() const;
     container<Domanda *> getDomandeAmici() const;
+    container<Domanda *> getDomandePersonali() const;
     int getPunti();
 
 

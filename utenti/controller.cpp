@@ -36,6 +36,11 @@ container<Domanda *> Controller::getDomandeAmici() const
     return a->get_domande_amici();
 }
 
+container<Domanda *> Controller::getDomandePersonali() const
+{
+    return a->get_domande();
+}
+
 int Controller::getPunti()
 {
     return a->get_punti();

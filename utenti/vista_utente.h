@@ -15,6 +15,7 @@
 #include <QString>
 
 #include "bottonevedicommento.h"
+#include "stile.h"
 
 class Controller;
 
@@ -36,14 +37,16 @@ class VistaUtente:public QWidget
     std::vector<QPushButton*> domandeAmici;
     QVBoxLayout* layoutWidgetPagina1;
     QVBoxLayout* layoutWidgetPagina2;
+    QScrollArea* pagina1;
+    QScrollArea* pagina2;
 
 //funzioni di utilitá
     void aggiungiAreaDomandaAmici();
+    void aggiungiAreaDomandePersonali();
     void aggiungiPulsanteDomandaPersonale();
     void aggiungiPulsanteDomandaAmico();
     void buildBarraSuperiore();
     void buildTabella();
-    void imposta_stile();
 
 public:
     VistaUtente(const QString&,QWidget* parent=nullptr);

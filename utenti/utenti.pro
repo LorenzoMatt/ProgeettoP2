@@ -31,6 +31,7 @@ HEADERS += accesso.h \
     log.h \
            non_autore_domanda.h \
            profilo.h \
+    stile.h \
            togliere_te_stesso_dagli_amici.h \
            utente.h \
     utente_gia_presente.h \

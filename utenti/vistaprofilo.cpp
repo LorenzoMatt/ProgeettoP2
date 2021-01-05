@@ -2,6 +2,7 @@
 
 vistaProfilo::vistaProfilo(Controller * c):a(c)
 {
+    setStyleSheet(imposta_stile());
     //creo il layout che contiene tutto
     QVBoxLayout* layoutTotale=new QVBoxLayout;
 
