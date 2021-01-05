@@ -14,6 +14,11 @@ void Commento::set_like(bool l)
 {
     like=l;
 }
+
+bool Commento::get_like() const
+{
+    return like;
+}
 bool Commento:: operator==(const Commento& c) const{
     return testo==c.get_testo() && autore==c.get_autore();
 }

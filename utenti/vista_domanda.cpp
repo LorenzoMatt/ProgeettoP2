@@ -48,14 +48,13 @@ void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
         QPushButton* rimuovi=new QPushButton("rimuovi");
         valutaCommento->addWidget(rimuovi);
 
-        if(autoreCommento!=QString::fromStdString(d->get_autore_domanda()->get_credenziali().get_username()))
+        if((!(it->get_like())) && autoreCommento!=QString::fromStdString(d->get_autore_domanda()->get_credenziali().get_username()))
         {
             QPushButton* like=new QPushButton("like");
             valutaCommento->addWidget(like);
             connect(like, SIGNAL(clicked()), signalMapperLike,SLOT(map()));
             signalMapperLike->setMapping(like,num_commento);
         }
-
         bloccoCommenti->addLayout(valutaCommento);
         connect(rimuovi,SIGNAL(clicked()),signalMapperRimuovi,SLOT(map()));
         signalMapperRimuovi->setMapping(rimuovi,num_commento);
@@ -81,7 +80,6 @@ void vista_domanda::aggiungiBarraDiTesto()
 
     connect(invio,SIGNAL(clicked()),this,SLOT(buildCommento()));
     connect(testoCommento,SIGNAL(returnPressed()),this,SLOT(buildCommento()));
-
 }
 
 //costruttore

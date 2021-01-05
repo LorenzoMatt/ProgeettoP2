@@ -18,6 +18,7 @@ public:
     string get_testo() const;
     Utente* get_autore() const;
     void set_like(bool);
+    bool get_like() const;
 };
 
 #endif // COMMENTO_H
