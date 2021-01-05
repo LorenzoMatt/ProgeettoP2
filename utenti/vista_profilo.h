@@ -26,7 +26,6 @@ signals:
     void inviaCognome(const string&);
     void inviaPassword(const string&);
     void inviaEmail(const string&);
-
     void inviaCompetenza(const string&);
     void inviaTitoloDiStudio(const string&);
 };

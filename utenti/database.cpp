@@ -55,16 +55,11 @@ Database::Database(const container<DeepPtr<Utente> > &u):utenti(u)
 
 void Database::aggiungi_utente(const DeepPtr<Utente> &utente)
 {
-    try{
+
         if(!check_presenza(utente->get_credenziali().get_username()))
             utenti.push_back(utente);
         else
             throw utente_gia_presente();
-    }catch(utente_gia_presente)
-    {
-        std::cerr<<"utente "<<utente->get_credenziali().get_username() <<" già presente";
-    }
-
 }
 
 void Database::togli_utente(Utente *utente)

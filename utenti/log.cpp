@@ -95,20 +95,22 @@ Login::~Login()
 
 void Login::login_user()
 {
-//    string user=username->text().toStdString();
-//    string pw=password->text().toStdString();
-//    Utente* utente=db.check_credenziali(user,pw);
-
-
-        VistaUtente* v=new VistaUtente("Pikachu");
+    string user=username->text().toStdString();
+    string pw=password->text().toStdString();
+    Utente* utente=db->check_credenziali(user,pw);
+    if(utente)
+    {
+        VistaUtente* v=new VistaUtente(username->text());
         v->show();
         close();
-
-//    else
-//    {
-//        QErrorMessage * e=new QErrorMessage();
-//        e->showMessage("Username o Password non corretti");
-//    }
+    }
+    else
+    {
+        QErrorMessage * e=new QErrorMessage();
+        e->showMessage("Username o Password non corretti");
+        username->clear();
+        password->clear();
+    }
 }
 
 void Login::login_admin()
