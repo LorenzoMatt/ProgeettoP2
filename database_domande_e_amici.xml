@@ -6,7 +6,12 @@
         <domanda>
             <priorita>2</priorita>
             <testo>sono pikachu</testo>
-            <commenti/>
+            <commenti>
+                <commento>
+                    <testo>ciao</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                </commento>
+            </commenti>
         </domanda>
         <domanda>
             <priorita>2</priorita>
@@ -33,6 +38,10 @@
             <commenti>
                 <commento>
                     <testo>Ciaoooo</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                </commento>
+                <commento>
+                    <testo>ciao</testo>
                     <autore_commento>Lorenzo</autore_commento>
                 </commento>
             </commenti>

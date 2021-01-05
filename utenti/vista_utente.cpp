@@ -40,7 +40,8 @@ void VistaUtente::aggiungiAreaDomandaAmici()
     //aggiungo il pulsante commenti sotto al testo della domanda
     layoutWidgetDomandaAmici->addWidget(commenti);
     layoutWidgetDomandaAmici->setAlignment(commenti,Qt::AlignRight);
-
+    connect(commenti,SIGNAL(commento(const QString&,Domanda*)),c,SLOT(scrivi_commento(const QString&,Domanda*)));
+    connect(commenti,SIGNAL(commento(const QString&,Domanda*)),commenti,SLOT(vediCommenti()));//aggiorno la vista delle domande
     }
 
     //imposto come layout del widget il layout appena creato
