@@ -53,9 +53,11 @@ private:
 
 public:
     VistaUtente(const QString&,QWidget* parent=nullptr);
+    ~VistaUtente();
 private slots:
     void vediProfilo();
     void buildCercaUtente();
+    void buildFaiDomanda();
 };
 
 #endif // VISTAUTENTE_H

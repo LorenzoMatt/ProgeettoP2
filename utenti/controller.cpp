@@ -5,6 +5,10 @@ Controller::Controller(const QString& utente,VistaUtente* vista,QObject *parent)
     a=new Account(utente.toStdString());
 }
 
+Controller::~Controller()
+{
+}
+
 void Controller::setModel(Account * modello)
 {
     a=modello;
@@ -15,10 +19,25 @@ void Controller::setVista(VistaUtente * vista)
     v=vista;
 }
 
-void Controller::faiDomanda(const QString & testo)
+void Controller::faiDomanda(const QString & testo,int priorita)
 {
-    a->fai_domanda(testo.toStdString());
-
+    try
+    {
+        a->fai_domanda(testo.toStdString(),priorita);
+        v->aggiungiAreaDomandePersonali();//aggiorno la vista
+        QMessageBox* messaggio=new QMessageBox(v);
+        messaggio->setWindowTitle("Domanda effettuata correttamente");
+        messaggio->setText("Domanda effettuata, ti restano in tutto "+QString::fromStdString(std::to_string(a->get_punti()))+" punti");
+        messaggio->exec();
+        a->salva();
+    }
+    catch(punti_non_sufficienti)
+    {
+        QErrorMessage* messaggio=new QErrorMessage(v);
+        messaggio->setWindowTitle("Domanda non inserita");
+        messaggio->showMessage("Non hai punti sufficienti per fare una domanda,"
+                               "prova a rispondere domande di altri utenti oppure a cambiare piano");
+    }
 }
 
 Profilo Controller::getProfilo() const

@@ -46,37 +46,23 @@ void Premium::get_punti_domanda()
 
 void Premium::fai_domanda(Domanda *domanda)
 {
-    try{
-        if(this==domanda->get_autore_domanda())
-        {
-            unsigned int punti_da_sottrarre=puntiDetrattiDomandaFatta;
-            if(domanda->get_priorita()>=3)
-            {
-                punti_da_sottrarre+=(supplementoDomandaPriorita*(domanda->get_priorita()-3));
-            }
-            else
-            {
-                domanda->set_priorita(3);
-            }
-            if(punti>=punti_da_sottrarre)
-            {
-                punti-=punti_da_sottrarre;
-                get_domande().push_front(domanda);
-            }
-            else
-            {
-                throw punti_non_sufficienti();
-            }
-        }
-        else
-        {
-            throw non_autore_domanda();
-        }
-    }catch(non_autore_domanda){
-        std::cerr<<"non è l'autore della domanda";
+    unsigned int punti_da_sottrarre=puntiDetrattiDomandaFatta;
+    if(domanda->get_priorita()>=3)
+    {
+        punti_da_sottrarre+=(supplementoDomandaPriorita*(domanda->get_priorita()-3));
     }
-    catch(punti_non_sufficienti){
-        std::cerr<<"punti per fare la domanda non sufficienti";
+    else
+    {
+        domanda->set_priorita(3);
+    }
+    if(punti>=punti_da_sottrarre)
+    {
+        punti-=punti_da_sottrarre;
+        get_domande().push_front(domanda);
+    }
+    else
+    {
+        throw punti_non_sufficienti();
     }
 }
 

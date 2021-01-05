@@ -1,7 +1,6 @@
 #include "log.h"
 #include "creautente.h"
 #include "vista_utente.h"
-//#include "vista_amministratore.h"
 #include "basic.h"
 #include "gold.h"
 #include "premium.h"
@@ -17,8 +16,8 @@ void Login::build_pulsanti()
 
 void Login::build_line_edit()
 {
-    username=new QLineEdit();
-    password=new QLineEdit();
+    username=new QLineEdit;
+    password=new QLineEdit;
     password->setEchoMode(QLineEdit::Password);
 
     connect(username,SIGNAL(returnPressed()),this,SLOT(login_user()));

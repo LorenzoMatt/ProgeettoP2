@@ -14,9 +14,9 @@ private:
     Account* a;
 public:
     explicit Controller(const QString& ,VistaUtente*,QObject *parent = nullptr);
+    ~Controller();
     void setModel(Account*);
     void setVista(VistaUtente*);
-    void faiDomanda(const QString&);
     Profilo getProfilo() const;
     Accesso getAccesso() const;
     container<Domanda *> getDomandeAmici() const;//OK
@@ -25,7 +25,7 @@ public:
     container<Domanda *> getDomandePersonali() const;
     int getPunti() const;
 
-public slots:
+private slots:
     void aggiungi_amico(const QString&);
     void togli_amico(const QString&);
     void modificaNome(const string&);
@@ -34,10 +34,7 @@ public slots:
     void modificaPassword(const string&);
     void aggiungiCompetenza(const string&);
     void aggiungiTitoloDiStudio(const string&);
-
-
-
-
+    void faiDomanda(const QString&, int priorita);
 signals:
 
 };

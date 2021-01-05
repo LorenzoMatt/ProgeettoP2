@@ -4,6 +4,31 @@
         <username>Pikachu</username>
         <amici>Lorenzo Elton Mirko</amici>
         <domanda>
+            <priorita>2</priorita>
+            <testo>2222</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>2</priorita>
+            <testo>2222</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>3</priorita>
+            <testo>33333</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>2</priorita>
+            <testo>3333</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>2</priorita>
+            <testo>ciaooo</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
             <priorita>3</priorita>
             <testo>prova a fare una domanda</testo>
             <commenti/>

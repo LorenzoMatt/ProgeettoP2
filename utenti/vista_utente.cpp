@@ -4,6 +4,7 @@
 #include "vista_profilo.h"
 #include "vistacercautente.h"
 #include "stile.h"
+#include"finestranuovadomanda.h"
 
 //aggiunge area domanda utente con pulsante commenti
 void VistaUtente::aggiungiAreaDomandaAmici()
@@ -83,11 +84,9 @@ void VistaUtente::buildBarraSuperiore()
 //  pulsanti della barra di ricerca
     QIcon iconaProfilo("../profilo");
     profilo=new QPushButton(iconaProfilo," Profilo");
-    connect(profilo,SIGNAL(clicked()),this,SLOT(vediProfilo()));
     QIcon iconaCerca("../cerca");
     invioDomanda=new QPushButton(iconaCerca,"Cerca");
     invioUtente=new QPushButton(iconaCerca,"Cerca");
-    connect(invioUtente,SIGNAL(clicked()),this,SLOT(buildCercaUtente()));
 
 //  linee di testo della barra di ricerca
     scriviDomanda=new QLineEdit();
@@ -101,6 +100,9 @@ void VistaUtente::buildBarraSuperiore()
     layoutBarraSuperiore->addWidget(invioDomanda);
     layoutBarraSuperiore->addWidget(scriviUtente);
     layoutBarraSuperiore->addWidget(invioUtente);
+    connect(invioUtente,SIGNAL(clicked()),this,SLOT(buildCercaUtente()));
+    connect(profilo,SIGNAL(clicked()),this,SLOT(vediProfilo()));
+
 }
 
 //costruisce la tabella con le due pagine (domande amici,domande personali)
@@ -149,7 +151,7 @@ void VistaUtente::buildTabella()
     //aggiungo le scrollArea alla tabella
     tabella->addTab(pagina1,"Domande amici");
     tabella->addTab(totalePagina2,"Domande personali");
-
+    connect(aggiungiDomanda,SIGNAL(clicked()),this,SLOT(buildFaiDomanda()));
 }
 
 VistaUtente::VistaUtente(const QString& utente, QWidget *parent):QWidget(parent),c(new Controller(utente,this))
@@ -164,6 +166,10 @@ VistaUtente::VistaUtente(const QString& utente, QWidget *parent):QWidget(parent)
     mainLayout->addWidget(tabella);
 
     setLayout(mainLayout);
+}
+
+VistaUtente::~VistaUtente()
+{
 }
 
 void VistaUtente::vediProfilo()
@@ -192,5 +198,12 @@ void VistaUtente::buildCercaUtente()
             messaggio->setWindowTitle("Utente non presente");
             messaggio->showMessage("L'utente "+scriviUtente->text()+" non è stato trovato");
         }
+}
+
+void VistaUtente::buildFaiDomanda()
+{
+    finestraNuovaDomanda* domanda=new finestraNuovaDomanda(this);
+    domanda->show();
+    connect(domanda,SIGNAL(invia(const QString&,int)),c,SLOT(faiDomanda(const QString&,int)));
 }
 
