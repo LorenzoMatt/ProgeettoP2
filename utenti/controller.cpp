@@ -39,19 +39,17 @@ container<Domanda *> Controller::getDomandeAmici() const
 container<string> Controller::cercaUtente(const QString & utente) const
 {
     container<string> parametri;
-    try
-    {
         parametri=a->ricerca_contatto(utente.toStdString());
         if(parametri.empty())
         {
             parametri=a->ricerca_utente(utente.toStdString());
         }
-    }
-    catch(amico_non_presente)
-    {
-        throw amico_non_presente();
-    }
-    return parametri;
+        return parametri;
+}
+
+bool Controller::check_presenza_amico(const QString& user) const
+{
+    return a->check_presenza_amico(user.toStdString());
 }
 
 void Controller::aggiungi_amico(const QString & user)
@@ -61,4 +59,12 @@ void Controller::aggiungi_amico(const QString & user)
     a->salva();
     v->aggiungiAreaDomandaAmici();
     // funzione per aggiornare le domande deglia amici
+}
+
+void Controller::togli_amico(const QString & user)
+{
+    Utente* u=a->cerca_utente_per_nome(user.toStdString());
+    a->togli_amico(u);
+    a->salva();
+    v->aggiungiAreaDomandaAmici();
 }

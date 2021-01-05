@@ -3,10 +3,12 @@
 #include "controller.h"
 #include "vistaprofilo.h"
 #include "vistacercautente.h"
+#include "stile.h"
 
 //aggiunge area domanda utente con pulsante commenti
 void VistaUtente::aggiungiAreaDomandaAmici()
 {
+
     //creo il widget da inserire dentro alla scrollArea
 
     QWidget* widgetDomandaAmici=new QWidget;
@@ -17,7 +19,6 @@ void VistaUtente::aggiungiAreaDomandaAmici()
     for(unsigned int i=0;i<contenitoreDomandeAmici.size();i++){
     //costruisco il layout del widget che conterrá le domande che dovranno essere visualizzate e il pulsante
     //Vedi commenti
-
 
     //creo lo spazio che conterrá la domanda
         QTextEdit* testoDomanda=new QTextEdit(QString::fromStdString(c->getDomandeAmici()[i]->get_testo())); //al momento della creazione verrá inserito il testo della domanda
@@ -124,6 +125,7 @@ void VistaUtente::buildTabella()
 
 VistaUtente::VistaUtente(const QString& utente, QWidget *parent):QWidget(parent),c(new Controller(utente,this))
 {
+    setStyleSheet(imposta_stile());
     QVBoxLayout* mainLayout=new QVBoxLayout();
 
     //creo gli elementi da aggiungere al mainLayout
@@ -144,19 +146,22 @@ void VistaUtente::vediProfilo()
 
 void VistaUtente::buildCercaUtente()
 {
-    try
-    {
         container<string> parametri=c->cercaUtente(scriviUtente->text());
-        vistaCercaUtente* v=new vistaCercaUtente(parametri);
-        v->show();
-        connect(v,SIGNAL(invia(const QString&)),c,SLOT(aggiungi_amico(const QString&)));
-    }
-    catch(amico_non_presente())
-    {
-        QErrorMessage* messaggio=new QErrorMessage(this);
-        messaggio->setWindowTitle("Utente non presente");
-        messaggio->showMessage("L'utente "+scriviUtente->text()+" non è stato trovato");
-    }
+        if(!parametri.empty())
+        {
+            bool amico_presente=c->check_presenza_amico(scriviUtente->text());
+            vistaCercaUtente* v=new vistaCercaUtente(parametri,amico_presente);
+            v->show();
+            connect(v,SIGNAL(invia(const QString&)),c,SLOT(aggiungi_amico(const QString&)));
+            connect(v,SIGNAL(rimuovi(const QString&)),c,SLOT(togli_amico(const QString&)));
+            connect(v,SIGNAL(invia(const QString&)),this,SLOT(buildCercaUtente()));
+            connect(v,SIGNAL(rimuovi(const QString&)),this,SLOT(buildCercaUtente()));
+        }else
+        {
+            QErrorMessage* messaggio=new QErrorMessage(this);
+            messaggio->setWindowTitle("Utente non presente");
+            messaggio->showMessage("L'utente "+scriviUtente->text()+" non è stato trovato");
+        }
 }
 
 

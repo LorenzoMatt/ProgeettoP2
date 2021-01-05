@@ -52,7 +52,6 @@ public:
 private slots:
     void vediProfilo();
     void buildCercaUtente();
-
 };
 
 #endif // VISTAUTENTE_H

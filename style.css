@@ -3,6 +3,7 @@
     selection-background-color: rgb(36,98,124);
     color: white;
 }
+
 QPushButton {
     background-color: rgb(90, 70, 100);
     border-style: outset;
@@ -10,9 +11,26 @@ QPushButton {
     border-radius: 10px;
     border-color: beige;
     font: bold 14px;
-    min-width: 10em;
+    min-width: 5em;
     padding: 6px;
 }
+
+
+QLineEdit{ 
+    background-color:rgb(200,200,200);
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    selection-background-color: darkgray;
+    font-size: 16px;
+}
+
+QLineEdit:focus { 
+background-color:rgb(192, 192, 255);
+}
+
+
+
 QPushButton:pressed {
     background-color: rgb(224, 0, 0);
     border-style: inset;

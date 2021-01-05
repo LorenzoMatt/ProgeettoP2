@@ -21,8 +21,11 @@ public:
     Accesso getAccesso() const;
     container<Domanda *> getDomandeAmici() const;//OK
     container<std::string> cercaUtente(const QString&) const;
+    bool check_presenza_amico(const QString &) const;
 public slots:
     void aggiungi_amico(const QString&);
+    void togli_amico(const QString&);
+
 
 signals:
 

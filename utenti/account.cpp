@@ -93,16 +93,9 @@ void Account::dai_punti(const std::string & username) const
 
 container<string> Account::ricerca_utente(const string & u)
 {
-    try
-    {
-        container<string> lista_attributi;
-        utente->cerca_utente(u,*model,lista_attributi);
-        return lista_attributi;
-    }
-    catch(amico_non_presente)
-    {
-        throw amico_non_presente();
-    }
+    container<string> lista_attributi;
+    utente->cerca_utente(u,*model,lista_attributi);
+    return lista_attributi;
 }
 
 void Account::cambia_piano(const std::string & piano)
@@ -161,4 +154,11 @@ Domanda *Account::get_domanda(const container<Domanda *>& d, unsigned int i) con
         {}//corpo vuoto
         return *it;
     }
+}
+
+bool Account::check_presenza_amico(const std::string & user) const
+{
+    container<string> l;
+    utente->cerca_amico(user,l);
+    return !(l.empty()) ? true : false;// se la dimensione è 0 allora l'amico non è presente
 }

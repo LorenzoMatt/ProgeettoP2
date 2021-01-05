@@ -37,7 +37,7 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Premium</tipoutente>
+        <tipoutente>Basic</tipoutente>
         <username>Francesca</username>
         <password>diobestia</password>
         <nome>diostronzo</nome>
@@ -70,6 +70,18 @@
         <competenze> masturbarsi masturbarsi</competenze>
         <titoli_di_studio> studiare mangiare</titoli_di_studio>
         <punti>0</punti>
+        <risposte_date>0</risposte_date>
+    </utente>
+    <utente>
+        <tipoutente>Basic</tipoutente>
+        <username>ww</username>
+        <password>ww</password>
+        <nome>ww</nome>
+        <cognome>ww</cognome>
+        <email>ww</email>
+        <competenze></competenze>
+        <titoli_di_studio></titoli_di_studio>
+        <punti>30</punti>
         <risposte_date>0</risposte_date>
     </utente>
 </campi_dati_utenti>

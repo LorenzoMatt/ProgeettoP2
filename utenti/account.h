@@ -37,5 +37,6 @@ public:
     container<std::string> ricerca_contatto(const string&) const;//OK
     container<Domanda *> get_domande_amici() const;//OK
     Domanda* get_domanda(const container<Domanda *> &d, unsigned int i) const;//OK
+    bool check_presenza_amico(const string &) const;
 };
 #endif // ACCOUNT_H

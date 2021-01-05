@@ -30,9 +30,7 @@ void Basic::cerca_utente(const std::string & username, const Database & model, c
         {
             Utente::Funtore f(1);//nelle funzioni polimorfe il numero_funtore sarà sostituito con 1 in account gratuito,2 in gold e 3 in premium
             f(utente, lista_di_elementi);
-        }else
-            throw amico_non_presente();
-
+        }
 }
 
 void Basic::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funziona a dovere

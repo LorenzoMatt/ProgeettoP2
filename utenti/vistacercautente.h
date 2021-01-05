@@ -12,18 +12,22 @@ class vistaCercaUtente : public QWidget
 private:
     QTableWidget* tabella;
     QPushButton* segui;
+    QPushButton* togli;
     QPushButton* esci;
     QStringList* verticalheader;
     container<std::string> proprieta;
     void build_tabella();
     void build_bottoni();
+    bool a;
 public:
-    explicit vistaCercaUtente(container<std::string> p,QWidget *parent = 0);
+    explicit vistaCercaUtente(container<std::string> p,bool amico,QWidget *parent = 0);
     ~vistaCercaUtente();
 private slots:
     void segui_utente();
+    void togli_utente();
 signals:
     void invia(const QString&);
+    void rimuovi(const QString&);
 };
 
 #endif // VISTACERCAUTENTE_H

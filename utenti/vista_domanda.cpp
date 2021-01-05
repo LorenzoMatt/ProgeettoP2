@@ -1,5 +1,5 @@
 #include "vista_domanda.h"
-
+#include "stile.h"
 //aggiunge la domanda
 void vista_domanda::aggiungiWidgetDomanda(Domanda* d)
 {
@@ -74,6 +74,7 @@ void vista_domanda::aggiungiBarraDiTesto()
 vista_domanda::vista_domanda(Domanda * d, QWidget *parent) :QWidget(parent),domanda(new QVBoxLayout),
     scrollarea(new QScrollArea),scrollwidget(new QWidget),scrollwidgetLayout(new QVBoxLayout)
 {
+    setStyleSheet(imposta_stile());
 
     //aggiunge allo scrollWidgetLayout il widget che contiene la domanda
     aggiungiWidgetDomanda(d);

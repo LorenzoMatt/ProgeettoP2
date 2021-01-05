@@ -46,20 +46,6 @@ creautente::creautente(QWidget *parent) :QDialog(parent)
     connect(conferma,SIGNAL(accepted()),this,SLOT(dati()));
     connect(conferma,SIGNAL(rejected()),this,SLOT(close()));
 }
-//void CreaModificaInquilino::checkDati()
-//{
-//    bool errore=false;
-//    if(_useredit->text().isEmpty() || _pwedit->text().isEmpty())
-//        errore=true;
-//    if(!errore)
-//    {
-//        raccogliDati();
-//        close();
-//        showSuccess("Operazione eseguita con successo");
-//    }
-//    else
-//        showMessage("Attenzione! I campi user e password non possono essere vuoti");
-//}
 
 void creautente::dati()
 {
@@ -73,10 +59,13 @@ creautente::~creautente()
 
 void creautente::crea_tasti()
 {
-    Username=new QLineEdit();
-    Password=new QLineEdit();
-    Nome=new QLineEdit();
-    Cognome=new QLineEdit();
-    Email=new QLineEdit();
+    Username=new QLineEdit;
+    Password=new QLineEdit;
+    Nome=new QLineEdit;
+    Cognome=new QLineEdit;
+    Email=new QLineEdit;
     Piano=new QComboBox;
+    Piano->addItem("Basic");
+    Piano->addItem("Gold");
+    Piano->addItem("Premium");
 }

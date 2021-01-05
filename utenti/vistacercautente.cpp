@@ -29,50 +29,42 @@ void vistaCercaUtente::build_tabella()
         caratteristiche.append(new QTableWidgetItem("???"));
         tabella->setItem(0,i,caratteristiche[i]);
     }
-    //modofico le scritte
     int col=0;
-//    for(unsigned int i=0;i<proprieta.size();i++,col++)
-//    {
-//        caratteristiche[col]->setText(QString::fromStdString(proprieta[i]));
-
-//    }
     for(auto it=proprieta.begin();it!=proprieta.end();++it)
     {
         caratteristiche[col]->setText(QString::fromStdString(*it));
         col++;
     }
-
-
-//    list<string> l;
-//    client->ricerca(us, l);
-//    int i=0;
-//    list<string>::iterator it;
-//    ui->tableWidgetWindowClientCerca->insertColumn(0);
-//    for(it=l.begin(); it!=l.end(); ++it)
-//    {
-//        QTableWidgetItem *info=new QTableWidgetItem (QString::fromStdString(*it));
-//        ui->tableWidgetWindowClientCerca->setItem(0,i,info);
-//        i++;
-//    }
 }
 
 void vistaCercaUtente::build_bottoni()
 {
     segui=new QPushButton("Aggiungi agli amici");
+//    segui->setVisible(a);// se l'utente cercato non è un amico allora attivo il pulsante
+    togli=new QPushButton("Togli dagli amici");
+//    segui->setVisible(!a);// se l'utente cercato è un amico allora attivo il pulsante
     esci=new QPushButton("Esci");
     connect(segui,SIGNAL(clicked()),this,SLOT(segui_utente()));
+    connect(togli,SIGNAL(clicked()),this,SLOT(togli_utente()));
     connect(esci,SIGNAL(clicked()),this,SLOT(close()));
 }
 
-vistaCercaUtente::vistaCercaUtente(container<std::string> p, QWidget *parent) :proprieta(p), QWidget(parent)
-{
+vistaCercaUtente::vistaCercaUtente(container<std::string> p, bool amico, QWidget *parent) :proprieta(p),a(!amico), QWidget(parent)
+{// a(!amico) perchè se l'amico è presente allora il pulsante "segui" non deve essere visibile
     QVBoxLayout* mainLayout=new QVBoxLayout;
     build_tabella();
     build_bottoni();
 
     QHBoxLayout* layoutBottoni=new QHBoxLayout;
     layoutBottoni->addWidget(esci);
-    layoutBottoni->addWidget(segui);
+    if(a)
+    {
+        layoutBottoni->addWidget(segui);
+    }
+    else
+    {
+        layoutBottoni->addWidget(togli);
+    }
     mainLayout->addWidget(tabella);
     mainLayout->addLayout(layoutBottoni);
     setLayout(mainLayout);
@@ -86,9 +78,21 @@ vistaCercaUtente::~vistaCercaUtente()
 void vistaCercaUtente::segui_utente()
 {
     QString utente(QString::fromStdString(proprieta[0]));
-    emit  invia(utente);
     QMessageBox* messaggio=new QMessageBox(this);
     messaggio->setWindowTitle("Aggiunto amico");
     messaggio->setText("utente "+utente+" aggiunto agli amici!");
     messaggio->exec();
+    emit  invia(utente);
+    close();
+}
+
+void vistaCercaUtente::togli_utente()
+{
+    QString utente(QString::fromStdString(proprieta[0]));
+    QMessageBox* messaggio=new QMessageBox(this);
+    messaggio->setWindowTitle("rimosso dagli amici");
+    messaggio->setText("utente "+utente+" rimosso agli amici!");
+    messaggio->exec();
+    emit  rimuovi(utente);
+    close();
 }
