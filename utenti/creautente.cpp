@@ -40,6 +40,7 @@ creautente::creautente(QWidget *parent) :QDialog(parent)
     QVBoxLayout* mainLayout=new QVBoxLayout;
     mainLayout->addLayout(layout_form);
     mainLayout->addWidget(conferma);
+    setFixedSize(QSize(250, 230));
 
     setLayout(mainLayout);
     connect(conferma,SIGNAL(accepted()),this,SLOT(dati()));

@@ -2,25 +2,10 @@
 <domande_e_amici>
     <utente>
         <username>Pikachu</username>
-        <amici>Lorenzo Elton Mirko</amici>
+        <amici>Lorenzo Elton Mirko Francesca</amici>
         <domanda>
             <priorita>2</priorita>
-            <testo>2222</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>2222</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>3</priorita>
-            <testo>33333</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>3333</testo>
+            <testo>sono pikachu</testo>
             <commenti/>
         </domanda>
         <domanda>
@@ -110,14 +95,39 @@
     <utente>
         <username>Elton</username>
         <amici></amici>
+        <domanda>
+            <priorita>3</priorita>
+            <testo>sono elton e dovrei essere in alto</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>5</priorita>
+            <testo>elton</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>7</priorita>
+            <testo>ciao sono Elton</testo>
+            <commenti/>
+        </domanda>
     </utente>
     <utente>
         <username>Francesca</username>
         <amici></amici>
+        <domanda>
+            <priorita>2</priorita>
+            <testo>Sono francesca</testo>
+            <commenti/>
+        </domanda>
     </utente>
     <utente>
         <username>Mirko</username>
         <amici></amici>
+        <domanda>
+            <priorita>1</priorita>
+            <testo>sono mirko</testo>
+            <commenti/>
+        </domanda>
     </utente>
     <utente>
         <username>Giorgia</username>

@@ -143,6 +143,6 @@ void Login::aggiungi_utente(const QString & username, const QString & password, 
         QErrorMessage* messaggio=new QErrorMessage(this);
         messaggio->setWindowTitle("utente non registrato");
         messaggio->showMessage("l'username "+username+" è già stato usato");
-        connect(messaggio,SIGNAL(accepted()),this,SLOT(registrazione()));
+
     }
 }

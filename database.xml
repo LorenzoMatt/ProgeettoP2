@@ -4,69 +4,69 @@
         <tipoutente>Gold</tipoutente>
         <username>Pikachu</username>
         <password>0000</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
-        <competenze> Giocare mangiare scopare</competenze>
+        <nome>Pikachu</nome>
+        <cognome>non ho cognome</cognome>
+        <email>Pikachu@gmail.com</email>
+        <competenze> Giocare mangiare</competenze>
         <titoli_di_studio></titoli_di_studio>
         <punti>56</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Basic</tipoutente>
+        <tipoutente>Gold</tipoutente>
         <username>Lorenzo</username>
         <password>0000</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
+        <nome>Lorenzo</nome>
+        <cognome>Matterazzo</cognome>
+        <email>lorenzo.matterazzo@studenti.unipd.it</email>
         <competenze></competenze>
         <titoli_di_studio></titoli_di_studio>
         <punti>50</punti>
+        <risposte_date>0</risposte_date>
+    </utente>
+    <utente>
+        <tipoutente>Premium</tipoutente>
+        <username>Elton</username>
+        <password>0000</password>
+        <nome>Elton</nome>
+        <cognome>Ibra</cognome>
+        <email>eltonibra@gmail.com</email>
+        <competenze></competenze>
+        <titoli_di_studio></titoli_di_studio>
+        <punti>35</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
         <tipoutente>Gold</tipoutente>
-        <username>Elton</username>
-        <password>0000</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
-        <competenze></competenze>
-        <titoli_di_studio></titoli_di_studio>
-        <punti>50</punti>
-        <risposte_date>0</risposte_date>
-    </utente>
-    <utente>
-        <tipoutente>Basic</tipoutente>
         <username>Francesca</username>
         <password>0000</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
+        <nome>Francesca</nome>
+        <cognome>Mari</cognome>
+        <email>francescamari@gmail.com</email>
         <competenze> masturbarsi masturbarsi</competenze>
         <titoli_di_studio></titoli_di_studio>
-        <punti>60</punti>
+        <punti>52</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
         <tipoutente>Basic</tipoutente>
         <username>Mirko</username>
         <password>0000</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
+        <nome>Mirko</nome>
+        <cognome>Stella</cognome>
+        <email>mirko.stella@studenti.unipd.it</email>
         <competenze></competenze>
         <titoli_di_studio></titoli_di_studio>
-        <punti>60</punti>
+        <punti>50</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Basic</tipoutente>
+        <tipoutente>Premium</tipoutente>
         <username>Giorgia</username>
         <password>0000</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
+        <nome>Giorgia</nome>
+        <cognome>Salmaso</cognome>
+        <email>giorgia@gmail.com</email>
         <competenze> masturbarsi masturbarsi</competenze>
         <titoli_di_studio> studiare mangiare</titoli_di_studio>
         <punti>0</punti>

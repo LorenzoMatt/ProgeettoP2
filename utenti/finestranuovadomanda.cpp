@@ -18,7 +18,7 @@ finestraNuovaDomanda::finestraNuovaDomanda(QWidget *parent) :
 {
     QVBoxLayout* mainLayout=new QVBoxLayout;
 
-    QLabel* l=new QLabel("Scrivi una domanda qui sotto");
+    QLabel* l=new QLabel("Scrivi una domanda e inserisci la priorita");
     testo=new QLineEdit;
     testo->setPlaceholderText("Scrivi una domanda...");
     l->setBuddy(testo);
@@ -32,6 +32,8 @@ finestraNuovaDomanda::finestraNuovaDomanda(QWidget *parent) :
     mainLayout->addWidget(testo);
     mainLayout->addWidget(priorita);
     mainLayout->addWidget(conferma);
+
+    setMaximumSize(QSize(300,200));
 
     setLayout(mainLayout);
 }
