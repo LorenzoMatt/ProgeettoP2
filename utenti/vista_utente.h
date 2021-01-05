@@ -11,7 +11,6 @@
 #include <QTextEdit>
 #include <QLabel>
 #include <QScrollArea>
-#include <vector>
 #include <QString>
 #include <QErrorMessage>
 #include <QMessageBox>
@@ -36,8 +35,6 @@ private:
     QPushButton* invioUtente;
     QLineEdit* scriviDomanda;
     QLineEdit* scriviUtente;
-    std::vector<QPushButton*> domandePersonali;
-    std::vector<QPushButton*> domandeAmici;
     QVBoxLayout* layoutWidgetPagina1;
     QVBoxLayout* layoutWidgetPagina2;
     QScrollArea* pagina1;
@@ -58,6 +55,7 @@ private slots:
     void vediProfilo();
     void buildCercaUtente();
     void buildFaiDomanda();
+    void buildDomandeCercate();
 };
 
 #endif // VISTAUTENTE_H

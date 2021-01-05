@@ -107,8 +107,10 @@ void VistaUtente::buildBarraSuperiore()
     layoutBarraSuperiore->addWidget(scriviUtente);
     layoutBarraSuperiore->addWidget(invioUtente);
     connect(invioUtente,SIGNAL(clicked()),this,SLOT(buildCercaUtente()));
+    connect(scriviUtente,SIGNAL(returnPressed()),this,SLOT(buildCercaUtente()));
+    connect(invioDomanda,SIGNAL(clicked()),this,SLOT(buildDomandeCercate()));
+    connect(scriviDomanda,SIGNAL(returnPressed()),this,SLOT(buildDomandeCercate()));
     connect(profilo,SIGNAL(clicked()),this,SLOT(vediProfilo()));
-
 }
 
 //costruisce la tabella con le due pagine (domande amici,domande personali)
@@ -211,5 +213,10 @@ void VistaUtente::buildFaiDomanda()
     finestraNuovaDomanda* domanda=new finestraNuovaDomanda(this);
     domanda->show();
     connect(domanda,SIGNAL(invia(const QString&,int)),c,SLOT(faiDomanda(const QString&,int)));
+}
+
+void VistaUtente::buildDomandeCercate()
+{
+
 }
 
