@@ -85,8 +85,8 @@ void VistaUtente::buildBarraSuperiore()
     profilo=new QPushButton(iconaProfilo," Profilo");
     connect(profilo,SIGNAL(clicked()),this,SLOT(vediProfilo()));
     QIcon iconaCerca("../cerca");
-    invioDomanda=new QPushButton("Cerca");
-    invioUtente=new QPushButton("Cerca");
+    invioDomanda=new QPushButton(iconaCerca,"Cerca");
+    invioUtente=new QPushButton(iconaCerca,"Cerca");
     connect(invioUtente,SIGNAL(clicked()),this,SLOT(buildCercaUtente()));
 
 //  linee di testo della barra di ricerca

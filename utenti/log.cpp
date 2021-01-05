@@ -40,18 +40,12 @@ void Login::build_main_layout(QVBoxLayout* a, QLabel* oppure)
     setLayout(mainLayout);
 }
 
-void Login::imposta_stile()
-{
-    QFile file("../style.css");
-    file.open(QFile::ReadOnly);
-    QString styleSheet = QLatin1String(file.readAll());
-    file.close();
-    setStyleSheet(styleSheet);
-}
+
 
 Login::Login(QWidget *parent) : QWidget(parent) ,db(new Database())
 {
     db->import();
+    setStyleSheet(imposta_stile());
 
     setWindowTitle("Login");
     mainLayout=new QVBoxLayout();
@@ -81,8 +75,6 @@ Login::Login(QWidget *parent) : QWidget(parent) ,db(new Database())
      a->addWidget(registrati);
 
      /*******layout*******/
-
-     imposta_stile();
      build_main_layout(a, oppure);
      Login::setMaximumSize(300,300);
 }

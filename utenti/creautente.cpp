@@ -11,9 +11,8 @@ creautente::creautente(QWidget *parent) :QDialog(parent)
     QLabel* Password_label=new QLabel("Password");
     QLabel* Nome_label=new QLabel("Nome");
     QLabel* Cognome_label=new QLabel("Cognome");
-    QLabel* email_label=new QLabel("e-mail");
+    QLabel* email_label=new QLabel("E-mail");
     QLabel* Piano_label=new QLabel("Piano");
-
 
     /********Set buddy*********/
 
@@ -61,6 +60,7 @@ void creautente::crea_tasti()
 {
     Username=new QLineEdit;
     Password=new QLineEdit;
+    Password->setEchoMode(QLineEdit::PasswordEchoOnEdit);
     Nome=new QLineEdit;
     Cognome=new QLineEdit;
     Email=new QLineEdit;
