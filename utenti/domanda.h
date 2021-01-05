@@ -23,7 +23,7 @@ public:
     Domanda(const string&,Utente*,unsigned int);//OK
     Domanda(const Domanda&);//OK
     void aggiungi_commento(const Commento&);//OK
-    void rimuovi_commento(const Commento&);//OK
+    void rimuovi_commento(int i);//OK
     Utente* get_autore_domanda() const;//OK
     string get_testo() const; //OK
     void set_priorita(unsigned int); //OK
@@ -32,7 +32,7 @@ public:
     bool operator >=(const Domanda&) const;//OK
     bool operator >(const Domanda&) const;
     unsigned int get_priorita() const;//OK
-    container<Commento> get_commenti() const;//OK
+    container<Commento>& get_commenti();//OK
     void set_commenti(const container<Commento>);
 };
 

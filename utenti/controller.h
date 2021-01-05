@@ -5,6 +5,7 @@
 #include "account.h"
 #include "vista_utente.h"
 
+class VistaUtente;
 
 class Controller : public QObject
 {
@@ -35,6 +36,9 @@ private slots:
     void aggiungiCompetenza(const string&);
     void aggiungiTitoloDiStudio(const string&);
     void faiDomanda(const QString&, int priorita);
+    void scrivi_commento(const QString&,Domanda*);
+    void dai_like(int,Domanda*);
+    void rimuovi_commento(int,Domanda*);
 signals:
 
 };

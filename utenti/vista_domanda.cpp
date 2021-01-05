@@ -29,7 +29,8 @@ void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
     //contenitore che contiene tutti i commenti degli amici riguardanti la domanda
     const container<Commento>& com=d->get_commenti();
 
-    for(auto it=com.cbegin();it!=com.cend();++it){
+    int num_commento=0;
+    for(auto it=com.cbegin();it!=com.cend();++it,++num_commento){
 
         //testo commento
         QTextEdit* testoCommento=new QTextEdit(QString::fromStdString(it->get_testo()));
@@ -42,14 +43,14 @@ void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
         bloccoCommenti->addWidget(autore);
         bloccoCommenti->addWidget(testoCommento);
 
-
         QHBoxLayout* valutaCommento=new QHBoxLayout;
         QPushButton* rimuovi=new QPushButton("rimuovi");
         valutaCommento->addWidget(rimuovi);
         QPushButton* like=new QPushButton("like");
         valutaCommento->addWidget(like);
         bloccoCommenti->addLayout(valutaCommento);
-
+        connect(like,SIGNAL(clicked()),this,SLOT(buildLike(num_commento)));
+        connect(rimuovi,SIGNAL(clicked()),this,SLOT(buildRimuovi(num_commento)));
     }
 
     scrollwidgetLayout->addLayout(bloccoCommenti);
@@ -59,7 +60,7 @@ void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
 void vista_domanda::aggiungiBarraDiTesto()
 {
     QHBoxLayout* inserisciCommento=new QHBoxLayout;
-    QLineEdit* testoCommento=new QLineEdit;
+    testoCommento=new QLineEdit;
     testoCommento->setPlaceholderText("Scrivi un commento");
     QPushButton* invio=new QPushButton("invio");
 
@@ -67,6 +68,8 @@ void vista_domanda::aggiungiBarraDiTesto()
     inserisciCommento->addWidget(invio);
 
     scrollwidgetLayout->addLayout(inserisciCommento);
+
+    connect(invio,SIGNAL(clicked()),this,SLOT(buildCommento()));
 }
 
 //costruttore
@@ -90,5 +93,23 @@ vista_domanda::vista_domanda(Domanda * d, QWidget *parent) :QWidget(parent),doma
     scrollarea->setWidgetResizable(true);
     domanda->addWidget(scrollarea);
     setLayout(domanda);
+}
+
+void vista_domanda::buildCommento()
+{
+    emit commento(testoCommento->text());
+    messaggio_informativo("commento aggiunto","Il messaggio è stato inserito correttamente",this);
+}
+
+void vista_domanda::buildLike(int i)
+{
+    emit like(i);
+    messaggio_informativo("like aggiunto","l'utente apprezzerà il tuo like!",this);
+}
+
+void vista_domanda::buildRimuovi(int i)
+{
+    emit rimuovi(i);
+    messaggio_informativo("commento rimosso","hai rimosso il commento",this);
 }
 

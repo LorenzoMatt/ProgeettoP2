@@ -1,13 +1,18 @@
 #include "commento.h"
 
 
-Commento::Commento(const string& t,Utente* u):testo(t),autore(u){}
+Commento::Commento(const string& t, Utente* u, bool l):testo(t),autore(u),like(l){}
 
 string Commento::get_testo() const{
     return testo;
 }
 Utente* Commento::get_autore() const{
     return autore;
+}
+
+void Commento::set_like(bool l)
+{
+    like=l;
 }
 bool Commento:: operator==(const Commento& c) const{
     return testo==c.get_testo() && autore==c.get_autore();

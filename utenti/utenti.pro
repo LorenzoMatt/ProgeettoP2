@@ -31,7 +31,6 @@ HEADERS += accesso.h \
     log.h \
            non_autore_domanda.h \
            profilo.h \
-    stile.h \
            togliere_te_stesso_dagli_amici.h \
            utente.h \
     utente_gia_presente.h \
@@ -48,9 +47,9 @@ HEADERS += accesso.h \
     controller_admin.h \
     funzioni_globali.h \
     vistacercautente.h \
-    stile.h \
     vista_profilo.h \
-    finestranuovadomanda.h
+    finestranuovadomanda.h \
+    funzioniutili.h
 FORMS += \
     finestranuovadomanda.ui
 SOURCES += accesso.cpp \

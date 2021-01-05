@@ -40,6 +40,25 @@ void Controller::faiDomanda(const QString & testo,int priorita)
     }
 }
 
+void Controller::scrivi_commento(const QString & testo, Domanda *d)
+{
+    a->fai_commento(d,testo.toStdString());
+    a->salva();
+}
+
+void Controller::dai_like(int i, Domanda * d)
+{
+    a->dai_punti(d->get_commenti()[i].get_autore());
+    d->get_commenti()[i].set_like(true);
+    a->salva();
+}
+
+void Controller::rimuovi_commento(int i, Domanda * d)
+{
+    d->rimuovi_commento(i);
+    a->salva();
+}
+
 Profilo Controller::getProfilo() const
 {
     return a->get_profilo();

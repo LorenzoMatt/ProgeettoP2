@@ -13,10 +13,12 @@ public:
     bottoneVediCommento(Domanda*,const QString&);
 //    void setDom(Domanda*);
 
-public slots:
+private slots:
     void vediCommenti();
-
-
+signals:
+    void like(int,Domanda*);
+    void commento(const QString&,Domanda*);
+    void rimuovi(int,Domanda*);
 };
 
 #endif // BOTTONEVEDICOMMENTO_H

@@ -3,7 +3,7 @@
 #include "controller.h"
 #include "vista_profilo.h"
 #include "vistacercautente.h"
-#include "stile.h"
+#include "funzioniutili.h"
 #include"finestranuovadomanda.h"
 
 //aggiunge area domanda utente con pulsante commenti
@@ -67,8 +67,10 @@ void VistaUtente::aggiungiAreaDomandePersonali()
 
     bottoneVediCommento* commenti=new bottoneVediCommento(c->getDomandePersonali()[i],"vedi commenti");
     //pulsante per vedere i commenti
-    connect(commenti,SIGNAL(clicked()),commenti,SLOT(vediCommenti()));
-
+    connect(commenti,SIGNAL(clicked()),commenti,SLOT(vediCommenti())); // visualizzo la domanda associata al pulsante
+    connect(commenti,SIGNAL(commento(const QString&,Domanda*)),c,SLOT(scrivi_commento(const QString&,Domanda*)));
+    connect(commenti,SIGNAL(like(int,Domanda*)),c,SLOT(dai_like(int,Domanda*)));
+    connect(commenti,SIGNAL(rimuovi(int,Domanda*)),c,SLOT(rimuovi_commento(int,Domanda*)));
     layoutScrollAreaPagina2->addWidget(commenti);
     layoutScrollAreaPagina2->setAlignment(commenti,Qt::AlignRight);
     }

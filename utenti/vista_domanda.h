@@ -12,23 +12,19 @@
 #include <QScrollArea>
 #include <QTextEdit>
 #include "domanda.h"
-#include "stile.h"
-
+#include "funzioniutili.h"
+#include "controller.h"
 
 class vista_domanda : public QWidget
 {
     Q_OBJECT
+private:
     QVBoxLayout* domanda;
     QScrollArea* scrollarea;
     QWidget* scrollwidget;
     QVBoxLayout* scrollwidgetLayout;
-
-
-
-
-
-
-
+//    Controller* controller;
+    QLineEdit* testoCommento;
 
 
 
@@ -42,13 +38,16 @@ class vista_domanda : public QWidget
 
     //aggiunge una barra di testo editabile con il pulsante invio
     void aggiungiBarraDiTesto();
-
-
-
-
 public:
-    explicit vista_domanda(Domanda*,QWidget *parent = 0);
-
+    explicit vista_domanda(Domanda*, QWidget *parent = 0);
+signals:
+    void commento(const QString&);
+    void like(int);
+    void rimuovi(int);
+private slots:
+    void buildCommento();
+    void buildLike(int);// riceve la posizione del commento in cui inserire il like
+    void buildRimuovi(int);// riceve la posizione del commento da togliere
 };
 
 #endif // VISTA_DOMANDA_H

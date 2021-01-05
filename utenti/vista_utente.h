@@ -16,7 +16,7 @@
 #include <QErrorMessage>
 #include <QMessageBox>
 #include "bottonevedicommento.h"
-#include "stile.h"
+#include "funzioniutili.h"
 
 class Controller;
 

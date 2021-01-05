@@ -11,11 +11,13 @@ class Commento
 private:
     string testo;
     Utente* autore;
+    bool like;
 public:
-    Commento(const string&,Utente *);
+    Commento(const string&,Utente *,bool l=false);
     bool operator==(const Commento&) const;
     string get_testo() const;
     Utente* get_autore() const;
+    void set_like(bool);
 };
 
 #endif // COMMENTO_H

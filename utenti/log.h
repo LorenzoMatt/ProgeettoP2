@@ -8,7 +8,7 @@
 #include <QLineEdit>
 #include <QFormLayout>
 #include<QErrorMessage>
-#include "stile.h"
+#include "funzioniutili.h"
 #include "controller_admin.h"
 class controller_admin;
 class Login : public QWidget
