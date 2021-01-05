@@ -45,11 +45,11 @@ HEADERS += accesso.h \
     vista_utente.h \
     creautente.h \
     vista_amministratore.h \
-    vistaProfilo.h \
     controller_admin.h \
     funzioni_globali.h \
     vistacercautente.h \
-    stile.h
+    stile.h \
+    vista_profilo.h
 FORMS +=
 SOURCES += accesso.cpp \
            amico_non_presente.cpp \
@@ -75,8 +75,7 @@ SOURCES += accesso.cpp \
     database.cpp \
     vista_amministratore.cpp \
     controller_admin.cpp \
-    vistaProfilo.cpp \
-    vistacercautente.cpp
-    vistaProfilo.cpp
+    vistacercautente.cpp \
+    vista_profilo.cpp
 
 RESOURCES +=

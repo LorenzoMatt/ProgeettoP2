@@ -12,6 +12,8 @@
 #include <QScrollArea>
 #include <QTextEdit>
 #include "domanda.h"
+#include "stile.h"
+
 
 class vista_domanda : public QWidget
 {

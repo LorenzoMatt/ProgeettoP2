@@ -1,4 +1,4 @@
-#include "vistaprofilo.h"
+#include "vista_profilo.h"
 
 vistaProfilo::vistaProfilo(Controller * c,QWidget* parent):a(c),QWidget(parent)
 {

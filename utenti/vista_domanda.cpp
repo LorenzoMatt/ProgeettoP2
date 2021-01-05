@@ -1,5 +1,4 @@
 #include "vista_domanda.h"
-#include "stile.h"
 //aggiunge la domanda
 void vista_domanda::aggiungiWidgetDomanda(Domanda* d)
 {
