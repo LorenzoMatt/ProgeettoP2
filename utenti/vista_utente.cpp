@@ -1,7 +1,7 @@
 
 #include "vista_utente.h"
 #include "controller.h"
-#include "vistaprofilo.h"
+#include "vista_profilo.h"
 
 //aggiunge area domanda utente con pulsante commenti
 void VistaUtente::aggiungiAreaDomandaAmici()

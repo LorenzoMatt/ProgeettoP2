@@ -41,7 +41,38 @@ container<Domanda *> Controller::getDomandePersonali() const
     return a->get_domande();
 }
 
-int Controller::getPunti()
+int Controller::getPunti() const
 {
     return a->get_punti();
+}
+
+void Controller::modificaNome(const string& n)
+{
+
+    return a->get_profilo().set_nome(n);
+}
+
+void Controller::modificaCognome(const string& c)
+{
+    return a->get_profilo().set_cognome(c);
+}
+
+void Controller::modificaEmail(const string& e)
+{
+    return a->get_profilo().set_email(e);
+}
+
+void Controller::modificaPassword(const string& p)
+{
+    return a->modifica_password(p);
+}
+
+void Controller::aggiungiCompetenza(const string& c)
+{
+    return a->AggiungiCompetenza(c);
+}
+
+void Controller::aggiungiTitoloDiStudio(const string& t)
+{
+    return a->AggiungiTitoloDiStudio(t);
 }

@@ -1,4 +1,4 @@
-#include "vistaprofilo.h"
+#include "vista_profilo.h"
 
 vistaProfilo::vistaProfilo(Controller * c):a(c)
 {
@@ -23,14 +23,17 @@ vistaProfilo::vistaProfilo(Controller * c):a(c)
     //campo dati nome
     QVBoxLayout* layoutNome=new QVBoxLayout;
     QLabel* EtichettaNome=new QLabel("Nome:");
-    QLineEdit* testoNome=new QLineEdit;
+    testoNome=new QLineEdit;
     testoNome->setText(QString::fromStdString(a->getProfilo().get_nome()));
     testoNome->setReadOnly(true);
-    QPushButton* modificaNome=new QPushButton("Modifica");
-    modificaNome->setMaximumWidth(70);
+    QPushButton* modNome=new QPushButton("Modifica");
+
+    connect(modNome,SIGNAL(clicked()),a,SLOT(modificaNome(testoNome)));
+
+    modNome->setMaximumWidth(70);
     layoutNome->addWidget(EtichettaNome);
     layoutNome->addWidget(testoNome);
-    layoutNome->addWidget(modificaNome,0,Qt::AlignRight);
+    layoutNome->addWidget(modNome,0,Qt::AlignRight);
 
     //campo dati cognome
     QVBoxLayout* layoutCognome=new QVBoxLayout;

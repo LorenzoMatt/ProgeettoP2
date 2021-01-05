@@ -45,7 +45,7 @@ HEADERS += accesso.h \
     vista_utente.h \
     creautente.h \
     vista_amministratore.h \
-    vistaProfilo.h \
+    vista_profilo.h \
     controller_admin.h \
     funzioni_globali.h
 FORMS +=
@@ -68,11 +68,11 @@ SOURCES += accesso.cpp \
     premium.cpp \
     account.cpp \
     vista_domanda.cpp \
+    vista_profilo.cpp \
     vista_utente.cpp \
     creautente.cpp \
     database.cpp \
     vista_amministratore.cpp \
-    controller_admin.cpp \
-    vistaProfilo.cpp
+    controller_admin.cpp
 
 RESOURCES +=
