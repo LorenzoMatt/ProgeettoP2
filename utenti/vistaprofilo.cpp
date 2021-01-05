@@ -104,9 +104,6 @@ vistaProfilo::vistaProfilo(Controller * c,QWidget* parent):a(c),QWidget(parent)
     layoutAggiungiTitoloDiStudio->addSpacing(20);
 
 
-
-
-
     //set elementi
 //    confermaTitoloDiStudio->setAlignment(Qt::AlignRight);
 

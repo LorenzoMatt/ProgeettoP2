@@ -45,7 +45,7 @@ class vista_domanda : public QWidget
 
 
 public:
-    explicit vista_domanda(Domanda*,QWidget *parent = nullptr);
+    explicit vista_domanda(Domanda*,QWidget *parent = 0);
 
 };
 

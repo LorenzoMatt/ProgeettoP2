@@ -90,8 +90,8 @@ void VistaUtente::buildTabella()
     //creo i widget che contengono le scrollArea delle pagine
     QWidget* widgetPagina1=new QWidget;
     QWidget* widgetPagina2=new QWidget;
-    layoutWidgetPagina1=new QVBoxLayout();
-    layoutWidgetPagina2=new QVBoxLayout();
+    layoutWidgetPagina1=new QVBoxLayout;
+    layoutWidgetPagina2=new QVBoxLayout;
 
     //creo layout totale per la tabella
     QWidget* totalePagina2=new QWidget;
@@ -162,31 +162,6 @@ void VistaUtente::buildCercaUtente()
             messaggio->setWindowTitle("Utente non presente");
             messaggio->showMessage("L'utente "+scriviUtente->text()+" non è stato trovato");
         }
+        scriviUtente->clear();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
