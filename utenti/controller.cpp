@@ -64,6 +64,11 @@ void Controller::rimuovi_commento(int i, Domanda * d)
     a->salva();
 }
 
+container<Domanda*> Controller::cercaDomanda(const QString & d)
+{
+    return a->ricerca_domanda(d.toStdString());
+}
+
 Profilo Controller::getProfilo() const
 {
     return a->get_profilo();

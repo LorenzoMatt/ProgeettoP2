@@ -5,6 +5,7 @@
 #include "vistacercautente.h"
 #include "funzioniutili.h"
 #include"finestranuovadomanda.h"
+#include "finestravistadomande.h"
 
 //aggiunge area domanda utente con pulsante commenti
 void VistaUtente::aggiungiAreaDomandaAmici()
@@ -47,7 +48,6 @@ void VistaUtente::aggiungiAreaDomandaAmici()
     //imposto come layout del widget il layout appena creato
     widgetDomandaAmici->setLayout(layoutWidgetDomandaAmici);
     layoutWidgetPagina1->addWidget(widgetDomandaAmici);
-
 }
 
 void VistaUtente::aggiungiAreaDomandePersonali()
@@ -136,7 +136,7 @@ void VistaUtente::buildTabella()
 
     //QHBoxLayout che indica il numero di domande presenti e aggiungi domanda
     QHBoxLayout* layoutAggiungiDomanda=new QHBoxLayout;
-    numeroDomandePersonali=new QLabel("numero di domande");
+    numeroDomandePersonali=new QLabel("numero di domande "+QString::number((c->getDomandePersonali().size())));
     layoutAggiungiDomanda->addWidget(numeroDomandePersonali);
     aggiungiDomanda=new QPushButton("fai domanda");
     layoutAggiungiDomanda->addWidget(aggiungiDomanda);
@@ -200,11 +200,11 @@ void VistaUtente::buildCercaUtente()
             connect(v,SIGNAL(rimuovi(const QString&)),c,SLOT(togli_amico(const QString&)));
             connect(v,SIGNAL(invia(const QString&)),this,SLOT(buildCercaUtente()));
             connect(v,SIGNAL(rimuovi(const QString&)),this,SLOT(buildCercaUtente()));
+            connect(v,SIGNAL(invia(const QString&)),this,SLOT(aggiornaAreaDomandeAmici()));
+            connect(v,SIGNAL(rimuovi(const QString&)),this,SLOT(aggiornaAreaDomandeAmici()));
         }else
         {
-            QErrorMessage* messaggio=new QErrorMessage(this);
-            messaggio->setWindowTitle("Utente non presente");
-            messaggio->showMessage("L'utente "+scriviUtente->text()+" non è stato trovato");
+            messaggio_errore("Utente non presente","L'utente "+scriviUtente->text()+" non è stato trovato",this);
         }
 }
 
@@ -213,10 +213,29 @@ void VistaUtente::buildFaiDomanda()
     finestraNuovaDomanda* domanda=new finestraNuovaDomanda(this);
     domanda->show();
     connect(domanda,SIGNAL(invia(const QString&,int)),c,SLOT(faiDomanda(const QString&,int)));
+    connect(domanda,SIGNAL(invia(const QString&,int)),this,SLOT(aggiornaNumeroDomande()));
 }
 
 void VistaUtente::buildDomandeCercate()
 {
+    QString domanda=scriviDomanda->text();
+    container<Domanda*> d=c->cercaDomanda(domanda);
+    FinestraVistaDomande* f=new FinestraVistaDomande(d,c,this);
+    f->show();
+//    connect(f,SIGNAL(commento(const QString&,Domanda*)),c,SLOT(scrivi_commento(const QString&,Domanda*)));
 
+
+//    connect(f,SIGNAL(commento(const QString&,Domanda*)),commenti,SLOT(vediCommenti()));//aggiorno la vista delle domande
+}
+
+void VistaUtente::aggiornaAreaDomandeAmici()
+{
+    aggiungiAreaDomandaAmici();
+}
+
+void VistaUtente::aggiornaNumeroDomande()
+{
+    numeroDomandePersonali->clear();
+    numeroDomandePersonali->setText("numero di domande "+QString::number((c->getDomandePersonali().size())));
 }
 

@@ -32,7 +32,12 @@
         <domanda>
             <priorita>2</priorita>
             <testo>ciaooo</testo>
-            <commenti/>
+            <commenti>
+                <commento>
+                    <testo>ciao</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                </commento>
+            </commenti>
         </domanda>
         <domanda>
             <priorita>3</priorita>
@@ -47,7 +52,17 @@
     </utente>
     <utente>
         <username>Lorenzo</username>
-        <amici>Pikachu Giorgia Elton</amici>
+        <amici>Pikachu Elton</amici>
+        <domanda>
+            <priorita>2</priorita>
+            <testo>prova</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>2</priorita>
+            <testo>ciao</testo>
+            <commenti/>
+        </domanda>
         <domanda>
             <priorita>2</priorita>
             <testo>ciaooo</testo>
@@ -175,7 +190,12 @@
         <domanda>
             <priorita>5</priorita>
             <testo>elton</testo>
-            <commenti/>
+            <commenti>
+                <commento>
+                    <testo>ciaoo</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                </commento>
+            </commenti>
         </domanda>
         <domanda>
             <priorita>7</priorita>

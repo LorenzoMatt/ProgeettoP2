@@ -1,7 +1,7 @@
 #ifndef VISTA_DOMANDA_H
 #define VISTA_DOMANDA_H
 
-#include <QWidget>
+#include <QDialog>
 #include <QHBoxLayout>
 #include <QPushButton>
 #include <QString>
@@ -16,7 +16,7 @@
 #include "funzioniutili.h"
 #include "controller.h"
 
-class vista_domanda : public QWidget
+class vista_domanda : public QDialog
 {
     Q_OBJECT
 private:

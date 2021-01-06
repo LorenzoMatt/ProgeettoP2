@@ -56,6 +56,8 @@ private slots:
     void buildCercaUtente();
     void buildFaiDomanda();
     void buildDomandeCercate();
+    void aggiornaAreaDomandeAmici();
+    void aggiornaNumeroDomande();
 };
 
 #endif // VISTAUTENTE_H

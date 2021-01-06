@@ -50,9 +50,10 @@ HEADERS += accesso.h \
     vistacercautente.h \
     vista_profilo.h \
     finestranuovadomanda.h \
-    funzioniutili.h
+    funzioniutili.h \
+    finestravistadomande.h
 FORMS += \
-    finestranuovadomanda.ui
+    finestravistadomande.ui
 SOURCES += accesso.cpp \
            amico_non_presente.cpp \
     bottonevedicommento.cpp \
@@ -80,6 +81,7 @@ SOURCES += accesso.cpp \
     controller_admin.cpp \
     vistacercautente.cpp \
     vista_profilo.cpp \
-    finestranuovadomanda.cpp
+    finestranuovadomanda.cpp \
+    finestravistadomande.cpp
 
 RESOURCES +=
