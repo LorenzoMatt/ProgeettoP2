@@ -11,9 +11,8 @@ class Controller : public QObject
 {
     Q_OBJECT
 private:
-    VistaUtente* v;
     Account* a;
-
+    VistaUtente* v;
     void salva() const;
 public:
     explicit Controller(const QString& ,VistaUtente*,QObject *parent = nullptr);

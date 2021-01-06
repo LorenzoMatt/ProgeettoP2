@@ -5,7 +5,7 @@ void Controller::salva() const
     a->salva();
 }
 
-Controller::Controller(const QString& utente,VistaUtente* vista,QObject *parent) :v(vista),QObject(parent)
+Controller::Controller(const QString& utente,VistaUtente* vista,QObject *parent) :QObject(parent),v(vista)
 {
     a=new Account(utente.toStdString());
 }

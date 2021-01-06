@@ -99,10 +99,10 @@ void vistaProfilo::creaCampoTitoliDiStudio()
     layoutTitoliDiStudio->addSpacing(20);
 }
 
-vistaProfilo::vistaProfilo(Controller * c):a(c),layoutTotale(new QVBoxLayout)
+vistaProfilo::vistaProfilo(Controller * c, QWidget *parent):QDialog(parent),a(c),layoutTotale(new QVBoxLayout)
 {
     //file di stile
-    setStyleSheet(imposta_stile());
+//    setStyleSheet(imposta_stile());
 
     //campi dati
     creaCampoPunti();

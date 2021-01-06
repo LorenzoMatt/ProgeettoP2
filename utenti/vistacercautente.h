@@ -1,13 +1,13 @@
 #ifndef VISTACERCAUTENTE_H
 #define VISTACERCAUTENTE_H
 
-#include <QWidget>
+#include <QDialog>
 #include <QTableWidget>
 #include <QPushButton>
 #include <QVBoxLayout>
 #include "container.h"
 //ciaooo
-class vistaCercaUtente : public QWidget
+class vistaCercaUtente : public QDialog
 {
     Q_OBJECT
 private:

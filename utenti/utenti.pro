@@ -82,6 +82,7 @@ SOURCES += accesso.cpp \
     vistacercautente.cpp \
     vista_profilo.cpp \
     finestranuovadomanda.cpp \
-    finestravistadomande.cpp
+    finestravistadomande.cpp \
+    funzioniutili.cpp
 
 RESOURCES +=

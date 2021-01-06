@@ -87,8 +87,8 @@ void vista_domanda::aggiungiBarraDiTesto()
 }
 
 //costruttore
-vista_domanda::vista_domanda(Domanda * d, const QString & u, QWidget *parent) :QDialog(parent),domanda(new QVBoxLayout), dom(d),
-   utente(u), scrollarea(new QScrollArea),scrollwidget(new QWidget),scrollwidgetLayout(new QVBoxLayout)
+vista_domanda::vista_domanda(Domanda * d, const QString & u, QWidget *parent) :QDialog(parent),domanda(new QVBoxLayout), dom(d),utente(u),
+    scrollarea(new QScrollArea),scrollwidget(new QWidget),scrollwidgetLayout(new QVBoxLayout)
 {
     setStyleSheet(imposta_stile());
     signalMapperLike=new QSignalMapper;

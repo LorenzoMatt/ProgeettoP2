@@ -191,20 +191,27 @@ void VistaUtente::vediProfilo()
 void VistaUtente::buildCercaUtente()
 {
         container<string> parametri=c->cercaUtente(scriviUtente->text());
-        if(!parametri.empty())
+        if(scriviUtente->text()==QString::fromStdString(c->getAccesso().get_username()))// se è se stesso
         {
-            bool amico_presente=c->check_presenza_amico(scriviUtente->text());
-            vistaCercaUtente* v=new vistaCercaUtente(parametri,amico_presente);
-            v->show();
-            connect(v,SIGNAL(invia(const QString&)),c,SLOT(aggiungi_amico(const QString&)));
-            connect(v,SIGNAL(rimuovi(const QString&)),c,SLOT(togli_amico(const QString&)));
-            connect(v,SIGNAL(invia(const QString&)),this,SLOT(buildCercaUtente()));
-            connect(v,SIGNAL(rimuovi(const QString&)),this,SLOT(buildCercaUtente()));
-            connect(v,SIGNAL(invia(const QString&)),this,SLOT(aggiornaAreaDomandeAmici()));
-            connect(v,SIGNAL(rimuovi(const QString&)),this,SLOT(aggiornaAreaDomandeAmici()));
-        }else
+            messaggio_informativo("visita utente","per vedere i tuoi dati vai nella sezione profilo!",this);
+        }
+        else
         {
-            messaggio_errore("Utente non presente","L'utente "+scriviUtente->text()+" non è stato trovato",this);
+            if(!parametri.empty())
+            {
+                bool amico_presente=c->check_presenza_amico(scriviUtente->text());
+                vistaCercaUtente* v=new vistaCercaUtente(parametri,amico_presente,this);
+                v->show();
+                connect(v,SIGNAL(invia(const QString&)),c,SLOT(aggiungi_amico(const QString&)));
+                connect(v,SIGNAL(rimuovi(const QString&)),c,SLOT(togli_amico(const QString&)));
+                connect(v,SIGNAL(invia(const QString&)),this,SLOT(buildCercaUtente()));
+                connect(v,SIGNAL(rimuovi(const QString&)),this,SLOT(buildCercaUtente()));
+                connect(v,SIGNAL(invia(const QString&)),this,SLOT(aggiornaAreaDomandeAmici()));
+                connect(v,SIGNAL(rimuovi(const QString&)),this,SLOT(aggiornaAreaDomandeAmici()));
+            }else
+            {
+                messaggio_errore("Utente non presente","L'utente "+scriviUtente->text()+" non è stato trovato",this);
+            }
         }
 }
 

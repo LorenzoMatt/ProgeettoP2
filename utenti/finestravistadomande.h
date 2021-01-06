@@ -9,14 +9,15 @@ class FinestraVistaDomande : public QDialog
 {
     Q_OBJECT
 
-public:
-    explicit FinestraVistaDomande(container<Domanda*>,Controller*, QWidget *parent = 0);
-    ~FinestraVistaDomande();
 private:
     container<Domanda*> domande;
     Controller* c;
     QScrollArea* paginaDomande;
     QVBoxLayout* layoutWidgetPagina;
+public:
+    explicit FinestraVistaDomande(container<Domanda*>,Controller*, QWidget *parent = nullptr);
+    ~FinestraVistaDomande();
+
 
 };
 
