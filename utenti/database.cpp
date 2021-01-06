@@ -235,7 +235,19 @@ void Database::exportdati() const
                 inp->writeTextElement("nome", QString::fromStdString(((*it)->get_profilo()).get_nome()));
                 inp->writeTextElement("cognome", QString::fromStdString(((*it)->get_profilo()).get_cognome()));
                 inp->writeTextElement("email", QString::fromStdString(((*it)->get_profilo()).get_email()));
-                inp->writeTextElement("competenze", QString::fromStdString(((*it)->get_profilo()).competenze_toString()));
+                inp->writeStartElement("competenze"); // inizio delle competenze
+                container<string> competenze=(*it)->get_profilo().GetCompetenze();
+                for(auto com=competenze.begin();com!=competenze.end();++com)
+                    inp->writeTextElement("competenza",QString::fromStdString(*com));
+
+                inp->writeEndElement();// fine competenze
+//                inp->writeTextElement("competenze", QString::fromStdString(((*it)->get_profilo()).competenze_toString()));
+                inp->writeStartElement("titoli_di_studio");// inizio titoli di studio
+                container<string> titoli=(*it)->get_profilo().GetTitoliDiStudio();
+                for(auto tit=titoli.begin();tit!=titoli.end();++tit)
+                    inp->writeTextElement("titolo",QString::fromStdString(*tit));
+
+                inp->writeEndElement();// fine dei titoli di studio
                 inp->writeTextElement("titoli_di_studio", QString::fromStdString(((*it)->get_profilo()).titoli_di_studio_toString()));
                 inp->writeTextElement("punti", QString::fromStdString(std::to_string(((*it)->get_punti()))));
                 inp->writeTextElement("risposte_date", QString::fromStdString(std::to_string(((*it)->get_risposte_date()))));
@@ -318,7 +330,8 @@ void Database::importa_dati_utenti()
         {
             QDomElement el = nodes.at(i).toElement();
             QDomNode nodo = el.firstChild();
-            QString tipo,user, psw, nome, cognome,email, comp, titoli, punti, risposte;
+            QString tipo,user, psw, nome, cognome,email, comp, /*titoli,*/ punti, risposte;
+            container<string> competenze, titoli;
             while (!nodo.isNull()) {
                 QDomElement elemento = nodo.toElement();
                 QString tagName = elemento.tagName();
@@ -348,11 +361,25 @@ void Database::importa_dati_utenti()
                 }
                 if(tagName=="competenze")
                 {
-                    comp=elemento.text();
+
+                    QDomElement comp=elemento.toElement();
+                    QDomNodeList lista_competenze =comp.elementsByTagName("competenza");
+                    for(int x=0; x<lista_competenze.count(); ++x)
+                    {
+                        competenze.push_back(lista_competenze.at(x).toElement().text().toStdString());
+                    }
+//                    comp=elemento.text();
                 }
                 if(tagName=="titoli_di_studio")
                 {
-                    titoli=elemento.text();
+
+                    QDomElement tit=elemento.toElement();
+                    QDomNodeList lista_titoli=tit.elementsByTagName("titolo");
+                    for(int x=0; x<lista_titoli.count(); ++x)
+                    {
+                        titoli.push_back(lista_titoli.at(x).toElement().text().toStdString());
+                    }
+//                    titoli=elemento.text();
                 }
                 if(tagName=="punti")
                 {
@@ -377,11 +404,13 @@ void Database::importa_dati_utenti()
             if(tipo=="Premium")
                 utente=new Premium(user.toStdString(),psw.toStdString(),nome.toStdString(),
                                  cognome.toStdString(),email.toStdString(),punt,risp);
+            utente->carica_competenze(competenze);
+            utente->carica_titoli(titoli);
 
-            if(comp.size()!=0)
-               utente->carica_competenze(comp.toStdString());
-            if(titoli.size()!=0)
-               utente->carica_titoli(titoli.toStdString());
+//            if(comp.size()!=0)
+//               utente->carica_competenze(comp.toStdString());
+//            if(titoli.size()!=0)
+//               utente->carica_titoli(titoli.toStdString());
             aggiungi_utente(utente);
         }
         file->close();

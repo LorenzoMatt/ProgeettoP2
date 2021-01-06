@@ -46,8 +46,8 @@ public:
 
 
     //caricamento da file
-    void carica_competenze(const string&);
-    void carica_titoli(const string&);
+    void carica_competenze(const container<std::string> &);
+    void carica_titoli(const container<std::string> &);
 
     void modifica_password(const string &);
     void aggiungi_amico(Utente *);
