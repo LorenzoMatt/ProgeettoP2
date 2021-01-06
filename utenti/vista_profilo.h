@@ -6,19 +6,17 @@
 #include <QTextEdit>
 #include "container.h"
 #include "controller.h"
-#include "funzioniutili.h"
 #include "widgetcampodati.h"
 #include <QListWidget>
 #include <QLineEdit>
 #include <QComboBox>
-#include <QMessageBox>
-
-class vistaProfilo:public QWidget
+#include "funzioniutili.h"
+class vistaProfilo:public QDialog
 {
     Q_OBJECT
+private:
     Controller* a;
     QVBoxLayout* layoutTotale;
-
     widgetCampoDati* nome;
     widgetCampoDati* cognome;
     widgetCampoDati* password;
@@ -40,17 +38,15 @@ class vistaProfilo:public QWidget
 
     QComboBox* cambio_piano_combo;
     QMessageBox* messaggio;
-
-
-
     QPushButton* home;
+
 
 
     //funzioni di utilitá
 
     void creaTornaAllaHome();
 public:
-    vistaProfilo(Controller*);
+    explicit vistaProfilo(Controller*,QWidget* parent=nullptr);
 
 private slots:
     void creaCampoPuntiEPiano();

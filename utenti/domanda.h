@@ -23,7 +23,7 @@ public:
     Domanda(const string&,Utente*,unsigned int);//OK
     Domanda(const Domanda&);//OK
     void aggiungi_commento(const Commento&);//OK
-    void rimuovi_commento(int i);//OK
+    void rimuovi_commento(unsigned int i);//OK
     Utente* get_autore_domanda() const;//OK
     string get_testo() const; //OK
     void set_priorita(unsigned int); //OK

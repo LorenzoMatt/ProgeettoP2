@@ -1,8 +1,7 @@
 #include "finestranuovadomanda.h"
 #include <QLabel>
-#include <QErrorMessage>
-#include <QMessageBox>
 #include <QVBoxLayout>
+#include "funzioniutili.h"
 void finestraNuovaDomanda::buildPulsanteConferma()
 {
     conferma=new QDialogButtonBox(this);
@@ -46,9 +45,7 @@ void finestraNuovaDomanda::dati()
 {
     if(testo->text().isEmpty())
     {
-        QErrorMessage* messaggio=new QErrorMessage(this);
-        messaggio->setWindowTitle("testo del messaggio vuoto");
-        messaggio->showMessage("Il testo non può essere vuoto!");
+        messaggio_errore("testo del messaggio vuoto","Il testo non può essere vuoto!",this);
     }
     else
     {

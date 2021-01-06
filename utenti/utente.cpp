@@ -50,16 +50,14 @@ unsigned int Utente::get_risposte_date() const
     return risposte_date;
 }
 
-void Utente::carica_titoli(const string& titoli)
+void Utente::carica_titoli(const container<string>& titoli)
 {
-    container<string> tit=split(titoli," ");
-    pf.set_titoli_di_studio(tit);
+    pf.set_titoli_di_studio(titoli);
 }
 
-void Utente::carica_competenze(const string& competenze)
+void Utente::carica_competenze(const container<string>& competenze)
 {
-    container<string> c=split(competenze," ");
-    pf.set_competenze(c);
+    pf.set_competenze(competenze);
 }
 
 
@@ -324,7 +322,6 @@ void Utente::Funtore::operator()(const Utente *ut, container<std::string> &l) co
                 l.push_back(ut->pf.get_cognome());
                 l.push_back(ut->pf.get_email());
                 break;
-
             case 2:
                 l.push_back(ut->credenziali.get_username());
                 l.push_back(ut->pf.get_nome());
@@ -333,7 +330,6 @@ void Utente::Funtore::operator()(const Utente *ut, container<std::string> &l) co
                 l.push_back(ut->pf.titoli_di_studio_toString());
                 l.push_back(ut->pf.competenze_toString());
                 break;
-
             case 3:
                 l.push_back(ut->credenziali.get_username());
                 l.push_back(ut->pf.get_nome());

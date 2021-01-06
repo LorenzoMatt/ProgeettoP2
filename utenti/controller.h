@@ -11,10 +11,8 @@ class Controller : public QObject
 {
     Q_OBJECT
 private:
-    VistaUtente* v;
     Account* a;
-
-    void salva() const;
+    VistaUtente* v;
 public:
     explicit Controller(const QString& ,VistaUtente*,QObject *parent = nullptr);
     ~Controller();
@@ -28,7 +26,7 @@ public:
     container<Domanda *> getDomandePersonali() const;
     int getPunti() const;
     void cambiaPiano(const QString&);
-
+    container<Domanda *> cercaDomanda(const QString&);
 private slots:
     void aggiungi_amico(const QString&);
     void togli_amico(const QString&);

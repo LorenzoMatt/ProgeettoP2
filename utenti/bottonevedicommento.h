@@ -3,15 +3,17 @@
 
 #include <QPushButton>
 #include "vista_domanda.h"
+#include "QWidget"
 class Domanda;
 
 class bottoneVediCommento:public QPushButton
 {
     Q_OBJECT
-    Domanda* dom;
+private:
     QString utente;
+    Domanda* dom;
 public:
-    bottoneVediCommento(Domanda*,const QString& ut,const QString& testo);
+    bottoneVediCommento(Domanda*,const QString& ut,const QString& testo, QWidget* parent=nullptr);
 //    void setDom(Domanda*);
 
 private slots:

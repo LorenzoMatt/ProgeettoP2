@@ -11,7 +11,6 @@
 #include<QComboBox>
 #include<QFormLayout>
 #include<QLineEdit>
-#include <QMessageBox>
 #include "creautente.h"
 
 #include "database.h"

@@ -29,6 +29,7 @@ class widgetCampoDati:public QWidget
 public:
     widgetCampoDati(const QString& n, const QString& t,bool m=true);
 
+
 public slots:
     void sbloccaBloccaTesto();
     void annullaModifica();
@@ -37,7 +38,6 @@ public slots:
 
 signals:
     void invioNome(const QString&);
-
 
 };
 

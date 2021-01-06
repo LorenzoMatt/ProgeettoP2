@@ -36,11 +36,11 @@ void Domanda::aggiungi_commento(const Commento& c){
 //            sent=true;
 //        }
 //}
-void Domanda::rimuovi_commento(int i){
+void Domanda::rimuovi_commento(unsigned int i){
 
     if(i<commenti.size())
     {
-        int n=0;
+        unsigned int n=0;
         bool ok=false;
         for(auto it=commenti.begin();it!=commenti.end() && !ok;++it,++n)
             if(n==i){

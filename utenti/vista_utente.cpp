@@ -5,6 +5,8 @@
 #include "vistacercautente.h"
 #include "funzioniutili.h"
 #include"finestranuovadomanda.h"
+#include "finestravistadomande.h"
+#include "log.h"
 
 //aggiunge area domanda utente con pulsante commenti
 void VistaUtente::aggiungiAreaDomandaAmici()
@@ -47,7 +49,6 @@ void VistaUtente::aggiungiAreaDomandaAmici()
     //imposto come layout del widget il layout appena creato
     widgetDomandaAmici->setLayout(layoutWidgetDomandaAmici);
     layoutWidgetPagina1->addWidget(widgetDomandaAmici);
-
 }
 
 void VistaUtente::aggiungiAreaDomandePersonali()
@@ -136,7 +137,7 @@ void VistaUtente::buildTabella()
 
     //QHBoxLayout che indica il numero di domande presenti e aggiungi domanda
     QHBoxLayout* layoutAggiungiDomanda=new QHBoxLayout;
-    numeroDomandePersonali=new QLabel("numero di domande");
+    numeroDomandePersonali=new QLabel("numero di domande "+QString::number((c->getDomandePersonali().size())));
     layoutAggiungiDomanda->addWidget(numeroDomandePersonali);
     aggiungiDomanda=new QPushButton("fai domanda");
     layoutAggiungiDomanda->addWidget(aggiungiDomanda);
@@ -164,6 +165,7 @@ void VistaUtente::buildTabella()
 
 VistaUtente::VistaUtente(const QString& utente, QWidget *parent):QWidget(parent),c(new Controller(utente,this))
 {
+    setAttribute(Qt::WA_DeleteOnClose);// serve a chiamare la delete della finestra, che a sua volta chiama la delete del controller che effettua il salvataggio del contenuto
     setStyleSheet(imposta_stile());
     QVBoxLayout* mainLayout=new QVBoxLayout();
 
@@ -172,17 +174,20 @@ VistaUtente::VistaUtente(const QString& utente, QWidget *parent):QWidget(parent)
     buildTabella();
     mainLayout->addLayout(layoutBarraSuperiore);
     mainLayout->addWidget(tabella);
-
+    logout=new QPushButton("Logout");
+    connect(logout,SIGNAL(clicked()),this,SLOT(buildLogout()));
+    mainLayout->addWidget(logout);
     setLayout(mainLayout);
 }
 
 VistaUtente::~VistaUtente()
 {
+    delete c;
 }
 
 void VistaUtente::vediProfilo()
 {
-    vistaProfilo* profilo=new vistaProfilo(c);
+    vistaProfilo* profilo=new vistaProfilo(c,this);
     profilo->setWindowTitle("Profilo");
     profilo->setMinimumWidth(500);
     profilo->show();
@@ -191,20 +196,28 @@ void VistaUtente::vediProfilo()
 void VistaUtente::buildCercaUtente()
 {
         container<string> parametri=c->cercaUtente(scriviUtente->text());
-        if(!parametri.empty())
+        if(scriviUtente->text()==QString::fromStdString(c->getAccesso().get_username()))// se è se stesso
         {
-            bool amico_presente=c->check_presenza_amico(scriviUtente->text());
-            vistaCercaUtente* v=new vistaCercaUtente(parametri,amico_presente);
-            v->show();
-            connect(v,SIGNAL(invia(const QString&)),c,SLOT(aggiungi_amico(const QString&)));
-            connect(v,SIGNAL(rimuovi(const QString&)),c,SLOT(togli_amico(const QString&)));
-            connect(v,SIGNAL(invia(const QString&)),this,SLOT(buildCercaUtente()));
-            connect(v,SIGNAL(rimuovi(const QString&)),this,SLOT(buildCercaUtente()));
-        }else
+            messaggio_informativo("visita utente","per vedere i tuoi dati vai nella sezione profilo!",this);
+            scriviUtente->clear();
+        }
+        else
         {
-            QErrorMessage* messaggio=new QErrorMessage(this);
-            messaggio->setWindowTitle("Utente non presente");
-            messaggio->showMessage("L'utente "+scriviUtente->text()+" non è stato trovato");
+            if(!parametri.empty())
+            {
+                bool amico_presente=c->check_presenza_amico(scriviUtente->text());
+                vistaCercaUtente* v=new vistaCercaUtente(parametri,amico_presente,this);
+                v->show();
+                connect(v,SIGNAL(invia(const QString&)),c,SLOT(aggiungi_amico(const QString&)));
+                connect(v,SIGNAL(rimuovi(const QString&)),c,SLOT(togli_amico(const QString&)));
+                connect(v,SIGNAL(invia(const QString&)),this,SLOT(buildCercaUtente()));
+                connect(v,SIGNAL(rimuovi(const QString&)),this,SLOT(buildCercaUtente()));
+                connect(v,SIGNAL(invia(const QString&)),this,SLOT(aggiornaAreaDomandeAmici()));
+                connect(v,SIGNAL(rimuovi(const QString&)),this,SLOT(aggiornaAreaDomandeAmici()));
+            }else
+            {
+                messaggio_errore("Utente non presente","L'utente "+scriviUtente->text()+" non è stato trovato",this);
+            }
         }
 }
 
@@ -213,10 +226,33 @@ void VistaUtente::buildFaiDomanda()
     finestraNuovaDomanda* domanda=new finestraNuovaDomanda(this);
     domanda->show();
     connect(domanda,SIGNAL(invia(const QString&,int)),c,SLOT(faiDomanda(const QString&,int)));
+    connect(domanda,SIGNAL(invia(const QString&,int)),this,SLOT(aggiornaNumeroDomande()));
 }
 
 void VistaUtente::buildDomandeCercate()
 {
+    QString domanda=scriviDomanda->text();
+    container<Domanda*> d=c->cercaDomanda(domanda);
+    FinestraVistaDomande* f=new FinestraVistaDomande(d,c,this);
+    f->show();
+    scriviDomanda->clear();
+}
 
+void VistaUtente::aggiornaAreaDomandeAmici()
+{
+    aggiungiAreaDomandaAmici();
+}
+
+void VistaUtente::aggiornaNumeroDomande()
+{
+    numeroDomandePersonali->clear();
+    numeroDomandePersonali->setText("numero di domande "+QString::number((c->getDomandePersonali().size())));
+}
+
+void VistaUtente::buildLogout()
+{
+    Login* l=new Login;
+    l->show();
+    close();
 }
 

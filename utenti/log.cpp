@@ -97,8 +97,7 @@ void Login::login_user()
     }
     else
     {
-        QErrorMessage * e=new QErrorMessage();
-        e->showMessage("Username o Password non corretti");
+        messaggio_errore("accesso non avvenuto","Username o Password non corretti",this);
         username->clear();
         password->clear();
     }
@@ -140,9 +139,6 @@ void Login::aggiungi_utente(const QString & username, const QString & password, 
         close();
     }catch(utente_gia_presente)
     {
-        QErrorMessage* messaggio=new QErrorMessage(this);
-        messaggio->setWindowTitle("utente non registrato");
-        messaggio->showMessage("l'username "+username+" è già stato usato");
-
+        messaggio_errore("utente non registrato","l'username "+username+" è già stato usato",this);
     }
 }

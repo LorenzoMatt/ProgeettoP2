@@ -196,7 +196,7 @@ void vistaProfilo::creaCampoTitoliDiStudio()
     connect(this,SIGNAL(inviaT(const QString&)),a,SLOT(aggiungiTitoloDiStudio(const QString&)));
 }
 
-vistaProfilo::vistaProfilo(Controller * c):a(c),layoutTotale(new QVBoxLayout),
+vistaProfilo::vistaProfilo(Controller * c, QWidget *parent):QDialog(parent),a(c),layoutTotale(new QVBoxLayout)
     etichettaCompetenzeProfessionali(new QLabel("Competenze professionali:")),
     layoutCompetenzeProfessionali(new QVBoxLayout),
     aggiungiCompetenzaProfessionale(new QPushButton("Aggiungi")),
@@ -211,9 +211,10 @@ vistaProfilo::vistaProfilo(Controller * c):a(c),layoutTotale(new QVBoxLayout),
     testoTitoliDiStudio(new QListWidget),
     layoutInserimentoTitoloDiStudio(new QHBoxLayout),
     cambio_piano_combo(new QComboBox)
+
 {
     //file di stile
-    setStyleSheet(imposta_stile());
+//    setStyleSheet(imposta_stile());
 
     //campi dati
     creaCampoPuntiEPiano();

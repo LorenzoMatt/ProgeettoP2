@@ -4,6 +4,7 @@
 #include "premium.h"
 #include "controller_admin.h"
 #include "log.h"
+#include "funzioniutili.h"
 void vista_amministratore::build_buttons()
 {
     aggiungi=new QPushButton("Aggiungi utente");
@@ -34,17 +35,12 @@ void vista_amministratore::togli_utente()
     if(ut)
     {
         controller->togli_utente(togli_utente_line->text().toStdString());
-        QMessageBox* messaggio=new QMessageBox(this);
-        messaggio->setWindowTitle("Utente rimosso");
-        messaggio->setText("utente "+togli_utente_line->text()+" rimosso");
-        messaggio->exec();
+        messaggio_informativo("Utente rimosso","utente "+togli_utente_line->text()+" rimosso",this);
         togli_utente_line->clear();
     }
     else
     {
-        QErrorMessage * messaggio=new QErrorMessage(this);
-        messaggio->setWindowTitle("Utente non rimosso");
-        messaggio->showMessage("Utente "+togli_utente_line->text()+"non presente");
+        messaggio_errore("Utente non rimosso","Utente "+togli_utente_line->text()+"non presente",this);
     }
 }
 
@@ -57,9 +53,7 @@ void vista_amministratore::cambio_piano()
 void vista_amministratore::salva_db()
 {
     controller->salva();
-    QMessageBox* messaggio=new QMessageBox(this);
-    messaggio->setText("Salvataggio completato!");
-    messaggio->exec();
+    messaggio_informativo("","Salvataggio completato!",this);
 }
 
 void vista_amministratore::logout()
@@ -195,7 +189,7 @@ void vista_amministratore::set_controller(controller_admin *c)
 
 
 
-vista_amministratore::vista_amministratore(QWidget *parent) :controller(new controller_admin(this)), QWidget(parent)
+vista_amministratore::vista_amministratore(QWidget *parent) :QWidget(parent),controller(new controller_admin(this))
 {
     setStyleSheet(imposta_stile());
     mainLyaout=new QVBoxLayout;

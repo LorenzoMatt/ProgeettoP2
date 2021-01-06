@@ -3,6 +3,7 @@
 widgetCampoDati::widgetCampoDati(const QString& n, const QString& t, bool m):layoutTotale(new QVBoxLayout),
     layoutNome(new QVBoxLayout),testoNome(new QLineEdit),layoutModNome(new QHBoxLayout),
     modNome(new QPushButton("Modifica")),canc(new QPushButton("Annulla")),modo(m)
+
 {
     //creo etichetta nome
     QLabel* EtichettaNome=new QLabel(n);
@@ -13,6 +14,7 @@ widgetCampoDati::widgetCampoDati(const QString& n, const QString& t, bool m):lay
     testoNome->setReadOnly(true);
     if(!modo)
         testoNome->setEchoMode(QLineEdit::PasswordEchoOnEdit);
+
     layoutNome->addWidget(testoNome);
 
     //setto il pulsante modNome
@@ -28,6 +30,7 @@ widgetCampoDati::widgetCampoDati(const QString& n, const QString& t, bool m):lay
     layoutModNome->addWidget(modNome);
     layoutModNome->addWidget(canc);
 
+
     //aggiungo tutto al layoutTotale
     layoutTotale->addLayout(layoutNome);
     layoutTotale->addLayout(layoutModNome);
@@ -39,8 +42,6 @@ widgetCampoDati::widgetCampoDati(const QString& n, const QString& t, bool m):lay
 
 }
 
-
-
 //implementazione degli slots
 void widgetCampoDati::sbloccaBloccaTesto()
 {
@@ -49,6 +50,7 @@ void widgetCampoDati::sbloccaBloccaTesto()
    modNome->setText("Conferma");
    canc->setVisible(true);
    testoTemporaneo=testoNome->text();
+
 
    connect(modNome,SIGNAL(clicked()),this,SLOT(confermaModifica()));
    }
@@ -63,8 +65,8 @@ void widgetCampoDati::sbloccaBloccaTesto()
 
 void widgetCampoDati::annullaModifica()
 {
-
     testoNome->setText(testoTemporaneo);
+
     sbloccaBloccaTesto();
 }
 

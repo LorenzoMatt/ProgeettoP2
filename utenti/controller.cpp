@@ -1,17 +1,14 @@
 #include "controller.h"
 
-void Controller::salva() const
-{
-    a->salva();
-}
 
-Controller::Controller(const QString& utente,VistaUtente* vista,QObject *parent) :v(vista),QObject(parent)
+Controller::Controller(const QString& utente,VistaUtente* vista,QObject *parent) :QObject(parent),v(vista)
 {
     a=new Account(utente.toStdString());
 }
 
-Controller::~Controller()
+Controller::~Controller()// viene invocato dalla delete della classe vista_utente
 {
+    a->salva();
 }
 
 void Controller::setModel(Account * modello)
@@ -30,38 +27,35 @@ void Controller::faiDomanda(const QString & testo,int priorita)
     {
         a->fai_domanda(testo.toStdString(),priorita);
         v->aggiungiAreaDomandePersonali();//aggiorno la vista
-        QMessageBox* messaggio=new QMessageBox(v);
-        messaggio->setWindowTitle("Domanda effettuata correttamente");
-        messaggio->setText("Domanda effettuata, ti restano in tutto "+QString::fromStdString(std::to_string(a->get_punti()))+" punti");
-        messaggio->exec();
-        a->salva();
+        messaggio_informativo("Domanda effettuata correttamente","Domanda effettuata, ti restano in tutto "+QString::fromStdString(std::to_string(a->get_punti()))+" punti",v);
     }
     catch(punti_non_sufficienti)
     {
-        QErrorMessage* messaggio=new QErrorMessage(v);
-        messaggio->setWindowTitle("Domanda non inserita");
-        messaggio->showMessage("Non hai punti sufficienti per fare una domanda,"
-                               "prova a rispondere domande di altri utenti oppure a cambiare piano");
+        messaggio_errore("Domanda non inserita","Non hai punti sufficienti per fare una domanda,"
+                                                "prova a rispondere domande di altri utenti oppure a cambiare piano",v);
     }
 }
 
 void Controller::scrivi_commento(const QString & testo, Domanda *d)
 {
     a->fai_commento(d,testo.toStdString());
-    a->salva();
 }
 
 void Controller::dai_like(int i, Domanda * d)
 {
     a->dai_punti(d->get_commenti()[i].get_autore());
     d->get_commenti()[i].set_like(true);
-    a->salva();
 }
 
 void Controller::rimuovi_commento(int i, Domanda * d)
 {
     d->rimuovi_commento(i);
-    a->salva();
+//    a->salva();
+}
+
+container<Domanda*> Controller::cercaDomanda(const QString & d)
+{
+    return a->ricerca_domanda(d.toStdString());
 }
 
 Profilo Controller::getProfilo() const
@@ -99,7 +93,6 @@ void Controller::aggiungi_amico(const QString & user)
 {
     Utente* u=a->cerca_utente_per_nome(user.toStdString());
     a->aggiungi_amico(u);
-    a->salva();
     v->aggiungiAreaDomandaAmici();
     // funzione per aggiornare le domande deglia amici
 }
@@ -108,7 +101,6 @@ void Controller::togli_amico(const QString & user)
 {
     Utente* u=a->cerca_utente_per_nome(user.toStdString());
     a->togli_amico(u);
-    a->salva();
     v->aggiungiAreaDomandaAmici();
 }
 container<Domanda *> Controller::getDomandePersonali() const
@@ -130,40 +122,34 @@ void Controller::modificaNome(const QString& n)
 {
     string t=n.toStdString();
     a->get_profilo().set_nome(t);
-    a->salva();
 }
 
 void Controller::modificaCognome(const QString& c)
 {
     string t=c.toStdString();
     a->get_profilo().set_cognome(t);
-    a->salva();
 }
 
 void Controller::modificaEmail(const QString& e)
 {
     string t=e.toStdString();
     a->get_profilo().set_email(t);
-    a->salva();
 }
 
 void Controller::modificaPassword(const QString& p)
 {
     string t=p.toStdString();
     a->modifica_password(t);
-    a->salva();
 }
 
 void Controller::aggiungiCompetenza(const QString& c)
 {
     string t=c.toStdString();
     a->AggiungiCompetenza(t);
-    a->salva();
 }
 
 void Controller::aggiungiTitoloDiStudio(const QString& t)
 {
     string x=t.toStdString();
     a->AggiungiTitoloDiStudio(x);
-    a->salva();
 }
