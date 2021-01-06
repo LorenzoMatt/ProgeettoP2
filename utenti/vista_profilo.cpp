@@ -1,18 +1,51 @@
 #include "vista_profilo.h"
 
-void vistaProfilo::creaCampoPunti()
+void vistaProfilo::cambiaP(const QString& t)
 {
+    a->cambiaPiano(t);
+}
+
+//QMessageBox* messaggio=new QMessageBox();
+//messaggio->setWindowTitle(titolo);
+//messaggio->setText(testo);
+//messaggio->exec();
+void vistaProfilo::creaCampoPuntiEPiano()
+{
+    QHBoxLayout* layoutPuntiEPiano=new QHBoxLayout;
     QHBoxLayout* layoutPunti=new QHBoxLayout;
+    QHBoxLayout* layoutPiano=new QHBoxLayout;
+    //piano
+    QLabel* nuovo_piano=new QLabel("Cambia piano:");
+    nuovo_piano->setAlignment(Qt::AlignLeft);
+    cambio_piano_combo->setPlaceholderText("");
+    cambio_piano_combo->setMinimumWidth(150);
+    cambio_piano_combo->addItem("Basic");
+    cambio_piano_combo->addItem("Gold");
+    cambio_piano_combo->addItem("Premium");
+
+
+    nuovo_piano->setBuddy(cambio_piano_combo);
+    layoutPiano->addWidget(nuovo_piano);
+    layoutPiano->addWidget(cambio_piano_combo);
+
+    connect(cambio_piano_combo,SIGNAL(currentTextChanged(const QString&)),this,SLOT(cambiaP(const QString&)));
+
+
+    //punti
     QLabel* etichettaPunti=new QLabel("PUNTI RESIDUI:");
     QLineEdit* testoPunti=new QLineEdit;
     string punti=std::to_string(a->getPunti());
     testoPunti->setText(QString::fromStdString(punti));
     testoPunti->setReadOnly(true);
+    testoPunti->setMaximumWidth(70);
     layoutPunti->addWidget(etichettaPunti);
     layoutPunti->addWidget(testoPunti);
     //set elementi
+    layoutPuntiEPiano->addLayout(layoutPiano);
+    layoutPuntiEPiano->addLayout(layoutPunti);
+
     etichettaPunti->setAlignment(Qt::AlignRight);
-    layoutTotale->addLayout(layoutPunti);
+    layoutTotale->addLayout(layoutPuntiEPiano);
 }
 
 void vistaProfilo::creaCampoNome()
@@ -34,7 +67,8 @@ void vistaProfilo::creaCampoCognome()
 void vistaProfilo::creaCampoPassword()
 {
     QString stringaPassword=QString::fromStdString(a->getAccesso().get_password());
-    password=new widgetCampoDati("Password: ",stringaPassword);
+    password=new widgetCampoDati("Password: ",stringaPassword,false);
+
     connect(password,SIGNAL(invioNome(const QString&)),a,SLOT(modificaPassword(const QString&)));
     connect(password,SIGNAL(invioNome(const QString&)),this,SLOT(creaCampoPassword()));
 }
@@ -47,6 +81,8 @@ void vistaProfilo::creaCampoEmail()
     connect(email,SIGNAL(invioNome(const QString&)),this,SLOT(creaCampoEmail()));
 }
 
+
+
 void vistaProfilo::creaTornaAllaHome()
 {
     //pulsante torna alla home
@@ -55,57 +91,133 @@ void vistaProfilo::creaTornaAllaHome()
     connect(home,SIGNAL(clicked()),this,SLOT(close()));
 }
 
+void vistaProfilo::mostraC()
+{
+    if(!inserisciCompetenzaProfessionale->isVisible()){
+        inserisciCompetenzaProfessionale->setVisible(true);
+        aggiungiCompetenzaProfessionale->setText("Invio");
+        connect(aggiungiCompetenzaProfessionale,SIGNAL(clicked()),this,SLOT(invioDatoC()));
+    }
+    else
+    {
+
+        inserisciCompetenzaProfessionale->setVisible(false);
+        aggiungiCompetenzaProfessionale->setText("Aggiungi");
+    }
+}
+
+void vistaProfilo::mostraT()
+{
+    if(!inserisciTitoloDiStudio->isVisible()){
+        inserisciTitoloDiStudio->setVisible(true);
+        aggiungiTitoloDiStudio->setText("Invio");
+        connect(aggiungiTitoloDiStudio,SIGNAL(clicked()),this,SLOT(invioDatoT()));
+    }
+    else
+    {
+
+        inserisciTitoloDiStudio->setVisible(false);
+        aggiungiTitoloDiStudio->setText("Aggiungi");
+    }
+}
+
+void vistaProfilo::invioDatoC()
+{
+    QString testo=inserisciCompetenzaProfessionale->text();
+    if(!testo.isEmpty()){
+        testoCompetenzeProfessionali->addItem(testo);
+        testoCompetenzeProfessionali->scrollToBottom();
+        emit inviaC(testo);
+        inserisciCompetenzaProfessionale->setText("");
+    }
+}
+void vistaProfilo::invioDatoT()
+{
+    QString testo=inserisciTitoloDiStudio->text();
+    if(!testo.isEmpty()){
+        testoTitoliDiStudio->addItem(testo);
+        testoTitoliDiStudio->scrollToBottom();
+        emit inviaT(testo);
+        inserisciTitoloDiStudio->setText("");
+    }
+}
+
+
+
 void vistaProfilo::creaCampoCompetenze()
 {
-    layoutCompetenzeProfessionali=new QVBoxLayout;
-    QLabel* etichettaCompetenzeProfessionali=new QLabel("Competenze professionali:");
-    QTextEdit* testoCompetenzeProfessionali=new QTextEdit;
+    //inizializzazione lista di competenze
+
     container<string> competenze=a->getProfilo().GetCompetenze();
-    string testoCompetenze;
     for(auto it=competenze.cbegin();it!=competenze.cend();++it){
-        testoCompetenze.append("-");
-        testoCompetenze.append(*it);
-        testoCompetenze.append("\n");
+
+        QString* testoCompetenze=new QString(QString::fromStdString(*it));
+        testoCompetenzeProfessionali->addItem(*testoCompetenze);
+
     }
-    testoCompetenzeProfessionali->setText(QString::fromStdString(testoCompetenze));
-    testoCompetenzeProfessionali->setReadOnly(true);
-    QPushButton* aggiungiCompetenzaProfessionale=new QPushButton("Aggiungi");
-    aggiungiCompetenzaProfessionale->setMaximumWidth(70);
+    testoCompetenzeProfessionali->setMinimumHeight(120);
     layoutCompetenzeProfessionali->addWidget(etichettaCompetenzeProfessionali);
     layoutCompetenzeProfessionali->addWidget(testoCompetenzeProfessionali);
-    layoutCompetenzeProfessionali->addWidget(aggiungiCompetenzaProfessionale,0,Qt::AlignRight);
+
+    layoutInserimentoCompetenza->setAlignment(Qt::AlignRight);
+    aggiungiCompetenzaProfessionale->setMaximumWidth(70);
+    inserisciCompetenzaProfessionale->setVisible(false);
+    layoutInserimentoCompetenza->addWidget(inserisciCompetenzaProfessionale);
+    layoutInserimentoCompetenza->addWidget(aggiungiCompetenzaProfessionale);
+    layoutCompetenzeProfessionali->addLayout(layoutInserimentoCompetenza);
+
+    connect(aggiungiCompetenzaProfessionale,SIGNAL(clicked()),this,SLOT(mostraC()));
+    connect(this,SIGNAL(inviaC(const QString&)),a,SLOT(aggiungiCompetenza(const QString&)));
 }
 
 void vistaProfilo::creaCampoTitoliDiStudio()
 {
-    layoutTitoliDiStudio=new QVBoxLayout;
-    QLabel* EtichettaTitoliDiStudio=new QLabel("Titoli di studio:");
-    QTextEdit* testoTitoliDiStudio=new QTextEdit;
-    testoTitoliDiStudio->setReadOnly(true);
-    container<string> TitoliDiStudio=a->getProfilo().GetTitoliDiStudio();
-    string stringaTitoliDiStudio;
-    for(auto it=TitoliDiStudio.cbegin();it!=TitoliDiStudio.cend();++it){
-        stringaTitoliDiStudio.append("-");
-        stringaTitoliDiStudio.append(*it);
-        stringaTitoliDiStudio.append("\n");
-    }
-    testoTitoliDiStudio->setText(QString::fromStdString(stringaTitoliDiStudio));
+    //inizializzazione lista titoli di studio
 
-    QPushButton* aggiungiTitoloDiStudio=new QPushButton("Aggiungi");
-    aggiungiTitoloDiStudio->setMaximumWidth(70);
-    layoutTitoliDiStudio->addWidget(EtichettaTitoliDiStudio);
+    container<string> titoliDiStudio=a->getProfilo().GetTitoliDiStudio();
+    for(auto it=titoliDiStudio.cbegin();it!=titoliDiStudio.cend();++it){
+
+        QString* testoTitoloDiStudio=new QString(QString::fromStdString(*it));
+        testoTitoliDiStudio->addItem(*testoTitoloDiStudio);
+
+    }
+    testoTitoliDiStudio->setMinimumHeight(80);
+    layoutTitoliDiStudio->addWidget(etichettaTitoliDiStudio);
     layoutTitoliDiStudio->addWidget(testoTitoliDiStudio);
-    layoutTitoliDiStudio->addWidget(aggiungiTitoloDiStudio,0,Qt::AlignRight);
-    layoutTitoliDiStudio->addSpacing(20);
+
+    layoutInserimentoTitoloDiStudio->setAlignment(Qt::AlignRight);
+    aggiungiTitoloDiStudio->setMaximumWidth(70);
+    inserisciTitoloDiStudio->setVisible(false);
+    layoutInserimentoTitoloDiStudio->addWidget(inserisciTitoloDiStudio);
+    layoutInserimentoTitoloDiStudio->addWidget(aggiungiTitoloDiStudio);
+    layoutTitoliDiStudio->addLayout(layoutInserimentoTitoloDiStudio);
+
+    connect(aggiungiTitoloDiStudio,SIGNAL(clicked()),this,SLOT(mostraT()));
+    connect(this,SIGNAL(inviaT(const QString&)),a,SLOT(aggiungiTitoloDiStudio(const QString&)));
 }
 
 vistaProfilo::vistaProfilo(Controller * c, QWidget *parent):QDialog(parent),a(c),layoutTotale(new QVBoxLayout)
+    etichettaCompetenzeProfessionali(new QLabel("Competenze professionali:")),
+    layoutCompetenzeProfessionali(new QVBoxLayout),
+    aggiungiCompetenzaProfessionale(new QPushButton("Aggiungi")),
+    inserisciCompetenzaProfessionale(new QLineEdit),
+    testoCompetenzeProfessionali(new QListWidget),
+    layoutInserimentoCompetenza(new QHBoxLayout),
+
+    etichettaTitoliDiStudio(new QLabel("Titoli di studio:")),
+    layoutTitoliDiStudio(new QVBoxLayout),
+    aggiungiTitoloDiStudio(new QPushButton("Aggiungi")),
+    inserisciTitoloDiStudio(new QLineEdit),
+    testoTitoliDiStudio(new QListWidget),
+    layoutInserimentoTitoloDiStudio(new QHBoxLayout),
+    cambio_piano_combo(new QComboBox)
+
 {
     //file di stile
 //    setStyleSheet(imposta_stile());
 
     //campi dati
-    creaCampoPunti();
+    creaCampoPuntiEPiano();
 
     creaCampoNome();
 
