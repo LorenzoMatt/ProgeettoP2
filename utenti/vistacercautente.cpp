@@ -1,6 +1,7 @@
 #include "vistacercautente.h"
 #include "QMessageBox"
 #include <QHeaderView>
+#include "funzioniutili.h"
 void vistaCercaUtente::build_tabella()
 {
     tabella=new QTableWidget();
@@ -51,6 +52,7 @@ void vistaCercaUtente::build_bottoni()
 
 vistaCercaUtente::vistaCercaUtente(container<std::string> p, bool amico, QWidget *parent) :proprieta(p),a(!amico), QWidget(parent)
 {// a(!amico) perchè se l'amico è presente allora il pulsante "segui" non deve essere visibile
+    setStyleSheet(imposta_stile());
     QVBoxLayout* mainLayout=new QVBoxLayout;
     build_tabella();
     build_bottoni();
@@ -68,6 +70,7 @@ vistaCercaUtente::vistaCercaUtente(container<std::string> p, bool amico, QWidget
     mainLayout->addWidget(tabella);
     mainLayout->addLayout(layoutBottoni);
     setLayout(mainLayout);
+    setMaximumSize(500,500);
 }
 
 vistaCercaUtente::~vistaCercaUtente()
