@@ -3,7 +3,7 @@
     <utente>
         <tipoutente>Premium</tipoutente>
         <username>Pikachu</username>
-        <password>0000</password>
+        <password>dioboia</password>
         <nome>diostronzo</nome>
         <cognome>porco</cognome>
         <email>dio</email>
@@ -23,27 +23,20 @@
     <utente>
         <tipoutente>Gold</tipoutente>
         <username>Lorenzo</username>
-        <password>0000</password>
+        <password>stronzo</password>
         <nome>diostronzo</nome>
         <cognome>porco</cognome>
         <email>dio</email>
-        <competenze>
-            <competenza>lavare i piatti</competenza>
-        </competenze>
-        <titoli_di_studio>
-            <titolo>mangiare e basta</titolo>
-            <titolo>Forse anche dormire</titolo>
-            <titolo>uuuu</titolo>
-            <titolo>gfgfgfgff</titolo>
-        </titoli_di_studio>
-        <titoli_di_studio> mangiare e basta Forse anche dormire uuuu gfgfgfgff</titoli_di_studio>
+        <competenze/>
+        <titoli_di_studio/>
+        <titoli_di_studio></titoli_di_studio>
         <punti>10</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
         <tipoutente>Basic</tipoutente>
         <username>Elton</username>
-        <password>0000</password>
+        <password>diocan</password>
         <nome>diostronzo</nome>
         <cognome>porco</cognome>
         <email>dio</email>
@@ -56,7 +49,7 @@
     <utente>
         <tipoutente>Gold</tipoutente>
         <username>Francesca</username>
-        <password>0000</password>
+        <password>diobestia</password>
         <nome>diostronzo</nome>
         <cognome>porco</cognome>
         <email>dio</email>
@@ -69,7 +62,7 @@
     <utente>
         <tipoutente>Premium</tipoutente>
         <username>Mirko</username>
-        <password>0000</password>
+        <password>dioluamaro</password>
         <nome>diostronzo</nome>
         <cognome>porco</cognome>
         <email>dio</email>
@@ -82,15 +75,11 @@
     <utente>
         <tipoutente>Basic</tipoutente>
         <username>Giorgia</username>
-        <password>0000</password>
+        <password>dioluamaro</password>
         <nome>diostronzo</nome>
         <cognome>porco</cognome>
         <email>dio</email>
-        <competenze>
-            <competenza>masturbarsi</competenza>
-            <competenza>masturbarsi</competenza>
-            <competenza>masturbarsi giocare a biliardo</competenza>
-        </competenze>
+        <competenze/>
         <titoli_di_studio/>
         <titoli_di_studio></titoli_di_studio>
         <punti>0</punti>
