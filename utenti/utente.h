@@ -38,8 +38,8 @@ public:
     Utente(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,container<Domanda*> d,unsigned int punti,unsigned int risposte);
 
                      /*getter*/
-    Profilo get_profilo() const;//OK
-    Accesso get_credenziali() const;//OK
+    Profilo &get_profilo();//OK
+    Accesso get_credenziali();//OK
     container<Utente*>& get_amici();
     const container<Utente *> &get_seguaci() const;
     container<Domanda *>& get_domande();

@@ -18,25 +18,33 @@ void vistaProfilo::creaCampoPunti()
 void vistaProfilo::creaCampoNome()
 {
     QString stringaNome=QString::fromStdString(a->getProfilo().get_nome());
-    nome=new widgetCampoDati("Nome: ",stringaNome,1);
+    nome=new widgetCampoDati("Nome: ",stringaNome);
+    connect(nome,SIGNAL(invioNome(const QString&)),a,SLOT(modificaNome(const QString&)));
+    connect(nome,SIGNAL(invioNome(const QString&)),this,SLOT(creaCampoNome()));
 }
 
 void vistaProfilo::creaCampoCognome()
 {
     QString stringaCognome=QString::fromStdString(a->getProfilo().get_cognome());
-    cognome=new widgetCampoDati("Cognome: ",stringaCognome,2);
+    cognome=new widgetCampoDati("Cognome: ",stringaCognome);
+    connect(cognome,SIGNAL(invioNome(const QString&)),a,SLOT(modificaCognome(const QString&)));
+    connect(cognome,SIGNAL(invioNome(const QString&)),this,SLOT(creaCampoCognome()));
 }
 
 void vistaProfilo::creaCampoPassword()
 {
     QString stringaPassword=QString::fromStdString(a->getAccesso().get_password());
-    password=new widgetCampoDati("Password: ",stringaPassword,3);
+    password=new widgetCampoDati("Password: ",stringaPassword);
+    connect(password,SIGNAL(invioNome(const QString&)),a,SLOT(modificaPassword(const QString&)));
+    connect(password,SIGNAL(invioNome(const QString&)),this,SLOT(creaCampoPassword()));
 }
 
 void vistaProfilo::creaCampoEmail()
 {
     QString stringaEmail=QString::fromStdString(a->getProfilo().get_email());
-    email=new widgetCampoDati("Email: ",stringaEmail,4);
+    email=new widgetCampoDati("Email: ",stringaEmail);
+    connect(email,SIGNAL(invioNome(const QString&)),a,SLOT(modificaEmail(const QString&)));
+    connect(email,SIGNAL(invioNome(const QString&)),this,SLOT(creaCampoEmail()));
 }
 
 void vistaProfilo::creaTornaAllaHome()
@@ -49,23 +57,9 @@ void vistaProfilo::creaTornaAllaHome()
 
 
 
-vistaProfilo::vistaProfilo(Controller * c):a(c),layoutTotale(new QVBoxLayout)
+void vistaProfilo::creaCampoCompetenze()
 {
-    setStyleSheet(imposta_stile());
-
-    creaCampoPunti();
-
-    creaCampoNome();
-
-    creaCampoCognome();
-
-    creaCampoPassword();
-
-    creaCampoEmail();
-
-
-    //campo dati aggiungi competenza
-    QVBoxLayout* layoutCompetenzeProfessionali=new QVBoxLayout;
+    layoutCompetenzeProfessionali=new QVBoxLayout;
     QLabel* etichettaCompetenzeProfessionali=new QLabel("Competenze professionali:");
     QTextEdit* testoCompetenzeProfessionali=new QTextEdit;
     container<string> competenze=a->getProfilo().GetCompetenze();
@@ -82,9 +76,11 @@ vistaProfilo::vistaProfilo(Controller * c):a(c),layoutTotale(new QVBoxLayout)
     layoutCompetenzeProfessionali->addWidget(etichettaCompetenzeProfessionali);
     layoutCompetenzeProfessionali->addWidget(testoCompetenzeProfessionali);
     layoutCompetenzeProfessionali->addWidget(aggiungiCompetenzaProfessionale,0,Qt::AlignRight);
+}
 
-    //campo dati aggiungi titolo di studio
-    QVBoxLayout* layoutTitoliDiStudio=new QVBoxLayout;
+void vistaProfilo::creaCampoTitoliDiStudio()
+{
+    layoutTitoliDiStudio=new QVBoxLayout;
     QLabel* EtichettaTitoliDiStudio=new QLabel("Titoli di studio:");
     QTextEdit* testoTitoliDiStudio=new QTextEdit;
     testoTitoliDiStudio->setReadOnly(true);
@@ -103,7 +99,27 @@ vistaProfilo::vistaProfilo(Controller * c):a(c),layoutTotale(new QVBoxLayout)
     layoutTitoliDiStudio->addWidget(testoTitoliDiStudio);
     layoutTitoliDiStudio->addWidget(aggiungiTitoloDiStudio,0,Qt::AlignRight);
     layoutTitoliDiStudio->addSpacing(20);
+}
 
+vistaProfilo::vistaProfilo(Controller * c):a(c),layoutTotale(new QVBoxLayout)
+{
+    //file di stile
+    setStyleSheet(imposta_stile());
+
+    //campi dati
+    creaCampoPunti();
+
+    creaCampoNome();
+
+    creaCampoCognome();
+
+    creaCampoPassword();
+
+    creaCampoEmail();
+
+    creaCampoCompetenze();
+
+    creaCampoTitoliDiStudio();
 
     creaTornaAllaHome();
 
@@ -113,9 +129,8 @@ vistaProfilo::vistaProfilo(Controller * c):a(c),layoutTotale(new QVBoxLayout)
     layoutTotale->addWidget(cognome);
     layoutTotale->addWidget(password);
     layoutTotale->addWidget(email);
-
-
-
+    layoutTotale->addLayout(layoutCompetenzeProfessionali);
+    layoutTotale->addLayout(layoutTitoliDiStudio);
     layoutTotale->addWidget(home);
 
     //imposto il layout principale

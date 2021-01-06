@@ -1,5 +1,10 @@
 #include "controller.h"
 
+void Controller::salva() const
+{
+    a->salva();
+}
+
 Controller::Controller(const QString& utente,VistaUtente* vista,QObject *parent) :v(vista),QObject(parent)
 {
     a=new Account(utente.toStdString());
@@ -46,33 +51,44 @@ int Controller::getPunti() const
     return a->get_punti();
 }
 
-void Controller::modificaNome(const string& n)
+void Controller::modificaNome(const QString& n)
 {
-
-    return a->get_profilo().set_nome(n);
+    string t=n.toStdString();
+    a->get_profilo().set_nome(t);
+    a->salva();
 }
 
-void Controller::modificaCognome(const string& c)
+void Controller::modificaCognome(const QString& c)
 {
-    return a->get_profilo().set_cognome(c);
+    string t=c.toStdString();
+    a->get_profilo().set_cognome(t);
+    a->salva();
 }
 
-void Controller::modificaEmail(const string& e)
+void Controller::modificaEmail(const QString& e)
 {
-    return a->get_profilo().set_email(e);
+    string t=e.toStdString();
+    a->get_profilo().set_email(t);
+    a->salva();
 }
 
-void Controller::modificaPassword(const string& p)
+void Controller::modificaPassword(const QString& p)
 {
-    return a->modifica_password(p);
+    string t=p.toStdString();
+    a->modifica_password(t);
+    a->salva();
 }
 
-void Controller::aggiungiCompetenza(const string& c)
+void Controller::aggiungiCompetenza(const QString& c)
 {
-    return a->AggiungiCompetenza(c);
+    string t=c.toStdString();
+    a->AggiungiCompetenza(t);
+    a->salva();
 }
 
-void Controller::aggiungiTitoloDiStudio(const string& t)
+void Controller::aggiungiTitoloDiStudio(const QString& t)
 {
-    return a->AggiungiTitoloDiStudio(t);
+    string x=t.toStdString();
+    a->AggiungiTitoloDiStudio(x);
+    a->salva();
 }

@@ -1,6 +1,6 @@
 #include "widgetcampodati.h"
 
-widgetCampoDati::widgetCampoDati(const QString& n, const QString& t,const int& ti):tipo(ti),layoutTotale(new QVBoxLayout),
+widgetCampoDati::widgetCampoDati(const QString& n, const QString& t):layoutTotale(new QVBoxLayout),
     layoutNome(new QVBoxLayout),testoNome(new QLineEdit),layoutModNome(new QHBoxLayout),
     modNome(new QPushButton("Modifica")),canc(new QPushButton("Annulla"))
 {
@@ -28,10 +28,12 @@ widgetCampoDati::widgetCampoDati(const QString& n, const QString& t,const int& t
     //aggiungo tutto al layoutTotale
     layoutTotale->addLayout(layoutNome);
     layoutTotale->addLayout(layoutModNome);
+    setLayout(layoutTotale);
 
-    //connessioni
+    //connessioni pulsanti
     connect(modNome,SIGNAL(clicked()),this,SLOT(sbloccaBloccaTesto()));
     connect(canc,SIGNAL(clicked()),this,SLOT(annullaModifica()));
+
 }
 
 //implementazione degli slots
@@ -41,12 +43,14 @@ void widgetCampoDati::sbloccaBloccaTesto()
    testoNome->setReadOnly(false);
    modNome->setText("Conferma");
    canc->setVisible(true);
+
+   connect(modNome,SIGNAL(clicked()),this,SLOT(confermaModifica()));
    }
    else
    {
        testoNome->setReadOnly(true);
        modNome->setText("Modifica");
-       canc->setVisible(true);
+       canc->setVisible(false);
    }
 
 }
@@ -59,18 +63,11 @@ void widgetCampoDati::annullaModifica()
 void widgetCampoDati::confermaModifica()
 {
     //setto il testo del campo dati e aggiorno il campo relativo dell'utente nel database
-    testoNome->setText();
-    switch (tipo) {
-    case(Nome):
-        break;
-    case(Cognome):
-        break;
-    case(Email):
-        break;
-    case(Password):
-        break;
-    }
-    sbloccaBloccaTesto();
+
+    QString testo=testoNome->text();
+    if(!testo.isEmpty())
+        emit invioNome(testo);
+
 }
 
 

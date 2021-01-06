@@ -12,6 +12,8 @@ class Controller : public QObject
 private:
     VistaUtente* v;
     Account* a;
+
+    void salva() const;
 public:
     explicit Controller(const QString& ,VistaUtente*,QObject *parent = nullptr);
     void setModel(Account*);
@@ -27,13 +29,13 @@ public:
 
 
 public slots:
-    void modificaNome(const string&);
-    void modificaCognome(const string&);
-    void modificaEmail(const string&);
-    void modificaPassword(const string&);
+    void modificaNome(const QString&);
+    void modificaCognome(const QString&);
+    void modificaEmail(const QString&);
+    void modificaPassword(const QString&);
 
-    void aggiungiCompetenza(const string&);
-    void aggiungiTitoloDiStudio(const string&);
+    void aggiungiCompetenza(const QString&);
+    void aggiungiTitoloDiStudio(const QString&);
 
 };
 

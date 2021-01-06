@@ -23,31 +23,38 @@ class vistaProfilo:public QWidget
     widgetCampoDati* cognome;
     widgetCampoDati* password;
     widgetCampoDati* email;
-    widgetCampoDati* competenze;
-    widgetCampoDati* studio;
+    QVBoxLayout* layoutCompetenzeProfessionali;
+    QVBoxLayout* layoutTitoliDiStudio;
     QPushButton* home;
 
     //funzioni di utilitá
-    void creaCampoPunti();
-    void creaCampoNome();
-    void creaCampoCognome();
-    void creaCampoPassword();
-    void creaCampoEmail();
+
 
 
     void creaTornaAllaHome();
 
+    void creaCampoCompetenze();
+
+    void creaCampoTitoliDiStudio();
+
 public:
     vistaProfilo(Controller*);
 
-signals:
-    void inviaNome(const string&);
-    void inviaCognome(const string&);
-    void inviaPassword(const string&);
-    void inviaEmail(const string&);
+private slots:
+      void creaCampoPunti();
+      void creaCampoNome();
+      void creaCampoCognome();
+      void creaCampoPassword();
+      void creaCampoEmail();
+//    void inviaCognome(const QString&);
+//    void inviaPassword(const QString&);
+//    void inviaEmail(const QString&);
 
-    void inviaCompetenza(const string&);
-    void inviaTitoloDiStudio(const string&);
+//    void inviaCompetenza(const QString&);
+//    void inviaTitoloDiStudio(const QString&);
+
+signals:
+
 
 };
 

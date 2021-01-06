@@ -18,7 +18,7 @@ Account::Account(Utente *u, Database *m) :model(m)
     utente=model->get_utente(u->get_credenziali().get_username());
 }
 
-Profilo Account::get_profilo() const
+Profilo& Account::get_profilo() const
 {
     return utente->get_profilo();
 }
@@ -143,4 +143,9 @@ Domanda *Account::get_domanda(const container<Domanda *>& d, unsigned int i) con
         {}//corpo vuoto
         return *it;
     }
+}
+
+void Account::salva() const
+{
+    model->exportdati();
 }
