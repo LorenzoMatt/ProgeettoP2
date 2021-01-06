@@ -197,6 +197,7 @@ void VistaUtente::buildCercaUtente()
         if(scriviUtente->text()==QString::fromStdString(c->getAccesso().get_username()))// se è se stesso
         {
             messaggio_informativo("visita utente","per vedere i tuoi dati vai nella sezione profilo!",this);
+            scriviUtente->clear();
         }
         else
         {
@@ -232,10 +233,7 @@ void VistaUtente::buildDomandeCercate()
     container<Domanda*> d=c->cercaDomanda(domanda);
     FinestraVistaDomande* f=new FinestraVistaDomande(d,c,this);
     f->show();
-//    connect(f,SIGNAL(commento(const QString&,Domanda*)),c,SLOT(scrivi_commento(const QString&,Domanda*)));
-
-
-//    connect(f,SIGNAL(commento(const QString&,Domanda*)),commenti,SLOT(vediCommenti()));//aggiorno la vista delle domande
+    scriviDomanda->clear();
 }
 
 void VistaUtente::aggiornaAreaDomandeAmici()

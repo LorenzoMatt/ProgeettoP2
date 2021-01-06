@@ -52,8 +52,7 @@ HEADERS += accesso.h \
     finestranuovadomanda.h \
     funzioniutili.h \
     finestravistadomande.h
-FORMS += \
-    finestravistadomande.ui
+FORMS +=
 SOURCES += accesso.cpp \
            amico_non_presente.cpp \
     bottonevedicommento.cpp \

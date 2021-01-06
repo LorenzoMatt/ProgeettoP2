@@ -195,6 +195,18 @@
                     <testo>ciaoo</testo>
                     <autore_commento>Lorenzo</autore_commento>
                 </commento>
+                <commento>
+                    <testo>mi metti like?</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                </commento>
+                <commento>
+                    <testo>Ti ho messo like contento?</testo>
+                    <autore_commento>Elton</autore_commento>
+                </commento>
+                <commento>
+                    <testo>si grazie</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                </commento>
             </commenti>
         </domanda>
         <domanda>
