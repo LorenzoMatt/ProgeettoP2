@@ -9,14 +9,17 @@ class bottoneVediCommento:public QPushButton
 {
     Q_OBJECT
     Domanda* dom;
+    QString utente;
 public:
-    bottoneVediCommento(Domanda*,const QString&);
+    bottoneVediCommento(Domanda*,const QString& ut,const QString& testo);
 //    void setDom(Domanda*);
 
-public slots:
+private slots:
     void vediCommenti();
-
-
+signals:
+    void like(int,Domanda*);
+    void commento(const QString&,Domanda*);
+    void rimuovi(int,Domanda*);
 };
 
 #endif // BOTTONEVEDICOMMENTO_H

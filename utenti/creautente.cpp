@@ -1,7 +1,7 @@
 #include "creautente.h"
 #include<QLabel>
 #include<QFormLayout>
-
+#include <QErrorMessage>
 creautente::creautente(QWidget *parent) :QDialog(parent)
 {
     crea_tasti();
@@ -11,9 +11,8 @@ creautente::creautente(QWidget *parent) :QDialog(parent)
     QLabel* Password_label=new QLabel("Password");
     QLabel* Nome_label=new QLabel("Nome");
     QLabel* Cognome_label=new QLabel("Cognome");
-    QLabel* email_label=new QLabel("e-mail");
+    QLabel* email_label=new QLabel("E-mail");
     QLabel* Piano_label=new QLabel("Piano");
-
 
     /********Set buddy*********/
 
@@ -41,31 +40,27 @@ creautente::creautente(QWidget *parent) :QDialog(parent)
     QVBoxLayout* mainLayout=new QVBoxLayout;
     mainLayout->addLayout(layout_form);
     mainLayout->addWidget(conferma);
+    setFixedSize(QSize(250, 230));
 
     setLayout(mainLayout);
     connect(conferma,SIGNAL(accepted()),this,SLOT(dati()));
     connect(conferma,SIGNAL(rejected()),this,SLOT(close()));
 }
-//void CreaModificaInquilino::checkDati()
-//{
-//    bool errore=false;
-//    if(_useredit->text().isEmpty() || _pwedit->text().isEmpty())
-//        errore=true;
-//    if(!errore)
-//    {
-//        raccogliDati();
-//        close();
-//        showSuccess("Operazione eseguita con successo");
-//    }
-//    else
-//        showMessage("Attenzione! I campi user e password non possono essere vuoti");
-//}
 
 void creautente::dati()
 {
     const QString & user=Username->text(),password= Password->text(),nome=Nome->text(),cognome=Cognome->text(),email=Email->text(),piano=Piano->currentText();
-    emit  invia(user, password,nome,cognome,email,piano);
-    close();
+    if(user.isEmpty() ||password.isEmpty() ||nome.isEmpty() || cognome.isEmpty() || email.isEmpty() || piano.isEmpty())
+    {
+        QErrorMessage* messaggio=new QErrorMessage(this);
+        messaggio->setWindowTitle("campi vuoti presenti");
+        messaggio->showMessage("Non possono esserci campi vuoti");
+    }
+    else
+    {
+        emit  invia(user, password,nome,cognome,email,piano);
+        close();
+    }
 }
 creautente::~creautente()
 {
@@ -73,10 +68,14 @@ creautente::~creautente()
 
 void creautente::crea_tasti()
 {
-    Username=new QLineEdit();
-    Password=new QLineEdit();
-    Nome=new QLineEdit();
-    Cognome=new QLineEdit();
-    Email=new QLineEdit();
+    Username=new QLineEdit;
+    Password=new QLineEdit;
+    Password->setEchoMode(QLineEdit::PasswordEchoOnEdit);
+    Nome=new QLineEdit;
+    Cognome=new QLineEdit;
+    Email=new QLineEdit;
     Piano=new QComboBox;
+    Piano->addItem("Basic");
+    Piano->addItem("Gold");
+    Piano->addItem("Premium");
 }

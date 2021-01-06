@@ -55,8 +55,6 @@ void vistaProfilo::creaTornaAllaHome()
     connect(home,SIGNAL(clicked()),this,SLOT(close()));
 }
 
-
-
 void vistaProfilo::creaCampoCompetenze()
 {
     layoutCompetenzeProfessionali=new QVBoxLayout;
@@ -136,9 +134,3 @@ vistaProfilo::vistaProfilo(Controller * c):a(c),layoutTotale(new QVBoxLayout)
     //imposto il layout principale
     setLayout(layoutTotale);
 }
-
-
-
-
-
-

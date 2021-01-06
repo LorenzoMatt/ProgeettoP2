@@ -8,15 +8,10 @@
 #include "controller.h"
 #include "stile.h"
 #include "widgetcampodati.h"
-
-
-
-
 class vistaProfilo:public QWidget
 {
     Q_OBJECT
     Controller* a;
-
     QVBoxLayout* layoutTotale;
 
     widgetCampoDati* nome;
@@ -54,7 +49,6 @@ private slots:
 //    void inviaTitoloDiStudio(const QString&);
 
 signals:
-
 
 };
 

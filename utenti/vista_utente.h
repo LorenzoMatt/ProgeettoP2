@@ -11,17 +11,19 @@
 #include <QTextEdit>
 #include <QLabel>
 #include <QScrollArea>
-#include <vector>
 #include <QString>
-
+#include <QErrorMessage>
+#include <QMessageBox>
 #include "bottonevedicommento.h"
-#include "stile.h"
+#include "funzioniutili.h"
 
 class Controller;
 
 class VistaUtente:public QWidget
 {
     Q_OBJECT
+    friend class Controller;
+private:
     Controller* c;
 
     QLabel* numeroDomandePersonali;
@@ -33,8 +35,6 @@ class VistaUtente:public QWidget
     QPushButton* invioUtente;
     QLineEdit* scriviDomanda;
     QLineEdit* scriviUtente;
-    std::vector<QPushButton*> domandePersonali;
-    std::vector<QPushButton*> domandeAmici;
     QVBoxLayout* layoutWidgetPagina1;
     QVBoxLayout* layoutWidgetPagina2;
     QScrollArea* pagina1;
@@ -50,9 +50,12 @@ class VistaUtente:public QWidget
 
 public:
     VistaUtente(const QString&,QWidget* parent=nullptr);
-public slots:
+    ~VistaUtente();
+private slots:
     void vediProfilo();
-
+    void buildCercaUtente();
+    void buildFaiDomanda();
+    void buildDomandeCercate();
 };
 
 #endif // VISTAUTENTE_H

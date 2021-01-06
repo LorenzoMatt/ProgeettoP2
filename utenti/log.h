@@ -8,6 +8,7 @@
 #include <QLineEdit>
 #include <QFormLayout>
 #include<QErrorMessage>
+#include "funzioniutili.h"
 #include "controller_admin.h"
 class controller_admin;
 class Login : public QWidget
@@ -29,7 +30,6 @@ private:
     void build_line_edit();
     void build_form_layout(QLabel*, QLabel*);
     void build_main_layout(QVBoxLayout*, QLabel*);
-    void imposta_stile();
 private slots:
     void login_user();
     void login_admin();

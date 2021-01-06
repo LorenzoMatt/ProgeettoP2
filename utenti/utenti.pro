@@ -31,7 +31,6 @@ HEADERS += accesso.h \
     log.h \
            non_autore_domanda.h \
            profilo.h \
-    stile.h \
            togliere_te_stesso_dagli_amici.h \
            utente.h \
     utente_gia_presente.h \
@@ -50,6 +49,14 @@ HEADERS += accesso.h \
     funzioni_globali.h \
     widgetcampodati.h
 FORMS +=
+    controller_admin.h \
+    funzioni_globali.h \
+    vistacercautente.h \
+    vista_profilo.h \
+    finestranuovadomanda.h \
+    funzioniutili.h
+FORMS += \
+    finestranuovadomanda.ui
 SOURCES += accesso.cpp \
            amico_non_presente.cpp \
     bottonevedicommento.cpp \
@@ -76,5 +83,8 @@ SOURCES += accesso.cpp \
     vista_amministratore.cpp \
     controller_admin.cpp \
     widgetcampodati.cpp
+    vistacercautente.cpp \
+    vista_profilo.cpp \
+    finestranuovadomanda.cpp
 
 RESOURCES +=

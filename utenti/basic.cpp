@@ -25,51 +25,32 @@ Basic::Basic(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s,
 
 void Basic::cerca_utente(const std::string & username, const Database & model, container<std::string> & lista_di_elementi) const
 {
-    try
-    {
         Utente* utente = model.get_utente(username);
         if(utente)
         {
             Utente::Funtore f(1);//nelle funzioni polimorfe il numero_funtore sarà sostituito con 1 in account gratuito,2 in gold e 3 in premium
             f(utente, lista_di_elementi);
-        }else
-            throw amico_non_presente();
-    }catch(amico_non_presente)
-    {
-        std::cerr<<"utente non presente";
-    }
+        }
 }
 
 void Basic::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funziona a dovere
 {
-    try{
-        if(this==domanda->get_autore_domanda())
-        {
-            unsigned int punti_da_sottrarre=puntiDetrattiDomandaFatta;
-            if(domanda->get_priorita()>1)
-            {
-                punti_da_sottrarre+=(supplementoDomandaPriorita*(domanda->get_priorita()-1));
-            }
-            if(punti>=punti_da_sottrarre)
-            {
-                punti-=punti_da_sottrarre;
-                get_domande().push_front(domanda);
-            }
-            else
-            {
-                throw punti_non_sufficienti();
-            }
-        }
-        else
-        {
-            throw non_autore_domanda();
-        }
-    }catch(non_autore_domanda){
-        std::cerr<<"non è l'autore della domanda";
+
+    unsigned int punti_da_sottrarre=puntiDetrattiDomandaFatta;
+    if(domanda->get_priorita()>1)
+    {
+        punti_da_sottrarre+=(supplementoDomandaPriorita*(domanda->get_priorita()-1));
     }
-    catch(punti_non_sufficienti){
-        std::cerr<<"punti per fare la domanda non sufficienti";
+    if(punti>=punti_da_sottrarre)
+    {
+        punti-=punti_da_sottrarre;
+        get_domande().push_front(domanda);
     }
+    else
+    {
+        throw punti_non_sufficienti();
+    }
+
 }
 
 container<Domanda *> Basic::cerca_domanda(const std::string & domanda, const Database & m) const

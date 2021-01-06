@@ -3,7 +3,7 @@
 
 
 
-container<Commento> Domanda::get_commenti() const
+container<Commento> &Domanda::get_commenti()
 {
     return commenti;
 }
@@ -28,14 +28,28 @@ Domanda::Domanda(const string& t, Utente* autore, unsigned int priorita):testo(t
 void Domanda::aggiungi_commento(const Commento& c){
     commenti.push_back(c);
 }
-void Domanda::rimuovi_commento(const Commento& c){
-    bool sent=false;
-    for(auto it=commenti.begin();it!=commenti.end() && !sent;++it)
-        if((*it)==c){
-            commenti.erase(it);
-            sent=true;
-        }
+//void Domanda::rimuovi_commento(const Commento& c){
+//    bool sent=false;
+//    for(auto it=commenti.begin();it!=commenti.end() && !sent;++it)
+//        if((*it)==c){
+//            commenti.erase(it);
+//            sent=true;
+//        }
+//}
+void Domanda::rimuovi_commento(int i){
+
+    if(i<commenti.size())
+    {
+        int n=0;
+        bool ok=false;
+        for(auto it=commenti.begin();it!=commenti.end() && !ok;++it,++n)
+            if(n==i){
+                commenti.erase(it);
+                ok=true;
+            }
+    }
 }
+
 
 Utente* Domanda::get_autore_domanda() const
 {

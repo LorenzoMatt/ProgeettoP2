@@ -1,99 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <campi_dati_utenti>
     <utente>
-        <tipoutente>Premium</tipoutente>
+        <tipoutente>Gold</tipoutente>
         <username>Pikachu</username>
-        <password>dioboia</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
-        <competenze>Giocare mangiare scopare</competenze>
+        <password>0000</password>
+        <nome>Pikachu</nome>
+        <cognome>non ho cognome</cognome>
+        <email>Pikachu@gmail.com</email>
+        <competenze> Giocare mangiare</competenze>
         <titoli_di_studio></titoli_di_studio>
-        <punti>25</punti>
-        <risposte_date>0</risposte_date>
-    </utente>
-    <utente>
-        <tipoutente>Basic</tipoutente>
-        <username>Lorenzo</username>
-        <password>stronzo</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
-        <competenze></competenze>
-        <titoli_di_studio></titoli_di_studio>
-        <punti>50</punti>
+        <punti>5</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
         <tipoutente>Gold</tipoutente>
-        <username>Elton</username>
-        <password>diocan</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
+        <username>Lorenzo</username>
+        <password>0000</password>
+        <nome>Lorenzo</nome>
+        <cognome>Matterazzo</cognome>
+        <email>lorenzo.matterazzo@studenti.unipd.it</email>
         <competenze></competenze>
         <titoli_di_studio></titoli_di_studio>
-        <punti>50</punti>
-        <risposte_date>0</risposte_date>
+        <punti>66</punti>
+        <risposte_date>4</risposte_date>
     </utente>
     <utente>
         <tipoutente>Premium</tipoutente>
+        <username>Elton</username>
+        <password>0000</password>
+        <nome>Elton</nome>
+        <cognome>Ibra</cognome>
+        <email>eltonibra@gmail.com</email>
+        <competenze></competenze>
+        <titoli_di_studio></titoli_di_studio>
+        <punti>35</punti>
+        <risposte_date>0</risposte_date>
+    </utente>
+    <utente>
+        <tipoutente>Gold</tipoutente>
         <username>Francesca</username>
-        <password>diobestia</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
+        <password>0000</password>
+        <nome>Francesca</nome>
+        <cognome>Mari</cognome>
+        <email>francescamari@gmail.com</email>
         <competenze> masturbarsi masturbarsi</competenze>
         <titoli_di_studio></titoli_di_studio>
-        <punti>60</punti>
+        <punti>52</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
         <tipoutente>Basic</tipoutente>
         <username>Mirko</username>
-        <password>dioluamaro</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
+        <password>0000</password>
+        <nome>Mirko</nome>
+        <cognome>Stella</cognome>
+        <email>mirko.stella@studenti.unipd.it</email>
         <competenze></competenze>
         <titoli_di_studio></titoli_di_studio>
-        <punti>60</punti>
+        <punti>50</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Basic</tipoutente>
+        <tipoutente>Premium</tipoutente>
         <username>Giorgia</username>
-        <password>dioluamaro</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
+        <password>0000</password>
+        <nome>Giorgia</nome>
+        <cognome>Salmaso</cognome>
+        <email>giorgia@gmail.com</email>
         <competenze> masturbarsi masturbarsi</competenze>
         <titoli_di_studio> studiare mangiare</titoli_di_studio>
-        <punti>0</punti>
-        <risposte_date>0</risposte_date>
-    </utente>
-    <utente>
-        <tipoutente>Basic</tipoutente>
-        <username>ww</username>
-        <password>ww</password>
-        <nome>ww</nome>
-        <cognome>ww</cognome>
-        <email>ww</email>
-        <competenze></competenze>
-        <titoli_di_studio></titoli_di_studio>
-        <punti>30</punti>
-        <risposte_date>0</risposte_date>
-    </utente>
-    <utente>
-        <tipoutente>Basic</tipoutente>
-        <username>www</username>
-        <password>ww</password>
-        <nome>ww</nome>
-        <cognome>ww</cognome>
-        <email>ww</email>
-        <competenze></competenze>
-        <titoli_di_studio></titoli_di_studio>
-        <punti>30</punti>
-        <risposte_date>0</risposte_date>
+        <punti>60</punti>
+        <risposte_date>3</risposte_date>
     </utente>
 </campi_dati_utenti>

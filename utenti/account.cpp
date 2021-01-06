@@ -38,6 +38,11 @@ Utente *Account::get_utente() const
     return utente;
 }
 
+Utente *Account::cerca_utente_per_nome(const std::string & utente)
+{
+    return model->get_utente(utente);
+}
+
 unsigned int Account::get_punti() const
 {
     return utente->get_punti();
@@ -109,7 +114,8 @@ container<Domanda*> Account::ricerca_domanda(const std::string & testo)
     return utente->cerca_domanda(testo,*model);
 }
 
-void Account::fai_domanda(const std::string & domanda, unsigned int priorita)
+void Account::fai_domanda (const std::string & domanda, unsigned int priorita)
+    throw (punti_non_sufficienti )
 {
     utente->fai_domanda(new Domanda(domanda,utente,priorita));
 }
@@ -120,11 +126,17 @@ void Account::fai_commento(Domanda* domanda, const std::string & t) const
     domanda->aggiungi_commento(c);
 }
 
+void Account::salva() const
+{
+    model->exportdati();
+}
+
 container<string> Account::ricerca_contatto(const std::string & username) const
 {
     container<string> aux;
     utente->cerca_amico(username,aux);
     return aux;
+
 }
 
 container<Domanda *> Account::get_domande_amici() const
@@ -148,4 +160,10 @@ Domanda *Account::get_domanda(const container<Domanda *>& d, unsigned int i) con
 void Account::salva() const
 {
     model->exportdati();
+}
+bool Account::check_presenza_amico(const std::string & user) const
+{
+    container<string> l;
+    utente->cerca_amico(user,l);
+    return !(l.empty()) ? true : false;// se la dimensione è 0 allora l'amico non è presente
 }

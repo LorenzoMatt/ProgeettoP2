@@ -11,12 +11,18 @@ QPushButton {
     border-radius: 10px;
     border-color: beige;
     font: bold 14px;
-    min-width: 10em;
+    min-width: 5em;
     padding: 6px;
 }
 
+<<<<<<< HEAD
+
+QLineEdit{ 
+    background-color:rgb(200,200,200);
+=======
 QLineEdit{ 
     background-color:rgb(202, 255, 227);
+>>>>>>> remotes/origin/mirkoGiusto
     border: 2px solid gray;
     border-radius: 10px;
     padding: 0 8px;
