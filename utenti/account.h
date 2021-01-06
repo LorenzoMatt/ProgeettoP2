@@ -29,7 +29,7 @@ public:
     void dai_punti(const string &) const;//OK
     void cambia_piano(const string&); //OK
     void modifica_password(const string&);//OK
-    void fai_domanda(const string&,unsigned int =1) throw (punti_non_sufficienti);//OK
+    void fai_domanda(const string&,unsigned int =1);//OK
     void fai_commento(Domanda* domanda,const string&) const;
     void salva() const;
     container<Domanda *> ricerca_domanda(const string&);//OK

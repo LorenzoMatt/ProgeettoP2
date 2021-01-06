@@ -115,7 +115,7 @@ container<Domanda*> Account::ricerca_domanda(const std::string & testo)
 }
 
 void Account::fai_domanda (const std::string & domanda, unsigned int priorita)
-    throw (punti_non_sufficienti )
+
 {
     utente->fai_domanda(new Domanda(domanda,utente,priorita));
 }
