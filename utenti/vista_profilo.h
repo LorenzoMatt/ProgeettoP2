@@ -53,16 +53,17 @@ private slots:
       void creaCampoPassword();
       void creaCampoEmail();
 
-      void mostraBarraEditabileCompetenza();
-      void invioCompetenza();
       void creaCampoCompetenze();
-
-//      void mostraBarraEditabileTitoloDiStudio();
-//      void invioTitoloDiStudio();
       void creaCampoTitoliDiStudio();
 
+      void mostraC();
+      void mostraT();
+      void invioDatoC();
+      void invioDatoT();
+
 signals:
-    void inviaCompetenza(const QString&);
+    void inviaC(const QString&);
+    void inviaT(const QString&);
 };
 
 #endif // VISTAPROFILO_H

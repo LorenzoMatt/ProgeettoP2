@@ -58,15 +58,12 @@ void vistaProfilo::creaTornaAllaHome()
     connect(home,SIGNAL(clicked()),this,SLOT(close()));
 }
 
-void vistaProfilo::mostraBarraEditabileCompetenza()
+void vistaProfilo::mostraC()
 {
-
-
-
     if(!inserisciCompetenzaProfessionale->isVisible()){
         inserisciCompetenzaProfessionale->setVisible(true);
         aggiungiCompetenzaProfessionale->setText("Invio");
-        connect(aggiungiCompetenzaProfessionale,SIGNAL(clicked()),this,SLOT(invioCompetenza()));
+        connect(aggiungiCompetenzaProfessionale,SIGNAL(clicked()),this,SLOT(invioDatoC()));
     }
     else
     {
@@ -76,14 +73,39 @@ void vistaProfilo::mostraBarraEditabileCompetenza()
     }
 }
 
-void vistaProfilo::invioCompetenza()
+void vistaProfilo::mostraT()
+{
+    if(!inserisciTitoloDiStudio->isVisible()){
+        inserisciTitoloDiStudio->setVisible(true);
+        aggiungiTitoloDiStudio->setText("Invio");
+        connect(aggiungiTitoloDiStudio,SIGNAL(clicked()),this,SLOT(invioDatoT()));
+    }
+    else
+    {
+
+        inserisciTitoloDiStudio->setVisible(false);
+        aggiungiTitoloDiStudio->setText("Aggiungi");
+    }
+}
+
+void vistaProfilo::invioDatoC()
 {
     QString testo=inserisciCompetenzaProfessionale->text();
     if(!testo.isEmpty()){
         testoCompetenzeProfessionali->addItem(testo);
         testoCompetenzeProfessionali->scrollToBottom();
-        emit inviaCompetenza(testo);
+        emit inviaC(testo);
         inserisciCompetenzaProfessionale->setText("");
+    }
+}
+void vistaProfilo::invioDatoT()
+{
+    QString testo=inserisciTitoloDiStudio->text();
+    if(!testo.isEmpty()){
+        testoTitoliDiStudio->addItem(testo);
+        testoTitoliDiStudio->scrollToBottom();
+        emit inviaT(testo);
+        inserisciTitoloDiStudio->setText("");
     }
 }
 
@@ -109,19 +131,9 @@ void vistaProfilo::creaCampoCompetenze()
     layoutInserimentoCompetenza->addWidget(aggiungiCompetenzaProfessionale);
     layoutCompetenzeProfessionali->addLayout(layoutInserimentoCompetenza);
 
-    connect(aggiungiCompetenzaProfessionale,SIGNAL(clicked()),this,SLOT(mostraBarraEditabileCompetenza()));
-    connect(this,SIGNAL(inviaCompetenza(const QString&)),a,SLOT(aggiungiCompetenza(const QString&)));
+    connect(aggiungiCompetenzaProfessionale,SIGNAL(clicked()),this,SLOT(mostraC()));
+    connect(this,SIGNAL(inviaC(const QString&)),a,SLOT(aggiungiCompetenza(const QString&)));
 }
-
-//void vistaProfilo::mostraBarraEditabileTitoloDiStudio()
-//{
-
-//}
-
-//void vistaProfilo::invioTitoloDiStudio()
-//{
-
-//}
 
 void vistaProfilo::creaCampoTitoliDiStudio()
 {
@@ -145,8 +157,8 @@ void vistaProfilo::creaCampoTitoliDiStudio()
     layoutInserimentoTitoloDiStudio->addWidget(aggiungiTitoloDiStudio);
     layoutTitoliDiStudio->addLayout(layoutInserimentoTitoloDiStudio);
 
-    connect(aggiungiTitoloDiStudio,SIGNAL(clicked()),this,SLOT(mostraBarraEditabileTitolo()));
-    connect(this,SIGNAL(inviaTitoloDiStudio(const QString&)),a,SLOT(aggiungiTitoloDiStudio(const QString&)));
+    connect(aggiungiTitoloDiStudio,SIGNAL(clicked()),this,SLOT(mostraT()));
+    connect(this,SIGNAL(inviaT(const QString&)),a,SLOT(aggiungiTitoloDiStudio(const QString&)));
 }
 
 vistaProfilo::vistaProfilo(Controller * c):a(c),layoutTotale(new QVBoxLayout),
