@@ -22,26 +22,22 @@ class widgetCampoDati:public QWidget
     QHBoxLayout* layoutModNome;
     QPushButton* modNome;
     QPushButton* canc;
-
-    //utilitá
+    bool modo; //indica come viene visualizzata la password
+    QString testoTemporaneo;
 
 
 public:
-    widgetCampoDati(const QString& n, const QString& t);
+    widgetCampoDati(const QString& n, const QString& t,bool m=true);
+
 
 public slots:
     void sbloccaBloccaTesto();
     void annullaModifica();
-
     void confermaModifica();
 
+
 signals:
-
-
     void invioNome(const QString&);
-//    void invioCognome(const QString&);
-//    void invioPassword(const QString&);
-//    void invioEmail(const QString&);
 
 };
 

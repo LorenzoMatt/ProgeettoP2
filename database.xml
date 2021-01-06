@@ -28,8 +28,10 @@
         <cognome>porco</cognome>
         <email>dio</email>
         <competenze/>
-        <titoli_di_studio/>
-        <titoli_di_studio></titoli_di_studio>
+        <titoli_di_studio>
+            <titolo>mangiare e basta</titolo>
+        </titoli_di_studio>
+        <titoli_di_studio> mangiare e basta</titoli_di_studio>
         <punti>10</punti>
         <risposte_date>0</risposte_date>
     </utente>
