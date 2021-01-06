@@ -28,6 +28,7 @@ private:
 
     QLabel* numeroDomandePersonali;
     QPushButton* aggiungiDomanda;
+    QPushButton* logout;
     QHBoxLayout* layoutBarraSuperiore;
     QTabWidget* tabella;
     QPushButton* profilo;
@@ -49,7 +50,7 @@ private:
     void buildTabella();
 
 public:
-    VistaUtente(const QString&,QWidget* parent=nullptr);
+    explicit VistaUtente(const QString&,QWidget* parent=nullptr);
     ~VistaUtente();
 private slots:
     void vediProfilo();
@@ -58,6 +59,7 @@ private slots:
     void buildDomandeCercate();
     void aggiornaAreaDomandeAmici();
     void aggiornaNumeroDomande();
+    void buildLogout();
 };
 
 #endif // VISTAUTENTE_H

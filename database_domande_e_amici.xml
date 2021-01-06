@@ -52,7 +52,7 @@
     </utente>
     <utente>
         <username>Lorenzo</username>
-        <amici>Pikachu Elton</amici>
+        <amici>Pikachu Elton Giorgia</amici>
         <domanda>
             <priorita>2</priorita>
             <testo>prova</testo>
@@ -246,7 +246,12 @@
         <domanda>
             <priorita>1</priorita>
             <testo>prova a fare una domanda</testo>
-            <commenti/>
+            <commenti>
+                <commento>
+                    <testo>ciaoooo</testo>
+                    <autore_commento>Giorgia</autore_commento>
+                </commento>
+            </commenti>
         </domanda>
         <domanda>
             <priorita>1</priorita>

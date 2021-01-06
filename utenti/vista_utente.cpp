@@ -6,6 +6,7 @@
 #include "funzioniutili.h"
 #include"finestranuovadomanda.h"
 #include "finestravistadomande.h"
+#include "log.h"
 
 //aggiunge area domanda utente con pulsante commenti
 void VistaUtente::aggiungiAreaDomandaAmici()
@@ -172,7 +173,9 @@ VistaUtente::VistaUtente(const QString& utente, QWidget *parent):QWidget(parent)
     buildTabella();
     mainLayout->addLayout(layoutBarraSuperiore);
     mainLayout->addWidget(tabella);
-
+    logout=new QPushButton("Logout");
+    connect(logout,SIGNAL(clicked()),this,SLOT(buildLogout()));
+    mainLayout->addWidget(logout);
     setLayout(mainLayout);
 }
 
@@ -182,7 +185,7 @@ VistaUtente::~VistaUtente()
 
 void VistaUtente::vediProfilo()
 {
-    vistaProfilo* profilo=new vistaProfilo(c);
+    vistaProfilo* profilo=new vistaProfilo(c,this);
     profilo->setWindowTitle("Profilo");
     profilo->setMinimumWidth(500);
     profilo->show();
@@ -244,5 +247,12 @@ void VistaUtente::aggiornaNumeroDomande()
 {
     numeroDomandePersonali->clear();
     numeroDomandePersonali->setText("numero di domande "+QString::number((c->getDomandePersonali().size())));
+}
+
+void VistaUtente::buildLogout()
+{
+    Login* l=new Login;
+    l->show();
+    close();
 }
 
