@@ -79,7 +79,9 @@ int main(int argc ,char** argv)
 //       Giorgia->scrivi_commento(domanda2,"prova per un commento");
 //       Giorgia->scrivi_commento(domanda3,"prova per un commento");
 //       Giorgia->scrivi_commento(domanda2,"prova per un commento");
+//       m.exportdati();
 //       m.import();
+//       cout<<m.get_utente("Giorgia")->get_profilo().GetCompetenze();
 
     Login v;
 
