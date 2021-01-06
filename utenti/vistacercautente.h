@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include "container.h"
+//ciaooo
 class vistaCercaUtente : public QWidget
 {
     Q_OBJECT
