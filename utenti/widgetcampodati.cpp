@@ -1,8 +1,8 @@
 #include "widgetcampodati.h"
 //ciaooo
-widgetCampoDati::widgetCampoDati(const QString& n, const QString& t):layoutTotale(new QVBoxLayout),
+widgetCampoDati::widgetCampoDati(const QString& n, const QString& t, bool m):layoutTotale(new QVBoxLayout),
     layoutNome(new QVBoxLayout),testoNome(new QLineEdit),layoutModNome(new QHBoxLayout),
-    modNome(new QPushButton("Modifica")),canc(new QPushButton("Annulla"))
+    modNome(new QPushButton("Modifica")),canc(new QPushButton("Annulla")),modo(m)
 {
     //creo etichetta nome
     QLabel* EtichettaNome=new QLabel(n);
@@ -11,6 +11,8 @@ widgetCampoDati::widgetCampoDati(const QString& n, const QString& t):layoutTotal
     //setto il testo
     testoNome->setText(t);
     testoNome->setReadOnly(true);
+    if(!modo)
+        testoNome->setEchoMode(QLineEdit::PasswordEchoOnEdit);
     layoutNome->addWidget(testoNome);
 
     //setto il pulsante modNome
@@ -22,8 +24,9 @@ widgetCampoDati::widgetCampoDati(const QString& n, const QString& t):layoutTotal
 
 
     //aggiungo pulsante modNome e canc
-    layoutModNome->addWidget(modNome,0,Qt::AlignRight);
-    layoutModNome->addWidget(canc,0,Qt::AlignRight);
+    layoutModNome->setAlignment(Qt::AlignRight);
+    layoutModNome->addWidget(modNome);
+    layoutModNome->addWidget(canc);
 
     //aggiungo tutto al layoutTotale
     layoutTotale->addLayout(layoutNome);
@@ -36,6 +39,8 @@ widgetCampoDati::widgetCampoDati(const QString& n, const QString& t):layoutTotal
 
 }
 
+
+
 //implementazione degli slots
 void widgetCampoDati::sbloccaBloccaTesto()
 {
@@ -43,6 +48,7 @@ void widgetCampoDati::sbloccaBloccaTesto()
    testoNome->setReadOnly(false);
    modNome->setText("Conferma");
    canc->setVisible(true);
+   testoTemporaneo=testoNome->text();
 
    connect(modNome,SIGNAL(clicked()),this,SLOT(confermaModifica()));
    }
@@ -57,6 +63,8 @@ void widgetCampoDati::sbloccaBloccaTesto()
 
 void widgetCampoDati::annullaModifica()
 {
+
+    testoNome->setText(testoTemporaneo);
     sbloccaBloccaTesto();
 }
 
