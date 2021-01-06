@@ -9,7 +9,7 @@
         <email>Pikachu@gmail.com</email>
         <competenze> Giocare mangiare</competenze>
         <titoli_di_studio></titoli_di_studio>
-        <punti>56</punti>
+        <punti>5</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
@@ -21,8 +21,8 @@
         <email>lorenzo.matterazzo@studenti.unipd.it</email>
         <competenze></competenze>
         <titoli_di_studio></titoli_di_studio>
-        <punti>93</punti>
-        <risposte_date>3</risposte_date>
+        <punti>66</punti>
+        <risposte_date>4</risposte_date>
     </utente>
     <utente>
         <tipoutente>Premium</tipoutente>
@@ -69,7 +69,7 @@
         <email>giorgia@gmail.com</email>
         <competenze> masturbarsi masturbarsi</competenze>
         <titoli_di_studio> studiare mangiare</titoli_di_studio>
-        <punti>40</punti>
-        <risposte_date>2</risposte_date>
+        <punti>60</punti>
+        <risposte_date>3</risposte_date>
     </utente>
 </campi_dati_utenti>

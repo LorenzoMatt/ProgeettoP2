@@ -51,7 +51,7 @@ void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
             QPushButton* rimuovi=new QPushButton("rimuovi");
             valutaCommento->addWidget(rimuovi);
 
-            if((!(it->get_like())) && autoreCommento!=QString::fromStdString(d->get_autore_domanda()->get_credenziali().get_username()))
+            if((!(it->get_like())) && autoreCommento!=autoreDomanda)
             {
                 QPushButton* like=new QPushButton("like");
                 valutaCommento->addWidget(like);

@@ -209,8 +209,6 @@ DeepPtr<Utente> *Database::get_utente_deep(const std::string & username)
 
 void Database::exportdati() const
 {
-
-
     try
     {
         QFile* file = new QFile("../database.xml");
