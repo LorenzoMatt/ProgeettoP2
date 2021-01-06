@@ -10,6 +10,8 @@
 #include "widgetcampodati.h"
 #include <QListWidget>
 #include <QLineEdit>
+#include <QComboBox>
+#include <QMessageBox>
 
 class vistaProfilo:public QWidget
 {
@@ -36,6 +38,10 @@ class vistaProfilo:public QWidget
     QListWidget* testoTitoliDiStudio;
     QHBoxLayout* layoutInserimentoTitoloDiStudio;
 
+    QComboBox* cambio_piano_combo;
+    QMessageBox* messaggio;
+
+
 
     QPushButton* home;
 
@@ -47,19 +53,22 @@ public:
     vistaProfilo(Controller*);
 
 private slots:
-      void creaCampoPunti();
-      void creaCampoNome();
-      void creaCampoCognome();
-      void creaCampoPassword();
-      void creaCampoEmail();
+    void creaCampoPuntiEPiano();
+    void creaCampoNome();
+    void creaCampoCognome();
+    void creaCampoPassword();
+    void creaCampoEmail();
 
-      void creaCampoCompetenze();
-      void creaCampoTitoliDiStudio();
 
-      void mostraC();
-      void mostraT();
-      void invioDatoC();
-      void invioDatoT();
+    void creaCampoCompetenze();
+    void creaCampoTitoliDiStudio();
+
+    void mostraC();
+    void mostraT();
+    void invioDatoC();
+    void invioDatoT();
+
+    void cambiaP(const QString&);
 
 signals:
     void inviaC(const QString&);

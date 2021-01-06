@@ -120,6 +120,12 @@ int Controller::getPunti() const
 {
     return a->get_punti();
 }
+
+void Controller::cambiaPiano(const QString & piano)
+{
+    string stringaPiano=piano.toStdString();
+    a->cambia_piano(stringaPiano);
+}
 void Controller::modificaNome(const QString& n)
 {
     string t=n.toStdString();

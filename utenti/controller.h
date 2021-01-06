@@ -27,6 +27,7 @@ public:
     bool check_presenza_amico(const QString &) const;
     container<Domanda *> getDomandePersonali() const;
     int getPunti() const;
+    void cambiaPiano(const QString&);
 
 private slots:
     void aggiungi_amico(const QString&);

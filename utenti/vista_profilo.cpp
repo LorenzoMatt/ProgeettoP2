@@ -1,18 +1,51 @@
 #include "vista_profilo.h"
 
-void vistaProfilo::creaCampoPunti()
+void vistaProfilo::cambiaP(const QString& t)
 {
+    a->cambiaPiano(t);
+}
+
+//QMessageBox* messaggio=new QMessageBox();
+//messaggio->setWindowTitle(titolo);
+//messaggio->setText(testo);
+//messaggio->exec();
+void vistaProfilo::creaCampoPuntiEPiano()
+{
+    QHBoxLayout* layoutPuntiEPiano=new QHBoxLayout;
     QHBoxLayout* layoutPunti=new QHBoxLayout;
+    QHBoxLayout* layoutPiano=new QHBoxLayout;
+    //piano
+    QLabel* nuovo_piano=new QLabel("Cambia piano:");
+    nuovo_piano->setAlignment(Qt::AlignLeft);
+    cambio_piano_combo->setPlaceholderText("");
+    cambio_piano_combo->setMinimumWidth(150);
+    cambio_piano_combo->addItem("Basic");
+    cambio_piano_combo->addItem("Gold");
+    cambio_piano_combo->addItem("Premium");
+
+
+    nuovo_piano->setBuddy(cambio_piano_combo);
+    layoutPiano->addWidget(nuovo_piano);
+    layoutPiano->addWidget(cambio_piano_combo);
+
+    connect(cambio_piano_combo,SIGNAL(currentTextChanged(const QString&)),this,SLOT(cambiaP(const QString&)));
+
+
+    //punti
     QLabel* etichettaPunti=new QLabel("PUNTI RESIDUI:");
     QLineEdit* testoPunti=new QLineEdit;
     string punti=std::to_string(a->getPunti());
     testoPunti->setText(QString::fromStdString(punti));
     testoPunti->setReadOnly(true);
+    testoPunti->setMaximumWidth(70);
     layoutPunti->addWidget(etichettaPunti);
     layoutPunti->addWidget(testoPunti);
     //set elementi
+    layoutPuntiEPiano->addLayout(layoutPiano);
+    layoutPuntiEPiano->addLayout(layoutPunti);
+
     etichettaPunti->setAlignment(Qt::AlignRight);
-    layoutTotale->addLayout(layoutPunti);
+    layoutTotale->addLayout(layoutPuntiEPiano);
 }
 
 void vistaProfilo::creaCampoNome()
@@ -109,6 +142,8 @@ void vistaProfilo::invioDatoT()
     }
 }
 
+
+
 void vistaProfilo::creaCampoCompetenze()
 {
     //inizializzazione lista di competenze
@@ -174,14 +209,14 @@ vistaProfilo::vistaProfilo(Controller * c):a(c),layoutTotale(new QVBoxLayout),
     aggiungiTitoloDiStudio(new QPushButton("Aggiungi")),
     inserisciTitoloDiStudio(new QLineEdit),
     testoTitoliDiStudio(new QListWidget),
-    layoutInserimentoTitoloDiStudio(new QHBoxLayout)
-
+    layoutInserimentoTitoloDiStudio(new QHBoxLayout),
+    cambio_piano_combo(new QComboBox)
 {
     //file di stile
     setStyleSheet(imposta_stile());
 
     //campi dati
-    creaCampoPunti();
+    creaCampoPuntiEPiano();
 
     creaCampoNome();
 
