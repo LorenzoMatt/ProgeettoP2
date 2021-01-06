@@ -18,7 +18,7 @@ Account::Account(Utente *u, Database *m) :model(m)
     utente=model->get_utente(u->get_credenziali().get_username());
 }
 
-Profilo Account::get_profilo() const
+Profilo& Account::get_profilo() const
 {
     return utente->get_profilo();
 }

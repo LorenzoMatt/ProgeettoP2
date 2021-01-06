@@ -30,12 +30,12 @@ Utente::Utente(Profilo p, Accesso c, container<Utente *> a, container<Utente *> 
 
 }
 
-Profilo Utente::get_profilo() const  //OK
+Profilo& Utente::get_profilo()  //OK
 {
     return pf;
 }
 
-Accesso Utente::get_credenziali() const //OK
+Accesso Utente::get_credenziali()  //OK
 {
     return credenziali;
 }

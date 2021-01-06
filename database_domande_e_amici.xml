@@ -49,6 +49,11 @@
         <username>Lorenzo</username>
         <amici>Pikachu Giorgia Elton</amici>
         <domanda>
+            <priorita>2</priorita>
+            <testo>ciaooo</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
             <priorita>5</priorita>
             <testo>ssss</testo>
             <commenti/>
@@ -155,10 +160,6 @@
                 <commento>
                     <testo>prova per un commento</testo>
                     <autore_commento>Giorgia</autore_commento>
-                </commento>
-                <commento>
-                    <testo>prova</testo>
-                    <autore_commento>Lorenzo</autore_commento>
                 </commento>
             </commenti>
         </domanda>

@@ -16,12 +16,12 @@
         <tipoutente>Gold</tipoutente>
         <username>Lorenzo</username>
         <password>0000</password>
-        <nome>Lorenzo</nome>
-        <cognome>Matterazzo</cognome>
-        <email>lorenzo.matterazzo@studenti.unipd.it</email>
+        <nome> Lorenzo99</nome>
+        <cognome>Stella88</cognome>
+        <email>lorenzo.matterazzo@studenti.unipd.com</email>
         <competenze></competenze>
         <titoli_di_studio></titoli_di_studio>
-        <punti>66</punti>
+        <punti>58</punti>
         <risposte_date>4</risposte_date>
     </utente>
     <utente>
@@ -69,7 +69,7 @@
         <email>giorgia@gmail.com</email>
         <competenze> masturbarsi masturbarsi</competenze>
         <titoli_di_studio> studiare mangiare</titoli_di_studio>
-        <punti>60</punti>
-        <risposte_date>3</risposte_date>
+        <punti>80</punti>
+        <risposte_date>4</risposte_date>
     </utente>
 </campi_dati_utenti>

@@ -13,7 +13,7 @@ public:
     Account(const string&);
     Account(Utente *, Database *);
            /* getter*/
-    Profilo get_profilo() const;//OK
+    Profilo &get_profilo() const;//OK
     Accesso get_credenziali() const;//OK
     container<Domanda *>& get_domande();//OK
     Utente *get_utente() const;//OK
@@ -37,6 +37,6 @@ public:
     container<std::string> ricerca_contatto(const string&) const;//OK
     container<Domanda *> get_domande_amici() const;//OK
     Domanda* get_domanda(const container<Domanda *> &d, unsigned int i) const;//OK
-    bool check_presenza_amico(const string &) const;
+   bool check_presenza_amico(const string &) const;
 };
 #endif // ACCOUNT_H

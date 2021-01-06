@@ -13,6 +13,8 @@ class Controller : public QObject
 private:
     VistaUtente* v;
     Account* a;
+
+    void salva() const;
 public:
     explicit Controller(const QString& ,VistaUtente*,QObject *parent = nullptr);
     ~Controller();
@@ -29,12 +31,12 @@ public:
 private slots:
     void aggiungi_amico(const QString&);
     void togli_amico(const QString&);
-    void modificaNome(const string&);
-    void modificaCognome(const string&);
-    void modificaEmail(const string&);
-    void modificaPassword(const string&);
-    void aggiungiCompetenza(const string&);
-    void aggiungiTitoloDiStudio(const string&);
+    void modificaNome(const QString&);
+    void modificaCognome(const QString&);
+    void modificaEmail(const QString&);
+    void modificaPassword(const QString&);
+    void aggiungiCompetenza(const QString&);
+    void aggiungiTitoloDiStudio(const QString&);
     void faiDomanda(const QString&, int priorita);
     void scrivi_commento(const QString&,Domanda*);
     void dai_like(int,Domanda*);

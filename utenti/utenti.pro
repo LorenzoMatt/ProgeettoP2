@@ -42,6 +42,7 @@ HEADERS += accesso.h \
     account.h \
     vista_domanda.h \
     vista_utente.h \
+    widgetcampodati.h \
     creautente.h \
     vista_amministratore.h \
     controller_admin.h \
@@ -71,6 +72,7 @@ SOURCES += accesso.cpp \
     premium.cpp \
     account.cpp \
     vista_domanda.cpp \
+    widgetcampodati.cpp \
     vista_utente.cpp \
     creautente.cpp \
     database.cpp \

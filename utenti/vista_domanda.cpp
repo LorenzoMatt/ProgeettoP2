@@ -75,6 +75,7 @@ void vista_domanda::aggiungiBarraDiTesto()
     testoCommento=new QLineEdit;
     testoCommento->setPlaceholderText("Scrivi un commento");
     QPushButton* invio=new QPushButton("invio");
+    inserisciCommento->addSpacing(20);
 
     inserisciCommento->addWidget(testoCommento);
     inserisciCommento->addWidget(invio);
