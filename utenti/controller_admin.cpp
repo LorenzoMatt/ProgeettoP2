@@ -3,7 +3,6 @@
 #include "gold.h"
 #include "premium.h"
 #include "funzioniutili.h"
-#include <QErrorMessage>
 controller_admin::controller_admin(vista_amministratore* v) :vista(v), db(new Database())
 {
     db->import();
