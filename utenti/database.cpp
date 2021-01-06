@@ -285,6 +285,7 @@ void Database::exportdati() const
                         inp->writeStartElement("commento");// inizio commento
                         inp->writeTextElement("testo",QString::fromStdString(((*c).get_testo())));
                         inp->writeTextElement("autore_commento",QString::fromStdString((*c).get_autore()->get_credenziali().get_username()));
+                        inp->writeTextElement("like",((*c).get_like()== true) ? "1" : "0");
                         inp->writeEndElement();// fine commento
                     }
 //                    inp->writeEndElement();// fine delle domande
@@ -455,7 +456,7 @@ void Database::importa_amici_e_domande_utenti()
                             {
 //                                    QDomElement commento=elemento_domande.firstChild(); //che è comento
                                 QDomElement commento= lista_commenti.at(x).toElement();
-                                QString testo_commento, autore_commento;
+                                QString testo_commento, autore_commento, like;
                                 QDomNode elementi_del_commento=commento.firstChild();
                                 while (!elementi_del_commento.isNull())
                                 {
@@ -469,9 +470,13 @@ void Database::importa_amici_e_domande_utenti()
                                     {
                                         autore_commento=elemento_commento.text();
                                     }
+                                    if(tagNameCommento=="like")
+                                    {
+                                        like=elemento_commento.text();
+                                    }
                                     elementi_del_commento=elementi_del_commento.nextSibling();
                                }
-                                commenti_totali.push_back(Commento(testo_commento.toStdString(),get_utente(autore_commento.toStdString())));
+                                commenti_totali.push_back(Commento(testo_commento.toStdString(),get_utente(autore_commento.toStdString()),like.toInt()));
                         }
                     }
                         domande=domande.nextSibling();

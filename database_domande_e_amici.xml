@@ -2,43 +2,7 @@
 <domande_e_amici>
     <utente>
         <username>Pikachu</username>
-        <amici>Lorenzo Elton Mirko Francesca</amici>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>sono pikachu</testo>
-            <commenti>
-                <commento>
-                    <testo>ciao</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                </commento>
-                <commento>
-                    <testo>ehi</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                </commento>
-                <commento>
-                    <testo>prova dio</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                </commento>
-                <commento>
-                    <testo>xxxx</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                </commento>
-                <commento>
-                    <testo>xxxxss</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                </commento>
-            </commenti>
-        </domanda>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>ciaooo</testo>
-            <commenti>
-                <commento>
-                    <testo>ciao</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                </commento>
-            </commenti>
-        </domanda>
+        <amici>Lorenzo Elton Mirko Giorgia</amici>
         <domanda>
             <priorita>3</priorita>
             <testo>prova a fare una domanda</testo>
@@ -52,53 +16,15 @@
     </utente>
     <utente>
         <username>Lorenzo</username>
-        <amici>Pikachu Elton Giorgia</amici>
+        <amici>Pikachu</amici>
         <domanda>
             <priorita>2</priorita>
-            <testo>prova</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>ciao</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>ciaooo</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>5</priorita>
-            <testo>ssss</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>ciaooooo</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>dddddd</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>ciao</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>ciaoooo</testo>
+            <testo>Ciaooo</testo>
             <commenti>
                 <commento>
-                    <testo>Ciaoooo</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                </commento>
-                <commento>
-                    <testo>prova</testo>
-                    <autore_commento>Lorenzo</autore_commento>
+                    <testo>ciao</testo>
+                    <autore_commento>Giorgia</autore_commento>
+                    <like>1</like>
                 </commento>
             </commenti>
         </domanda>
@@ -117,16 +43,9 @@
             <testo>sono magnanime?</testo>
             <commenti>
                 <commento>
-                    <testo>Forse lo sei si</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                </commento>
-                <commento>
-                    <testo>ma ovvio che lo sei ahhahaha</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                </commento>
-                <commento>
-                    <testo>giorgiooo</testo>
-                    <autore_commento>Lorenzo</autore_commento>
+                    <testo>prova per un commento</testo>
+                    <autore_commento>Giorgia</autore_commento>
+                    <like>0</like>
                 </commento>
             </commenti>
         </domanda>
@@ -137,14 +56,12 @@
                 <commento>
                     <testo>prova per un commento</testo>
                     <autore_commento>Giorgia</autore_commento>
+                    <like>1</like>
                 </commento>
                 <commento>
                     <testo>prova per un commento</testo>
                     <autore_commento>Giorgia</autore_commento>
-                </commento>
-                <commento>
-                    <testo>ddwssxs</testo>
-                    <autore_commento>Lorenzo</autore_commento>
+                    <like>0</like>
                 </commento>
             </commenti>
         </domanda>
@@ -153,28 +70,19 @@
             <testo>sono grande?</testo>
             <commenti>
                 <commento>
-                    <testo>dio porco</testo>
-                    <autore_commento>Pikachu</autore_commento>
-                </commento>
-                <commento>
-                    <testo>la madonna</testo>
-                    <autore_commento>Pikachu</autore_commento>
-                </commento>
-                <commento>
-                    <testo>gesu</testo>
-                    <autore_commento>Pikachu</autore_commento>
+                    <testo>prova per un commento</testo>
+                    <autore_commento>Giorgia</autore_commento>
+                    <like>1</like>
                 </commento>
                 <commento>
                     <testo>prova per un commento</testo>
                     <autore_commento>Giorgia</autore_commento>
+                    <like>1</like>
                 </commento>
                 <commento>
                     <testo>prova per un commento</testo>
                     <autore_commento>Giorgia</autore_commento>
-                </commento>
-                <commento>
-                    <testo>prova per un commento</testo>
-                    <autore_commento>Giorgia</autore_commento>
+                    <like>0</like>
                 </commento>
             </commenti>
         </domanda>
@@ -182,88 +90,27 @@
     <utente>
         <username>Elton</username>
         <amici></amici>
-        <domanda>
-            <priorita>3</priorita>
-            <testo>sono elton e dovrei essere in alto</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>5</priorita>
-            <testo>elton</testo>
-            <commenti>
-                <commento>
-                    <testo>ciaoo</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                </commento>
-                <commento>
-                    <testo>mi metti like?</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                </commento>
-                <commento>
-                    <testo>Ti ho messo like contento?</testo>
-                    <autore_commento>Elton</autore_commento>
-                </commento>
-                <commento>
-                    <testo>si grazie</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                </commento>
-            </commenti>
-        </domanda>
-        <domanda>
-            <priorita>7</priorita>
-            <testo>ciao sono Elton</testo>
-            <commenti>
-                <commento>
-                    <testo>ciao sono lorenzo</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                </commento>
-                <commento>
-                    <testo>rrrrrr</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                </commento>
-            </commenti>
-        </domanda>
     </utente>
     <utente>
         <username>Francesca</username>
         <amici></amici>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>Sono francesca</testo>
-            <commenti/>
-        </domanda>
     </utente>
     <utente>
         <username>Mirko</username>
         <amici></amici>
-        <domanda>
-            <priorita>1</priorita>
-            <testo>sono mirko</testo>
-            <commenti/>
-        </domanda>
     </utente>
     <utente>
         <username>Giorgia</username>
-        <amici></amici>
+        <amici>Lorenzo</amici>
         <domanda>
             <priorita>1</priorita>
             <testo>prova a fare una domanda</testo>
-            <commenti>
-                <commento>
-                    <testo>ciaoooo</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                </commento>
-            </commenti>
+            <commenti/>
         </domanda>
         <domanda>
             <priorita>1</priorita>
             <testo>prova a fare una domanda</testo>
-            <commenti>
-                <commento>
-                    <testo>ciaoooo</testo>
-                    <autore_commento>Giorgia</autore_commento>
-                </commento>
-            </commenti>
+            <commenti/>
         </domanda>
         <domanda>
             <priorita>1</priorita>
