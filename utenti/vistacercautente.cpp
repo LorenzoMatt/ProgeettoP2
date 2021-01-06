@@ -2,7 +2,8 @@
 #include "QMessageBox"
 #include <QHeaderView>
 #include "funzioniutili.h"
-//ciaoooo
+
+
 void vistaCercaUtente::build_tabella()
 {
     tabella=new QTableWidget();

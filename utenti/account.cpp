@@ -5,6 +5,11 @@ Account::Account()
 
 }
 
+Account::~Account()
+{
+    salva();
+}
+
 Account::Account(const std::string & u)
 {
     model=new Database();

@@ -165,6 +165,7 @@ void VistaUtente::buildTabella()
 
 VistaUtente::VistaUtente(const QString& utente, QWidget *parent):QWidget(parent),c(new Controller(utente,this))
 {
+    setAttribute(Qt::WA_DeleteOnClose);
     setStyleSheet(imposta_stile());
     QVBoxLayout* mainLayout=new QVBoxLayout();
 
@@ -181,6 +182,7 @@ VistaUtente::VistaUtente(const QString& utente, QWidget *parent):QWidget(parent)
 
 VistaUtente::~VistaUtente()
 {
+    delete c;
 }
 
 void VistaUtente::vediProfilo()

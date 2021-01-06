@@ -16,13 +16,13 @@
         <tipoutente>Gold</tipoutente>
         <username>Lorenzo</username>
         <password>0000</password>
-        <nome> Lorenzo99</nome>
-        <cognome>Stella88</cognome>
-        <email>lorenzo.matterazzo@studenti.unipd.com</email>
+        <nome> Lorenzo</nome>
+        <cognome>Matterazzo</cognome>
+        <email>lorenzo.matterazzo@studenti.unipd.it</email>
         <competenze></competenze>
         <titoli_di_studio></titoli_di_studio>
-        <punti>68</punti>
-        <risposte_date>6</risposte_date>
+        <punti>85</punti>
+        <risposte_date>7</risposte_date>
     </utente>
     <utente>
         <tipoutente>Premium</tipoutente>

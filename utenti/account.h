@@ -10,6 +10,7 @@ private:
     Database* model;
 public:
     Account();
+    ~Account();
     Account(const string&);
     Account(Utente *, Database *);
            /* getter*/

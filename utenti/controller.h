@@ -13,7 +13,6 @@ class Controller : public QObject
 private:
     Account* a;
     VistaUtente* v;
-    void salva() const;
 public:
     explicit Controller(const QString& ,VistaUtente*,QObject *parent = nullptr);
     ~Controller();
@@ -27,8 +26,6 @@ public:
     container<Domanda *> getDomandePersonali() const;
     int getPunti() const;
     container<Domanda *> cercaDomanda(const QString&);
-
-
 private slots:
     void aggiungi_amico(const QString&);
     void togli_amico(const QString&);
@@ -42,6 +39,7 @@ private slots:
     void scrivi_commento(const QString&,Domanda*);
     void dai_like(int,Domanda*);
     void rimuovi_commento(int,Domanda*);
+//    void salva() const;
 signals:
 
 };

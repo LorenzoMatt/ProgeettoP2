@@ -11,12 +11,18 @@
         <domanda>
             <priorita>3</priorita>
             <testo>prova a fare una domanda</testo>
-            <commenti/>
+            <commenti>
+                <commento>
+                    <testo>ciao</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                    <like>0</like>
+                </commento>
+            </commenti>
         </domanda>
     </utente>
     <utente>
         <username>Lorenzo</username>
-        <amici>Pikachu</amici>
+        <amici>Pikachu Giorgia</amici>
         <domanda>
             <priorita>2</priorita>
             <testo>Ciaooo</testo>
@@ -105,7 +111,13 @@
         <domanda>
             <priorita>1</priorita>
             <testo>prova a fare una domanda</testo>
-            <commenti/>
+            <commenti>
+                <commento>
+                    <testo>provo a risponderti</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                    <like>1</like>
+                </commento>
+            </commenti>
         </domanda>
         <domanda>
             <priorita>1</priorita>
