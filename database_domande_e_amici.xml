@@ -201,7 +201,7 @@
     </utente>
     <utente>
         <username>Elton</username>
-        <amici></amici>
+        <amici>Lorenzo</amici>
         <domanda>
             <priorita>3</priorita>
             <testo>sono elton e dovrei essere in alto</testo>

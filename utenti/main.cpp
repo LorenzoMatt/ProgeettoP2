@@ -81,7 +81,22 @@ int main(int argc ,char** argv)
 //       Giorgia->scrivi_commento(domanda2,"prova per un commento");
 //       m.exportdati();
 //       m.import();
-//       cout<<m.get_utente("Giorgia")->get_profilo().GetCompetenze();
+////       cout<<m.get_utente("Giorgia")->get_profilo().GetCompetenze();
+//Account a(m.get_utente("Lorenzo"),&m);
+
+//a.cambia_piano("Basic");
+
+//m.aggiungi_utente(new Basic("ciao","ddd","ddd","sss","ddd"));
+//m.aggiungi_utente(new Gold("gio","ddd","ddd","sss","ddd"));
+//m.aggiungi_utente(new Premium("sss","ddd","ddd","sss","ddd"));
+
+//Utente* u=m.get_utente("gio");
+//m.cambia_piano(u,"Gold");
+//if(dynamic_cast<Premium*>(a.get_utente()))
+//    cout<<"ok";
+//else
+//    cout<<"non ok";
+
 
     Login v;
 

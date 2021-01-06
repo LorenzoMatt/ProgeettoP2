@@ -27,11 +27,16 @@
         <nome>diostronzo</nome>
         <cognome>porco</cognome>
         <email>dio</email>
-        <competenze/>
+        <competenze>
+            <competenza>lavare i piatti</competenza>
+        </competenze>
         <titoli_di_studio>
             <titolo>mangiare e basta</titolo>
+            <titolo>Forse anche dormire</titolo>
+            <titolo>uuuu</titolo>
+            <titolo>gfgfgfgff</titolo>
         </titoli_di_studio>
-        <titoli_di_studio> mangiare e basta</titoli_di_studio>
+        <titoli_di_studio> mangiare e basta Forse anche dormire uuuu gfgfgfgff</titoli_di_studio>
         <punti>10</punti>
         <risposte_date>0</risposte_date>
     </utente>
