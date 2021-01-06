@@ -12,8 +12,6 @@
 #include <QLabel>
 #include <QScrollArea>
 #include <QString>
-#include <QErrorMessage>
-#include <QMessageBox>
 #include "bottonevedicommento.h"
 #include "funzioniutili.h"
 

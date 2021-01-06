@@ -207,9 +207,6 @@ void Database::exportdati() const
         if(!file->open(QIODevice::WriteOnly | QIODevice::Text))
         {
             throw std::runtime_error("il file non è stato aperto");
-            //       QMessageBox err;
-            //       err.setText("Errore nell'apertura del file");
-            //       err.exec();
         }
         else
         {
@@ -255,9 +252,6 @@ void Database::exportdati() const
             if(!file2->open(QIODevice::WriteOnly | QIODevice::Text))
             {
                 throw std::runtime_error("il file non è stato aperto");
-                //       QMessageBox err;
-                //       err.setText("Errore nell'apertura del file");
-                //       err.exec();
             }
             else
             {
@@ -270,9 +264,7 @@ void Database::exportdati() const
             {
                 inp->writeStartElement("utente");
                 inp->writeTextElement("username",QString::fromStdString(((*it)->get_credenziali()).get_username()));
-//                inp->writeStartElement(QString::fromStdString(((*it)->get_credenziali()).get_username()));
                 inp->writeTextElement("amici",QString::fromStdString((*it)->get_username_amici()));
-//                inp->writeStartElement("domande");
                 for(auto d=(*it)->get_domande().begin();d!=(*it)->get_domande().end();++d)
                 {
                     inp->writeStartElement("domanda");
@@ -288,7 +280,6 @@ void Database::exportdati() const
                         inp->writeTextElement("like",((*c).get_like()== true) ? "1" : "0");
                         inp->writeEndElement();// fine commento
                     }
-//                    inp->writeEndElement();// fine delle domande
                     inp->writeEndElement();//fine commenti
                     inp->writeEndElement();//fine domanda
 

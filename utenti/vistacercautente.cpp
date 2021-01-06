@@ -1,5 +1,4 @@
 #include "vistacercautente.h"
-#include "QMessageBox"
 #include <QHeaderView>
 #include "funzioniutili.h"
 
@@ -90,10 +89,7 @@ void vistaCercaUtente::segui_utente()
 void vistaCercaUtente::togli_utente()
 {
     QString utente(QString::fromStdString(proprieta[0]));
-    QMessageBox* messaggio=new QMessageBox(this);
-    messaggio->setWindowTitle("rimosso dagli amici");
-    messaggio->setText("utente "+utente+" rimosso agli amici!");
-    messaggio->exec();
+    messaggio_informativo("rimosso dagli amici","utente "+utente+" rimosso agli amici!",this);
     emit  rimuovi(utente);
     close();
 }

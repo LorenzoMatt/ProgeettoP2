@@ -7,7 +7,6 @@
 #include <QVBoxLayout>
 #include <QLineEdit>
 #include <QFormLayout>
-#include<QErrorMessage>
 #include "funzioniutili.h"
 #include "controller_admin.h"
 class controller_admin;

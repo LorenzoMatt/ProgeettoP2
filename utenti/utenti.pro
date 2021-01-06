@@ -46,7 +46,6 @@ HEADERS += accesso.h \
     creautente.h \
     vista_amministratore.h \
     controller_admin.h \
-    funzioni_globali.h \
     vistacercautente.h \
     vista_profilo.h \
     finestranuovadomanda.h \

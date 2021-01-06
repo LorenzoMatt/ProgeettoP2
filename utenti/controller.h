@@ -39,7 +39,6 @@ private slots:
     void scrivi_commento(const QString&,Domanda*);
     void dai_like(int,Domanda*);
     void rimuovi_commento(int,Domanda*);
-//    void salva() const;
 signals:
 
 };

@@ -6,7 +6,7 @@ Controller::Controller(const QString& utente,VistaUtente* vista,QObject *parent)
     a=new Account(utente.toStdString());
 }
 
-Controller::~Controller()
+Controller::~Controller()// viene invocato dalla delete della classe vista_utente
 {
     a->salva();
 }
@@ -28,7 +28,6 @@ void Controller::faiDomanda(const QString & testo,int priorita)
         a->fai_domanda(testo.toStdString(),priorita);
         v->aggiungiAreaDomandePersonali();//aggiorno la vista
         messaggio_informativo("Domanda effettuata correttamente","Domanda effettuata, ti restano in tutto "+QString::fromStdString(std::to_string(a->get_punti()))+" punti",v);
-//        a->salva();
     }
     catch(punti_non_sufficienti)
     {
@@ -40,7 +39,6 @@ void Controller::faiDomanda(const QString & testo,int priorita)
 void Controller::scrivi_commento(const QString & testo, Domanda *d)
 {
     a->fai_commento(d,testo.toStdString());
-//    a->salva();
 }
 
 void Controller::dai_like(int i, Domanda * d)
