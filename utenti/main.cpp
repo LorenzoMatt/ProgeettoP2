@@ -12,6 +12,7 @@
 #include "gold.h"
 #include "premium.h"
 #include "log.h"
+#include "prova.h"
 //#include "vista_amministratore.h"
 
 
@@ -22,8 +23,9 @@ int main(int argc ,char** argv)
 
    QApplication x(argc, argv);
    // creo degli utenti amicizie e domande
+//       prova m;
        Database m;
-       m.aggiungi_utente(new Premium("Pikachu","dioboia","diostronzo","porco","dio"));
+       m.aggiungi_utente(new Gold("Pikachu","dioboia","diostronzo","porco","dio"));
        m.aggiungi_utente(new Gold("Lorenzo","stronzo","diostronzo","porco","dio"));
        m.aggiungi_utente(new Basic("Elton","diocan","diostronzo","porco","dio"));
        m.aggiungi_utente(new Gold("Francesca","diobestia","diostronzo","porco","dio"));
@@ -47,8 +49,8 @@ int main(int argc ,char** argv)
        Pikachu->aggiungi_amico(Elton);
        Pikachu->aggiungi_amico(Mirko);
        Pikachu->aggiungi_amico(Giorgia);
-//       Giorgia->AggiungiCompetenza("masturbarsi");
-//       Giorgia->AggiungiCompetenza("masturbarsi");
+       Giorgia->AggiungiCompetenza("masturbarsi");
+       Giorgia->AggiungiCompetenza("masturbarsi");
 
        Domanda* domanda1=new Domanda("sono grande?",Lorenzo,2);
        Domanda* domanda2=new Domanda("sono bello?",Lorenzo,2);
@@ -66,19 +68,33 @@ int main(int argc ,char** argv)
        Pikachu->scrivi_commento(domanda1,"gesu");
        Pikachu->fai_domanda(new Domanda("prova a fare una domanda",Pikachu,2));
        Pikachu->fai_domanda(new Domanda("prova a fare una domanda",Pikachu,2));
-       Giorgia->fai_domanda(new Domanda("prova a fare una domanda",Giorgia,1));
-       Giorgia->fai_domanda(new Domanda("prova a fare una domanda",Giorgia,1));
-       Giorgia->fai_domanda(new Domanda("prova a fare una domanda",Giorgia,1));
+//       Giorgia->fai_domanda(new Domanda("prova a fare una domanda",Giorgia,1));
+//       Giorgia->fai_domanda(new Domanda("prova a fare una domanda",Giorgia,1));
+//       Giorgia->fai_domanda(new Domanda("prova a fare una domanda",Giorgia,1));
 
-       Giorgia->scrivi_commento(domanda1,"prova per un commento");
-       Giorgia->scrivi_commento(domanda1,"prova per un commento");
-       Giorgia->scrivi_commento(domanda1,"prova per un commento");
-       Giorgia->scrivi_commento(domanda2,"prova per un commento");
-       Giorgia->scrivi_commento(domanda3,"prova per un commento");
-       Giorgia->scrivi_commento(domanda2,"prova per un commento");
+//       Giorgia->scrivi_commento(domanda1,"prova per un commento");
+//       Giorgia->scrivi_commento(domanda1,"prova per un commento");
+//       Giorgia->scrivi_commento(domanda1,"prova per un commento");
+//       Giorgia->scrivi_commento(domanda2,"prova per un commento");
+//       Giorgia->scrivi_commento(domanda3,"prova per un commento");
+//       Giorgia->scrivi_commento(domanda2,"prova per un commento");
 
 
-       m.cambia_piano(Lorenzo,"Premium");
+       if(dynamic_cast<Premium*>(Pikachu))
+           cout<<"è premium prima del campio"<<endl;
+       else
+           cout<<"non è premium prima del campio"<<endl;
+
+
+       Pikachu=m.cambia_piano(Pikachu,"Premium");
+
+       if(dynamic_cast<Premium*>(Pikachu))
+           cout<<"è premium dopo del campio"<<endl;
+       else
+           cout<<"non è premium dopo del campio"<<endl;
+
+
+
 //       m.exportdati();
 //       m.import();
 ////       cout<<m.get_utente("Giorgia")->get_profilo().GetCompetenze();

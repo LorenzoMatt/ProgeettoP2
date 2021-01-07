@@ -129,13 +129,21 @@ Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
                 unsigned int risposte_date=(*it)->get_risposte_date();
                 unsigned int punti=(*it)->get_punti();
                 it=utenti.erase(it);
+//                Utente* u=0;
                 if(piano=="Basic")
+//                    utenti.push_back(DeepPtr<Utente>(new Basic(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                     it=utenti.insert(it,DeepPtr<Utente>(new Basic(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                 if(piano=="Gold")
+//                    utenti.push_back(DeepPtr<Utente>(new Gold(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                     it=utenti.insert(it,DeepPtr<Utente>(new Gold(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                 if(piano=="Premium")
+//                    utenti.push_back(DeepPtr<Utente>(new Premium(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
+
                     it=utenti.insert(it,DeepPtr<Utente>(new Premium(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
+//                u=&*(utenti[utenti.size()]);
+//                reverse_seguaci_amici(u);
                 reverse_seguaci_amici(&(**it));
+//                return u;
                 return &(**it);
             }
         }
