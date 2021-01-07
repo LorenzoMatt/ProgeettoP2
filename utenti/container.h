@@ -344,11 +344,11 @@ typename container<T>::iterator container<T>::erase(iterator i) //rimuove il nod
             ++i;
             pop_front();
         }
-        else /*if (i == --end())
-        {
-            ++i;
-            pop_back();
-        }*/
+//        else if (i == --end())
+//        {
+//            ++i;
+//            pop_back();
+//        }
             if (i == --end()) {
                         nodo* temp = last;
                         last = last->prev;

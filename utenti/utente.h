@@ -28,7 +28,7 @@ public:
 
 
             /*costruttori e distruttori*/
-//    Utente() =delete;
+    Utente() =delete;
     virtual ~Utente();//mi serve per sapere se distruggere le domande o meno, utilizzato in
     Utente(const Utente& u);
     Utente(string username,string password,string nome,string cognome,string email,unsigned int,unsigned int =0);

@@ -75,6 +75,7 @@ int main(int argc ,char** argv)
 //       Giorgia->fai_domanda(new Domanda("prova a fare una domanda",Giorgia,1));
 //       Giorgia->fai_domanda(new Domanda("prova a fare una domanda",Giorgia,1));
 //       Giorgia->fai_domanda(new Domanda("prova a fare una domanda",Giorgia,1));
+//       Giorgia->scrivi_commento(Giorgia->get_domande()[1],"ciao");
 
 //       Giorgia->scrivi_commento(domanda1,"prova per un commento");
 //       Giorgia->scrivi_commento(domanda1,"prova per un commento");
@@ -119,6 +120,26 @@ int main(int argc ,char** argv)
 //    cout<<"non ok";
 
 
+
+//    Domanda* d=new Domanda("ciao",Pikachu,1);
+
+
+//    d->set_autore(Giorgia);
+
+
+
+//       cout<<Giorgia->get_domande();
+//    Account g(Pikachu,&m);
+//    g.cambia_piano("Premium");
+
+//    if(dynamic_cast<Gold*>(g.get_utente()))
+//        cout<<"ok"<<endl;
+//    else
+//        cout<<"non ok";
+
+//    cout<<g.get_domande();
+
+//    cout<<*d;
     Login v;
 
     v.show();

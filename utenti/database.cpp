@@ -129,7 +129,7 @@ Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
                 {
                     string testo=(*ut)->get_testo();
 //                    Utente* autore_domanda=(*ut)->get_autore_domanda();
-                    container<Commento> commenti=(*ut)->get_commenti();
+                    container<Commento> commenti/*=(*ut)->get_commenti()*/;
 //                    container<Commento> commenti;
 
                     unsigned int priorita=(*ut)->get_priorita();

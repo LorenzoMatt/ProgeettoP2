@@ -116,9 +116,10 @@ void Utente::togli_amico(Utente *utente) // OK, serve a togliere un utente dalla
         for(auto it=amici.begin();it!=amici.end() && !tolto;++it)
             if((*it)==utente)
             {
-                amici.erase(it);
+//                amici.erase(it);
                 tolto=true;
                 utente->togli_seguace_ausiliario(this); // tolto dai seguaci di utente
+                amici.erase(it);
             }
         if(!tolto)
             throw amico_non_presente();

@@ -13,15 +13,6 @@ void Domanda::set_commenti(const container<Commento> com)
     commenti=com;
 }
 
-//Domanda &Domanda::operator =(const Domanda &d)
-//{
-//    if(this!=&d){
-//        delete oggetto;
-//        oggetto=d.oggetto ? d.oggetto->clone() : 0;
-//    }
-//    return *this;
-//}
-
 Domanda::Domanda()
 {
 
