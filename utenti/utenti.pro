@@ -50,8 +50,7 @@ HEADERS += accesso.h \
     vista_profilo.h \
     finestranuovadomanda.h \
     funzioniutili.h \
-    finestravistadomande.h \
-    prova.h
+    finestravistadomande.h
 FORMS +=
 SOURCES += accesso.cpp \
            amico_non_presente.cpp \
@@ -82,7 +81,6 @@ SOURCES += accesso.cpp \
     vista_profilo.cpp \
     finestranuovadomanda.cpp \
     finestravistadomande.cpp \
-    funzioniutili.cpp \
-    prova.cpp
+    funzioniutili.cpp
 
 RESOURCES +=

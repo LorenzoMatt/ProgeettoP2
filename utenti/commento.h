@@ -14,9 +14,7 @@ private:
     bool like;
 public:
     Commento(const string&,Utente *,bool l=false);
-    Commento(const string&,bool l=false);
     bool operator==(const Commento&) const;
-    void set_autore(Utente*);
     string get_testo() const;
     Utente* get_autore() const;
     void set_like(bool);

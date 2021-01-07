@@ -344,18 +344,11 @@ typename container<T>::iterator container<T>::erase(iterator i) //rimuove il nod
             ++i;
             pop_front();
         }
-//        else if (i == --end())
-//        {
-//            ++i;
-//            pop_back();
-//        }
-            if (i == --end()) {
-                        nodo* temp = last;
-                        last = last->prev;
-                        last->next = nullptr;
-                        delete temp;
-                        return end();
-                    }
+        else if (i == --end())
+        {
+            ++i;
+            pop_back();
+        }
         else
         {
             nodo * temp = i.ptr; //nodo da eliminare
@@ -368,46 +361,6 @@ typename container<T>::iterator container<T>::erase(iterator i) //rimuove il nod
     }
     return i;
 }
-
-//template<class T>
-//typename container<T>::iterator container<T>::erase(iterator i) //rimuove il nodo puntato da i iteratore valido, restituisce l'iteratore al nodo successivo
-//{
-//    if (begin() == end() && i == begin())
-//    {
-//        delete first;
-//        first = last = nullptr;
-//        return end();
-//    } else {
-//        if (i == begin()) {
-//            nodo* temp = first;
-
-//            first = first->next;
-//            first->prev = nullptr;
-//            ++i;
-
-//            temp->next = nullptr;
-//            delete temp;
-//            return i;
-//        } else if (i == --end()) {
-//            nodo* temp = last;
-//            last = last->prev;
-//            last->next = nullptr;
-//            delete temp;
-//            return end();
-//        } else {
-//            nodo* p = i.ptr->prev;
-//            nodo* s = i.ptr->next;
-//            p->next = s;
-//            s->prev = p;
-
-//            i.ptr->prev = nullptr;
-//            i.ptr->next = nullptr;
-
-//            delete i.ptr;
-//            return iterator(s, false);
-//        }
-//    }
-//}
 
 template <class T>
 container<T>::container(unsigned int k, const T &t) : last(nullptr), first(nullptr)

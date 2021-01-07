@@ -29,7 +29,7 @@ public:
 
             /*costruttori e distruttori*/
     Utente() =delete;
-    virtual ~Utente();//mi serve per sapere se distruggere le domande o meno, utilizzato in
+    virtual ~Utente();
     Utente(const Utente& u);
     Utente(string username,string password,string nome,string cognome,string email,unsigned int,unsigned int =0);
     Utente(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,container<Domanda*> d,unsigned int punti,unsigned int risposte);

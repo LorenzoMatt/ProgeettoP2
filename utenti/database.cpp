@@ -123,44 +123,19 @@ Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
                 trovato=true;
                 Profilo pf=(*it)->get_profilo();
                 Accesso credenziali=(*it)->get_credenziali();
-                container<Domanda*> dom=(*it)->get_domande();
-                container<Domanda*> domande/*=(*it)->get_domande()*/;
-                for(auto ut=dom.begin();ut!=dom.end();++ut)
-                {
-                    string testo=(*ut)->get_testo();
-//                    Utente* autore_domanda=(*ut)->get_autore_domanda();
-                    container<Commento> commenti/*=(*ut)->get_commenti()*/;
-//                    container<Commento> commenti;
-
-                    unsigned int priorita=(*ut)->get_priorita();
-                    domande.push_back(new Domanda(testo,priorita,commenti));
-                }
-
+                container<Domanda*> domande=(*it)->get_domande();
                 container<Utente*> amici=(*it)->get_amici();
                 container<Utente*> seguaci=(*it)->get_seguaci();
                 unsigned int risposte_date=(*it)->get_risposte_date();
                 unsigned int punti=(*it)->get_punti();
                 it=utenti.erase(it);
-//                Utente* u=0;
                 if(piano=="Basic")
-//                    utenti.push_back(DeepPtr<Utente>(new Basic(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                     it=utenti.insert(it,DeepPtr<Utente>(new Basic(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                 if(piano=="Gold")
-//                    utenti.push_back(DeepPtr<Utente>(new Gold(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                     it=utenti.insert(it,DeepPtr<Utente>(new Gold(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                 if(piano=="Premium")
-//                    utenti.push_back(DeepPtr<Utente>(new Premium(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
-
                     it=utenti.insert(it,DeepPtr<Utente>(new Premium(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
-
-                for(auto ut=domande.begin();ut!=domande.end();++ut)
-                {
-                    (*ut)->set_autore(&(**it));
-                }
-//                u=&*(utenti[utenti.size()]);
-//                reverse_seguaci_amici(u);
                 reverse_seguaci_amici(&(**it));
-//                return u;
                 return &(**it);
             }
         }
