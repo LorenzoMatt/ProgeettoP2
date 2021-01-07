@@ -21,7 +21,7 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Gold</tipoutente>
+        <tipoutente>Basic</tipoutente>
         <username>Lorenzo</username>
         <password>0000</password>
         <nome>diostronzo</nome>
@@ -38,7 +38,7 @@
             <titolo>ciao</titolo>
         </titoli_di_studio>
         <titoli_di_studio> mangiare e basta Forse anche dormire uuuu gfgfgfgff ciao</titoli_di_studio>
-        <punti>10</punti>
+        <punti>30</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
@@ -55,7 +55,7 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Gold</tipoutente>
+        <tipoutente>Basic</tipoutente>
         <username>Francesca</username>
         <password>0000</password>
         <nome>diostronzo</nome>
