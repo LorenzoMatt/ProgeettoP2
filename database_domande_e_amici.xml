@@ -293,7 +293,7 @@
     </utente>
     <utente>
         <username>Giorgia</username>
-        <amici>Lorenzo</amici>
+        <amici></amici>
         <domanda>
             <priorita>1</priorita>
             <testo>prova a fare una domanda</testo>

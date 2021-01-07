@@ -21,7 +21,10 @@ private:
 public:
     Domanda();
     Domanda(const string&,Utente*,unsigned int);//OK
-    Domanda(const Domanda&);//OK
+    Domanda(const string&,Utente*,unsigned int,const container<Commento>&);//OK
+    Domanda(const string&,unsigned int,const container<Commento>&);//OK
+     void set_autore(Utente*);
+
     void aggiungi_commento(const Commento&);//OK
     void rimuovi_commento(unsigned int i);//OK
     Utente* get_autore_domanda() const;//OK
