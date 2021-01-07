@@ -24,50 +24,54 @@ int main(int argc ,char** argv)
    QApplication x(argc, argv);
    // creo degli utenti amicizie e domande
 //       prova m;
-       Database m;
-       m.aggiungi_utente(new Gold("Pikachu","dioboia","diostronzo","porco","dio"));
-       m.aggiungi_utente(new Gold("Lorenzo","stronzo","diostronzo","porco","dio"));
-       m.aggiungi_utente(new Basic("Elton","diocan","diostronzo","porco","dio"));
-       m.aggiungi_utente(new Gold("Francesca","diobestia","diostronzo","porco","dio"));
-       m.aggiungi_utente(new Premium("Mirko","dioluamaro","diostronzo","porco","dio"));
-       m.aggiungi_utente(DeepPtr<Utente>(new Basic("Giorgia","dioluamaro","diostronzo","porco","dio")));
+//       Database m;
+//       m.aggiungi_utente(new Gold("Pikachu","dioboia","diostronzo","porco","dio"));
+//       m.aggiungi_utente(new Gold("Lorenzo","stronzo","diostronzo","porco","dio"));
+//       m.aggiungi_utente(new Basic("Elton","diocan","diostronzo","porco","dio"));
+//       m.aggiungi_utente(new Gold("Francesca","diobestia","diostronzo","porco","dio"));
+//       m.aggiungi_utente(new Premium("Mirko","dioluamaro","diostronzo","porco","dio"));
+//       m.aggiungi_utente(DeepPtr<Utente>(new Basic("Giorgia","dioluamaro","diostronzo","porco","dio")));
 
 
-       Utente* Lorenzo=m.get_utente("Lorenzo");
-       Utente* Elton=m.get_utente("Elton");
-       Utente* Francesca=m.get_utente("Francesca");
-       Utente* Mirko=m.get_utente("Mirko");
-       Utente* Giorgia=m.get_utente("Giorgia");
-       Utente* Pikachu=m.get_utente("Pikachu");
-       Pikachu->aggiungi_amico(Lorenzo);
-       Pikachu->AggiungiCompetenza("farsi le seghe");
-       Pikachu->AggiungiCompetenza("prendere a pugni i barboni");
-       Pikachu->AggiungiCompetenza("vendere la droga");
-       Pikachu->AggiungiTitoloDiStudio("Laurea in bere vino");
-       Pikachu->AggiungiTitoloDiStudio("Laurea in dinosauri con il cazzo lungo");
-       Lorenzo->aggiungi_amico(Pikachu);
-       Pikachu->aggiungi_amico(Elton);
-       Pikachu->aggiungi_amico(Mirko);
-       Pikachu->aggiungi_amico(Giorgia);
-       Giorgia->AggiungiCompetenza("masturbarsi");
-       Giorgia->AggiungiCompetenza("masturbarsi");
+//       Utente* Lorenzo=m.get_utente("Lorenzo");
+//       Utente* Elton=m.get_utente("Elton");
+//       Utente* Francesca=m.get_utente("Francesca");
+//       Utente* Mirko=m.get_utente("Mirko");
+//       Utente* Giorgia=m.get_utente("Giorgia");
+//       Utente* Pikachu=m.get_utente("Pikachu");
+//       Pikachu->aggiungi_amico(Lorenzo);
+//       Pikachu->aggiungi_amico(Giorgia);
+//       Pikachu->aggiungi_amico(Mirko);
+//       Pikachu->aggiungi_amico(Francesca);
 
-       Domanda* domanda1=new Domanda("sono grande?",Lorenzo,2);
-       Domanda* domanda2=new Domanda("sono bello?",Lorenzo,2);
-       Domanda* domanda3=new Domanda("sono magnanime?",Lorenzo,2);
-       Domanda* domanda4=new Domanda("sono Mirko?",Lorenzo,2);
-       Domanda* domanda5=new Domanda("sono Lorenzo?",Lorenzo,2);
+//       Pikachu->AggiungiCompetenza("farsi le seghe");
+//       Pikachu->AggiungiCompetenza("prendere a pugni i barboni");
+//       Pikachu->AggiungiCompetenza("vendere la droga");
+//       Pikachu->AggiungiTitoloDiStudio("Laurea in bere vino");
+//       Pikachu->AggiungiTitoloDiStudio("Laurea in dinosauri con il cazzo lungo");
+//       Lorenzo->aggiungi_amico(Pikachu);
+//       Pikachu->aggiungi_amico(Elton);
+//       Pikachu->aggiungi_amico(Mirko);
+//       Pikachu->aggiungi_amico(Giorgia);
+//       Giorgia->AggiungiCompetenza("masturbarsi");
+//       Giorgia->AggiungiCompetenza("masturbarsi");
 
-       Lorenzo->fai_domanda(domanda1);
-       Lorenzo->fai_domanda(domanda2);
-       Lorenzo->fai_domanda(domanda3);
-       Lorenzo->fai_domanda(domanda4);
-       Lorenzo->fai_domanda(domanda5);
-       Pikachu->scrivi_commento(domanda1,"dio porco");
-       Pikachu->scrivi_commento(domanda1,"la madonna");
-       Pikachu->scrivi_commento(domanda1,"gesu");
-       Pikachu->fai_domanda(new Domanda("prova a fare una domanda",Pikachu,2));
-       Pikachu->fai_domanda(new Domanda("prova a fare una domanda",Pikachu,2));
+//       Domanda* domanda1=new Domanda("sono grande?",Lorenzo,2);
+//       Domanda* domanda2=new Domanda("sono bello?",Lorenzo,2);
+//       Domanda* domanda3=new Domanda("sono magnanime?",Lorenzo,2);
+//       Domanda* domanda4=new Domanda("sono Mirko?",Lorenzo,2);
+//       Domanda* domanda5=new Domanda("sono Lorenzo?",Lorenzo,2);
+
+//       Lorenzo->fai_domanda(domanda1);
+//       Lorenzo->fai_domanda(domanda2);
+//       Lorenzo->fai_domanda(domanda3);
+//       Lorenzo->fai_domanda(domanda4);
+//       Lorenzo->fai_domanda(domanda5);
+//       Lorenzo->scrivi_commento(domanda1,"dio porco");
+//       Pikachu->scrivi_commento(domanda1,"la madonna");
+//       Pikachu->scrivi_commento(domanda1,"gesu");
+//       Elton->fai_domanda(new Domanda("prova a fare una domanda",Elton,2));
+//       Pikachu->fai_domanda(new Domanda("prova a fare una domanda",Pikachu,2));
 //       Giorgia->fai_domanda(new Domanda("prova a fare una domanda",Giorgia,1));
 //       Giorgia->fai_domanda(new Domanda("prova a fare una domanda",Giorgia,1));
 //       Giorgia->fai_domanda(new Domanda("prova a fare una domanda",Giorgia,1));
@@ -80,20 +84,21 @@ int main(int argc ,char** argv)
 //       Giorgia->scrivi_commento(domanda2,"prova per un commento");
 
 
-       if(dynamic_cast<Premium*>(Pikachu))
-           cout<<"è premium prima del campio"<<endl;
-       else
-           cout<<"non è premium prima del campio"<<endl;
+//       if(dynamic_cast<Premium*>(Lorenzo))
+//           cout<<"è premium prima del campio"<<endl;
+//       else
+//           cout<<"non è premium prima del campio"<<endl;
 
 
-       Pikachu=m.cambia_piano(Pikachu,"Premium");
+//       Lorenzo=m.cambia_piano(Lorenzo,"Premium");
 
-       if(dynamic_cast<Premium*>(Pikachu))
-           cout<<"è premium dopo del campio"<<endl;
-       else
-           cout<<"non è premium dopo del campio"<<endl;
+//       if(dynamic_cast<Premium*>(Lorenzo))
+//           cout<<"è premium dopo del cambio"<<endl;
+//       else
+//           cout<<"non è premium dopo del cambio"<<endl;
 
 
+////       cout<<Lorenzo->get_domande();
 
 //       m.exportdati();
 //       m.import();
@@ -114,10 +119,10 @@ int main(int argc ,char** argv)
 //    cout<<"non ok";
 
 
-//    Login v;
+    Login v;
 
-//    v.show();
-//    return x.exec();
+    v.show();
+    return x.exec();
 
 //   cout<<m.get_utente("Giorgia")->get_seguaci().size();
 //    Account a("Pikachu");

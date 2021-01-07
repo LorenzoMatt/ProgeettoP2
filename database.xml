@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <campi_dati_utenti>
     <utente>
-        <tipoutente>Premium</tipoutente>
+        <tipoutente>Gold</tipoutente>
         <username>Pikachu</username>
         <password>dioboia</password>
         <nome>diostronzo</nome>
@@ -30,11 +30,11 @@
         <competenze/>
         <titoli_di_studio/>
         <titoli_di_studio></titoli_di_studio>
-        <punti>10</punti>
+        <punti>60</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Basic</tipoutente>
+        <tipoutente>Gold</tipoutente>
         <username>Elton</username>
         <password>diocan</password>
         <nome>diostronzo</nome>
@@ -43,7 +43,7 @@
         <competenze/>
         <titoli_di_studio/>
         <titoli_di_studio></titoli_di_studio>
-        <punti>30</punti>
+        <punti>50</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
@@ -56,11 +56,11 @@
         <competenze/>
         <titoli_di_studio/>
         <titoli_di_studio></titoli_di_studio>
-        <punti>50</punti>
+        <punti>60</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Premium</tipoutente>
+        <tipoutente>Gold</tipoutente>
         <username>Mirko</username>
         <password>dioluamaro</password>
         <nome>diostronzo</nome>
@@ -73,16 +73,19 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Basic</tipoutente>
+        <tipoutente>Gold</tipoutente>
         <username>Giorgia</username>
         <password>dioluamaro</password>
         <nome>diostronzo</nome>
         <cognome>porco</cognome>
         <email>dio</email>
-        <competenze/>
+        <competenze>
+            <competenza>masturbarsi</competenza>
+            <competenza>masturbarsi</competenza>
+        </competenze>
         <titoli_di_studio/>
         <titoli_di_studio></titoli_di_studio>
-        <punti>0</punti>
+        <punti>60</punti>
         <risposte_date>0</risposte_date>
     </utente>
 </campi_dati_utenti>

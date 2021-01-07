@@ -3,6 +3,11 @@
 
 Commento::Commento(const string& t, Utente* u, bool l):testo(t),autore(u),like(l){}
 
+Commento::Commento(const string & t, bool l) : testo(t),like(l),autore(nullptr)
+{
+
+}
+
 string Commento::get_testo() const{
     return testo;
 }
@@ -21,6 +26,11 @@ bool Commento::get_like() const
 }
 bool Commento:: operator==(const Commento& c) const{
     return testo==c.get_testo() && autore==c.get_autore();
+}
+
+void Commento::set_autore(Utente * u)
+{
+    autore=u;
 }
 
 std::ostream &operator<<(std::ostream & os, const Commento& c){

@@ -2,94 +2,11 @@
 <domande_e_amici>
     <utente>
         <username>Pikachu</username>
-        <amici>Lorenzo Elton Mirko Giorgia</amici>
-        <domanda>
-            <priorita>3</priorita>
-            <testo>prova a fare una domanda</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>3</priorita>
-            <testo>prova a fare una domanda</testo>
-            <commenti/>
-        </domanda>
+        <amici></amici>
     </utente>
     <utente>
         <username>Lorenzo</username>
-        <amici>Pikachu</amici>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>sono Lorenzo?</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>sono Mirko?</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>sono magnanime?</testo>
-            <commenti>
-                <commento>
-                    <testo>prova per un commento</testo>
-                    <autore_commento>Giorgia</autore_commento>
-                    <like>0</like>
-                </commento>
-            </commenti>
-        </domanda>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>sono bello?</testo>
-            <commenti>
-                <commento>
-                    <testo>prova per un commento</testo>
-                    <autore_commento>Giorgia</autore_commento>
-                    <like>0</like>
-                </commento>
-                <commento>
-                    <testo>prova per un commento</testo>
-                    <autore_commento>Giorgia</autore_commento>
-                    <like>0</like>
-                </commento>
-            </commenti>
-        </domanda>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>sono grande?</testo>
-            <commenti>
-                <commento>
-                    <testo>dio porco</testo>
-                    <autore_commento>Pikachu</autore_commento>
-                    <like>0</like>
-                </commento>
-                <commento>
-                    <testo>la madonna</testo>
-                    <autore_commento>Pikachu</autore_commento>
-                    <like>0</like>
-                </commento>
-                <commento>
-                    <testo>gesu</testo>
-                    <autore_commento>Pikachu</autore_commento>
-                    <like>0</like>
-                </commento>
-                <commento>
-                    <testo>prova per un commento</testo>
-                    <autore_commento>Giorgia</autore_commento>
-                    <like>0</like>
-                </commento>
-                <commento>
-                    <testo>prova per un commento</testo>
-                    <autore_commento>Giorgia</autore_commento>
-                    <like>0</like>
-                </commento>
-                <commento>
-                    <testo>prova per un commento</testo>
-                    <autore_commento>Giorgia</autore_commento>
-                    <like>0</like>
-                </commento>
-            </commenti>
-        </domanda>
+        <amici></amici>
     </utente>
     <utente>
         <username>Elton</username>
@@ -106,20 +23,5 @@
     <utente>
         <username>Giorgia</username>
         <amici></amici>
-        <domanda>
-            <priorita>1</priorita>
-            <testo>prova a fare una domanda</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>1</priorita>
-            <testo>prova a fare una domanda</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>1</priorita>
-            <testo>prova a fare una domanda</testo>
-            <commenti/>
-        </domanda>
     </utente>
 </domande_e_amici>
