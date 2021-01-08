@@ -20,7 +20,7 @@
                 <commento>
                     <testo>prova dio</testo>
                     <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
+                    <like>1</like>
                 </commento>
                 <commento>
                     <testo>xxxx</testo>
@@ -31,6 +31,16 @@
                     <testo>xxxxss</testo>
                     <autore_commento>Lorenzo</autore_commento>
                     <like>0</like>
+                </commento>
+                <commento>
+                    <testo>sono giorgia</testo>
+                    <autore_commento>Giorgia</autore_commento>
+                    <like>1</like>
+                </commento>
+                <commento>
+                    <testo>chiama </testo>
+                    <autore_commento>Giorgia</autore_commento>
+                    <like>1</like>
                 </commento>
             </commenti>
         </domanda>
@@ -58,7 +68,7 @@
     </utente>
     <utente>
         <username>Lorenzo</username>
-        <amici>Pikachu Elton Giorgia</amici>
+        <amici>Elton Giorgia Pikachu</amici>
         <domanda>
             <priorita>2</priorita>
             <testo>prova</testo>
@@ -265,7 +275,7 @@
     </utente>
     <utente>
         <username>Giorgia</username>
-        <amici>Elton Lorenzo</amici>
+        <amici>Elton Lorenzo Pikachu</amici>
         <domanda>
             <priorita>1</priorita>
             <testo>prova a fare una domanda</testo>

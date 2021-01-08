@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <campi_dati_utenti>
     <utente>
-        <tipoutente>Premium</tipoutente>
+        <tipoutente>Basic</tipoutente>
         <username>Pikachu</username>
         <password>0000</password>
         <nome>Pikachu</nome>
@@ -20,7 +20,7 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Premium</tipoutente>
+        <tipoutente>Basic</tipoutente>
         <username>Lorenzo</username>
         <password>0000</password>
         <nome>Lorenzo</nome>
@@ -33,8 +33,8 @@
         <titoli_di_studio>
             <titolo>nessuna</titolo>
         </titoli_di_studio>
-        <punti>60</punti>
-        <risposte_date>0</risposte_date>
+        <punti>180</punti>
+        <risposte_date>6</risposte_date>
     </utente>
     <utente>
         <tipoutente>Basic</tipoutente>
@@ -84,7 +84,7 @@
             <competenza>ruttare</competenza>
         </competenze>
         <titoli_di_studio/>
-        <punti>45</punti>
-        <risposte_date>1</risposte_date>
+        <punti>150</punti>
+        <risposte_date>8</risposte_date>
     </utente>
 </campi_dati_utenti>

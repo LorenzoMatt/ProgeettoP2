@@ -35,7 +35,7 @@ public:
     bool operator >=(const Domanda&) const;//OK
     bool operator >(const Domanda&) const;
     unsigned int get_priorita() const;//OK
-    container<Commento> get_commenti() const;//OK
+    container<Commento> &get_commenti();//OK
     void set_commenti(const container<Commento>);
 };
 

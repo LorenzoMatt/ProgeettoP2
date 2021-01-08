@@ -3,7 +3,7 @@
 
 
 
-container<Commento> Domanda::get_commenti() const
+container<Commento>& Domanda::get_commenti()
 {
     return commenti;
 }
