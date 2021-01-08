@@ -246,6 +246,11 @@ container<Domanda *> Utente::get_domande() const
     return domande;
 }
 
+container<Domanda *> &Utente::get_domande_rif()
+{
+    return domande;
+}
+
 const container<Utente *> &Utente::get_amici() const
 {
     return amici;

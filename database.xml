@@ -20,7 +20,7 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Basic</tipoutente>
+        <tipoutente>Premium</tipoutente>
         <username>Lorenzo</username>
         <password>0000</password>
         <nome>Lorenzo</nome>
@@ -29,12 +29,13 @@
         <competenze>
             <competenza>Giocare a nascondino</competenza>
             <competenza>mangiare molto</competenza>
+            <competenza>giocare</competenza>
         </competenze>
         <titoli_di_studio>
             <titolo>nessuna</titolo>
         </titoli_di_studio>
-        <punti>180</punti>
-        <risposte_date>6</risposte_date>
+        <punti>200</punti>
+        <risposte_date>7</risposte_date>
     </utente>
     <utente>
         <tipoutente>Basic</tipoutente>
@@ -86,5 +87,29 @@
         <titoli_di_studio/>
         <punti>150</punti>
         <risposte_date>8</risposte_date>
+    </utente>
+    <utente>
+        <tipoutente>Basic</tipoutente>
+        <username>ciao</username>
+        <password>0000</password>
+        <nome>gigi</nome>
+        <cognome>buffon</cognome>
+        <email>ghdfj</email>
+        <competenze/>
+        <titoli_di_studio/>
+        <punti>15</punti>
+        <risposte_date>0</risposte_date>
+    </utente>
+    <utente>
+        <tipoutente>Gold</tipoutente>
+        <username>toto</username>
+        <password>0000</password>
+        <nome>toto</nome>
+        <cognome>igor</cognome>
+        <email>dfdfd</email>
+        <competenze/>
+        <titoli_di_studio/>
+        <punti>38</punti>
+        <risposte_date>0</risposte_date>
     </utente>
 </campi_dati_utenti>

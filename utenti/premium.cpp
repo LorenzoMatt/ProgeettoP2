@@ -58,7 +58,7 @@ void Premium::fai_domanda(Domanda *domanda)
     if(punti>=punti_da_sottrarre)
     {
         punti-=punti_da_sottrarre;
-        get_domande().push_front(domanda);
+        get_domande_rif().push_front(domanda);
     }
     else
     {

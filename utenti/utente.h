@@ -40,6 +40,8 @@ static int numeroelementi;
     container<Utente*>& get_amici();
     const container<Utente *> &get_seguaci() const;
     container<Domanda *> get_domande() const;
+    container<Domanda *>& get_domande_rif();
+
     const container<Utente* > & get_amici() const;
     unsigned int get_punti() const;//OK
     unsigned int get_risposte_date() const; //serve per ottenere un bonus
