@@ -4,9 +4,9 @@
         <tipoutente>Premium</tipoutente>
         <username>Pikachu</username>
         <password>0000</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
+        <nome>Pikachu</nome>
+        <cognome>Pikachu</cognome>
+        <email>Pikachu</email>
         <competenze>
             <competenza>farsi le seghe</competenza>
             <competenza>prendere a pugni i barboni</competenza>
@@ -16,54 +16,30 @@
             <titolo>Laurea in bere vino</titolo>
             <titolo>Laurea in dinosauri con il cazzo lungo</titolo>
         </titoli_di_studio>
-        <titoli_di_studio> Laurea in bere vino Laurea in dinosauri con il cazzo lungo</titoli_di_studio>
         <punti>50</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
         <tipoutente>Basic</tipoutente>
-        <username>Lorenzo</username>
+        <username>Elton</username>
         <password>0000</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
-        <competenze>
-            <competenza>lavare i piatti</competenza>
-        </competenze>
-        <titoli_di_studio>
-            <titolo>mangiare e basta</titolo>
-            <titolo>Forse anche dormire</titolo>
-            <titolo>uuuu</titolo>
-            <titolo>gfgfgfgff</titolo>
-            <titolo>ciao</titolo>
-        </titoli_di_studio>
-        <titoli_di_studio> mangiare e basta Forse anche dormire uuuu gfgfgfgff ciao</titoli_di_studio>
-        <punti>30</punti>
+        <nome>Elton</nome>
+        <cognome>Ibra</cognome>
+        <email>elton.ibra@gmail.com</email>
+        <competenze/>
+        <titoli_di_studio/>
+        <punti>20</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
         <tipoutente>Gold</tipoutente>
-        <username>Elton</username>
-        <password>0000</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
-        <competenze/>
-        <titoli_di_studio/>
-        <titoli_di_studio></titoli_di_studio>
-        <punti>50</punti>
-        <risposte_date>0</risposte_date>
-    </utente>
-    <utente>
-        <tipoutente>Basic</tipoutente>
         <username>Francesca</username>
         <password>0000</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
+        <nome>Francesca</nome>
+        <cognome>Mari</cognome>
+        <email>francesca.mari@gmail.com</email>
         <competenze/>
         <titoli_di_studio/>
-        <titoli_di_studio></titoli_di_studio>
         <punti>50</punti>
         <risposte_date>0</risposte_date>
     </utente>
@@ -71,12 +47,11 @@
         <tipoutente>Premium</tipoutente>
         <username>Mirko</username>
         <password>0000</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
+        <nome>Mirko</nome>
+        <cognome>Stella</cognome>
+        <email>miko.stella@gmail.com</email>
         <competenze/>
         <titoli_di_studio/>
-        <titoli_di_studio></titoli_di_studio>
         <punti>60</punti>
         <risposte_date>0</risposte_date>
     </utente>
@@ -84,17 +59,15 @@
         <tipoutente>Basic</tipoutente>
         <username>Giorgia</username>
         <password>0000</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
+        <nome>Giorgia</nome>
+        <cognome>Giorgia</cognome>
+        <email>Giorgia</email>
         <competenze>
-            <competenza>masturbarsi</competenza>
-            <competenza>masturbarsi</competenza>
-            <competenza>masturbarsi giocare a biliardo</competenza>
+            <competenza>mangiare e dormire</competenza>
+            <competenza>ruttare</competenza>
         </competenze>
         <titoli_di_studio/>
-        <titoli_di_studio></titoli_di_studio>
-        <punti>15</punti>
+        <punti>45</punti>
         <risposte_date>1</risposte_date>
     </utente>
 </campi_dati_utenti>

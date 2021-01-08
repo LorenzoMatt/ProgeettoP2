@@ -124,7 +124,7 @@ Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
                 Profilo pf=(*it)->get_profilo();
                 Accesso credenziali=(*it)->get_credenziali();
                 container<Domanda*> dom=(*it)->get_domande();
-                container<Domanda*> domande/*=(*it)->get_domande()*/;
+                container<Domanda*> domande;
                 for(auto ut=dom.begin();ut!=dom.end();++ut)
                 {
                     string testo=(*ut)->get_testo();
@@ -262,7 +262,6 @@ void Database::exportdati() const
                     inp->writeTextElement("titolo",QString::fromStdString(*tit));
 
                 inp->writeEndElement();// fine dei titoli di studio
-                inp->writeTextElement("titoli_di_studio", QString::fromStdString(((*it)->get_profilo()).titoli_di_studio_toString()));
                 inp->writeTextElement("punti", QString::fromStdString(std::to_string(((*it)->get_punti()))));
                 inp->writeTextElement("risposte_date", QString::fromStdString(std::to_string(((*it)->get_risposte_date()))));
                 inp->writeEndElement();// fine di un utente

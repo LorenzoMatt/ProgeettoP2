@@ -69,7 +69,7 @@ public:
                 /*virtual*/
     virtual void cerca_utente(const string&,const Database&, container<string>&) const =0;//OK quando implementeremo le classi polimorfe dovrà andare tolto l'ultimo intero da passare alla funzione
     virtual void get_punti_domanda() =0; //virtual
-    virtual container<Domanda*> cerca_domanda(const string&,const Database&) const =0;//OK per adesso contiene un container di domande, in utente basic la domanda viene cercata solo negli amici mentre negli account a pagamento nel modello
+    virtual container<Domanda*> cerca_domanda(const string&,const Database&) const =0;
     virtual void fai_domanda(Domanda* domanda)=0;
     virtual Utente* clone() const=0;
 
