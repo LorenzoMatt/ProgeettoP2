@@ -7,7 +7,7 @@ void vista_domanda::aggiungiWidgetDomanda(Domanda* d)
     QTextEdit* testoDomanda=new QTextEdit(QString::fromStdString(d->get_testo()));
     testoDomanda->setReadOnly(true);
 
-    QString autoreDomanda=QString::fromStdString(d->get_autore_domanda());
+    QString autoreDomanda=QString::fromStdString(d->get_autore_domanda()->get_credenziali().get_username());
     QLabel* autore=new QLabel(autoreDomanda);
     autore->setBuddy(testoDomanda);
     bloccoDomanda->addWidget(autore);
@@ -45,7 +45,7 @@ void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
 
 
         QHBoxLayout* valutaCommento=new QHBoxLayout;
-        QString autoreDomanda=QString::fromStdString(d->get_autore_domanda());
+        QString autoreDomanda=QString::fromStdString(d->get_autore_domanda()->get_credenziali().get_username());
         if(utente==autoreDomanda)
         {
             QPushButton* rimuovi=new QPushButton("rimuovi");

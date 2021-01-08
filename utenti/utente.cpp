@@ -14,7 +14,7 @@ Utente::~Utente()
 {
 //    cout<<numeroelementi<<" distruttore utente"<<endl;
 //    numeroelementi--;
-//    for(auto it=domande.begin();it!=domande.end();++it) lo fa gia il distruttore di container
+//     for(auto it=domande.begin();it!=domande.end();++it)
 //        delete *it;
 }
 
@@ -241,7 +241,7 @@ const container<Utente *> &Utente::get_seguaci() const // OK
     return seguaci;
 }
 
-container<Domanda *> &Utente::get_domande()
+container<Domanda *> Utente::get_domande() const
 {
     return domande;
 }

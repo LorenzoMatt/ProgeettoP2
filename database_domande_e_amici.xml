@@ -2,7 +2,7 @@
 <domande_e_amici>
     <utente>
         <username>Pikachu</username>
-        <amici>Lorenzo Elton Mirko Francesca</amici>
+        <amici>Elton Mirko Francesca Lorenzo</amici>
         <domanda>
             <priorita>2</priorita>
             <testo>sono pikachu</testo>
@@ -98,11 +98,6 @@
             <priorita>2</priorita>
             <testo>ciaoooo</testo>
             <commenti>
-                <commento>
-                    <testo>Ciaoooo</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
-                </commento>
                 <commento>
                     <testo>prova</testo>
                     <autore_commento>Lorenzo</autore_commento>

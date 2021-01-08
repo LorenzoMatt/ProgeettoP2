@@ -3,7 +3,7 @@
 
 
 
-container<Commento> &Domanda::get_commenti()
+container<Commento> Domanda::get_commenti() const
 {
     return commenti;
 }
@@ -32,21 +32,13 @@ Domanda::Domanda(const std::string & s, unsigned int p, const container<Commento
 }
 void Domanda::set_autore(Utente *u)
 {
-//    delete autore_domanda;
     autore_domanda=u;
 }
 
 void Domanda::aggiungi_commento(const Commento& c){
     commenti.push_back(c);
 }
-//void Domanda::rimuovi_commento(const Commento& c){
-//    bool sent=false;
-//    for(auto it=commenti.begin();it!=commenti.end() && !sent;++it)
-//        if((*it)==c){
-//            commenti.erase(it);
-//            sent=true;
-//        }
-//}
+
 void Domanda::rimuovi_commento(unsigned int i){
 
     if(i<commenti.size())

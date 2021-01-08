@@ -292,7 +292,8 @@ void Database::exportdati() const
                 inp->writeStartElement("utente");
                 inp->writeTextElement("username",QString::fromStdString(((*it)->get_credenziali()).get_username()));
                 inp->writeTextElement("amici",QString::fromStdString((*it)->get_username_amici()));
-                for(auto d=(*it)->get_domande().begin();d!=(*it)->get_domande().end();++d)
+                container<Domanda*> con=(*it)->get_domande();
+                for(auto d=con.begin();d!=con.end();++d)
                 {
                     inp->writeStartElement("domanda");
                     inp->writeTextElement("priorita",QString::fromStdString(std::to_string((*d)->get_priorita())));

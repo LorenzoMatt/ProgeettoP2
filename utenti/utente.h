@@ -39,7 +39,7 @@ static int numeroelementi;
     Accesso get_credenziali();//OK
     container<Utente*>& get_amici();
     const container<Utente *> &get_seguaci() const;
-    container<Domanda *>& get_domande();
+    container<Domanda *> get_domande() const;
     const container<Utente* > & get_amici() const;
     unsigned int get_punti() const;//OK
     unsigned int get_risposte_date() const; //serve per ottenere un bonus
