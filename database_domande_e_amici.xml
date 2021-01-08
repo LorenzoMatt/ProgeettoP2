@@ -2,7 +2,7 @@
 <domande_e_amici>
     <utente>
         <username>Pikachu</username>
-        <amici>Elton Mirko Francesca Lorenzo</amici>
+        <amici>Lorenzo Elton Francesca Mirko</amici>
         <domanda>
             <priorita>2</priorita>
             <testo>sono pikachu</testo>
@@ -68,7 +68,7 @@
     </utente>
     <utente>
         <username>Lorenzo</username>
-        <amici>Elton Giorgia Pikachu toto</amici>
+        <amici>Pikachu Elton Giorgia toto</amici>
         <domanda>
             <priorita>2</priorita>
             <testo>prova</testo>
@@ -275,7 +275,7 @@
     </utente>
     <utente>
         <username>Giorgia</username>
-        <amici>Elton Pikachu Lorenzo</amici>
+        <amici>Pikachu Lorenzo Elton</amici>
         <domanda>
             <priorita>1</priorita>
             <testo>prova a fare una domanda</testo>
@@ -311,6 +311,11 @@
     <utente>
         <username>toto</username>
         <amici></amici>
+        <domanda>
+            <priorita>2</priorita>
+            <testo>ciao?</testo>
+            <commenti/>
+        </domanda>
         <domanda>
             <priorita>3</priorita>
             <testo>perche ci ho messo cosi tanto?</testo>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <campi_dati_utenti>
     <utente>
-        <tipoutente>Basic</tipoutente>
+        <tipoutente>Gold</tipoutente>
         <username>Pikachu</username>
         <password>0000</password>
         <nome>Pikachu</nome>
@@ -20,7 +20,7 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Premium</tipoutente>
+        <tipoutente>Gold</tipoutente>
         <username>Lorenzo</username>
         <password>0000</password>
         <nome>Lorenzo</nome>
@@ -38,7 +38,7 @@
         <risposte_date>7</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Basic</tipoutente>
+        <tipoutente>Gold</tipoutente>
         <username>Elton</username>
         <password>0000</password>
         <nome>Elton</nome>
@@ -46,11 +46,11 @@
         <email>elton.ibra@gmail.com</email>
         <competenze/>
         <titoli_di_studio/>
-        <punti>30</punti>
+        <punti>50</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Gold</tipoutente>
+        <tipoutente>Premium</tipoutente>
         <username>Francesca</username>
         <password>0000</password>
         <nome>Francesca</nome>
@@ -58,11 +58,11 @@
         <email>francesca.mari@gmail.com</email>
         <competenze/>
         <titoli_di_studio/>
-        <punti>50</punti>
+        <punti>60</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Premium</tipoutente>
+        <tipoutente>Basic</tipoutente>
         <username>Mirko</username>
         <password>0000</password>
         <nome>Mirko</nome>
@@ -74,7 +74,7 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Basic</tipoutente>
+        <tipoutente>Gold</tipoutente>
         <username>Giorgia</username>
         <password>0000</password>
         <nome>Giorgia</nome>
@@ -89,7 +89,7 @@
         <risposte_date>8</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Basic</tipoutente>
+        <tipoutente>Gold</tipoutente>
         <username>ciao</username>
         <password>0000</password>
         <nome>gigi</nome>
@@ -97,7 +97,7 @@
         <email>ghdfj</email>
         <competenze/>
         <titoli_di_studio/>
-        <punti>15</punti>
+        <punti>50</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
@@ -107,9 +107,13 @@
         <nome>toto</nome>
         <cognome>igor</cognome>
         <email>dfdfd</email>
-        <competenze/>
-        <titoli_di_studio/>
-        <punti>38</punti>
+        <competenze>
+            <competenza>tirare a caso</competenza>
+        </competenze>
+        <titoli_di_studio>
+            <titolo>media</titolo>
+        </titoli_di_studio>
+        <punti>42</punti>
         <risposte_date>0</risposte_date>
     </utente>
 </campi_dati_utenti>
