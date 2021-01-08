@@ -7,7 +7,7 @@ void vista_domanda::aggiungiWidgetDomanda(Domanda* d)
     QTextEdit* testoDomanda=new QTextEdit(QString::fromStdString(d->get_testo()));
     testoDomanda->setReadOnly(true);
 
-    QString autoreDomanda=QString::fromStdString(d->get_autore_domanda()->get_credenziali().get_username());
+    QString autoreDomanda=QString::fromStdString(d->get_autore_domanda());
     QLabel* autore=new QLabel(autoreDomanda);
     autore->setBuddy(testoDomanda);
     bloccoDomanda->addWidget(autore);
@@ -37,7 +37,7 @@ void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
         testoCommento->setReadOnly(true);
 
         //etichetta autore domanda
-        QString autoreCommento=QString::fromStdString(it->get_autore()->get_credenziali().get_username());
+        QString autoreCommento=QString::fromStdString(it->get_autore());
         QLabel* autore=new QLabel(autoreCommento);
         autore->setBuddy(testoCommento);
         bloccoCommenti->addWidget(autore);
@@ -45,7 +45,7 @@ void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
 
 
         QHBoxLayout* valutaCommento=new QHBoxLayout;
-        QString autoreDomanda=QString::fromStdString(d->get_autore_domanda()->get_credenziali().get_username());
+        QString autoreDomanda=QString::fromStdString(d->get_autore_domanda());
         if(utente==autoreDomanda)
         {
             QPushButton* rimuovi=new QPushButton("rimuovi");
@@ -63,8 +63,8 @@ void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
             signalMapperRimuovi->setMapping(rimuovi,num_commento);
         }
     }
-    connect(signalMapperLike,SIGNAL(mapped(int)),SLOT(buildLike(int)));
-    connect(signalMapperRimuovi,SIGNAL(mapped(int)),SLOT(buildRimuovi(int)));
+    connect(signalMapperLike,SIGNAL(mappedInt(int)),SLOT(buildLike(int)));
+    connect(signalMapperRimuovi,SIGNAL(mappedInt(int)),SLOT(buildRimuovi(int)));
     scrollwidgetLayout->addLayout(bloccoCommenti);
 }
 

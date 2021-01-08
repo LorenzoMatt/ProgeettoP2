@@ -33,7 +33,7 @@ public:
     Utente(const Utente& u);
     Utente(string username,string password,string nome,string cognome,string email,unsigned int,unsigned int =0);
     Utente(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,container<Domanda*> d,unsigned int punti,unsigned int risposte);
-
+static int numeroelementi;
                      /*getter*/
     Profilo &get_profilo();//OK
     Accesso get_credenziali();//OK
@@ -59,8 +59,8 @@ public:
     void AggiungiTitoloDiStudio (const string&); //OK
     void set_nome_profilo(const string&);
     void dai_punti(Utente*) const;
-    string get_username_amici() const; //OK
-    string get_username_seguaci() const;
+    string get_username_amici() const; //serve per la creazione del file xml
+    string get_username_seguaci() const; //serve per la creazione del file xml
     void scrivi_commento(Domanda* d, string risposta);
     void fai_domanda(const string&, unsigned int);
     void set_domande(container<Domanda*>);

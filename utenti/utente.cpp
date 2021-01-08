@@ -1,6 +1,7 @@
 #include "utente.h"
 
 
+int Utente:: numeroelementi=0;
 
 std::ostream &operator<<(std::ostream &os, const Utente &u) //OK
 {
@@ -11,8 +12,10 @@ std::ostream &operator<<(std::ostream &os, const Utente &u) //OK
 
 Utente::~Utente()
 {
-    for(auto it=domande.begin();it!=domande.end();++it)
-        delete *it;
+//    cout<<numeroelementi<<" distruttore utente"<<endl;
+//    numeroelementi--;
+//    for(auto it=domande.begin();it!=domande.end();++it) lo fa gia il distruttore di container
+//        delete *it;
 }
 
 Utente::Utente(const Utente &u):pf(u.pf),credenziali(u.credenziali),amici(u.amici),seguaci(u.seguaci),domande(u.domande),punti(u.punti),risposte_date(u.risposte_date)
@@ -22,7 +25,10 @@ Utente::Utente(const Utente &u):pf(u.pf),credenziali(u.credenziali),amici(u.amic
 
 
 Utente::Utente(std::string username, std::string password, std::string nome, std::string cognome, std::string email, unsigned int punti, unsigned int risposte)
-    :pf(Profilo(nome,cognome,email)),credenziali(Accesso(username,password)),punti(punti),risposte_date(risposte){}
+    :pf(Profilo(nome,cognome,email)),credenziali(Accesso(username,password)),punti(punti),risposte_date(risposte){
+
+//    numeroelementi++;
+}
 
 Utente::Utente(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d, unsigned int punti, unsigned int risposte)
     :pf(p),credenziali(c),amici(a),seguaci(s),domande(d),punti(punti),risposte_date(risposte)

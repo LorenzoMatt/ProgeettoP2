@@ -14,7 +14,7 @@ unsigned int Premium::supplementoDomandaPriorita=3;
 Premium::Premium(std::string username, std::string password, std::string nome, std::string cognome, std::string email, unsigned int punti, unsigned int risposte_date)
     :Pagamento(username,password,nome,cognome,email,punti,risposte_date)
 {
-
+    cout<<"premium";
 }
 
 Premium::Premium(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d, unsigned int punti, unsigned int risposte)

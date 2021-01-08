@@ -15,22 +15,26 @@
 //#include "vista_amministratore.h"
 
 
-////////////ATTENZIONE!!! HO ESCLUSO LOGIN DAL PROGETTO PERCHE E' DA DEFINIRE MEGLIO E NON MI PERMETTEVA
-/// DI TESTARE LA VISTA UTETE.
+
 int main(int argc ,char** argv)
 {
 
    QApplication x(argc, argv);
+   Login v;
 
-//   // creo degli utenti amicizie e domande
-    //   m.aggiungi_utente(new Premium("Pikachu","dioboia","diostronzo","porco","dio"));
+   v.show();
+   return x.exec();
+
+   // creo degli utenti amicizie e domande
+
+    //vengono creati 6 utenti
 //       Database m;
-//       m.aggiungi_utente(new Premium("Pikachu","dioboia","diostronzo","porco","dio"));
-//       m.aggiungi_utente(new Gold("Lorenzo","stronzo","diostronzo","porco","dio"));
-//       m.aggiungi_utente(new Basic("Elton","diocan","diostronzo","porco","dio"));
-//       m.aggiungi_utente(new Gold("Francesca","diobestia","diostronzo","porco","dio"));
-//       m.aggiungi_utente(new Premium("Mirko","dioluamaro","diostronzo","porco","dio"));
-//       m.aggiungi_utente(DeepPtr<Utente>(new Basic("Giorgia","dioluamaro","diostronzo","porco","dio")));
+//       m.aggiungi_utente(new Premium("Pikachu","dioboia","pikachu","porco","dio"));
+//       m.aggiungi_utente(new Gold("Lorenzo","stronzo","lorenzo","porco","dio"));
+//       m.aggiungi_utente(new Basic("Elton","diocan","elton","porco","dio"));
+//       m.aggiungi_utente(new Gold("Francesca","diobestia","francesca","porco","dio"));
+//       m.aggiungi_utente(new Premium("Mirko","dioluamaro","mirko","porco","dio"));
+//       m.aggiungi_utente(DeepPtr<Utente>(new Basic("Giorgia","giorgia","diostronzo","porco","dio")));
 
 
 //       Utente* Lorenzo=m.get_utente("Lorenzo");
@@ -39,7 +43,7 @@ int main(int argc ,char** argv)
 //       Utente* Mirko=m.get_utente("Mirko");
 //       Utente* Giorgia=m.get_utente("Giorgia");
 //       Utente* Pikachu=m.get_utente("Pikachu");
-//    //   Pikachu->aggiungi_amico(*Pikachu);
+
 //       Pikachu->aggiungi_amico(Lorenzo);
 //       Pikachu->AggiungiCompetenza("farsi le seghe");
 //       Pikachu->AggiungiCompetenza("prendere a pugni i barboni");
@@ -80,32 +84,10 @@ int main(int argc ,char** argv)
 //       Giorgia->scrivi_commento(domanda3,"prova per un commento");
 //       Giorgia->scrivi_commento(domanda2,"prova per un commento");
 //       m.exportdati();
+
+
+
+
 //       m.import();
-////       cout<<m.get_utente("Giorgia")->get_profilo().GetCompetenze();
-//Account a(m.get_utente("Lorenzo"),&m);
-
-//a.cambia_piano("Basic");
-
-//m.aggiungi_utente(new Basic("ciao","ddd","ddd","sss","ddd"));
-//m.aggiungi_utente(new Gold("gio","ddd","ddd","sss","ddd"));
-//m.aggiungi_utente(new Premium("sss","ddd","ddd","sss","ddd"));
-
-//Utente* u=m.get_utente("gio");
-//m.cambia_piano(u,"Gold");
-//if(dynamic_cast<Premium*>(a.get_utente()))
-//    cout<<"ok";
-//else
-//    cout<<"non ok";
-
-
-    Login v;
-
-    v.show();
-    return x.exec();
-
-//   cout<<m.get_utente("Giorgia")->get_seguaci().size();
-//    Account a("Pikachu");
-//    cout<<a.ricerca_utente("Giorgia")[0];
-
 
 }

@@ -58,7 +58,7 @@
     </utente>
     <utente>
         <username>Lorenzo</username>
-        <amici>Pikachu Francesca Mirko Elton Giorgia</amici>
+        <amici>Pikachu Elton Giorgia</amici>
         <domanda>
             <priorita>2</priorita>
             <testo>prova</testo>
@@ -77,13 +77,7 @@
         <domanda>
             <priorita>5</priorita>
             <testo>ssss</testo>
-            <commenti>
-                <commento>
-                    <testo>cio</testo>
-                    <autore_commento>Giorgia</autore_commento>
-                    <like>1</like>
-                </commento>
-            </commenti>
+            <commenti/>
         </domanda>
         <domanda>
             <priorita>2</priorita>
@@ -98,13 +92,7 @@
         <domanda>
             <priorita>2</priorita>
             <testo>ciao</testo>
-            <commenti>
-                <commento>
-                    <testo>ciaoooo</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
-                </commento>
-            </commenti>
+            <commenti/>
         </domanda>
         <domanda>
             <priorita>2</priorita>
@@ -130,13 +118,7 @@
         <domanda>
             <priorita>2</priorita>
             <testo>sono Mirko?</testo>
-            <commenti>
-                <commento>
-                    <testo>miao</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
-                </commento>
-            </commenti>
+            <commenti/>
         </domanda>
         <domanda>
             <priorita>2</priorita>
@@ -163,11 +145,6 @@
             <priorita>2</priorita>
             <testo>sono bello?</testo>
             <commenti>
-                <commento>
-                    <testo>prova per un commento</testo>
-                    <autore_commento>Giorgia</autore_commento>
-                    <like>0</like>
-                </commento>
                 <commento>
                     <testo>prova per un commento</testo>
                     <autore_commento>Giorgia</autore_commento>
@@ -219,7 +196,7 @@
     </utente>
     <utente>
         <username>Elton</username>
-        <amici>Mirko Francesca Lorenzo</amici>
+        <amici>Lorenzo</amici>
         <domanda>
             <priorita>3</priorita>
             <testo>sono elton e dovrei essere in alto</testo>
@@ -275,7 +252,7 @@
     </utente>
     <utente>
         <username>Francesca</username>
-        <amici>Lorenzo Elton Mirko Giorgia</amici>
+        <amici></amici>
         <domanda>
             <priorita>2</priorita>
             <testo>Sono francesca</testo>
@@ -284,7 +261,7 @@
     </utente>
     <utente>
         <username>Mirko</username>
-        <amici>Lorenzo Elton Francesca Giorgia</amici>
+        <amici></amici>
         <domanda>
             <priorita>1</priorita>
             <testo>sono mirko</testo>
@@ -293,7 +270,7 @@
     </utente>
     <utente>
         <username>Giorgia</username>
-        <amici>Lorenzo</amici>
+        <amici>Elton Lorenzo</amici>
         <domanda>
             <priorita>1</priorita>
             <testo>prova a fare una domanda</testo>

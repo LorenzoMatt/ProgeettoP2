@@ -1,12 +1,14 @@
 #include "commento.h"
 
 
-Commento::Commento(const string& t, Utente* u, bool l):testo(t),autore(u),like(l){}
+Commento::Commento(const string& t, Utente* u, bool l):testo(t),autore(u->get_credenziali().get_username()),like(l){}
+
+Commento::Commento(const std::string & t, const std::string & u, bool l):testo(t),autore(u),like(l){}
 
 string Commento::get_testo() const{
     return testo;
 }
-Utente* Commento::get_autore() const{
+string Commento::get_autore() const{
     return autore;
 }
 
@@ -25,5 +27,5 @@ bool Commento:: operator==(const Commento& c) const{
 
 std::ostream &operator<<(std::ostream & os, const Commento& c){
 
-    return os<<"commento di: "<<c.autore->get_credenziali().get_username()<<endl<<c.testo;
+    return os<<"commento di: "<<c.autore<<endl<<c.testo;
 }

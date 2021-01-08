@@ -35,8 +35,8 @@ FinestraVistaDomande::FinestraVistaDomande(container<Domanda*>d, Controller *con
     //costruisco il layout del widget che conterrá le domande che dovranno essere visualizzate e il pulsante
     //Vedi commenti
 
-    string stringaAutore=domande[i]->get_autore_domanda()->get_profilo().get_nome();
-    stringaAutore=stringaAutore+ " " +(domande[i]->get_autore_domanda()->get_profilo().get_cognome());
+    string stringaAutore=domande[i]->get_autore_domanda();
+    stringaAutore=stringaAutore+ " " +(domande[i]->get_autore_domanda());
     QLabel* autoreDomanda=new QLabel(QString::fromStdString(stringaAutore));
     //creo lo spazio che conterrá la domanda
     QTextEdit* testoDomanda=new QTextEdit(QString::fromStdString(domande[i]->get_testo()));

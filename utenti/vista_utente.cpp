@@ -23,8 +23,7 @@ void VistaUtente::aggiungiAreaDomandaAmici()
     //costruisco il layout del widget che conterrá le domande che dovranno essere visualizzate e il pulsante
     //Vedi commenti
 
-    string stringaAutore=c->getDomandeAmici()[i]->get_autore_domanda()->get_profilo().get_nome();
-    stringaAutore=stringaAutore+ " " +(c->getDomandeAmici()[i]->get_autore_domanda()->get_profilo().get_cognome());
+    string stringaAutore=c->getDomandeAmici()[i]->get_autore_domanda();
     QLabel* autoreDomanda=new QLabel(QString::fromStdString(stringaAutore));
 
     //creo lo spazio che conterrá la domanda

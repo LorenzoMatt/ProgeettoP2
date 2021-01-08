@@ -18,12 +18,23 @@ Domanda::Domanda()
 
 }
 
-Domanda::Domanda(const string& t, Utente* autore, unsigned int priorita):testo(t),autore_domanda(autore),priorita(priorita > 0 ? priorita: 1){}
+Domanda::Domanda(const string& t, Utente *autore, unsigned int priorita):testo(t),autore_domanda(autore),priorita(priorita > 0 ? priorita: 1)
+{}
 
-//Domanda::Domanda(const Domanda &d) :
-//{
+Domanda::Domanda(const std::string & s, Utente * u, unsigned int p, const container<Commento> & c) : testo(s),autore_domanda(u),priorita(p),commenti(c)
+{
 
-//}
+}
+
+Domanda::Domanda(const std::string & s, unsigned int p, const container<Commento> & c) : testo(s),priorita(p),commenti(c),autore_domanda(nullptr)
+{
+
+}
+void Domanda::set_autore(Utente *u)
+{
+//    delete autore_domanda;
+    autore_domanda=u;
+}
 
 void Domanda::aggiungi_commento(const Commento& c){
     commenti.push_back(c);
@@ -95,9 +106,3 @@ std::ostream &operator<<(std::ostream & os, const Domanda& d){
 
     return os<<"autore domanda "<<d.autore_domanda->get_credenziali().get_username()<<endl<<"domanda: "<<d.testo<<endl<<"commenti: "<<endl<<d.commenti;
 }
-
-
-
-
-
-

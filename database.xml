@@ -4,9 +4,9 @@
         <tipoutente>Premium</tipoutente>
         <username>Pikachu</username>
         <password>0000</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
+        <nome>Pikachu</nome>
+        <cognome>Pikachu</cognome>
+        <email>Pikachu</email>
         <competenze>
             <competenza>farsi le seghe</competenza>
             <competenza>prendere a pugni i barboni</competenza>
@@ -24,43 +24,40 @@
         <tipoutente>Gold</tipoutente>
         <username>Lorenzo</username>
         <password>0000</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
+        <nome>Lorenzo</nome>
+        <cognome>Matterazzo</cognome>
+        <email>lorenzo.matterazzo@studenti.unipd.it</email>
         <competenze>
-            <competenza>lavare i piatti</competenza>
+            <competenza>Giocare a nascondino</competenza>
+            <competenza>mangiare molto</competenza>
         </competenze>
         <titoli_di_studio>
-            <titolo>mangiare e basta</titolo>
-            <titolo>Forse anche dormire</titolo>
-            <titolo>uuuu</titolo>
-            <titolo>gfgfgfgff</titolo>
-            <titolo>ciao</titolo>
+            <titolo>nessuna</titolo>
         </titoli_di_studio>
-        <titoli_di_studio> mangiare e basta Forse anche dormire uuuu gfgfgfgff ciao</titoli_di_studio>
-        <punti>10</punti>
+        <titoli_di_studio> nessuna</titoli_di_studio>
+        <punti>30</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Gold</tipoutente>
+        <tipoutente>Basic</tipoutente>
         <username>Elton</username>
         <password>0000</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
+        <nome>Elton</nome>
+        <cognome>Ibra</cognome>
+        <email>elton.ibra@gmail.com</email>
         <competenze/>
         <titoli_di_studio/>
         <titoli_di_studio></titoli_di_studio>
-        <punti>50</punti>
+        <punti>30</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
         <tipoutente>Gold</tipoutente>
         <username>Francesca</username>
         <password>0000</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
+        <nome>Francesca</nome>
+        <cognome>Mari</cognome>
+        <email>francesca.mari@gmail.com</email>
         <competenze/>
         <titoli_di_studio/>
         <titoli_di_studio></titoli_di_studio>
@@ -71,9 +68,9 @@
         <tipoutente>Premium</tipoutente>
         <username>Mirko</username>
         <password>0000</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
+        <nome>Mirko</nome>
+        <cognome>Stella</cognome>
+        <email>miko.stella@gmail.com</email>
         <competenze/>
         <titoli_di_studio/>
         <titoli_di_studio></titoli_di_studio>
@@ -84,17 +81,16 @@
         <tipoutente>Basic</tipoutente>
         <username>Giorgia</username>
         <password>0000</password>
-        <nome>diostronzo</nome>
-        <cognome>porco</cognome>
-        <email>dio</email>
+        <nome>Giorgia</nome>
+        <cognome>Giorgia</cognome>
+        <email>Giorgia</email>
         <competenze>
-            <competenza>masturbarsi</competenza>
-            <competenza>masturbarsi</competenza>
-            <competenza>masturbarsi giocare a biliardo</competenza>
+            <competenza>mangiare e dormire</competenza>
+            <competenza>ruttare</competenza>
         </competenze>
         <titoli_di_studio/>
         <titoli_di_studio></titoli_di_studio>
-        <punti>15</punti>
+        <punti>45</punti>
         <risposte_date>1</risposte_date>
     </utente>
 </campi_dati_utenti>

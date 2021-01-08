@@ -10,13 +10,14 @@ class Commento
     friend std::ostream &operator<<(std::ostream &, const Commento&);
 private:
     string testo;
-    Utente* autore;
+    string autore;
     bool like;
 public:
     Commento(const string&,Utente *,bool l=false);
+    Commento(const string&,const string&,bool l=false);
     bool operator==(const Commento&) const;
     string get_testo() const;
-    Utente* get_autore() const;
+    string get_autore() const;
     void set_like(bool);
     bool get_like() const;
 };

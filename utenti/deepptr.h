@@ -1,5 +1,6 @@
 #ifndef PUNTATORESMART_H
 #define PUNTATORESMART_H
+#include <iostream>
 template<class T>
 class DeepPtr{
 private:
@@ -18,10 +19,10 @@ template<class T>
 DeepPtr<T>::DeepPtr():oggetto(nullptr){}
 
 template<class T>
-DeepPtr<T>::DeepPtr(T *t):oggetto(t){}
+DeepPtr<T>::DeepPtr(T *t):oggetto(t){std::cout<<"dptr conv"<<std::endl;}
 
 template<class T>
-DeepPtr<T>::DeepPtr(const DeepPtr<T>& t):oggetto(t.oggetto ? t.oggetto->clone() : 0){}
+DeepPtr<T>::DeepPtr(const DeepPtr<T>& t):oggetto(t.oggetto ? t.oggetto->clone() : 0){std::cout<<"dptr copia"<<std::endl;}
 
 template<class T>
 DeepPtr<T>::~DeepPtr()

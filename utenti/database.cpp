@@ -123,8 +123,18 @@ Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
                 trovato=true;
                 Profilo pf=(*it)->get_profilo();
                 Accesso credenziali=(*it)->get_credenziali();
-                container<Domanda*> domande=(*it)->get_domande();
-                container<Utente*> amici=(*it)->get_amici();
+                container<Domanda*> dom=(*it)->get_domande();
+                container<Domanda*> domande;
+                for(auto ut=dom.begin();ut!=dom.end();++ut)
+                {
+                    string testo=(*ut)->get_testo();
+//                    Utente* autore_domanda=(*ut)->get_autore_domanda();
+                    container<Commento> commenti=(*ut)->get_commenti();
+//                    container<Commento> commenti;
+
+                    unsigned int priorita=(*ut)->get_priorita();
+                    domande.push_back(new Domanda(testo,priorita,commenti));
+                }                container<Utente*> amici=(*it)->get_amici();
                 container<Utente*> seguaci=(*it)->get_seguaci();
                 unsigned int risposte_date=(*it)->get_risposte_date();
                 unsigned int punti=(*it)->get_punti();
@@ -136,6 +146,10 @@ Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
                 if(piano=="Premium")
                     it=utenti.insert(it,DeepPtr<Utente>(new Premium(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
                 reverse_seguaci_amici(&(**it));
+                for(auto ut=domande.begin();ut!=domande.end();++ut)
+                {
+                    (*ut)->set_autore(&(**it));
+                }
                 return &(**it);
             }
         }
@@ -203,17 +217,17 @@ void Database::exportdati() const
 {
     try
     {
-        QFile* file = new QFile("../database.xml");
+        QFile* file = new QFile("../database.xml"); //costruttore con il nome del file
         if(!file->open(QIODevice::WriteOnly | QIODevice::Text))
         {
             throw std::runtime_error("il file non è stato aperto");
         }
         else
         {
-            QXmlStreamWriter* inp = new QXmlStreamWriter;
+            QXmlStreamWriter* inp = new QXmlStreamWriter; //per scrivere dentro a file
             inp->setAutoFormatting(true);
             inp->setDevice(file);
-            inp->writeStartDocument();
+            inp->writeStartDocument(); //inizio a scrivere nel file
             inp->writeStartElement("campi_dati_utenti"); // inizio dei campi dati utenti
             for(auto it=utenti.begin();it!=utenti.end();++it)
             {
@@ -248,7 +262,7 @@ void Database::exportdati() const
                     inp->writeTextElement("titolo",QString::fromStdString(*tit));
 
                 inp->writeEndElement();// fine dei titoli di studio
-                inp->writeTextElement("titoli_di_studio", QString::fromStdString(((*it)->get_profilo()).titoli_di_studio_toString()));
+//                inp->writeTextElement("titoli_di_studio", QString::fromStdString(((*it)->get_profilo()).titoli_di_studio_toString())); Mirko ha commentato questa riga
                 inp->writeTextElement("punti", QString::fromStdString(std::to_string(((*it)->get_punti()))));
                 inp->writeTextElement("risposte_date", QString::fromStdString(std::to_string(((*it)->get_risposte_date()))));
                 inp->writeEndElement();// fine di un utente
@@ -272,6 +286,7 @@ void Database::exportdati() const
                 inp->setDevice(file2);
                 inp->writeStartDocument();
                 inp->writeStartElement("domande_e_amici");
+                //stampa gli amici, poi le domande e per ciscuna domanda i relativi commenti
             for(auto it=utenti.begin();it!=utenti.end();++it)
             {
                 inp->writeStartElement("utente");
@@ -288,7 +303,7 @@ void Database::exportdati() const
                     {
                         inp->writeStartElement("commento");// inizio commento
                         inp->writeTextElement("testo",QString::fromStdString(((*c).get_testo())));
-                        inp->writeTextElement("autore_commento",QString::fromStdString((*c).get_autore()->get_credenziali().get_username()));
+                        inp->writeTextElement("autore_commento",QString::fromStdString((*c).get_autore()));
                         inp->writeTextElement("like",((*c).get_like()== true) ? "1" : "0");
                         inp->writeEndElement();// fine commento
                     }
@@ -296,9 +311,9 @@ void Database::exportdati() const
                     inp->writeEndElement();//fine domanda
 
                 }
-                inp->writeEndElement();// fine utente
+                inp->writeEndElement();// fine domande utente
             }
-            inp->writeEndElement();// fine domande_amici
+            inp->writeEndElement();// fine domande_amici utenti
 
             inp->writeEndDocument();
             file2->close();
@@ -496,7 +511,7 @@ void Database::importa_amici_e_domande_utenti()
                                     }
                                     elementi_del_commento=elementi_del_commento.nextSibling();
                                }
-                                commenti_totali.push_back(Commento(testo_commento.toStdString(),get_utente(autore_commento.toStdString()),like.toInt()));
+                                commenti_totali.push_back(Commento(testo_commento.toStdString(),autore_commento.toStdString(),like.toInt()));
                         }
                     }
                         domande=domande.nextSibling();

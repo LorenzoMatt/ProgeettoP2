@@ -43,7 +43,9 @@ void Controller::scrivi_commento(const QString & testo, Domanda *d)
 
 void Controller::dai_like(int i, Domanda * d)
 {
-    a->dai_punti(d->get_commenti()[i].get_autore());
+    Utente* u=a->cerca_utente_per_nome(d->get_commenti()[i].get_autore());
+    if(u)
+        a->dai_punti(d->get_commenti()[i].get_autore());
     d->get_commenti()[i].set_like(true);
 }
 

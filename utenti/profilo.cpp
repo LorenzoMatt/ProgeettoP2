@@ -63,10 +63,10 @@ std::ostream& operator<<(std::ostream& os,const profilo& p){
 */
 #include "profilo.h"
 
+ int Profilo::numeroelementi=0;
 
-//Profilo::Profilo(){}
-Profilo::~Profilo(){}
-Profilo::Profilo(const string& n,const string& c,const string& e):nome(n),cognome(c),email(e){}
+Profilo::Profilo(const string& n,const string& c,const string& e):nome(n),cognome(c),email(e){numeroelementi++;}
+Profilo::~Profilo(){cout<<endl<<numeroelementi<<" distruttore profilo "<<nome<<endl;numeroelementi--;}
 
 void Profilo::set_nome(const string& n){nome=n;}
 void Profilo::set_cognome(const string& c){cognome=c;}
