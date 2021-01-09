@@ -2,7 +2,12 @@
 <domande_e_amici>
     <utente>
         <username>Pikachu</username>
-        <amici>Elton Francesca Mirko</amici>
+        <amici>Francesca Mirko Elton</amici>
+        <domanda>
+            <priorita>3</priorita>
+            <testo>ddddd</testo>
+            <commenti/>
+        </domanda>
         <domanda>
             <priorita>2</priorita>
             <testo>sono pikachu</testo>
@@ -10,7 +15,7 @@
                 <commento>
                     <testo>ehi</testo>
                     <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
+                    <like>1</like>
                 </commento>
                 <commento>
                     <testo>prova dio</testo>
@@ -20,7 +25,7 @@
                 <commento>
                     <testo>xxxx</testo>
                     <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
+                    <like>1</like>
                 </commento>
                 <commento>
                     <testo>xxxxss</testo>
@@ -64,6 +69,11 @@
     <utente>
         <username>Elton</username>
         <amici></amici>
+        <domanda>
+            <priorita>2</priorita>
+            <testo>kkk</testo>
+            <commenti/>
+        </domanda>
         <domanda>
             <priorita>3</priorita>
             <testo>sono elton e dovrei essere in alto</testo>
@@ -137,7 +147,7 @@
     </utente>
     <utente>
         <username>Giorgia</username>
-        <amici>Elton Pikachu</amici>
+        <amici>Pikachu Elton</amici>
         <domanda>
             <priorita>1</priorita>
             <testo>prova a fare una domanda</testo>
@@ -173,5 +183,10 @@
     <utente>
         <username>c</username>
         <amici></amici>
+        <domanda>
+            <priorita>3</priorita>
+            <testo>ccc</testo>
+            <commenti/>
+        </domanda>
     </utente>
 </domande_e_amici>

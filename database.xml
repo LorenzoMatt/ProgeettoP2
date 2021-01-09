@@ -20,7 +20,7 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Gold</tipoutente>
+        <tipoutente>Premium</tipoutente>
         <username>Elton</username>
         <password>0000</password>
         <nome>Elton</nome>
@@ -28,7 +28,7 @@
         <email>elton.ibra@gmail.com</email>
         <competenze/>
         <titoli_di_studio/>
-        <punti>50</punti>
+        <punti>60</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
@@ -83,7 +83,7 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Gold</tipoutente>
+        <tipoutente>Premium</tipoutente>
         <username>c</username>
         <password>c</password>
         <nome>ccc</nome>

@@ -5,23 +5,28 @@
 void vistaProfilo::finestraDiConferma(const QString & t)
 {
     if(t!=""){
-    dialogo=new QMessageBox;
+    dialogo=new QMessageBox(this);
     dialogo->setInformativeText (( "Vuoi salvare le modifiche?" ));
     dialogo->setIcon(QMessageBox::Question);
-    dialogo->setStandardButtons (( QMessageBox :: Save | QMessageBox::Cancel));
-    dialogo->setDefaultButton (( QMessageBox :: Save));
-    dialogo->setStyleSheet(imposta_stile());
+    dialogo->setStandardButtons ( QMessageBox :: Save | QMessageBox::Cancel);
+    dialogo->setDefaultButton(QMessageBox :: Save);
+//    dialogo->setStyleSheet(imposta_stile());
 
     int x=dialogo->exec();
-    Utente* ut=a->getUtente();
     switch (x) {
       case QMessageBox::Save:
-//        if((t=="Basic" && dynamic_cast<Basic*>(ut)) || (t=="Gold" && dynamic_cast<ut)
-//                || (t=="Premium" && dynamic_cast<Premium*>(ut)))
-//            messaggio_informativo("Attenzione","Piano non cambiato: il tuo piano é giá "+t);
-//        else{
-          a->cambiaPiano(t);
-//          messaggio_informativo("Esito conferma","Piano cambiato!");
+
+        //        if((t=="Basic" && dynamic_cast<Basic*>(ut)) || (t=="Gold" && dynamic_cast<ut)
+        //                || (t=="Premium" && dynamic_cast<Premium*>(ut)))
+        //            messaggio_informativo("Attenzione","Piano non cambiato: il tuo piano é giá "+t);
+        //        else{
+        a->cambiaPiano(t);
+        testoPunti->setText(QString::fromStdString(std::to_string(a->getPunti())));
+
+
+
+        //          messaggio_informativo("Esito conferma","Piano cambiato!");
+
 
           break;
 
@@ -58,7 +63,7 @@ void vistaProfilo::creaCampoPuntiEPiano()
 
     //punti
     QLabel* etichettaPunti=new QLabel("PUNTI RESIDUI:");
-    QLineEdit* testoPunti=new QLineEdit;
+    testoPunti=new QLineEdit;
     string punti=std::to_string(a->getPunti());
     testoPunti->setText(QString::fromStdString(punti));
     testoPunti->setReadOnly(true);

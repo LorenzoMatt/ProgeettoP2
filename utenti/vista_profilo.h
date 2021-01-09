@@ -44,15 +44,9 @@ private:
     QPushButton* home;
     QMessageBox* dialogo;
 
-
+    QLineEdit* testoPunti;
 
     //funzioni di utilitá
-
-    void creaTornaAllaHome();
-public:
-    explicit vistaProfilo(Controller*,QWidget* parent=nullptr);
-
-private slots:
     void creaCampoPuntiEPiano();
     void creaCampoNome();
     void creaCampoCognome();
@@ -62,6 +56,13 @@ private slots:
 
     void creaCampoCompetenze();
     void creaCampoTitoliDiStudio();
+
+    void creaTornaAllaHome();
+public:
+    explicit vistaProfilo(Controller*,QWidget* parent=nullptr);
+
+private slots:
+
 
     void mostraC();
     void mostraT();
