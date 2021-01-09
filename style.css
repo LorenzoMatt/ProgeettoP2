@@ -1,24 +1,25 @@
 * {
-    background-color: rgb(70, 70, 70);
-    color: white;
+    background-color: beige;
+    color:black;
 }
 
 QPushButton {
-    background-color: rgb(50,50,50);
-    border: 2px solid gray;
+    background-color: rgb(59, 57, 23);
+    border: 2px solid rgb(214, 210, 147);
     border-radius: 10px;
     font: bold 14px;
     min-width: 5em;
+    color: white;
     padding: 6px;
 }
 
 QLineEdit{ 
-    background-color:rgb(55,55,55);
-    border: 2px solid gray;
+    background-color:rgb(167, 185, 83);
+    border: 2px solid rgb(59, 57, 23);
     border-radius: 10px;
     padding: 0 8px;
     font-size: 16px;
-    color:white;
+    color:black;
 }
 QLineEdit:focus { 
     background-color:white;
@@ -26,13 +27,15 @@ QLineEdit:focus {
 }
 
 QPushButton:hover{
-    background-color:white;
+    background-color:rgb(226, 208, 147);
     color:rgb(55,55,55);
 }
 
 QPushButton#ok{
 
-    background-color: blue;
+    background-color: rgb(226, 208, 147);
+    color:black;
+    border-color: rgb(59, 57, 23);
 }
 QPushButton#ok:hover{
 
@@ -41,7 +44,8 @@ QPushButton#ok:hover{
 
 QPushButton#annulla:hover{
 
-    background-color: rgb(255, 37, 37);
+    background-color: rgb(97, 109, 44);
+    color:white;
 }
 QPushButton#like:hover{
 
@@ -53,6 +57,25 @@ QPushButton#salva:hover{
     color:white;
 }
 
+QTextEdit{
+    background-color: rgb(238, 226, 188);
+
+}
+QTextEdit#commenti{
+    background-color: rgb(255, 252, 244);
+
+}
+/* 226, 208, 147 */
+QScrollBar{
+
+background-color: rgb(167, 185, 83);
+
+
+}
+QLabel{
+
+    color: black;
+}
 
 
 /* tengo il blu come pulsante importante */

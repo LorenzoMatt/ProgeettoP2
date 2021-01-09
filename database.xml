@@ -12,10 +12,12 @@
             <competenza>prendere a pugni i barboni</competenza>
             <competenza>vendere la droga</competenza>
             <competenza>a</competenza>
+            <competenza>x</competenza>
         </competenze>
         <titoli_di_studio>
             <titolo>Laurea in bere vino</titolo>
             <titolo>Laurea in dinosauri con il cazzo lungo</titolo>
+            <titolo>f</titolo>
         </titoli_di_studio>
         <punti>45</punti>
         <risposte_date>0</risposte_date>
@@ -89,7 +91,7 @@
         <risposte_date>1</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Premium</tipoutente>
+        <tipoutente>Gold</tipoutente>
         <username>c</username>
         <password>c</password>
         <nome>c</nome>
@@ -99,7 +101,7 @@
             <competenza>ssssss</competenza>
         </competenze>
         <titoli_di_studio/>
-        <punti>60</punti>
+        <punti>44</punti>
         <risposte_date>0</risposte_date>
     </utente>
 </campi_dati_utenti>

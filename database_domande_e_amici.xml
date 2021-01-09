@@ -58,7 +58,18 @@
         <domanda>
             <priorita>3</priorita>
             <testo>prova a fare una domanda</testo>
-            <commenti/>
+            <commenti>
+                <commento>
+                    <testo>dddd</testo>
+                    <autore_commento>c</autore_commento>
+                    <like>0</like>
+                </commento>
+                <commento>
+                    <testo>ddddd</testo>
+                    <autore_commento>c</autore_commento>
+                    <like>0</like>
+                </commento>
+            </commenti>
         </domanda>
     </utente>
     <utente>
@@ -306,6 +317,16 @@
     </utente>
     <utente>
         <username>c</username>
-        <amici></amici>
+        <amici>Pikachu</amici>
+        <domanda>
+            <priorita>2</priorita>
+            <testo>ffff</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>2</priorita>
+            <testo>ddd</testo>
+            <commenti/>
+        </domanda>
     </utente>
 </domande_e_amici>

@@ -35,6 +35,7 @@ void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
         //testo commento
         QTextEdit* testoCommento=new QTextEdit(QString::fromStdString(it->get_testo()));
         testoCommento->setReadOnly(true);
+        testoCommento->setObjectName("commenti");
 
         //etichetta autore domanda
         QString autoreCommento=QString::fromStdString(it->get_autore());

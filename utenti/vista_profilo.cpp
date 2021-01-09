@@ -38,7 +38,7 @@ void vistaProfilo::creaCampoPuntiEPiano()
     //piano
     QLabel* nuovo_piano=new QLabel("Cambia piano:");
     nuovo_piano->setAlignment(Qt::AlignLeft);
-    cambio_piano_combo->setPlaceholderText("");
+
     cambio_piano_combo->setMinimumWidth(150);
     cambio_piano_combo->addItem("");
     cambio_piano_combo->addItem("Basic");
