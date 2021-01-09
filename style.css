@@ -41,7 +41,7 @@ QPushButton#ok:hover{
 
 QPushButton#annulla:hover{
 
-    background-color: red;
+    background-color: rgb(255, 37, 37);
 }
 QPushButton#like:hover{
 

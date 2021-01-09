@@ -15,9 +15,9 @@ void vistaProfilo::finestraDiConferma(const QString & t){
     dialogo->addButton(salva,QMessageBox::AcceptRole);
     dialogo->addButton(annulla,QMessageBox::RejectRole);
 
-    connect(salva,SIGNAL(cliked()),this,SLOT(invioPiano()));
-    connect(annulla,SIGNAL(cliked()),dialogo,SLOT(close()));
-    connect(this,SIGNAL(invioP(const QString&)),a,SLOT(inviaPiano(const QString&)));
+    connect(salva,SIGNAL(clicked()),this,SLOT(invioPiano()));
+    connect(annulla,SIGNAL(clicked()),dialogo,SLOT(close()));
+    connect(this,SIGNAL(invioP(const QString&)),a,SLOT(cambiaPiano(const QString&)));
 
 
     dialogo->exec();

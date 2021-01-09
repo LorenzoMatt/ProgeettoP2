@@ -89,7 +89,7 @@
         <risposte_date>1</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Basic</tipoutente>
+        <tipoutente>Premium</tipoutente>
         <username>c</username>
         <password>c</password>
         <nome>c</nome>
@@ -99,7 +99,7 @@
             <competenza>ssssss</competenza>
         </competenze>
         <titoli_di_studio/>
-        <punti>30</punti>
+        <punti>60</punti>
         <risposte_date>0</risposte_date>
     </utente>
 </campi_dati_utenti>
