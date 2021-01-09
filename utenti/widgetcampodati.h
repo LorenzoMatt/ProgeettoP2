@@ -21,6 +21,7 @@ class widgetCampoDati:public QWidget
 
     QHBoxLayout* layoutModNome;
     QPushButton* modNome;
+    QPushButton* invio;
     QPushButton* canc;
     bool modo; //indica come viene visualizzata la password
     QString testoTemporaneo;

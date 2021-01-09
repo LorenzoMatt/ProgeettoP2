@@ -9,6 +9,7 @@ void vistaProfilo::finestraDiConferma(const QString & t)
     dialogo->setInformativeText (( "Vuoi salvare le modifiche?" ));
     dialogo->setIcon(QMessageBox::Question);
     dialogo->setStandardButtons ( QMessageBox :: Save | QMessageBox::Cancel);
+
     dialogo->setDefaultButton(QMessageBox :: Save);
 //    dialogo->setStyleSheet(imposta_stile());
 
@@ -119,20 +120,23 @@ void vistaProfilo::creaTornaAllaHome()
     QIcon icona("../home");
     home=new QPushButton(icona," HOME");
     connect(home,SIGNAL(clicked()),this,SLOT(close()));
+
 }
 
 void vistaProfilo::mostraC()
 {
     if(!inserisciCompetenzaProfessionale->isVisible()){
         inserisciCompetenzaProfessionale->setVisible(true);
-        aggiungiCompetenzaProfessionale->setText("Invio");
-        connect(aggiungiCompetenzaProfessionale,SIGNAL(clicked()),this,SLOT(invioDatoC()));
+        aggiungiCompetenzaProfessionale->setVisible(false);
+        invio->setVisible(true);
+        connect(invio,SIGNAL(clicked()),this,SLOT(invioDatoC()));
     }
     else
     {
 
         inserisciCompetenzaProfessionale->setVisible(false);
-        aggiungiCompetenzaProfessionale->setText("Aggiungi");
+        aggiungiCompetenzaProfessionale->setVisible(true);
+        invio->setVisible(false);
     }
 }
 
@@ -140,14 +144,16 @@ void vistaProfilo::mostraT()
 {
     if(!inserisciTitoloDiStudio->isVisible()){
         inserisciTitoloDiStudio->setVisible(true);
-        aggiungiTitoloDiStudio->setText("Invio");
-        connect(aggiungiTitoloDiStudio,SIGNAL(clicked()),this,SLOT(invioDatoT()));
+        aggiungiTitoloDiStudio->setVisible(false);
+        invioT->setVisible(true);
+        connect(invioT,SIGNAL(clicked()),this,SLOT(invioDatoT()));
     }
     else
     {
 
         inserisciTitoloDiStudio->setVisible(false);
-        aggiungiTitoloDiStudio->setText("Aggiungi");
+        aggiungiTitoloDiStudio->setVisible(true);
+        invioT->setVisible(false);
     }
 }
 
@@ -193,6 +199,7 @@ void vistaProfilo::creaCampoCompetenze()
     aggiungiCompetenzaProfessionale->setMaximumWidth(70);
     inserisciCompetenzaProfessionale->setVisible(false);
     layoutInserimentoCompetenza->addWidget(inserisciCompetenzaProfessionale);
+    layoutInserimentoCompetenza->addWidget(invio);
     layoutInserimentoCompetenza->addWidget(aggiungiCompetenzaProfessionale);
     layoutCompetenzeProfessionali->addLayout(layoutInserimentoCompetenza);
 
@@ -219,6 +226,7 @@ void vistaProfilo::creaCampoTitoliDiStudio()
     aggiungiTitoloDiStudio->setMaximumWidth(70);
     inserisciTitoloDiStudio->setVisible(false);
     layoutInserimentoTitoloDiStudio->addWidget(inserisciTitoloDiStudio);
+    layoutInserimentoTitoloDiStudio->addWidget(invioT);
     layoutInserimentoTitoloDiStudio->addWidget(aggiungiTitoloDiStudio);
     layoutTitoliDiStudio->addLayout(layoutInserimentoTitoloDiStudio);
 
@@ -240,13 +248,19 @@ vistaProfilo::vistaProfilo(Controller * c, QWidget *parent):QDialog(parent),a(c)
     inserisciTitoloDiStudio(new QLineEdit),
     testoTitoliDiStudio(new QListWidget),
     layoutInserimentoTitoloDiStudio(new QHBoxLayout),
-    cambio_piano_combo(new QComboBox)
+    cambio_piano_combo(new QComboBox),invio(new QPushButton("Invio")),
+    invioT(new QPushButton("Invio"))
 
 {
     //file di stile
 //    setStyleSheet(imposta_stile());
 
     //campi dati
+    invio->setVisible(false);
+    invio->setObjectName("ok");
+    invioT->setVisible(false);
+    invioT->setObjectName("ok");
+
     creaCampoPuntiEPiano();
 
     creaCampoNome();

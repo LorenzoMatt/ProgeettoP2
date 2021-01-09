@@ -2,7 +2,7 @@
 //ciaooo
 widgetCampoDati::widgetCampoDati(const QString& n, const QString& t, bool m):layoutTotale(new QVBoxLayout),
     layoutNome(new QVBoxLayout),testoNome(new QLineEdit),layoutModNome(new QHBoxLayout),
-    modNome(new QPushButton("Modifica")),canc(new QPushButton("Annulla")),modo(m)
+    modNome(new QPushButton("Modifica")),invio(new QPushButton("invio")),canc(new QPushButton("Annulla")),modo(m)
 
 {
     //creo etichetta nome
@@ -23,10 +23,13 @@ widgetCampoDati::widgetCampoDati(const QString& n, const QString& t, bool m):lay
     //setto il pulsante canc
     canc->setMaximumWidth(70);
     canc->setVisible(false);
+    invio->setVisible(false);
+    invio->setObjectName("ok");
 
 
     //aggiungo pulsante modNome e canc
     layoutModNome->setAlignment(Qt::AlignRight);
+    layoutModNome->addWidget(invio);
     layoutModNome->addWidget(modNome);
     layoutModNome->addWidget(canc);
 
@@ -47,17 +50,19 @@ void widgetCampoDati::sbloccaBloccaTesto()
 {
    if(testoNome->isReadOnly()){
    testoNome->setReadOnly(false);
-   modNome->setText("Conferma");
+   modNome->setVisible(false);
+   invio->setVisible(true);
    canc->setVisible(true);
    testoTemporaneo=testoNome->text();
 
 
-   connect(modNome,SIGNAL(clicked()),this,SLOT(confermaModifica()));
+   connect(invio,SIGNAL(clicked()),this,SLOT(confermaModifica()));
    }
    else
    {
        testoNome->setReadOnly(true);
-       modNome->setText("Modifica");
+       modNome->setVisible(true);
+       invio->setVisible(false);
        canc->setVisible(false);
    }
 

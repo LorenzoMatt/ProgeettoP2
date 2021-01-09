@@ -119,6 +119,7 @@ void VistaUtente::buildTabella()
 {
     tabella=new QTabWidget;
     pagina1=new QScrollArea;
+
     pagina2=new QScrollArea;
     pagina1->setWidgetResizable(true);
     pagina2->setWidgetResizable(true);
@@ -174,6 +175,7 @@ VistaUtente::VistaUtente(const QString& utente, QWidget *parent):QWidget(parent)
     mainLayout->addLayout(layoutBarraSuperiore);
     mainLayout->addWidget(tabella);
     logout=new QPushButton("Logout");
+    logout->setObjectName("annulla");
     connect(logout,SIGNAL(clicked()),this,SLOT(buildLogout()));
     mainLayout->addWidget(logout);
     setLayout(mainLayout);

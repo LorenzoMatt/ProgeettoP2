@@ -45,6 +45,9 @@ private:
     QMessageBox* dialogo;
 
     QLineEdit* testoPunti;
+    QPushButton* invio;
+    QPushButton* invioT;
+
 
     //funzioni di utilitá
     void creaCampoPuntiEPiano();
