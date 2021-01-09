@@ -91,6 +91,12 @@ bool Controller::check_presenza_amico(const QString& user) const
     return a->check_presenza_amico(user.toStdString());
 }
 
+void Controller::Controller::aggiorna_vista()
+{
+    v->aggiungiAreaDomandaAmici();
+    v->aggiungiAreaDomandePersonali();
+}
+
 void Controller::aggiungi_amico(const QString & user)
 {
     Utente* u=a->cerca_utente_per_nome(user.toStdString());
@@ -124,6 +130,7 @@ void Controller::cambiaPiano(const QString & piano)
 {
     string stringaPiano=piano.toStdString();
     a->cambia_piano(stringaPiano);
+    aggiorna_vista();
 
 }
 void Controller::modificaNome(const QString& n)

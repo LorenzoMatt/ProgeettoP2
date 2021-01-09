@@ -114,36 +114,24 @@ void vistaProfilo::creaTornaAllaHome()
 
 void vistaProfilo::mostraC()
 {
-    if(!inserisciCompetenzaProfessionale->isVisible()){
-        inserisciCompetenzaProfessionale->setVisible(true);
+
         aggiungiCompetenzaProfessionale->setVisible(false);
+        inserisciCompetenzaProfessionale->setVisible(true);
         invio->setVisible(true);
         connect(invio,SIGNAL(clicked()),this,SLOT(invioDatoC()));
-    }
-    else
-    {
 
-        inserisciCompetenzaProfessionale->setVisible(false);
-        aggiungiCompetenzaProfessionale->setVisible(true);
-        invio->setVisible(false);
-    }
+
 }
 
 void vistaProfilo::mostraT()
 {
-    if(!inserisciTitoloDiStudio->isVisible()){
+
         inserisciTitoloDiStudio->setVisible(true);
         aggiungiTitoloDiStudio->setVisible(false);
         invioT->setVisible(true);
         connect(invioT,SIGNAL(clicked()),this,SLOT(invioDatoT()));
-    }
-    else
-    {
 
-        inserisciTitoloDiStudio->setVisible(false);
-        aggiungiTitoloDiStudio->setVisible(true);
-        invioT->setVisible(false);
-    }
+
 }
 
 void vistaProfilo::invioDatoC()
@@ -154,6 +142,9 @@ void vistaProfilo::invioDatoC()
         testoCompetenzeProfessionali->scrollToBottom();
         emit inviaC(testo);
         inserisciCompetenzaProfessionale->setText("");
+        inserisciCompetenzaProfessionale->setVisible(false);
+        invio->setVisible(false);
+        aggiungiCompetenzaProfessionale->setVisible(true);
     }
 }
 void vistaProfilo::invioDatoT()
@@ -164,6 +155,9 @@ void vistaProfilo::invioDatoT()
         testoTitoliDiStudio->scrollToBottom();
         emit inviaT(testo);
         inserisciTitoloDiStudio->setText("");
+        inserisciTitoloDiStudio->setVisible(false);
+        aggiungiTitoloDiStudio->setVisible(true);
+        invioT->setVisible(false);
     }
 }
 

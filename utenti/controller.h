@@ -33,6 +33,9 @@ public:
 
     bool check_presenza_amico(const QString &) const;
 
+    void aggiorna_vista();
+
+
 
 public slots:
     void aggiungi_amico(const QString&);
