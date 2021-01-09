@@ -11,8 +11,8 @@ std::ostream &operator<<(std::ostream &os, const Utente &u) //OK
 
 Utente::~Utente()
 {
-    for(auto it=domande.begin();it!=domande.end();++it)
-        delete *it;
+//    for(auto it=domande.begin();it!=domande.end();++it)
+//        delete *it;
 }
 
 Utente::Utente(const Utente &u):pf(u.pf),credenziali(u.credenziali),amici(u.amici),seguaci(u.seguaci),domande(u.domande),punti(u.punti),risposte_date(u.risposte_date)
