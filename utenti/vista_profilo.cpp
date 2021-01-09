@@ -2,43 +2,33 @@
 
 
 
-void vistaProfilo::finestraDiConferma(const QString & t)
-{
+
+void vistaProfilo::finestraDiConferma(const QString & t){
     if(t!=""){
+    testoCambioPiano=t;
     dialogo=new QMessageBox(this);
     dialogo->setInformativeText (( "Vuoi salvare le modifiche?" ));
+    QPushButton* salva=new QPushButton("Conferma");
+    QPushButton* annulla=new QPushButton("Annulla");
+    salva->setObjectName("ok");
     dialogo->setIcon(QMessageBox::Question);
-    dialogo->setStandardButtons ( QMessageBox :: Save | QMessageBox::Cancel);
+    dialogo->addButton(salva,QMessageBox::AcceptRole);
+    dialogo->addButton(annulla,QMessageBox::RejectRole);
 
-    dialogo->setDefaultButton(QMessageBox :: Save);
-//    dialogo->setStyleSheet(imposta_stile());
-
-    int x=dialogo->exec();
-    switch (x) {
-      case QMessageBox::Save:
-
-        //        if((t=="Basic" && dynamic_cast<Basic*>(ut)) || (t=="Gold" && dynamic_cast<ut)
-        //                || (t=="Premium" && dynamic_cast<Premium*>(ut)))
-        //            messaggio_informativo("Attenzione","Piano non cambiato: il tuo piano é giá "+t);
-        //        else{
-        a->cambiaPiano(t);
-        testoPunti->setText(QString::fromStdString(std::to_string(a->getPunti())));
+    connect(salva,SIGNAL(cliked()),this,SLOT(invioPiano()));
+    connect(annulla,SIGNAL(cliked()),dialogo,SLOT(close()));
+    connect(this,SIGNAL(invioP(const QString&)),a,SLOT(inviaPiano(const QString&)));
 
 
-
-        //          messaggio_informativo("Esito conferma","Piano cambiato!");
-
-
-          break;
-
-      case QMessageBox::Cancel:
-          dialogo->close();
-          break;
+    dialogo->exec();
     }
-    }
-
 }
 
+void vistaProfilo::invioPiano()
+{
+    emit invioP(testoCambioPiano);
+    testoPunti->setText(QString::fromStdString(std::to_string(a->getPunti())));
+}
 
 void vistaProfilo::creaCampoPuntiEPiano()
 {
@@ -61,7 +51,6 @@ void vistaProfilo::creaCampoPuntiEPiano()
     layoutPiano->addWidget(cambio_piano_combo);
 
     connect(cambio_piano_combo,SIGNAL(currentTextChanged(const QString&)),this,SLOT(finestraDiConferma(const QString&)));
-
     //punti
     QLabel* etichettaPunti=new QLabel("PUNTI RESIDUI:");
     testoPunti=new QLineEdit;

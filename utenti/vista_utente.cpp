@@ -90,13 +90,14 @@ void VistaUtente::buildBarraSuperiore()
 //  pulsanti della barra di ricerca
     QIcon iconaProfilo("../profilo");
     profilo=new QPushButton(iconaProfilo," Profilo");
-    QIcon iconaCerca("../cerca");
+    QIcon iconaCerca("../lente");
     invioDomanda=new QPushButton(iconaCerca,"Cerca");
     invioUtente=new QPushButton(iconaCerca,"Cerca");
 
 //  linee di testo della barra di ricerca
     scriviDomanda=new QLineEdit();
     scriviDomanda->setPlaceholderText("cerca domanda");
+    scriviDomanda->setMinimumWidth(300);
     scriviUtente=new QLineEdit();
     scriviUtente->setPlaceholderText("cerca utente");
 

@@ -54,6 +54,7 @@ void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
             if((!(it->get_like())) && autoreCommento!=autoreDomanda)
             {
                 QPushButton* like=new QPushButton("like");
+                like->setObjectName("like");
                 valutaCommento->addWidget(like);
                 connect(like, SIGNAL(clicked()), signalMapperLike,SLOT(map()));
                 signalMapperLike->setMapping(like,num_commento);
@@ -75,6 +76,7 @@ void vista_domanda::aggiungiBarraDiTesto()
     testoCommento=new QLineEdit;
     testoCommento->setPlaceholderText("Scrivi un commento");
     QPushButton* invio=new QPushButton("invio");
+    invio->setObjectName("ok");
     inserisciCommento->addSpacing(20);
 
     inserisciCommento->addWidget(testoCommento);

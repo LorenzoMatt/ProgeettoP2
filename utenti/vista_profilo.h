@@ -47,6 +47,7 @@ private:
     QLineEdit* testoPunti;
     QPushButton* invio;
     QPushButton* invioT;
+    QString testoCambioPiano;
 
 
     //funzioni di utilitá
@@ -71,6 +72,7 @@ private slots:
     void mostraT();
     void invioDatoC();
     void invioDatoT();
+    void invioPiano();
 
 
     void finestraDiConferma(const QString&);
@@ -78,7 +80,7 @@ private slots:
 signals:
     void inviaC(const QString&);
     void inviaT(const QString&);
-    void invioPiano(const QString&);
+    void invioP(const QString&);
 };
 
 #endif // VISTAPROFILO_H

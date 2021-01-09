@@ -33,8 +33,8 @@ public:
 
     bool check_presenza_amico(const QString &) const;
 
-void cambiaPiano(const QString&);
-private slots:
+
+public slots:
     void aggiungi_amico(const QString&);
     void aggiungiCompetenza(const QString&);
     void aggiungiTitoloDiStudio(const QString&);
@@ -48,6 +48,7 @@ private slots:
     void modificaCognome(const QString&);
     void modificaEmail(const QString&);
     void modificaPassword(const QString&);
+    void cambiaPiano(const QString&);
 
 
     void dai_like(int,Domanda*);

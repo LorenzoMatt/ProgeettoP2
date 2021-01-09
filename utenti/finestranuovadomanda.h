@@ -5,6 +5,7 @@
 #include <QLineEdit>
 #include<QDialogButtonBox>
 #include <QSpinBox>
+#include <QPushButton>
 
 class finestraNuovaDomanda : public QDialog
 {

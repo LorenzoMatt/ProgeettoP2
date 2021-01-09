@@ -34,10 +34,25 @@ QPushButton#ok{
 
     background-color: blue;
 }
+QPushButton#ok:hover{
+
+    color:white;
+}
 
 QPushButton#annulla:hover{
 
     background-color: red;
 }
+QPushButton#like:hover{
+
+    background-color: rgb(241, 205, 0);
+}
+QPushButton#salva:hover{
+
+    background-color: green;
+    color:white;
+}
+
+
 
 /* tengo il blu come pulsante importante */

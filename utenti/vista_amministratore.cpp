@@ -10,8 +10,10 @@ void vista_amministratore::build_buttons()
     aggiungi=new QPushButton("Aggiungi utente");
     togli_utente_button=new QPushButton("Conferma");
     cambia_piano_button=new QPushButton("Conferma");
-    esci=new QPushButton("esci");
-    salva=new QPushButton("salva database");
+    esci=new QPushButton("Esci");
+    esci->setObjectName("annulla");
+    salva=new QPushButton("Salva database");
+    salva->setObjectName("salva");
     connect(aggiungi,SIGNAL(clicked()),this,SLOT(finestra_aggiungi_utente()));
     connect(togli_utente_button,SIGNAL(clicked()),this,SLOT(togli_utente()));
     connect(cambia_piano_button,SIGNAL(clicked()),this,SLOT(cambio_piano()));

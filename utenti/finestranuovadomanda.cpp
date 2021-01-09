@@ -5,7 +5,9 @@
 void finestraNuovaDomanda::buildPulsanteConferma()
 {
     conferma=new QDialogButtonBox(this);
-    conferma->addButton("Aggiungi",QDialogButtonBox::AcceptRole);
+    QPushButton* aggiungi=new QPushButton("Aggiungi");
+    aggiungi->setObjectName("ok");
+    conferma->addButton(aggiungi,QDialogButtonBox::AcceptRole);
     conferma->addButton("Cancella",QDialogButtonBox::RejectRole);
 
     connect(conferma,SIGNAL(accepted()),this,SLOT(dati()));

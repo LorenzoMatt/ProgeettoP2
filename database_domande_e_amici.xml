@@ -4,6 +4,11 @@
         <username>Pikachu</username>
         <amici>Lorenzo Mirko Francesca Elton</amici>
         <domanda>
+            <priorita>3</priorita>
+            <testo>d</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
             <priorita>2</priorita>
             <testo>sono pikachu</testo>
             <commenti>
