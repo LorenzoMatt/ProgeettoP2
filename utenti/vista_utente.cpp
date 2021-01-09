@@ -251,8 +251,8 @@ void VistaUtente::aggiornaNumeroDomande()
 
 void VistaUtente::buildLogout()
 {
+    close();
     Login* l=new Login;
     l->show();
-    close();
 }
 

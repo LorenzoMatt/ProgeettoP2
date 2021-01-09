@@ -89,7 +89,7 @@ void vistaCercaUtente::segui_utente()
 void vistaCercaUtente::togli_utente()
 {
     QString utente(QString::fromStdString(proprieta[0]));
-    messaggio_informativo("rimosso dagli amici","utente "+utente+" rimosso agli amici!",this);
+    messaggio_informativo("rimosso dagli amici","utente "+utente+" rimosso dagli amici!",this);
     emit  rimuovi(utente);
     close();
 }
