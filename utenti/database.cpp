@@ -244,6 +244,9 @@ void Database::exportdati() const
                 {
                     inp->writeTextElement("tipoutente", QString::fromStdString("Premium"));
                 }
+
+
+
                 inp->writeTextElement("username",QString::fromStdString(((*it)->get_credenziali()).get_username()));
                 inp->writeTextElement("password",QString::fromStdString(((*it)->get_credenziali()).get_password()));
                 inp->writeTextElement("nome", QString::fromStdString(((*it)->get_profilo()).get_nome()));

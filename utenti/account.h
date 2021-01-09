@@ -24,6 +24,7 @@ public:
 
 
 
+
     //aggiungi
     void aggiungi_amico(Utente *);//OK
     void AggiungiCompetenza(const string&); //OK

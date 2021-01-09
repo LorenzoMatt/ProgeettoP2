@@ -350,11 +350,7 @@ typename container<T>::iterator container<T>::erase(iterator i) //rimuove il nod
             last->next = nullptr;
             delete temp;
             return end();
-        }/*if (i == --end())
-        {
-            ++i;
-            pop_back();
-        }*/
+        }
         else
         {
             nodo * temp = i.ptr; //nodo da eliminare

@@ -47,6 +47,7 @@ static int numeroelementi;
     unsigned int get_risposte_date() const; //serve per ottenere un bonus
 
 
+
     //caricamento da file
     void carica_competenze(const container<std::string> &);
     void carica_titoli(const container<std::string> &);

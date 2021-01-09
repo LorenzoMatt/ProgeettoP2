@@ -115,10 +115,16 @@ int Controller::getPunti() const
     return a->get_punti();
 }
 
+Utente *Controller::getUtente() const
+{
+    return a->get_utente();
+}
+
 void Controller::cambiaPiano(const QString & piano)
 {
     string stringaPiano=piano.toStdString();
     a->cambia_piano(stringaPiano);
+
 }
 void Controller::modificaNome(const QString& n)
 {

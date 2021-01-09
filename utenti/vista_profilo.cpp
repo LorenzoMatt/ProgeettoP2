@@ -1,14 +1,39 @@
 #include "vista_profilo.h"
 
-void vistaProfilo::cambiaP(const QString& t)
+
+
+void vistaProfilo::finestraDiConferma(const QString & t)
 {
-    a->cambiaPiano(t);
+    if(t!=""){
+    dialogo=new QMessageBox;
+    dialogo->setInformativeText (( "Vuoi salvare le modifiche?" ));
+    dialogo->setIcon(QMessageBox::Question);
+    dialogo->setStandardButtons (( QMessageBox :: Save | QMessageBox::Cancel));
+    dialogo->setDefaultButton (( QMessageBox :: Save));
+    dialogo->setStyleSheet(imposta_stile());
+
+    int x=dialogo->exec();
+    Utente* ut=a->getUtente();
+    switch (x) {
+      case QMessageBox::Save:
+//        if((t=="Basic" && dynamic_cast<Basic*>(ut)) || (t=="Gold" && dynamic_cast<ut)
+//                || (t=="Premium" && dynamic_cast<Premium*>(ut)))
+//            messaggio_informativo("Attenzione","Piano non cambiato: il tuo piano é giá "+t);
+//        else{
+          a->cambiaPiano(t);
+//          messaggio_informativo("Esito conferma","Piano cambiato!");
+
+          break;
+
+      case QMessageBox::Cancel:
+          dialogo->close();
+          break;
+    }
+    }
+
 }
 
-//QMessageBox* messaggio=new QMessageBox();
-//messaggio->setWindowTitle(titolo);
-//messaggio->setText(testo);
-//messaggio->exec();
+
 void vistaProfilo::creaCampoPuntiEPiano()
 {
     QHBoxLayout* layoutPuntiEPiano=new QHBoxLayout;
@@ -17,7 +42,9 @@ void vistaProfilo::creaCampoPuntiEPiano()
     //piano
     QLabel* nuovo_piano=new QLabel("Cambia piano:");
     nuovo_piano->setAlignment(Qt::AlignLeft);
+    cambio_piano_combo->setPlaceholderText("");
     cambio_piano_combo->setMinimumWidth(150);
+    cambio_piano_combo->addItem("");
     cambio_piano_combo->addItem("Basic");
     cambio_piano_combo->addItem("Gold");
     cambio_piano_combo->addItem("Premium");
@@ -27,8 +54,7 @@ void vistaProfilo::creaCampoPuntiEPiano()
     layoutPiano->addWidget(nuovo_piano);
     layoutPiano->addWidget(cambio_piano_combo);
 
-    connect(cambio_piano_combo,SIGNAL(currentTextChanged(const QString&)),this,SLOT(cambiaP(const QString&)));
-
+    connect(cambio_piano_combo,SIGNAL(currentTextChanged(const QString&)),this,SLOT(finestraDiConferma(const QString&)));
 
     //punti
     QLabel* etichettaPunti=new QLabel("PUNTI RESIDUI:");

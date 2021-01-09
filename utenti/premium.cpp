@@ -76,3 +76,5 @@ Premium *Premium::clone() const
 {
     return new Premium(*this);
 }
+
+

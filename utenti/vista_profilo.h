@@ -4,18 +4,21 @@
 
 #include <QVBoxLayout>
 #include <QTextEdit>
-#include "container.h"
-#include "controller.h"
-#include "widgetcampodati.h"
 #include <QListWidget>
 #include <QLineEdit>
 #include <QComboBox>
+#include <QMessageBox>
 #include "funzioniutili.h"
+#include "container.h"
+#include "controller.h"
+#include "widgetcampodati.h"
 class vistaProfilo:public QDialog
 {
     Q_OBJECT
 private:
     Controller* a;
+
+
     QVBoxLayout* layoutTotale;
     widgetCampoDati* nome;
     widgetCampoDati* cognome;
@@ -39,6 +42,7 @@ private:
     QComboBox* cambio_piano_combo;
     QMessageBox* messaggio;
     QPushButton* home;
+    QMessageBox* dialogo;
 
 
 
@@ -64,11 +68,13 @@ private slots:
     void invioDatoC();
     void invioDatoT();
 
-    void cambiaP(const QString&);
+
+    void finestraDiConferma(const QString&);
 
 signals:
     void inviaC(const QString&);
     void inviaT(const QString&);
+    void invioPiano(const QString&);
 };
 
 #endif // VISTAPROFILO_H

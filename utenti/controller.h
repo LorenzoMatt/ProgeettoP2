@@ -25,14 +25,15 @@ public:
     container<Domanda *> getDomandeAmici() const;//OK
     container<Domanda *> getDomandePersonali() const;
     int getPunti() const;
+    Utente* getUtente() const;
+
 
     container<std::string> cercaUtente(const QString&) const;
     container<Domanda *> cercaDomanda(const QString&);
 
     bool check_presenza_amico(const QString &) const;
 
-    void cambiaPiano(const QString&);
-
+void cambiaPiano(const QString&);
 private slots:
     void aggiungi_amico(const QString&);
     void aggiungiCompetenza(const QString&);
@@ -47,6 +48,7 @@ private slots:
     void modificaCognome(const QString&);
     void modificaEmail(const QString&);
     void modificaPassword(const QString&);
+
 
     void dai_like(int,Domanda*);
 

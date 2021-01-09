@@ -56,6 +56,7 @@ unsigned int Utente::get_risposte_date() const
     return risposte_date;
 }
 
+
 void Utente::carica_titoli(const container<string>& titoli)
 {
     pf.set_titoli_di_studio(titoli);

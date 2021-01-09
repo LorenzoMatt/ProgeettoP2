@@ -21,6 +21,7 @@ public:
     void fai_domanda(Domanda* domanda) override;//OK
     void get_punti_bonus() override; //OK
     Gold* clone() const override;//OK
+
 };
 
 #endif // GOLD_H

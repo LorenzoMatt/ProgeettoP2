@@ -162,6 +162,8 @@ Domanda *Account::get_domanda(const container<Domanda *>& d, unsigned int i) con
     }
 }
 
+
+
 bool Account::check_presenza_amico(const std::string & user) const
 {
     container<string> l;

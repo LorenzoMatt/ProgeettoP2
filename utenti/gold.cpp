@@ -79,3 +79,5 @@ Gold *Gold::clone() const
     return new Gold(*this);
 }
 
+
+
