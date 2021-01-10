@@ -74,7 +74,17 @@
     </utente>
     <utente>
         <username>Lorenzo</username>
-        <amici>Giorgia Elton Pikachu</amici>
+        <amici>Elton Pikachu</amici>
+        <domanda>
+            <priorita>2</priorita>
+            <testo>ciaoo</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>2</priorita>
+            <testo>ciao</testo>
+            <commenti/>
+        </domanda>
         <domanda>
             <priorita>2</priorita>
             <testo>prova</testo>

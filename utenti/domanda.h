@@ -19,7 +19,7 @@ private:
     container<Commento> commenti;
     unsigned int priorita;
 public:
-    Domanda();
+    Domanda()=delete;
     Domanda(const string&,Utente*,unsigned int);//OK
     Domanda(const string&,Utente*,unsigned int,const container<Commento>&);//OK
     Domanda(const string&,unsigned int,const container<Commento>&);//OK

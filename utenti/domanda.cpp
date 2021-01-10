@@ -13,11 +13,6 @@ void Domanda::set_commenti(const container<Commento> com)
     commenti=com;
 }
 
-Domanda::Domanda()
-{
-
-}
-
 Domanda::Domanda(const string& t, Utente *autore, unsigned int priorita):testo(t),autore_domanda(autore),priorita(priorita > 0 ? priorita: 1)
 {}
 
