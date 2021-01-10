@@ -82,6 +82,7 @@ void widgetCampoDati::confermaModifica()
     QString testo=testoNome->text();
     if(!testo.isEmpty())
         emit invioNome(testo);
+    sbloccaBloccaTesto();
 
 }
 

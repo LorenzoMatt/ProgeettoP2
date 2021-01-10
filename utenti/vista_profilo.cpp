@@ -114,23 +114,22 @@ void vistaProfilo::creaTornaAllaHome()
 
 void vistaProfilo::mostraC()
 {
-
-        aggiungiCompetenzaProfessionale->setVisible(false);
-        inserisciCompetenzaProfessionale->setVisible(true);
-        invio->setVisible(true);
-        connect(invio,SIGNAL(clicked()),this,SLOT(invioDatoC()));
-
-
+        if(aggiungiCompetenzaProfessionale->isVisible()){
+            aggiungiCompetenzaProfessionale->setVisible(false);
+            inserisciCompetenzaProfessionale->setVisible(true);
+            invio->setVisible(true);
+            connect(invio,SIGNAL(clicked()),this,SLOT(invioDatoC()));
+        }
 }
 
 void vistaProfilo::mostraT()
 {
-
-        inserisciTitoloDiStudio->setVisible(true);
-        aggiungiTitoloDiStudio->setVisible(false);
-        invioT->setVisible(true);
-        connect(invioT,SIGNAL(clicked()),this,SLOT(invioDatoT()));
-
+        if(aggiungiTitoloDiStudio->isVisible()){
+            inserisciTitoloDiStudio->setVisible(true);
+            aggiungiTitoloDiStudio->setVisible(false);
+            invioT->setVisible(true);
+            connect(invioT,SIGNAL(clicked()),this,SLOT(invioDatoT()));
+        }
 
 }
 

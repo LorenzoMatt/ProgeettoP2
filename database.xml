@@ -94,17 +94,23 @@
         <tipoutente>Premium</tipoutente>
         <username>c</username>
         <password>c</password>
-        <nome>c</nome>
-        <cognome>c</cognome>
-        <email>c</email>
+        <nome>cxx</nome>
+        <cognome>cccc</cognome>
+        <email>ccc</email>
         <competenze>
             <competenza>ssssss</competenza>
             <competenza>c</competenza>
             <competenza>c</competenza>
             <competenza>c</competenza>
             <competenza>c</competenza>
+            <competenza>c</competenza>
+            <competenza>x</competenza>
+            <competenza>cc</competenza>
         </competenze>
-        <titoli_di_studio/>
+        <titoli_di_studio>
+            <titolo>c</titolo>
+            <titolo>ccc</titolo>
+        </titoli_di_studio>
         <punti>24</punti>
         <risposte_date>0</risposte_date>
     </utente>
