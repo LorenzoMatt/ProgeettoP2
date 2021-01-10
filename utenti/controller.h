@@ -13,6 +13,7 @@ class Controller : public QObject
 private:
     Account* a;
     VistaUtente* v;
+    void aggiorna_vista();
 public:
     explicit Controller(const QString& ,VistaUtente*,QObject *parent = nullptr);
     ~Controller();

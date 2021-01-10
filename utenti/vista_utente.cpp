@@ -13,10 +13,8 @@ void VistaUtente::aggiungiAreaDomandaAmici()
 {
 
     //creo il widget da inserire dentro alla scrollArea
-
-    QWidget* widgetDomandaAmici=new QWidget;
-    QVBoxLayout* layoutWidgetDomandaAmici=new QVBoxLayout;
-
+    widgetDomandaAmici=new QWidget;
+    layoutWidgetDomandaAmici=new QVBoxLayout;
 
     container<Domanda*> contenitoreDomandeAmici=c->getDomandeAmici();
     for(unsigned int i=0;i<contenitoreDomandeAmici.size();i++){
@@ -214,8 +212,6 @@ void VistaUtente::buildCercaUtente()
                 connect(v,SIGNAL(rimuovi(const QString&)),c,SLOT(togli_amico(const QString&)));
                 connect(v,SIGNAL(invia(const QString&)),this,SLOT(buildCercaUtente()));
                 connect(v,SIGNAL(rimuovi(const QString&)),this,SLOT(buildCercaUtente()));
-                connect(v,SIGNAL(invia(const QString&)),this,SLOT(aggiornaAreaDomandeAmici()));
-                connect(v,SIGNAL(rimuovi(const QString&)),this,SLOT(aggiornaAreaDomandeAmici()));
             }else
             {
                 messaggio_errore("Utente non presente","L'utente "+scriviUtente->text()+" non è stato trovato",this);

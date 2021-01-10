@@ -65,8 +65,8 @@ void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
             signalMapperRimuovi->setMapping(rimuovi,num_commento);
         }
     }
-    connect(signalMapperLike,SIGNAL(mappedInt(int)),SLOT(buildLike(int)));
-    connect(signalMapperRimuovi,SIGNAL(mappedInt(int)),SLOT(buildRimuovi(int)));
+    connect(signalMapperLike,SIGNAL(mapped(int)),SLOT(buildLike(int)));
+    connect(signalMapperRimuovi,SIGNAL(mapped(int)),SLOT(buildRimuovi(int)));
     scrollwidgetLayout->addLayout(bloccoCommenti);
 }
 

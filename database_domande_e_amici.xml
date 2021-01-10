@@ -78,7 +78,13 @@
         <domanda>
             <priorita>2</priorita>
             <testo>prova</testo>
-            <commenti/>
+            <commenti>
+                <commento>
+                    <testo>ciao</testo>
+                    <autore_commento>Elton</autore_commento>
+                    <like>0</like>
+                </commento>
+            </commenti>
         </domanda>
         <domanda>
             <priorita>2</priorita>
@@ -122,6 +128,11 @@
                 <commento>
                     <testo>prova</testo>
                     <autore_commento>Lorenzo</autore_commento>
+                    <like>0</like>
+                </commento>
+                <commento>
+                    <testo>ciao</testo>
+                    <autore_commento>Elton</autore_commento>
                     <like>0</like>
                 </commento>
             </commenti>
@@ -216,7 +227,18 @@
         <domanda>
             <priorita>3</priorita>
             <testo>sono elton e dovrei essere in alto</testo>
-            <commenti/>
+            <commenti>
+                <commento>
+                    <testo>ciao</testo>
+                    <autore_commento>Elton</autore_commento>
+                    <like>0</like>
+                </commento>
+                <commento>
+                    <testo>come va?</testo>
+                    <autore_commento>Elton</autore_commento>
+                    <like>0</like>
+                </commento>
+            </commenti>
         </domanda>
         <domanda>
             <priorita>5</priorita>

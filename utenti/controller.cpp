@@ -103,7 +103,7 @@ void Controller::togli_amico(const QString & user)
 {
     Utente* u=a->cerca_utente_per_nome(user.toStdString());
     a->togli_amico(u);
-    v->aggiungiAreaDomandaAmici();
+    aggiorna_vista();
 }
 container<Domanda *> Controller::getDomandePersonali() const
 {
@@ -124,7 +124,12 @@ void Controller::cambiaPiano(const QString & piano)
 {
     string stringaPiano=piano.toStdString();
     a->cambia_piano(stringaPiano);
-
+    aggiorna_vista();
+}
+void Controller::aggiorna_vista()
+{
+    v->aggiungiAreaDomandaAmici();
+    v->aggiungiAreaDomandePersonali();
 }
 void Controller::modificaNome(const QString& n)
 {
