@@ -8,7 +8,7 @@ private:
 public:
     DeepPtr();
     virtual ~DeepPtr();
-    DeepPtr(T *);
+    DeepPtr(const T *);
     DeepPtr(const DeepPtr<T>&);
     DeepPtr<T> &operator =(const DeepPtr<T>&);
     T& operator*() const;
@@ -19,10 +19,10 @@ template<class T>
 DeepPtr<T>::DeepPtr():oggetto(nullptr){}
 
 template<class T>
-DeepPtr<T>::DeepPtr(T *t):oggetto(t){std::cout<<"dptr conv"<<std::endl;}
+DeepPtr<T>::DeepPtr(const T *t):oggetto(t ? t->clone() : nullptr){}
 
 template<class T>
-DeepPtr<T>::DeepPtr(const DeepPtr<T>& t):oggetto(t.oggetto ? t.oggetto->clone() : 0){std::cout<<"dptr copia"<<std::endl;}
+DeepPtr<T>::DeepPtr(const DeepPtr<T>& t):oggetto(t.oggetto ? t.oggetto->clone() : 0){}
 
 template<class T>
 DeepPtr<T>::~DeepPtr()

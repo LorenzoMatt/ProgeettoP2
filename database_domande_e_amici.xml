@@ -23,7 +23,7 @@
                     <like>0</like>
                 </commento>
                 <commento>
-                    <testo>prova dio</testo>
+                    <testo>prova ciao</testo>
                     <autore_commento>Lorenzo</autore_commento>
                     <like>0</like>
                 </commento>
@@ -74,7 +74,7 @@
     </utente>
     <utente>
         <username>Lorenzo</username>
-        <amici>Pikachu Giorgia Elton</amici>
+        <amici>Giorgia Elton Pikachu</amici>
         <domanda>
             <priorita>2</priorita>
             <testo>prova</testo>
@@ -99,7 +99,13 @@
         <domanda>
             <priorita>5</priorita>
             <testo>ssss</testo>
-            <commenti/>
+            <commenti>
+                <commento>
+                    <testo>ciaooo</testo>
+                    <autore_commento>Elton</autore_commento>
+                    <like>0</like>
+                </commento>
+            </commenti>
         </domanda>
         <domanda>
             <priorita>2</priorita>
@@ -166,6 +172,11 @@
                     <autore_commento>Lorenzo</autore_commento>
                     <like>0</like>
                 </commento>
+                <commento>
+                    <testo>ciò</testo>
+                    <autore_commento>Elton</autore_commento>
+                    <like>0</like>
+                </commento>
             </commenti>
         </domanda>
         <domanda>
@@ -223,7 +234,7 @@
     </utente>
     <utente>
         <username>Elton</username>
-        <amici>Lorenzo</amici>
+        <amici>Lorenzo Mirko</amici>
         <domanda>
             <priorita>3</priorita>
             <testo>sono elton e dovrei essere in alto</testo>
@@ -235,6 +246,11 @@
                 </commento>
                 <commento>
                     <testo>come va?</testo>
+                    <autore_commento>Elton</autore_commento>
+                    <like>0</like>
+                </commento>
+                <commento>
+                    <testo>beneù</testo>
                     <autore_commento>Elton</autore_commento>
                     <like>0</like>
                 </commento>

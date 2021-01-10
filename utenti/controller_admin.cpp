@@ -6,14 +6,9 @@
 controller_admin::controller_admin(vista_amministratore* v) :vista(v), db(new Database())
 {
     db->import();
-//    vista=new vista_amministratore(this)
-//    vista->show();
 }
 
-controller_admin::~controller_admin()
-{
-//    delete db;
-}
+
 
 Database *controller_admin::get_db() const
 {
