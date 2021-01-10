@@ -9,14 +9,9 @@
 #include "log.h"
 
 //aggiunge area domanda utente con pulsante commenti
-void VistaUtente::aggiungiAreaDomandaAmici()
+void VistaUtente::aggiungiAreaDomandaAmici() //giusto
 {
-
-    //creo il widget da inserire dentro alla scrollArea
-
-    QWidget* widgetDomandaAmici=new QWidget;
-    QVBoxLayout* layoutWidgetDomandaAmici=new QVBoxLayout;
-
+//    layoutWidgetPagina1
 
     container<Domanda*> contenitoreDomandeAmici=c->getDomandeAmici();
     for(unsigned int i=0;i<contenitoreDomandeAmici.size();i++){
@@ -30,30 +25,32 @@ void VistaUtente::aggiungiAreaDomandaAmici()
     QTextEdit* testoDomanda=new QTextEdit(QString::fromStdString(c->getDomandeAmici()[i]->get_testo()));
     testoDomanda->setReadOnly(true);
 
-    layoutWidgetDomandaAmici->addWidget(autoreDomanda);
-    layoutWidgetDomandaAmici->addWidget(testoDomanda);
+
     //creo la barra orizzontale con il pulsante per visualizzare i commenti
     QString u(QString::fromStdString(c->getAccesso().get_username()));
     bottoneVediCommento* commenti=new bottoneVediCommento(c->getDomandeAmici()[i],u,"vedi commenti");
-    //pulsante per vedere i commenti
-    connect(commenti,SIGNAL(clicked()),commenti,SLOT(vediCommenti()));
+
+
+
 
     //aggiungo il pulsante commenti sotto al testo della domanda
-    layoutWidgetDomandaAmici->addWidget(commenti);
-    layoutWidgetDomandaAmici->setAlignment(commenti,Qt::AlignRight);
+    layoutDomandaAmici->addWidget(autoreDomanda);
+    layoutDomandaAmici->addWidget(testoDomanda);
+    layoutDomandaAmici->addWidget(commenti);
+    layoutDomandaAmici->setAlignment(commenti,Qt::AlignRight);
+    layoutWidgetPagina1->addLayout(layoutDomandaAmici);
+
+    connect(commenti,SIGNAL(clicked()),commenti,SLOT(vediCommenti()));
     connect(commenti,SIGNAL(commento(const QString&,Domanda*)),c,SLOT(scrivi_commento(const QString&,Domanda*)));
     connect(commenti,SIGNAL(commento(const QString&,Domanda*)),commenti,SLOT(vediCommenti()));//aggiorno la vista delle domande
     }
 
-    //imposto come layout del widget il layout appena creato
-    widgetDomandaAmici->setLayout(layoutWidgetDomandaAmici);
-    layoutWidgetPagina1->addWidget(widgetDomandaAmici);
 }
 
-void VistaUtente::aggiungiAreaDomandePersonali()
+void VistaUtente::aggiungiAreaDomandePersonali() //giusto
 {
-    QWidget* widgetScrollAreaPagina2=new QWidget;
-    QVBoxLayout* layoutScrollAreaPagina2=new QVBoxLayout;
+//    layoutWidgetScroll2
+
 
     container<Domanda*> contenitoreDomandePersonali=c->getDomandePersonali();
 
@@ -63,42 +60,32 @@ void VistaUtente::aggiungiAreaDomandePersonali()
     QTextEdit* testoDomanda=new QTextEdit(QString::fromStdString(c->getDomandePersonali()[i]->get_testo()));
     testoDomanda->setReadOnly(true);
 
-    layoutScrollAreaPagina2->addWidget(testoDomanda);
+
     //creo la barra orizzontale con il pulsante per visualizzare i commenti
     QString u(QString::fromStdString(c->getAccesso().get_username()));
     bottoneVediCommento* commenti=new bottoneVediCommento(c->getDomandePersonali()[i],u,"vedi commenti");
+
+    layoutWidgetScroll2->addWidget(testoDomanda);
+    layoutWidgetScroll2->addWidget(commenti);
+    layoutWidgetScroll2->setAlignment(commenti,Qt::AlignRight);
     //pulsante per vedere i commenti
-    connect(commenti,SIGNAL(clicked()),commenti,SLOT(vediCommenti())); // visualizzo la domanda associata al pulsante
+    connect(commenti,SIGNAL(clicked()),commenti,SLOT(vediCommenti()));
     connect(commenti,SIGNAL(commento(const QString&,Domanda*)),c,SLOT(scrivi_commento(const QString&,Domanda*)));
+    connect(commenti,SIGNAL(commento(const QString&,Domanda*)),commenti,SLOT(vediCommenti()));
     connect(commenti,SIGNAL(like(int,Domanda*)),c,SLOT(dai_like(int,Domanda*)));
-    connect(commenti,SIGNAL(rimuovi(int,Domanda*)),c,SLOT(rimuovi_commento(int,Domanda*)));
-    connect(commenti,SIGNAL(commento(const QString&,Domanda*)),commenti,SLOT(vediCommenti()));//aggiorno la vista delle domande
     connect(commenti,SIGNAL(like(int,Domanda*)),commenti,SLOT(vediCommenti()));
+    connect(commenti,SIGNAL(rimuovi(int,Domanda*)),c,SLOT(rimuovi_commento(int,Domanda*)));   
     connect(commenti,SIGNAL(rimuovi(int,Domanda*)),commenti,SLOT(vediCommenti()));
-    layoutScrollAreaPagina2->addWidget(commenti);
-    layoutScrollAreaPagina2->setAlignment(commenti,Qt::AlignRight);
+
     }
 
-    widgetScrollAreaPagina2->setLayout(layoutScrollAreaPagina2);
-    pagina2->setWidget(widgetScrollAreaPagina2);
 }
 
-void VistaUtente::buildBarraSuperiore()
+void VistaUtente::buildBarraSuperiore() //giusto
 {
-    layoutBarraSuperiore=new QHBoxLayout;
-
-//  pulsanti della barra di ricerca
-    QIcon iconaProfilo("../profilo");
-    profilo=new QPushButton(iconaProfilo," Profilo");
-    QIcon iconaCerca("../lente");
-    invioDomanda=new QPushButton(iconaCerca,"Cerca");
-    invioUtente=new QPushButton(iconaCerca,"Cerca");
-
-//  linee di testo della barra di ricerca
-    scriviDomanda=new QLineEdit();
+   //setter
     scriviDomanda->setPlaceholderText("cerca domanda");
-    scriviDomanda->setMinimumWidth(300);
-    scriviUtente=new QLineEdit();
+    scriviDomanda->setMinimumWidth(300);   
     scriviUtente->setPlaceholderText("cerca utente");
 
     //aggiungo alla barra di ricerca gli elementi creati
@@ -116,71 +103,36 @@ void VistaUtente::buildBarraSuperiore()
 
 //costruisce la tabella con le due pagine (domande amici,domande personali)
 //entrambe le pagine sono delle scrollArea ma nella pagina domande amici c'é una barra fissa per aggiungere domande
-void VistaUtente::buildTabella()
+void VistaUtente::buildTabella() //giusto
 {
-    tabella=new QTabWidget;
-    pagina1=new QScrollArea;
+    tabella->addTab(pagina1,"Domande amici");
+    tabella->addTab(pagina2,"Domande personali");
 
-    pagina2=new QScrollArea;
-    pagina1->setWidgetResizable(true);
-    pagina2->setWidgetResizable(true);
-
-    //creo i widget che contengono le scrollArea delle pagine
-    QWidget* widgetPagina1=new QWidget;
-    QWidget* widgetPagina2=new QWidget;
-    layoutWidgetPagina1=new QVBoxLayout;
-    layoutWidgetPagina2=new QVBoxLayout;
-
-    //creo layout totale per la tabella
-    QWidget* totalePagina2=new QWidget;
-    QVBoxLayout* layoutTotalePagina2=new QVBoxLayout();
-    totalePagina2->setLayout(layoutTotalePagina2);
-
-    //QHBoxLayout che indica il numero di domande presenti e aggiungi domanda
-    QHBoxLayout* layoutAggiungiDomanda=new QHBoxLayout;
+    pagina1->setWidget(widgetPagina1);
+    widgetPagina1->setLayout(layoutWidgetPagina1); //layout dove lavorare
+    pagina2->setLayout(layoutPagina2);
+    layoutPagina2->addLayout(layoutAggiungiDomanda);
     numeroDomandePersonali=new QLabel("numero di domande "+QString::number((c->getDomandePersonali().size())));
     layoutAggiungiDomanda->addWidget(numeroDomandePersonali);
     aggiungiDomanda=new QPushButton("fai domanda");
     layoutAggiungiDomanda->addWidget(aggiungiDomanda);
+    layoutPagina2->addWidget(scrollPagina2);
+    scrollPagina2->setWidget(WidgetScroll2);
+    WidgetScroll2->setLayout(layoutWidgetScroll2); //layout dove lavorare
 
-    widgetPagina1->setLayout(layoutWidgetPagina1);
-    widgetPagina2->setLayout(layoutWidgetPagina2);
-    //aggiungo i widget alle scrollArea
-    pagina1->setWidget(widgetPagina1);
-    pagina2->setWidget(widgetPagina2);
-
-    layoutTotalePagina2->addLayout(layoutAggiungiDomanda);
-    layoutTotalePagina2->addWidget(pagina2);
+    //fino a qua tutto ok
 
     //nella pagina1 devo creare le domande con i commenti degli amici dell'utente
     aggiungiAreaDomandaAmici();
 
-    //nella pagina2 devo creare le domande con i commenti delle domane personali
+    //nella pagina2 devo creare le domande con i commenti delle domande personali
     aggiungiAreaDomandePersonali();
 
-    //aggiungo le scrollArea alla tabella
-    tabella->addTab(pagina1,"Domande amici");
-    tabella->addTab(totalePagina2,"Domande personali");
+
     connect(aggiungiDomanda,SIGNAL(clicked()),this,SLOT(buildFaiDomanda()));
 }
 
-VistaUtente::VistaUtente(const QString& utente, QWidget *parent):QWidget(parent),c(new Controller(utente,this))
-{
-    setAttribute(Qt::WA_DeleteOnClose);// serve a chiamare la delete della finestra, che a sua volta chiama la delete del controller che effettua il salvataggio del contenuto
-    setStyleSheet(imposta_stile());
-    QVBoxLayout* mainLayout=new QVBoxLayout();
 
-    //creo gli elementi da aggiungere al mainLayout
-    buildBarraSuperiore();
-    buildTabella();
-    mainLayout->addLayout(layoutBarraSuperiore);
-    mainLayout->addWidget(tabella);
-    logout=new QPushButton("Logout");
-    logout->setObjectName("annulla");
-    connect(logout,SIGNAL(clicked()),this,SLOT(buildLogout()));
-    mainLayout->addWidget(logout);
-    setLayout(mainLayout);
-}
 
 VistaUtente::~VistaUtente()
 {
@@ -210,11 +162,12 @@ void VistaUtente::buildCercaUtente()
                 bool amico_presente=c->check_presenza_amico(scriviUtente->text());
                 vistaCercaUtente* v=new vistaCercaUtente(parametri,amico_presente,this);
                 v->show();
-                connect(v,SIGNAL(invia(const QString&)),c,SLOT(aggiungi_amico(const QString&)));
-                connect(v,SIGNAL(rimuovi(const QString&)),c,SLOT(togli_amico(const QString&)));
+                connect(v,SIGNAL(invia(const QString&)),c,SLOT(aggiungi_amico(const QString&))); 
                 connect(v,SIGNAL(invia(const QString&)),this,SLOT(buildCercaUtente()));
-                connect(v,SIGNAL(rimuovi(const QString&)),this,SLOT(buildCercaUtente()));
                 connect(v,SIGNAL(invia(const QString&)),this,SLOT(aggiornaAreaDomandeAmici()));
+
+                connect(v,SIGNAL(rimuovi(const QString&)),c,SLOT(togli_amico(const QString&)));
+                connect(v,SIGNAL(rimuovi(const QString&)),this,SLOT(buildCercaUtente()));
                 connect(v,SIGNAL(rimuovi(const QString&)),this,SLOT(aggiornaAreaDomandeAmici()));
             }else
             {
@@ -229,6 +182,7 @@ void VistaUtente::buildFaiDomanda()
     domanda->show();
     connect(domanda,SIGNAL(invia(const QString&,int)),c,SLOT(faiDomanda(const QString&,int)));
     connect(domanda,SIGNAL(invia(const QString&,int)),this,SLOT(aggiornaNumeroDomande()));
+    connect(domanda,SIGNAL(invia(const QString&,int)),this,SLOT(aggiungiAreaDomandePersonali()));
 }
 
 void VistaUtente::buildDomandeCercate()
@@ -257,4 +211,59 @@ void VistaUtente::buildLogout()
     l->show();
     close();
 }
+VistaUtente::VistaUtente(const QString& utente, QWidget *parent):QWidget(parent),c(new Controller(utente,this)),
+    mainLayout(new QVBoxLayout()),
+    //iniz elementi barra superiore
+    layoutBarraSuperiore(new QHBoxLayout()),
+    profilo(new QPushButton("Profilo")),
+    invioDomanda(new QPushButton("Cerca")),
+    invioUtente(new QPushButton("Cerca")),
+    scriviDomanda(new QLineEdit()),
+    scriviUtente(new QLineEdit()),
 
+
+    //iniz elementi tabella
+    tabella(new QTabWidget()),
+    pagina1(new QScrollArea()),
+    widgetPagina1(new QWidget()),
+    layoutWidgetPagina1(new QVBoxLayout()),
+    layoutDomandaAmici(new QVBoxLayout()),
+
+
+    pagina2(new QWidget()),
+    layoutPagina2(new QVBoxLayout()),
+    layoutAggiungiDomanda(new QHBoxLayout()),
+    scrollPagina2(new QScrollArea()),
+    WidgetScroll2(new QWidget()),
+    layoutWidgetScroll2(new QVBoxLayout()),
+
+
+
+    numeroDomandePersonali(new QLabel()),
+    aggiungiDomanda(new QPushButton()),
+
+
+
+    logout(new QPushButton("Logout"))
+{
+    //setter generale
+    setAttribute(Qt::WA_DeleteOnClose);// serve a chiamare la delete della finestra, che a sua volta chiama la delete del controller che effettua il salvataggio del contenuto
+    setStyleSheet(imposta_stile());
+    pagina1->setWidgetResizable(true);
+    scrollPagina2->setWidgetResizable(true);
+
+    //aggiunte giuste
+    mainLayout->addLayout(layoutBarraSuperiore);
+    mainLayout->addWidget(tabella);
+    mainLayout->addWidget(logout);
+
+    logout->setObjectName("annulla");
+    setLayout(mainLayout);
+
+    //build
+    buildBarraSuperiore();
+    buildTabella();
+
+    connect(logout,SIGNAL(clicked()),this,SLOT(buildLogout()));
+
+}

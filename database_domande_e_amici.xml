@@ -69,6 +69,11 @@
                     <autore_commento>c</autore_commento>
                     <like>0</like>
                 </commento>
+                <commento>
+                    <testo>sss</testo>
+                    <autore_commento>c</autore_commento>
+                    <like>0</like>
+                </commento>
             </commenti>
         </domanda>
     </utente>
@@ -318,6 +323,56 @@
     <utente>
         <username>c</username>
         <amici>Pikachu</amici>
+        <domanda>
+            <priorita>3</priorita>
+            <testo>ciao sono mamma</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>3</priorita>
+            <testo>ciao sono lorenzo</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>3</priorita>
+            <testo>ciao sono mirko</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>3</priorita>
+            <testo>c</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>3</priorita>
+            <testo>dd</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>5</priorita>
+            <testo>wwwwwwwwwwwwwwwwwwwwww</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>2</priorita>
+            <testo>ddddddddddddddddddddddddddd</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>2</priorita>
+            <testo>c</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>2</priorita>
+            <testo>x</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
+            <priorita>2</priorita>
+            <testo>sss</testo>
+            <commenti/>
+        </domanda>
         <domanda>
             <priorita>2</priorita>
             <testo>ffff</testo>

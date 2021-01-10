@@ -24,28 +24,47 @@ class VistaUtente:public QWidget
 private:
     Controller* c;
 
-    QLabel* numeroDomandePersonali;
-    QPushButton* aggiungiDomanda;
-    QPushButton* logout;
+    //totale
+    QVBoxLayout* mainLayout;
+
+    //barra superiore
     QHBoxLayout* layoutBarraSuperiore;
-    QTabWidget* tabella;
     QPushButton* profilo;
     QPushButton* invioDomanda;
     QPushButton* invioUtente;
     QLineEdit* scriviDomanda;
     QLineEdit* scriviUtente;
-    QVBoxLayout* layoutWidgetPagina1;
-    QVBoxLayout* layoutWidgetPagina2;
+
+
+    //tabella
+    QTabWidget* tabella;
     QScrollArea* pagina1;
-    QScrollArea* pagina2;
+    QWidget* widgetPagina1;
+    QVBoxLayout* layoutWidgetPagina1;
+    QVBoxLayout* layoutDomandaAmici;
+
+
+
+    QWidget* pagina2;
+    QVBoxLayout* layoutPagina2;
+    QHBoxLayout* layoutAggiungiDomanda;
+    QScrollArea* scrollPagina2;
+    QWidget* WidgetScroll2;
+    QVBoxLayout* layoutWidgetScroll2;
+
+
+
+    QLabel* numeroDomandePersonali;
+    QPushButton* aggiungiDomanda;
+
+    //logout
+    QPushButton* logout;
 
 //funzioni di utilitá
-    void aggiungiAreaDomandaAmici();
-    void aggiungiAreaDomandePersonali();
-    void aggiungiPulsanteDomandaPersonale();
-    void aggiungiPulsanteDomandaAmico();
     void buildBarraSuperiore();
     void buildTabella();
+
+
 
 public:
     explicit VistaUtente(const QString&,QWidget* parent=nullptr);
@@ -58,6 +77,8 @@ private slots:
     void aggiornaAreaDomandeAmici();
     void aggiornaNumeroDomande();
     void buildLogout();
+    void aggiungiAreaDomandaAmici();
+    void aggiungiAreaDomandePersonali();
 };
 
 #endif // VISTAUTENTE_H
