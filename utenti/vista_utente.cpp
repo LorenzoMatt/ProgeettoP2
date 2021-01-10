@@ -12,8 +12,7 @@
 void VistaUtente::aggiungiAreaDomandaAmici()
 {
 
-    //creo il widget da inserire dentro alla scrollArea
-    if (layoutWidgetPagina1) {
+    if (layoutWidgetPagina1) {// mi serve per aggiornare la lista delle domande quando tolgo o aggiungo un nuovo amico
         QLayoutItem *item;
 
         //the key point here is that the layout items are stored inside the layout in a stack
@@ -22,10 +21,11 @@ void VistaUtente::aggiungiAreaDomandaAmici()
                 layoutWidgetPagina1->removeWidget(item->widget());
                 delete item->widget();
             }
-
             delete item;
         }
     }
+    //creo il widget da inserire dentro alla scrollArea
+
     widgetDomandaAmici=new QWidget;
     layoutWidgetDomandaAmici=new QVBoxLayout;
     container<Domanda*> contenitoreDomandeAmici=c->getDomandeAmici();
