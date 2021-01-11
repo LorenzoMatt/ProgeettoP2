@@ -6,7 +6,13 @@
         <domanda>
             <priorita>3</priorita>
             <testo>d</testo>
-            <commenti/>
+            <commenti>
+                <commento>
+                    <testo>ciao</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                    <like>0</like>
+                </commento>
+            </commenti>
         </domanda>
         <domanda>
             <priorita>2</priorita>
@@ -65,6 +71,11 @@
     <utente>
         <username>Lorenzo</username>
         <amici>c Pikachu</amici>
+        <domanda>
+            <priorita>1</priorita>
+            <testo>ciao</testo>
+            <commenti/>
+        </domanda>
         <domanda>
             <priorita>2</priorita>
             <testo>ciaoo</testo>
@@ -181,11 +192,6 @@
                 <commento>
                     <testo>prova per un commento</testo>
                     <autore_commento>Giorgia</autore_commento>
-                    <like>0</like>
-                </commento>
-                <commento>
-                    <testo>ddwssxs</testo>
-                    <autore_commento>Lorenzo</autore_commento>
                     <like>0</like>
                 </commento>
             </commenti>

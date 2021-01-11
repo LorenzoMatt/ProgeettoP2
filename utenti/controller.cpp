@@ -124,8 +124,7 @@ Utente *Controller::getUtente() const
 bool Controller::cambiaPiano(const QString & piano)
 {
     string p=piano.toStdString();
-    if((p=="Basic" && dynamic_cast<Basic*>(a->get_utente())) || (p=="Gold" && dynamic_cast<Gold*>(a->get_utente()))
-            || (p=="Premium" && dynamic_cast<Premium*>(a->get_utente()))){
+    if(p==a->get_utente()->piano()){
         return false;
     }
     else

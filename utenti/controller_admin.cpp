@@ -59,8 +59,7 @@ void controller_admin::cambia_piano(const QString & utente,const QString& piano)
     if(u)
     {
         string p=piano.toStdString();
-        if((p=="Basic" && dynamic_cast<Basic*>(u)) || (p=="Gold" && dynamic_cast<Gold*>(u))
-                || (p=="Premium" && dynamic_cast<Premium*>(u)))
+        if(p==u->piano())
         {
             messaggio_errore("Piano non cambiato","l'utente "+utente+" ha già un piano "+piano,vista);
         }

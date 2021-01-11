@@ -1,4 +1,3 @@
-
 #include <QApplication>
 #include "database.h"
 #include "controller.h"
