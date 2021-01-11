@@ -114,36 +114,24 @@ void vistaProfilo::creaTornaAllaHome()
 
 void vistaProfilo::mostraC()
 {
-    if(!inserisciCompetenzaProfessionale->isVisible()){
-        inserisciCompetenzaProfessionale->setVisible(true);
-        aggiungiCompetenzaProfessionale->setVisible(false);
-        invio->setVisible(true);
-        connect(invio,SIGNAL(clicked()),this,SLOT(invioDatoC()));
-    }
-    else
-    {
+        if(aggiungiCompetenzaProfessionale->isVisible()){
+            aggiungiCompetenzaProfessionale->setVisible(false);
+            inserisciCompetenzaProfessionale->setVisible(true);
+            invio->setVisible(true);
+            connect(invio,SIGNAL(clicked()),this,SLOT(invioDatoC()));
+        }
 
-        inserisciCompetenzaProfessionale->setVisible(false);
-        aggiungiCompetenzaProfessionale->setVisible(true);
-        invio->setVisible(false);
-    }
 }
 
 void vistaProfilo::mostraT()
 {
-    if(!inserisciTitoloDiStudio->isVisible()){
-        inserisciTitoloDiStudio->setVisible(true);
-        aggiungiTitoloDiStudio->setVisible(false);
-        invioT->setVisible(true);
-        connect(invioT,SIGNAL(clicked()),this,SLOT(invioDatoT()));
-    }
-    else
-    {
+        if(aggiungiTitoloDiStudio->isVisible()){
+            inserisciTitoloDiStudio->setVisible(true);
+            aggiungiTitoloDiStudio->setVisible(false);
+            invioT->setVisible(true);
+            connect(invioT,SIGNAL(clicked()),this,SLOT(invioDatoT()));
+        }
 
-        inserisciTitoloDiStudio->setVisible(false);
-        aggiungiTitoloDiStudio->setVisible(true);
-        invioT->setVisible(false);
-    }
 }
 
 void vistaProfilo::invioDatoC()
@@ -152,8 +140,11 @@ void vistaProfilo::invioDatoC()
     if(!testo.isEmpty()){
         testoCompetenzeProfessionali->addItem(testo);
         testoCompetenzeProfessionali->scrollToBottom();
-        emit inviaC(testo);
+        aggiungiCompetenzaProfessionale->setVisible(true);
+        inserisciCompetenzaProfessionale->setVisible(false);
+        invio->setVisible(false);
         inserisciCompetenzaProfessionale->setText("");
+        emit inviaC(testo);
     }
 }
 void vistaProfilo::invioDatoT()
@@ -162,8 +153,12 @@ void vistaProfilo::invioDatoT()
     if(!testo.isEmpty()){
         testoTitoliDiStudio->addItem(testo);
         testoTitoliDiStudio->scrollToBottom();
-        emit inviaT(testo);
+        inserisciTitoloDiStudio->setVisible(false);
+        aggiungiTitoloDiStudio->setVisible(true);
+        invioT->setVisible(false);
         inserisciTitoloDiStudio->setText("");
+        emit inviaT(testo);
+
     }
 }
 

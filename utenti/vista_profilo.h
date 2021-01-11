@@ -52,12 +52,6 @@ private:
 
     //funzioni di utilitá
     void creaCampoPuntiEPiano();
-    void creaCampoNome();
-    void creaCampoCognome();
-    void creaCampoPassword();
-    void creaCampoEmail();
-
-
     void creaCampoCompetenze();
     void creaCampoTitoliDiStudio();
 
@@ -73,6 +67,10 @@ private slots:
     void invioDatoC();
     void invioDatoT();
     void invioPiano();
+    void creaCampoNome();
+    void creaCampoCognome();
+    void creaCampoPassword();
+    void creaCampoEmail();
 
 
     void finestraDiConferma(const QString&);

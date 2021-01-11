@@ -40,6 +40,7 @@ widgetCampoDati::widgetCampoDati(const QString& n, const QString& t, bool m):lay
     setLayout(layoutTotale);
 
     //connessioni pulsanti
+
     connect(modNome,SIGNAL(clicked()),this,SLOT(sbloccaBloccaTesto()));
     connect(canc,SIGNAL(clicked()),this,SLOT(annullaModifica()));
 
@@ -48,7 +49,11 @@ widgetCampoDati::widgetCampoDati(const QString& n, const QString& t, bool m):lay
 //implementazione degli slots
 void widgetCampoDati::sbloccaBloccaTesto()
 {
+
+    testoNome->setFocus();
    if(testoNome->isReadOnly()){
+       if(!modo)
+           testoNome->setEchoMode(QLineEdit::Normal);
    testoNome->setReadOnly(false);
    modNome->setVisible(false);
    invio->setVisible(true);
@@ -60,10 +65,13 @@ void widgetCampoDati::sbloccaBloccaTesto()
    }
    else
    {
+       if(!modo)
+           testoNome->setEchoMode(QLineEdit::PasswordEchoOnEdit);
        testoNome->setReadOnly(true);
        modNome->setVisible(true);
        invio->setVisible(false);
        canc->setVisible(false);
+
    }
 
 }
@@ -73,6 +81,7 @@ void widgetCampoDati::annullaModifica()
     testoNome->setText(testoTemporaneo);
 
     sbloccaBloccaTesto();
+    testoNome->clearFocus();
 }
 
 void widgetCampoDati::confermaModifica()
@@ -82,6 +91,8 @@ void widgetCampoDati::confermaModifica()
     QString testo=testoNome->text();
     if(!testo.isEmpty())
         emit invioNome(testo);
+    sbloccaBloccaTesto();
+    testoNome->clearFocus();
 
 }
 

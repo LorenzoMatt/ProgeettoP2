@@ -4,20 +4,28 @@
         <tipoutente>Basic</tipoutente>
         <username>Pikachu</username>
         <password>0000</password>
-        <nome>Pikachu</nome>
-        <cognome>Pikachu</cognome>
-        <email>Pikachu</email>
+        <nome>r000000</nome>
+        <cognome>dss0</cognome>
+        <email>Pikachus</email>
         <competenze>
             <competenza>giovare a pallone</competenza>
             <competenza>prendere a pugni</competenza>
             <competenza>vendere le figurine</competenza>
             <competenza>a</competenza>
             <competenza>x</competenza>
+            <competenza>c</competenza>
+            <competenza>d</competenza>
+            <competenza>d</competenza>
+            <competenza>t</competenza>
+            <competenza>w</competenza>
         </competenze>
         <titoli_di_studio>
             <titolo>Laurea in bere vino</titolo>
             <titolo>Laurea in dinosauri</titolo>
             <titolo>f</titolo>
+            <titolo>c</titolo>
+            <titolo>s</titolo>
+            <titolo>w</titolo>
         </titoli_di_studio>
         <punti>45</punti>
         <risposte_date>0</risposte_date>
