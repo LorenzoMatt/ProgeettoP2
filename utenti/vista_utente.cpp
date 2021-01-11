@@ -14,8 +14,6 @@ void VistaUtente::aggiungiAreaDomandaAmici()
 
     if (layoutWidgetPagina1) {// mi serve per aggiornare la lista delle domande quando tolgo o aggiungo un nuovo amico
         QLayoutItem *item;
-
-        //the key point here is that the layout items are stored inside the layout in a stack
         while((item = layoutWidgetPagina1->takeAt(0)) != 0) {
             if (item->widget()) {
                 layoutWidgetPagina1->removeWidget(item->widget());
@@ -26,8 +24,8 @@ void VistaUtente::aggiungiAreaDomandaAmici()
     }
     //creo il widget da inserire dentro alla scrollArea
 
-    widgetDomandaAmici=new QWidget;
-    layoutWidgetDomandaAmici=new QVBoxLayout;
+    QWidget* widgetDomandaAmici=new QWidget;
+    QVBoxLayout* layoutWidgetDomandaAmici=new QVBoxLayout;
     container<Domanda*> contenitoreDomandeAmici=c->getDomandeAmici();
     for(unsigned int i=0;i<contenitoreDomandeAmici.size();i++){
     //costruisco il layout del widget che conterrá le domande che dovranno essere visualizzate e il pulsante
@@ -83,8 +81,8 @@ void VistaUtente::aggiungiAreaDomandePersonali()
     connect(commenti,SIGNAL(like(int,Domanda*)),c,SLOT(dai_like(int,Domanda*)));
     connect(commenti,SIGNAL(rimuovi(int,Domanda*)),c,SLOT(rimuovi_commento(int,Domanda*)));
     connect(commenti,SIGNAL(commento(const QString&,Domanda*)),commenti,SLOT(vediCommenti()));//aggiorno la vista delle domande
-    connect(commenti,SIGNAL(like(int,Domanda*)),commenti,SLOT(vediCommenti()));
-    connect(commenti,SIGNAL(rimuovi(int,Domanda*)),commenti,SLOT(vediCommenti()));
+    connect(commenti,SIGNAL(like(int,Domanda*)),commenti,SLOT(vediCommenti()));//aggiorno la vista delle domande
+    connect(commenti,SIGNAL(rimuovi(int,Domanda*)),commenti,SLOT(vediCommenti()));//aggiorno la vista delle domande
     layoutScrollAreaPagina2->addWidget(commenti);
     layoutScrollAreaPagina2->setAlignment(commenti,Qt::AlignRight);
     }

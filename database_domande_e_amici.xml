@@ -2,7 +2,7 @@
 <domande_e_amici>
     <utente>
         <username>Pikachu</username>
-        <amici>Lorenzo Mirko Francesca Elton</amici>
+        <amici>Mirko Francesca Elton Lorenzo</amici>
         <domanda>
             <priorita>3</priorita>
             <testo>d</testo>
@@ -69,16 +69,27 @@
                     <autore_commento>c</autore_commento>
                     <like>0</like>
                 </commento>
+                <commento>
+                    <testo>xxx</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                    <like>0</like>
+                </commento>
             </commenti>
         </domanda>
     </utente>
     <utente>
         <username>Lorenzo</username>
-        <amici>Elton Pikachu</amici>
+        <amici>Pikachu</amici>
         <domanda>
             <priorita>2</priorita>
             <testo>ciaoo</testo>
-            <commenti/>
+            <commenti>
+                <commento>
+                    <testo>ciao</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                    <like>0</like>
+                </commento>
+            </commenti>
         </domanda>
         <domanda>
             <priorita>2</priorita>
@@ -210,16 +221,6 @@
             <testo>sono grande?</testo>
             <commenti>
                 <commento>
-                    <testo>dio porco</testo>
-                    <autore_commento>Pikachu</autore_commento>
-                    <like>0</like>
-                </commento>
-                <commento>
-                    <testo>la madonna</testo>
-                    <autore_commento>Pikachu</autore_commento>
-                    <like>0</like>
-                </commento>
-                <commento>
                     <testo>gesu</testo>
                     <autore_commento>Pikachu</autore_commento>
                     <like>0</like>
@@ -244,7 +245,7 @@
     </utente>
     <utente>
         <username>Elton</username>
-        <amici>Lorenzo Mirko</amici>
+        <amici>Mirko Lorenzo</amici>
         <domanda>
             <priorita>3</priorita>
             <testo>sono elton e dovrei essere in alto</testo>
@@ -334,7 +335,7 @@
     </utente>
     <utente>
         <username>Giorgia</username>
-        <amici>Lorenzo Elton</amici>
+        <amici>Elton Lorenzo</amici>
         <domanda>
             <priorita>1</priorita>
             <testo>prova a fare una domanda</testo>

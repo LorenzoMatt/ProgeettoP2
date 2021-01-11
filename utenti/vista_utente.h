@@ -23,7 +23,6 @@ class VistaUtente:public QWidget
     friend class Controller;
 private:
     Controller* c;
-    QWidget* widgetDomandaAmici;
     QLabel* numeroDomandePersonali;
     QPushButton* aggiungiDomanda;
     QPushButton* logout;
@@ -36,7 +35,6 @@ private:
     QLineEdit* scriviUtente;
     QVBoxLayout* layoutWidgetPagina1;
     QVBoxLayout* layoutWidgetPagina2;
-    QVBoxLayout* layoutWidgetDomandaAmici;
     QScrollArea* pagina1;
     QScrollArea* pagina2;
 

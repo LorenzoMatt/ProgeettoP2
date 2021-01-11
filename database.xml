@@ -23,7 +23,7 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Gold</tipoutente>
+        <tipoutente>Basic</tipoutente>
         <username>Lorenzo</username>
         <password>0000</password>
         <nome>Lorenzo</nome>
@@ -36,7 +36,7 @@
         <titoli_di_studio>
             <titolo>nessuna</titolo>
         </titoli_di_studio>
-        <punti>31</punti>
+        <punti>60</punti>
         <risposte_date>1</risposte_date>
     </utente>
     <utente>
