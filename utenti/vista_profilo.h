@@ -54,7 +54,6 @@ private:
     void creaCampoPuntiEPiano();
     void creaCampoCompetenze();
     void creaCampoTitoliDiStudio();
-
     void creaTornaAllaHome();
 public:
     explicit vistaProfilo(Controller*,QWidget* parent=nullptr);
@@ -78,7 +77,7 @@ private slots:
 signals:
     void inviaC(const QString&);
     void inviaT(const QString&);
-    void invioP(const QString&);
+
 };
 
 #endif // VISTAPROFILO_H

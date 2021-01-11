@@ -4,7 +4,9 @@
 #include <QObject>
 #include "account.h"
 #include "vista_utente.h"
-
+#include "basic.h"
+#include "gold.h"
+#include "premium.h"
 class VistaUtente;
 
 class Controller : public QObject
@@ -33,9 +35,9 @@ public:
     container<Domanda *> cercaDomanda(const QString&);
 
     bool check_presenza_amico(const QString &) const;
+    bool cambiaPiano(const QString&);
 
-
-public slots:
+private slots:
     void aggiungi_amico(const QString&);
     void aggiungiCompetenza(const QString&);
     void aggiungiTitoloDiStudio(const QString&);
@@ -49,7 +51,7 @@ public slots:
     void modificaCognome(const QString&);
     void modificaEmail(const QString&);
     void modificaPassword(const QString&);
-    void cambiaPiano(const QString&);
+
 
 
     void dai_like(int,Domanda*);

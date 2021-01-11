@@ -3,16 +3,9 @@
 #include "gold.h"
 #include "premium.h"
 
-Database::Database()
-{
-//    import();
-}
+Database::Database(){}
 
-Database::~Database()
-{
-//    exportdati();
-    //il depptr si proccupa di deallocare gli utenti
-}
+Database::~Database(){}
 
 bool Database::check_presenza(const std::string &username)
 {
@@ -112,7 +105,6 @@ void Database::togli_utente(const std::string & username)
 
 Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
 {
-    cout<<"cambia piano";
     bool trovato=false;
     try
     {

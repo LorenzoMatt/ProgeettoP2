@@ -17,7 +17,7 @@ void vistaProfilo::finestraDiConferma(const QString & t){
 
     connect(salva,SIGNAL(clicked()),this,SLOT(invioPiano()));
     connect(annulla,SIGNAL(clicked()),dialogo,SLOT(close()));
-    connect(this,SIGNAL(invioP(const QString&)),a,SLOT(cambiaPiano(const QString&)));
+
 
 
     dialogo->exec();
@@ -26,8 +26,15 @@ void vistaProfilo::finestraDiConferma(const QString & t){
 
 void vistaProfilo::invioPiano()
 {
-    emit invioP(testoCambioPiano);
-    testoPunti->setText(QString::fromStdString(std::to_string(a->getPunti())));
+    bool esitoPiano=a->cambiaPiano(cambio_piano_combo->currentText());
+    if(esitoPiano){
+        messaggio_informativo("Cambio piano completato","Cambio piano andato a buon fine!",this);
+        testoPunti->setText(QString::fromStdString(std::to_string(a->getPunti())));
+    }
+    else
+        messaggio_errore("Cambio piano non avvenuto","Il piano non é stato modificato perché uguale a quello attualmente attivo",this);
+
+
 }
 
 void vistaProfilo::creaCampoPuntiEPiano()

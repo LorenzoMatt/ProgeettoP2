@@ -120,11 +120,20 @@ Utente *Controller::getUtente() const
     return a->get_utente();
 }
 
-void Controller::cambiaPiano(const QString & piano)
+bool Controller::cambiaPiano(const QString & piano)
 {
-    string stringaPiano=piano.toStdString();
-    a->cambia_piano(stringaPiano);
-    aggiorna_vista();
+    string p=piano.toStdString();
+    if((p=="Basic" && dynamic_cast<Basic*>(a->get_utente())) || (p=="Gold" && dynamic_cast<Gold*>(a->get_utente()))
+            || (p=="Premium" && dynamic_cast<Premium*>(a->get_utente()))){
+        return false;
+    }
+    else
+    {
+        string stringaPiano=piano.toStdString();
+        a->cambia_piano(stringaPiano);
+        aggiorna_vista();
+    }
+    return true;
 }
 void Controller::aggiorna_vista()
 {

@@ -9,6 +9,7 @@
 #include <QDomDocument>
 #include <QXmlStreamWriter>
 #include <QXmlStreamReader>
+
 class Utente;
 class Domanda;
 class Database
