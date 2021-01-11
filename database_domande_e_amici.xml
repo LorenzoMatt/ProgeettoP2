@@ -27,16 +27,6 @@
                     <autore_commento>Lorenzo</autore_commento>
                     <like>0</like>
                 </commento>
-                <commento>
-                    <testo>xxxx</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
-                </commento>
-                <commento>
-                    <testo>xxxxss</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
-                </commento>
             </commenti>
         </domanda>
         <domanda>
@@ -69,27 +59,16 @@
                     <autore_commento>c</autore_commento>
                     <like>0</like>
                 </commento>
-                <commento>
-                    <testo>xxx</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
-                </commento>
             </commenti>
         </domanda>
     </utente>
     <utente>
         <username>Lorenzo</username>
-        <amici>Pikachu c</amici>
+        <amici>c Pikachu</amici>
         <domanda>
             <priorita>2</priorita>
             <testo>ciaoo</testo>
-            <commenti>
-                <commento>
-                    <testo>ciao</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
-                </commento>
-            </commenti>
+            <commenti/>
         </domanda>
         <domanda>
             <priorita>2</priorita>
@@ -122,7 +101,7 @@
             <testo>ssss</testo>
             <commenti>
                 <commento>
-                    <testo>ciaooo</testo>
+                    <testo>ciao</testo>
                     <autore_commento>Elton</autore_commento>
                     <like>0</like>
                 </commento>
@@ -189,14 +168,9 @@
                     <like>0</like>
                 </commento>
                 <commento>
-                    <testo>giorgiooo</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
-                </commento>
-                <commento>
                     <testo>ciò</testo>
                     <autore_commento>Elton</autore_commento>
-                    <like>0</like>
+                    <like>1</like>
                 </commento>
             </commenti>
         </domanda>

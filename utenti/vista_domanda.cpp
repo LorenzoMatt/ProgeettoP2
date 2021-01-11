@@ -47,11 +47,15 @@ void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
 
         QHBoxLayout* valutaCommento=new QHBoxLayout;
         QString autoreDomanda=QString::fromStdString(d->get_autore_domanda()->get_credenziali().get_username());
-        if(utente==autoreDomanda)// solo l'autore della domanda ha la possibilità di rimuovere commenti e mettere like
+        if(utente==autoreCommento || utente==autoreDomanda)// autore del commento e autore della domanda possono cancellare i commenti
         {
             QPushButton* rimuovi=new QPushButton("rimuovi");
             valutaCommento->addWidget(rimuovi);
-
+            connect(rimuovi,SIGNAL(clicked()),signalMapperRimuovi,SLOT(map()));//mappo ogni rimuovi al corrispettivo commento
+            signalMapperRimuovi->setMapping(rimuovi,num_commento);
+        }
+        if(utente==autoreDomanda)// solo l'autore della domanda ha la possibilità di mettere like
+        {
             if((!(it->get_like())) && autoreCommento!=autoreDomanda)
             {
                 QPushButton* like=new QPushButton("like");
@@ -60,10 +64,8 @@ void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
                 connect(like, SIGNAL(clicked()), signalMapperLike,SLOT(map()));
                 signalMapperLike->setMapping(like,num_commento);//mappo ogni like al corrispettivo commento
             }
-            bloccoCommenti->addLayout(valutaCommento);
-            connect(rimuovi,SIGNAL(clicked()),signalMapperRimuovi,SLOT(map()));//mappo ogni rimuovi al corrispettivo commento
-            signalMapperRimuovi->setMapping(rimuovi,num_commento);
         }
+        bloccoCommenti->addLayout(valutaCommento);
     }
     connect(signalMapperLike,SIGNAL(mapped(int)),SLOT(buildLike(int)));
     connect(signalMapperRimuovi,SIGNAL(mapped(int)),SLOT(buildRimuovi(int)));

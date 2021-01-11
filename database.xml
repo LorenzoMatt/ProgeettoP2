@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <campi_dati_utenti>
     <utente>
-        <tipoutente>Basic</tipoutente>
+        <tipoutente>Gold</tipoutente>
         <username>Pikachu</username>
         <password>0000</password>
         <nome>Pikachu</nome>
@@ -33,7 +33,7 @@
             <titolo>s</titolo>
             <titolo>w</titolo>
         </titoli_di_studio>
-        <punti>45</punti>
+        <punti>50</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
@@ -62,8 +62,8 @@
         <email>elton.ibra@gmail.com</email>
         <competenze/>
         <titoli_di_studio/>
-        <punti>60</punti>
-        <risposte_date>0</risposte_date>
+        <punti>80</punti>
+        <risposte_date>1</risposte_date>
     </utente>
     <utente>
         <tipoutente>Gold</tipoutente>

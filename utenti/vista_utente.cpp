@@ -30,19 +30,19 @@ void VistaUtente::aggiungiAreaDomandaAmici()
     for(unsigned int i=0;i<contenitoreDomandeAmici.size();i++){
     //costruisco il layout del widget che conterrá le domande che dovranno essere visualizzate e il pulsante
     //Vedi commenti
-
-    string stringaAutore=c->getDomandeAmici()[i]->get_autore_domanda()->get_credenziali().get_username();
+    Domanda* d=contenitoreDomandeAmici[i];
+    string stringaAutore=d->get_autore_domanda()->get_credenziali().get_username();
     QLabel* autoreDomanda=new QLabel(QString::fromStdString(stringaAutore));
 
     //creo lo spazio che conterrá la domanda
-    QTextEdit* testoDomanda=new QTextEdit(QString::fromStdString(c->getDomandeAmici()[i]->get_testo()));
+    QTextEdit* testoDomanda=new QTextEdit(QString::fromStdString(d->get_testo()));
     testoDomanda->setReadOnly(true);
 
     layoutWidgetDomandaAmici->addWidget(autoreDomanda);
     layoutWidgetDomandaAmici->addWidget(testoDomanda);
     //creo la barra orizzontale con il pulsante per visualizzare i commenti
     QString u(QString::fromStdString(c->getAccesso().get_username()));
-    bottoneVediCommento* commenti=new bottoneVediCommento(c->getDomandeAmici()[i],u,"vedi commenti");
+    bottoneVediCommento* commenti=new bottoneVediCommento(d,u,"vedi commenti");
     //pulsante per vedere i commenti
     connect(commenti,SIGNAL(clicked()),commenti,SLOT(vediCommenti()));
 
@@ -51,6 +51,8 @@ void VistaUtente::aggiungiAreaDomandaAmici()
     layoutWidgetDomandaAmici->setAlignment(commenti,Qt::AlignRight);
     connect(commenti,SIGNAL(commento(const QString&,Domanda*)),c,SLOT(scrivi_commento(const QString&,Domanda*)));
     connect(commenti,SIGNAL(commento(const QString&,Domanda*)),commenti,SLOT(vediCommenti()));//aggiorno la vista delle domande
+    connect(commenti,SIGNAL(rimuovi(int,Domanda*)),c,SLOT(rimuovi_commento(int,Domanda*)));
+    connect(commenti,SIGNAL(rimuovi(int,Domanda*)),commenti,SLOT(vediCommenti()));//aggiorno la vista delle domande
     }
 
     //imposto come layout del widget il layout appena creato
@@ -68,13 +70,14 @@ void VistaUtente::aggiungiAreaDomandePersonali()
     for(unsigned int i=0;i<contenitoreDomandePersonali.size();i++){
 
     //creo lo spazio che conterrá la domanda
-    QTextEdit* testoDomanda=new QTextEdit(QString::fromStdString(c->getDomandePersonali()[i]->get_testo()));
+    Domanda* d=contenitoreDomandePersonali[i];
+    QTextEdit* testoDomanda=new QTextEdit(QString::fromStdString(d->get_testo()));
     testoDomanda->setReadOnly(true);
 
     layoutScrollAreaPagina2->addWidget(testoDomanda);
     //creo la barra orizzontale con il pulsante per visualizzare i commenti
     QString u(QString::fromStdString(c->getAccesso().get_username()));
-    bottoneVediCommento* commenti=new bottoneVediCommento(c->getDomandePersonali()[i],u,"vedi commenti");
+    bottoneVediCommento* commenti=new bottoneVediCommento(d,u,"vedi commenti");
     //pulsante per vedere i commenti
     connect(commenti,SIGNAL(clicked()),commenti,SLOT(vediCommenti())); // visualizzo la domanda associata al pulsante
     connect(commenti,SIGNAL(commento(const QString&,Domanda*)),c,SLOT(scrivi_commento(const QString&,Domanda*)));

@@ -43,10 +43,11 @@ void Controller::scrivi_commento(const QString & testo, Domanda *d)
 
 void Controller::dai_like(int i, Domanda * d)
 {
-    Utente* u=a->cerca_utente_per_nome(d->get_commenti()[i].get_autore());
+    Commento& c=d->get_commenti()[i];
+    Utente* u=a->cerca_utente_per_nome(c.get_autore());
     if(u)
-        a->dai_punti(d->get_commenti()[i].get_autore());
-    d->get_commenti()[i].set_like(true);
+        a->dai_punti(c.get_autore());
+    c.set_like(true);
 }
 
 void Controller::rimuovi_commento(int i, Domanda * d)

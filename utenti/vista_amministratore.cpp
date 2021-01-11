@@ -165,13 +165,13 @@ void vista_amministratore::aggiorna_tabella()
         QTableWidgetItem* email=new QTableWidgetItem(QString::fromStdString((*it)->get_profilo().get_email()));
         QTableWidgetItem* Competenze=new QTableWidgetItem(QString::fromStdString((*it)->get_profilo().competenze_toString()));
         QTableWidgetItem* Titoli=new QTableWidgetItem(QString::fromStdString((*it)->get_profilo().titoli_di_studio_toString()));
-        QTableWidgetItem* Piano=new QTableWidgetItem();
-        if(dynamic_cast<Basic*>(&**it))
-            Piano->setText("Basic");
-        if(dynamic_cast<Gold*>(&**it))
-            Piano->setText("Gold");
-        if(dynamic_cast<Premium*>(&**it))
-            Piano->setText("Premium");
+        QTableWidgetItem* Piano=new QTableWidgetItem(QString::fromStdString((*it)->piano()));
+//        if(dynamic_cast<Basic*>(&**it))
+//            Piano->setText("Basic");
+//        if(dynamic_cast<Gold*>(&**it))
+//            Piano->setText("Gold");
+//        if(dynamic_cast<Premium*>(&**it))
+//            Piano->setText("Premium");
         tabella_utenti->setItem(row,0,Username);
         tabella_utenti->setItem(row,1,Nome);
         tabella_utenti->setItem(row,2,Cognome);
