@@ -368,6 +368,11 @@
         <username>c</username>
         <amici>Pikachu</amici>
         <domanda>
+            <priorita>5</priorita>
+            <testo>c</testo>
+            <commenti/>
+        </domanda>
+        <domanda>
             <priorita>2</priorita>
             <testo>ffff</testo>
             <commenti/>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <campi_dati_utenti>
     <utente>
-        <tipoutente>Basic</tipoutente>
+        <tipoutente>Premium</tipoutente>
         <username>Pikachu</username>
         <password>0000</password>
         <nome>r000000dddee</nome>
@@ -115,7 +115,7 @@
             <competenza>ssssss</competenza>
         </competenze>
         <titoli_di_studio/>
-        <punti>50</punti>
+        <punti>40</punti>
         <risposte_date>0</risposte_date>
     </utente>
 </campi_dati_utenti>
