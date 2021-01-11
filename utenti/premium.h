@@ -21,6 +21,7 @@ public:
     void fai_domanda(Domanda* domanda) override;//OK
     void get_punti_bonus() override;//OK
     Premium* clone() const override;//OK
+    string piano() const override;
 
 };
 

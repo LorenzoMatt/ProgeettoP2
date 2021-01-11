@@ -16,12 +16,12 @@ void Domanda::set_commenti(const container<Commento> com)
 Domanda::Domanda(const string& t, Utente *autore, unsigned int priorita):testo(t),autore_domanda(autore),priorita(priorita > 0 ? priorita: 1)
 {}
 
-Domanda::Domanda(const std::string & s, Utente * u, unsigned int p, const container<Commento> & c) : testo(s),autore_domanda(u),priorita(p),commenti(c)
+Domanda::Domanda(const std::string & s, Utente * u, unsigned int p, const container<Commento> & c) : testo(s),autore_domanda(u),commenti(c),priorita(p)
 {
 
 }
 
-Domanda::Domanda(const std::string & s, unsigned int p, const container<Commento> & c) : testo(s),priorita(p),commenti(c),autore_domanda(nullptr)
+Domanda::Domanda(const std::string & s, unsigned int p, const container<Commento> & c) : testo(s),autore_domanda(nullptr),commenti(c),priorita(p)
 {
 
 }

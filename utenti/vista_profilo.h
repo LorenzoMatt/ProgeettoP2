@@ -48,19 +48,13 @@ private:
     QPushButton* invio;
     QPushButton* invioT;
     QString testoCambioPiano;
+    QLineEdit* piano;
 
 
     //funzioni di utilitá
     void creaCampoPuntiEPiano();
-    void creaCampoNome();
-    void creaCampoCognome();
-    void creaCampoPassword();
-    void creaCampoEmail();
-
-
     void creaCampoCompetenze();
     void creaCampoTitoliDiStudio();
-
     void creaTornaAllaHome();
 public:
     explicit vistaProfilo(Controller*,QWidget* parent=nullptr);
@@ -73,6 +67,10 @@ private slots:
     void invioDatoC();
     void invioDatoT();
     void invioPiano();
+    void creaCampoNome();
+    void creaCampoCognome();
+    void creaCampoPassword();
+    void creaCampoEmail();
 
 
     void finestraDiConferma(const QString&);
@@ -80,7 +78,7 @@ private slots:
 signals:
     void inviaC(const QString&);
     void inviaT(const QString&);
-    void invioP(const QString&);
+
 };
 
 #endif // VISTAPROFILO_H

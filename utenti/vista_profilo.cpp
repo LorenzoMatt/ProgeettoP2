@@ -17,7 +17,7 @@ void vistaProfilo::finestraDiConferma(const QString & t){
 
     connect(salva,SIGNAL(clicked()),this,SLOT(invioPiano()));
     connect(annulla,SIGNAL(clicked()),dialogo,SLOT(close()));
-    connect(this,SIGNAL(invioP(const QString&)),a,SLOT(cambiaPiano(const QString&)));
+
 
 
     dialogo->exec();
@@ -26,18 +26,40 @@ void vistaProfilo::finestraDiConferma(const QString & t){
 
 void vistaProfilo::invioPiano()
 {
-    emit invioP(testoCambioPiano);
-    testoPunti->setText(QString::fromStdString(std::to_string(a->getPunti())));
+    bool esitoPiano=a->cambiaPiano(cambio_piano_combo->currentText());
+    if(esitoPiano){
+        messaggio_informativo("Cambio piano completato","Cambio piano andato a buon fine!",this);
+        testoPunti->setText(QString::fromStdString(std::to_string(a->getPunti())));
+        piano->setText(QString::fromStdString(a->getUtente()->piano()));
+    }
+    else
+        messaggio_errore("Cambio piano non avvenuto","Il piano non é stato modificato perché uguale a quello attualmente attivo",this);
+
+
 }
 
 void vistaProfilo::creaCampoPuntiEPiano()
 {
     QHBoxLayout* layoutPuntiEPiano=new QHBoxLayout;
-    QHBoxLayout* layoutPunti=new QHBoxLayout;
+    QVBoxLayout* layoutPunti=new QVBoxLayout;
     QHBoxLayout* layoutPiano=new QHBoxLayout;
+
+    QVBoxLayout* layoutPianoCorrente=new QVBoxLayout;
+    QLabel* testoPiano=new QLabel("PIANO ATTUALE ");
+
+    piano->setText(QString::fromStdString(a->getUtente()->piano()));
+    piano->setReadOnly(true);
+    piano->setMaximumWidth(90);
+    testoPiano->setBuddy(piano);
+    layoutPianoCorrente->addWidget(testoPiano);
+    layoutPianoCorrente->addWidget(piano);
+    testoPiano->setObjectName("tpiano");
+
     //piano
-    QLabel* nuovo_piano=new QLabel("Cambia piano:");
-    nuovo_piano->setAlignment(Qt::AlignLeft);
+    QLabel* nuovo_piano=new QLabel("CAMBIA PIANO:");
+    nuovo_piano->setObjectName("tpiano");
+//    nuovo_piano->setAlignment(Qt::AlignLeft);
+    layoutPiano->setAlignment(Qt::AlignLeft);
 
     cambio_piano_combo->setMinimumWidth(150);
     cambio_piano_combo->addItem("");
@@ -46,14 +68,17 @@ void vistaProfilo::creaCampoPuntiEPiano()
     cambio_piano_combo->addItem("Premium");
 
 
+
     nuovo_piano->setBuddy(cambio_piano_combo);
     layoutPiano->addWidget(nuovo_piano);
     layoutPiano->addWidget(cambio_piano_combo);
 
     connect(cambio_piano_combo,SIGNAL(currentTextChanged(const QString&)),this,SLOT(finestraDiConferma(const QString&)));
     //punti
-    QLabel* etichettaPunti=new QLabel("PUNTI RESIDUI:");
+    QLabel* etichettaPunti=new QLabel("PUNTI RESIDUI");
+    etichettaPunti->setObjectName("tpiano");
     testoPunti=new QLineEdit;
+
     string punti=std::to_string(a->getPunti());
     testoPunti->setText(QString::fromStdString(punti));
     testoPunti->setReadOnly(true);
@@ -61,7 +86,9 @@ void vistaProfilo::creaCampoPuntiEPiano()
     layoutPunti->addWidget(etichettaPunti);
     layoutPunti->addWidget(testoPunti);
     //set elementi
+
     layoutPuntiEPiano->addLayout(layoutPiano);
+    layoutPuntiEPiano->addLayout(layoutPianoCorrente);
     layoutPuntiEPiano->addLayout(layoutPunti);
 
     etichettaPunti->setAlignment(Qt::AlignRight);
@@ -114,57 +141,56 @@ void vistaProfilo::creaTornaAllaHome()
 
 void vistaProfilo::mostraC()
 {
-    if(!inserisciCompetenzaProfessionale->isVisible()){
-        inserisciCompetenzaProfessionale->setVisible(true);
-        aggiungiCompetenzaProfessionale->setVisible(false);
-        invio->setVisible(true);
-        connect(invio,SIGNAL(clicked()),this,SLOT(invioDatoC()));
-    }
-    else
-    {
+        if(aggiungiCompetenzaProfessionale->isVisible()){
+            aggiungiCompetenzaProfessionale->setVisible(false);
+            inserisciCompetenzaProfessionale->setVisible(true);
+            invio->setVisible(true);
+            connect(invio,SIGNAL(clicked()),this,SLOT(invioDatoC()));
+//            connect(inserisciCompetenzaProfessionale,SIGNAL(returnPressed()),this,SLOT(invioDatoC()));
+        }
 
-        inserisciCompetenzaProfessionale->setVisible(false);
-        aggiungiCompetenzaProfessionale->setVisible(true);
-        invio->setVisible(false);
-    }
 }
 
 void vistaProfilo::mostraT()
 {
-    if(!inserisciTitoloDiStudio->isVisible()){
-        inserisciTitoloDiStudio->setVisible(true);
-        aggiungiTitoloDiStudio->setVisible(false);
-        invioT->setVisible(true);
-        connect(invioT,SIGNAL(clicked()),this,SLOT(invioDatoT()));
-    }
-    else
-    {
+        if(aggiungiTitoloDiStudio->isVisible()){
+            inserisciTitoloDiStudio->setVisible(true);
+            aggiungiTitoloDiStudio->setVisible(false);
+            invioT->setVisible(true);
+            connect(invioT,SIGNAL(clicked()),this,SLOT(invioDatoT()));
+//            connect(inserisciTitoloDiStudio,SIGNAL(returnPressed()),this,SLOT(invioDatoT()));
+        }
 
-        inserisciTitoloDiStudio->setVisible(false);
-        aggiungiTitoloDiStudio->setVisible(true);
-        invioT->setVisible(false);
-    }
 }
 
 void vistaProfilo::invioDatoC()
 {
     QString testo=inserisciCompetenzaProfessionale->text();
+    aggiungiCompetenzaProfessionale->setVisible(true);
+    inserisciCompetenzaProfessionale->setVisible(false);
+    invio->setVisible(false);
     if(!testo.isEmpty()){
         testoCompetenzeProfessionali->addItem(testo);
         testoCompetenzeProfessionali->scrollToBottom();
-        emit inviaC(testo);
         inserisciCompetenzaProfessionale->setText("");
+        emit inviaC(testo);
     }
+
 }
 void vistaProfilo::invioDatoT()
 {
     QString testo=inserisciTitoloDiStudio->text();
+    inserisciTitoloDiStudio->setVisible(false);
+    aggiungiTitoloDiStudio->setVisible(true);
+    invioT->setVisible(false);
     if(!testo.isEmpty()){
         testoTitoliDiStudio->addItem(testo);
-        testoTitoliDiStudio->scrollToBottom();
-        emit inviaT(testo);
+        testoTitoliDiStudio->scrollToBottom();       
         inserisciTitoloDiStudio->setText("");
+        emit inviaT(testo);
+
     }
+
 }
 
 
@@ -238,8 +264,8 @@ vistaProfilo::vistaProfilo(Controller * c, QWidget *parent):QDialog(parent),a(c)
     testoTitoliDiStudio(new QListWidget),
     layoutInserimentoTitoloDiStudio(new QHBoxLayout),
     cambio_piano_combo(new QComboBox),invio(new QPushButton("Invio")),
-    invioT(new QPushButton("Invio"))
-
+    invioT(new QPushButton("Invio")) ,
+    piano(new QLineEdit())
 {
     //file di stile
 //    setStyleSheet(imposta_stile());
@@ -249,6 +275,8 @@ vistaProfilo::vistaProfilo(Controller * c, QWidget *parent):QDialog(parent),a(c)
     invio->setObjectName("ok");
     invioT->setVisible(false);
     invioT->setObjectName("ok");
+
+
 
     creaCampoPuntiEPiano();
 

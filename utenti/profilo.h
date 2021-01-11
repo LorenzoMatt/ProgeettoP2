@@ -19,7 +19,7 @@ private:
     container<string>competenze;
     container<string> titoli_di_studio;
 
-static int numeroelementi;
+
 
 public:
     Profilo()=delete;

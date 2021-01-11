@@ -1,10 +1,5 @@
 #include "account.h"
 
-Account::Account()
-{
-
-}
-
 Account::~Account()
 {
     salva();
@@ -160,6 +155,11 @@ Domanda *Account::get_domanda(const container<Domanda *>& d, unsigned int i) con
         {}//corpo vuoto
         return *it;
     }
+}
+
+std::string Account::get_piano() const
+{
+    return utente->piano();
 }
 
 

@@ -19,6 +19,7 @@ public:
     container<Domanda*> cerca_domanda(const string&,const Database&) const override;//OK, la domanda viene cercata solo negli amici
     void get_punti_domanda() override; //OK
     Basic* clone() const override;//OK
+    string piano() const override;
 
 };
 #endif // BASIC_H

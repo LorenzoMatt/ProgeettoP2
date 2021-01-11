@@ -1,7 +1,7 @@
 #include "utente.h"
 
 
-int Utente:: numeroelementi=0;
+
 
 std::ostream &operator<<(std::ostream &os, const Utente &u) //OK
 {
