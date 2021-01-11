@@ -48,6 +48,7 @@ private:
     QPushButton* invio;
     QPushButton* invioT;
     QString testoCambioPiano;
+    QLabel* piano;
 
 
     //funzioni di utilitá

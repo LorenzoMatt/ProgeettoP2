@@ -62,6 +62,7 @@ void widgetCampoDati::sbloccaBloccaTesto()
 
 
    connect(invio,SIGNAL(clicked()),this,SLOT(confermaModifica()));
+   connect(testoNome,SIGNAL(returnPressed()),this,SLOT(confermaModifica()));
    }
    else
    {

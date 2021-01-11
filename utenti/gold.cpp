@@ -78,5 +78,10 @@ Gold *Gold::clone() const
     return new Gold(*this);
 }
 
+std::string Gold::piano() const
+{
+    return "Gold";
+}
+
 
 

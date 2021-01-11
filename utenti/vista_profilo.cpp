@@ -30,6 +30,7 @@ void vistaProfilo::invioPiano()
     if(esitoPiano){
         messaggio_informativo("Cambio piano completato","Cambio piano andato a buon fine!",this);
         testoPunti->setText(QString::fromStdString(std::to_string(a->getPunti())));
+        piano->setText(QString::fromStdString(a->getUtente()->piano()));
     }
     else
         messaggio_errore("Cambio piano non avvenuto","Il piano non é stato modificato perché uguale a quello attualmente attivo",this);
@@ -68,7 +69,9 @@ void vistaProfilo::creaCampoPuntiEPiano()
     layoutPunti->addWidget(etichettaPunti);
     layoutPunti->addWidget(testoPunti);
     //set elementi
+
     layoutPuntiEPiano->addLayout(layoutPiano);
+    layoutPuntiEPiano->addWidget(piano);
     layoutPuntiEPiano->addLayout(layoutPunti);
 
     etichettaPunti->setAlignment(Qt::AlignRight);
@@ -126,6 +129,7 @@ void vistaProfilo::mostraC()
             inserisciCompetenzaProfessionale->setVisible(true);
             invio->setVisible(true);
             connect(invio,SIGNAL(clicked()),this,SLOT(invioDatoC()));
+//            connect(inserisciCompetenzaProfessionale,SIGNAL(returnPressed()),this,SLOT(invioDatoC()));
         }
 
 }
@@ -137,6 +141,7 @@ void vistaProfilo::mostraT()
             aggiungiTitoloDiStudio->setVisible(false);
             invioT->setVisible(true);
             connect(invioT,SIGNAL(clicked()),this,SLOT(invioDatoT()));
+//            connect(inserisciTitoloDiStudio,SIGNAL(returnPressed()),this,SLOT(invioDatoT()));
         }
 
 }
@@ -144,29 +149,31 @@ void vistaProfilo::mostraT()
 void vistaProfilo::invioDatoC()
 {
     QString testo=inserisciCompetenzaProfessionale->text();
+    aggiungiCompetenzaProfessionale->setVisible(true);
+    inserisciCompetenzaProfessionale->setVisible(false);
+    invio->setVisible(false);
     if(!testo.isEmpty()){
         testoCompetenzeProfessionali->addItem(testo);
         testoCompetenzeProfessionali->scrollToBottom();
-        aggiungiCompetenzaProfessionale->setVisible(true);
-        inserisciCompetenzaProfessionale->setVisible(false);
-        invio->setVisible(false);
         inserisciCompetenzaProfessionale->setText("");
         emit inviaC(testo);
     }
+
 }
 void vistaProfilo::invioDatoT()
 {
     QString testo=inserisciTitoloDiStudio->text();
+    inserisciTitoloDiStudio->setVisible(false);
+    aggiungiTitoloDiStudio->setVisible(true);
+    invioT->setVisible(false);
     if(!testo.isEmpty()){
         testoTitoliDiStudio->addItem(testo);
-        testoTitoliDiStudio->scrollToBottom();
-        inserisciTitoloDiStudio->setVisible(false);
-        aggiungiTitoloDiStudio->setVisible(true);
-        invioT->setVisible(false);
+        testoTitoliDiStudio->scrollToBottom();       
         inserisciTitoloDiStudio->setText("");
         emit inviaT(testo);
 
     }
+
 }
 
 
@@ -240,7 +247,8 @@ vistaProfilo::vistaProfilo(Controller * c, QWidget *parent):QDialog(parent),a(c)
     testoTitoliDiStudio(new QListWidget),
     layoutInserimentoTitoloDiStudio(new QHBoxLayout),
     cambio_piano_combo(new QComboBox),invio(new QPushButton("Invio")),
-    invioT(new QPushButton("Invio"))
+    invioT(new QPushButton("Invio")),
+    piano(new QLabel(QString::fromStdString(a->getUtente()->piano())))
 
 {
     //file di stile
@@ -251,6 +259,7 @@ vistaProfilo::vistaProfilo(Controller * c, QWidget *parent):QDialog(parent),a(c)
     invio->setObjectName("ok");
     invioT->setVisible(false);
     invioT->setObjectName("ok");
+    piano->setObjectName("piano");
 
     creaCampoPuntiEPiano();
 

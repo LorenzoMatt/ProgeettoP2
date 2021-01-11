@@ -100,3 +100,8 @@ Basic *Basic::clone() const
 {
     return new Basic(*this);
 }
+
+std::string Basic::piano() const
+{
+    return "Basic";
+}

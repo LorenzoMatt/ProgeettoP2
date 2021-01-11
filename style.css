@@ -76,6 +76,12 @@ QLabel{
 
     color: black;
 }
+QLabel#piano{
+    font: bold 20px;
+    min-width:10em;
+    padding: left 5em;;
+    
+}
 
 
 /* tengo il blu come pulsante importante */

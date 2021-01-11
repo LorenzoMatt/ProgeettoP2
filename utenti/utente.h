@@ -33,7 +33,6 @@ public:
     Utente(const Utente& u);
     Utente(string username,string password,string nome,string cognome,string email,unsigned int,unsigned int =0);
     Utente(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,container<Domanda*> d,unsigned int punti,unsigned int risposte);
-static int numeroelementi;
                      /*getter*/
     Profilo &get_profilo();//OK
     Accesso get_credenziali();//OK
@@ -75,6 +74,7 @@ static int numeroelementi;
     virtual container<Domanda*> cerca_domanda(const string&,const Database&) const =0;//OK per adesso contiene un container di domande, in utente basic la domanda viene cercata solo negli amici mentre negli account a pagamento nel modello
     virtual void fai_domanda(Domanda* domanda)=0;
     virtual Utente* clone() const=0;
+    virtual string piano() const=0;
 
 protected:
     unsigned int punti; // punti presenti nell'account

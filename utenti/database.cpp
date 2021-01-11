@@ -225,20 +225,7 @@ void Database::exportdati() const
             for(auto it=utenti.begin();it!=utenti.end();++it)
             {
                 inp->writeStartElement("utente");// inizio singolo utente
-                if(dynamic_cast<Basic*>(&**it))
-                {
-                    inp->writeTextElement("tipoutente", QString::fromStdString("Basic"));
-                }
-                if(dynamic_cast<Gold*>(&**it))
-                {
-                    inp->writeTextElement("tipoutente", QString::fromStdString("Gold"));
-                }
-                if(dynamic_cast<Premium*>(&**it))
-                {
-                    inp->writeTextElement("tipoutente", QString::fromStdString("Premium"));
-                }
-
-
+                inp->writeTextElement("tipoutente", QString::fromStdString((*it)->piano()));
 
                 inp->writeTextElement("username",QString::fromStdString(((*it)->get_credenziali()).get_username()));
                 inp->writeTextElement("password",QString::fromStdString(((*it)->get_credenziali()).get_password()));

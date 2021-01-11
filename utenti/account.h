@@ -9,7 +9,7 @@ private:
     Utente* utente;
     Database* model;
 public:
-    Account();
+    Account()=delete;
     ~Account();
     Account(const string&);
     Account(Utente *, Database *);
@@ -18,10 +18,10 @@ public:
     Accesso get_credenziali() const;//OK
     container<Domanda *> get_domande() const;//OK
     Utente *get_utente() const;//OK
-     unsigned int get_punti() const;//OK
-     container<Domanda *> get_domande_amici() const;//OK
-     Domanda* get_domanda(const container<Domanda *> &d, unsigned int i) const;//OK
-
+    unsigned int get_punti() const;//OK
+    container<Domanda *> get_domande_amici() const;//OK
+    Domanda* get_domanda(const container<Domanda *> &d, unsigned int i) const;//OK
+    string get_piano() const;
 
 
 

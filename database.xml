@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <campi_dati_utenti>
     <utente>
-        <tipoutente>Premium</tipoutente>
+        <tipoutente>Basic</tipoutente>
         <username>Pikachu</username>
         <password>0000</password>
-        <nome>r000000</nome>
-        <cognome>dss0</cognome>
-        <email>Pikachus</email>
+        <nome>r000000dddee</nome>
+        <cognome>dss0ddd</cognome>
+        <email>Pikachusw</email>
         <competenze>
             <competenza>giovare a pallone</competenza>
             <competenza>prendere a pugni</competenza>
@@ -18,6 +18,12 @@
             <competenza>d</competenza>
             <competenza>t</competenza>
             <competenza>w</competenza>
+            <competenza>ee</competenza>
+            <competenza>t</competenza>
+            <competenza>der</competenza>
+            <competenza>u</competenza>
+            <competenza>l</competenza>
+            <competenza>f</competenza>
         </competenze>
         <titoli_di_studio>
             <titolo>Laurea in bere vino</titolo>
