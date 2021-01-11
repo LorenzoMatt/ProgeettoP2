@@ -252,11 +252,6 @@ const container<Utente *> &Utente::get_amici() const
     return amici;
 }
 
-void Utente::set_nome_profilo(const string & nome)
-{
-    pf.set_nome(nome);
-}
-
 void Utente::scrivi_commento(Domanda *d, std::string risposta)
 {
     d->aggiungi_commento(Commento(risposta,this));

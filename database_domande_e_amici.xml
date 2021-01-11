@@ -245,7 +245,12 @@
     </utente>
     <utente>
         <username>Elton</username>
-        <amici>Mirko Lorenzo</amici>
+        <amici>Mirko</amici>
+        <domanda>
+            <priorita>3</priorita>
+            <testo>ciaooo</testo>
+            <commenti/>
+        </domanda>
         <domanda>
             <priorita>3</priorita>
             <testo>sono elton e dovrei essere in alto</testo>
@@ -361,20 +366,6 @@
         <domanda>
             <priorita>1</priorita>
             <testo>prova a fare una domanda</testo>
-            <commenti/>
-        </domanda>
-    </utente>
-    <utente>
-        <username>c</username>
-        <amici>Pikachu</amici>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>ffff</testo>
-            <commenti/>
-        </domanda>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>ddd</testo>
             <commenti/>
         </domanda>
     </utente>

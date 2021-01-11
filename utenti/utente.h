@@ -60,7 +60,6 @@ static int numeroelementi;
     void togli_seguace(Utente*);
     void AggiungiCompetenza(const string&); //OK
     void AggiungiTitoloDiStudio (const string&); //OK
-    void set_nome_profilo(const string&);
     void dai_punti(Utente*) const;
     string get_username_amici() const; //serve per la creazione del file xml
     string get_username_seguaci() const; //serve per la creazione del file xml

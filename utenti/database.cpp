@@ -5,12 +5,10 @@
 
 Database::Database()
 {
-//    import();
 }
 
 Database::~Database()
 {
-//    exportdati();
     //il depptr si proccupa di deallocare gli utenti
 }
 
@@ -65,9 +63,7 @@ void Database::aggiungi_utente(const DeepPtr<Utente> &utente)
 void Database::togli_utente(Utente *utente)
 {
     bool trovato=false;
-    try
-    {
-        for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
+    for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
         {
             if(&(**it)==utente)
             {
@@ -80,18 +76,13 @@ void Database::togli_utente(Utente *utente)
         {
             throw amico_non_presente();
         }
-    }catch(amico_non_presente)
-    {
-        std::cerr<<"utente non presente";
-    }
+
 }
 
 void Database::togli_utente(const std::string & username)
 {
         bool trovato=false;
-        try
-        {
-            for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
+        for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
             {
                 if((*it)->get_credenziali().get_username()==username)
                 {
@@ -104,10 +95,7 @@ void Database::togli_utente(const std::string & username)
             {
                 throw amico_non_presente();
             }
-        }catch(amico_non_presente)
-        {
-            std::cerr<<"utente non presente";
-        }
+
 }
 
 Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
@@ -135,7 +123,8 @@ Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
 
                     unsigned int priorita=(*ut)->get_priorita();
                     domande.push_back(new Domanda(testo,priorita,commenti));
-                }                container<Utente*> amici=(*it)->get_amici();
+                }
+                container<Utente*> amici=(*it)->get_amici();
                 container<Utente*> seguaci=(*it)->get_seguaci();
                 unsigned int risposte_date=(*it)->get_risposte_date();
                 unsigned int punti=(*it)->get_punti();
