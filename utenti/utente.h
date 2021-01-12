@@ -25,8 +25,6 @@ private:
     void togli_amico_ausiliario(Utente* utente); //OK
     void togli_seguace_ausiliario(Utente* utente); //OK
 public:
-
-
             /*costruttori e distruttori*/
     Utente() =delete;
     virtual ~Utente();

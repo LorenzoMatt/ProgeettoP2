@@ -17,7 +17,7 @@ Utente::~Utente()// vanno distrutte solo le domande, ovviamente per gli amici ed
 }
 
 Utente::Utente(const Utente &u):pf(u.pf),credenziali(u.credenziali),amici(u.amici),seguaci(u.seguaci),punti(u.punti),risposte_date(u.risposte_date)
-{
+{//le domande sono riferite al nuovo utente
     for(auto it=u.domande.begin();it!=u.domande.end();++it)
     {
         string testo=(*it)->get_testo();

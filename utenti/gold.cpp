@@ -1,17 +1,10 @@
 #include "gold.h"
-
-
-
 unsigned int Gold::puntiDetrattiDomandaFatta=8;
 unsigned int Gold::puntiPerDomandaData=17;
 unsigned int Gold::puntiBonus=50;
 unsigned int Gold::supplementoDomandaPriorita=4;
 unsigned int Gold::limitePerAverePuntiBonus=25;
 
-//Gold::Gold(const Gold & g) : Pagamento(g)
-//{
-
-//}
 
 Gold::Gold(std::string username, std::string password, std::string nome, std::string cognome, std::string email, unsigned int punti, unsigned int risposte_date)
     :Pagamento(username,password,nome,cognome,email,punti,risposte_date)
@@ -29,7 +22,7 @@ void Gold::cerca_utente(const std::string & username, const Database & model, co
         Utente* utente = model.get_utente(username);
         if(utente)
         {
-            Utente::Funtore f(2);//nelle funzioni polimorfe il numero_funtore sarà sostituito con 1 in account gratuito,2 in gold e 3 in premium
+            Utente::Funtore f(2);
             f(utente, lista_di_elementi);
         }
 }
