@@ -102,8 +102,6 @@ Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
 {
 
     bool trovato=false;
-    try
-    {
         for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
         {
             if(&(**it)==utente)
@@ -117,10 +115,7 @@ Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
                 for(auto ut=dom.begin();ut!=dom.end();++ut)
                 {
                     string testo=(*ut)->get_testo();
-//                    Utente* autore_domanda=(*ut)->get_autore_domanda();
                     container<Commento> commenti=(*ut)->get_commenti();
-//                    container<Commento> commenti;
-
                     unsigned int priorita=(*ut)->get_priorita();
                     domande.push_back(new Domanda(testo,priorita,commenti));
                 }
@@ -130,25 +125,22 @@ Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
                 unsigned int punti=(*it)->get_punti();
                 it=utenti.erase(it);
                 if(piano=="Basic")
-                    it=utenti.insert(it,DeepPtr<Utente>(new Basic(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
+                    it=utenti.insert(it,DeepPtr<Utente>(new Basic(pf,credenziali,amici,seguaci,punti,risposte_date)));
                 if(piano=="Gold")
-                    it=utenti.insert(it,DeepPtr<Utente>(new Gold(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
+                    it=utenti.insert(it,DeepPtr<Utente>(new Gold(pf,credenziali,amici,seguaci,punti,risposte_date)));
                 if(piano=="Premium")
-                    it=utenti.insert(it,DeepPtr<Utente>(new Premium(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
+                    it=utenti.insert(it,DeepPtr<Utente>(new Premium(pf,credenziali,amici,seguaci,punti,risposte_date)));
                 reverse_seguaci_amici(&(**it));
                 for(auto ut=domande.begin();ut!=domande.end();++ut)
                 {
                     (*ut)->set_autore(&(**it));
                 }
+                (*it)->set_domande(domande);
                 return &(**it);
             }
         }
         if(!trovato)
             throw amico_non_presente();
-    }catch(amico_non_presente)
-    {
-        std::cerr<<"utente non trovato";
-    }
     return nullptr;
 }
 

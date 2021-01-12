@@ -18,8 +18,8 @@ Gold::Gold(std::string username, std::string password, std::string nome, std::st
 {
 }
 
-Gold::Gold(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d,unsigned int punti,unsigned int risposte)
-    :Pagamento(p,c,a,s,d,punti<puntiBonus ? puntiBonus : punti,risposte)
+Gold::Gold(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, unsigned int punti, unsigned int risposte)
+    :Pagamento(p,c,a,s,punti<puntiBonus ? puntiBonus : punti,risposte)
 {
 
 }

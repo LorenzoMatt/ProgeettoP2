@@ -14,7 +14,6 @@ Account::Account(const std::string & u)
 
 Account::Account(Utente *u, Database *m) :model(m)
 {
-//    m->aggiungi_utente(u);
     utente=model->get_utente(u->get_credenziali().get_username());
 }
 

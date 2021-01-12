@@ -32,15 +32,17 @@ public:
     virtual ~Utente();
     Utente(const Utente& u);
     Utente(string username,string password,string nome,string cognome,string email,unsigned int,unsigned int =0);
-    Utente(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,container<Domanda*> d,unsigned int punti,unsigned int risposte);
+    Utente(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,unsigned int punti,unsigned int risposte);
+
                      /*getter*/
+
     Profilo &get_profilo();//OK
     Accesso get_credenziali();//OK
     container<Utente*>& get_amici();
     const container<Utente *> &get_seguaci() const;
     container<Domanda *> get_domande() const;
     container<Domanda *>& get_domande_rif();
-
+    container<Domanda *> get_domande_amici() const;
     const container<Utente* > & get_amici() const;
     unsigned int get_punti() const;//OK
     unsigned int get_risposte_date() const; //serve per ottenere un bonus
@@ -55,7 +57,6 @@ public:
     void aggiungi_amico(Utente *);
     void togli_amico(Utente*);
     void cerca_amico(const string&,container<string>&) const;
-    container<Domanda *> get_domande_amici() const;
     void togli_seguace(Utente*);
     void AggiungiCompetenza(const string&); //OK
     void AggiungiTitoloDiStudio (const string&); //OK
@@ -64,7 +65,7 @@ public:
     string get_username_seguaci() const; //serve per la creazione del file xml
     void scrivi_commento(Domanda* d, string risposta);
     void fai_domanda(const string&, unsigned int);
-    void set_domande(container<Domanda*>);
+    void set_domande(const container<Domanda *> &);
     static container<string> split(const string&,const string&); //OK
 
                 /*virtual*/

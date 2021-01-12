@@ -8,7 +8,6 @@ unsigned int Basic::supplementoDomandaPriorita=5;
 
 Basic::~Basic()
 {
-
 }
 
 Basic::Basic(std::string username, std::string password, std::string nome, std::string cognome, std::string email, unsigned int punti, unsigned int risposte_date)
@@ -16,8 +15,8 @@ Basic::Basic(std::string username, std::string password, std::string nome, std::
 {
 }
 
-Basic::Basic(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d,unsigned int punti,unsigned int risposte)
-    :Utente(p,c,a,s,d,punti < puntiBonus ? puntiBonus : punti,risposte)
+Basic::Basic(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, unsigned int punti, unsigned int risposte)
+    :Utente(p,c,a,s,punti < puntiBonus ? puntiBonus : punti,risposte)
 {
 
 }

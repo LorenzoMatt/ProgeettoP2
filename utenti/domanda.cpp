@@ -91,5 +91,11 @@ unsigned int Domanda::get_priorita() const
 
 std::ostream &operator<<(std::ostream & os, const Domanda& d){
 
-    return os<<"autore domanda "<<d.autore_domanda->get_credenziali().get_username()<<endl<<"domanda: "<<d.testo<<endl<<"commenti: "<<endl<<d.commenti;
+    os<<"autore domanda ";
+    if(d.autore_domanda)
+        os<<d.autore_domanda->get_credenziali().get_username()<<endl;
+    else
+        os<<"autore non disponibile "<<endl;
+    os<<"domanda: "<<d.testo<<endl<<"commenti: "<<endl<<d.commenti;
+    return os;
 }

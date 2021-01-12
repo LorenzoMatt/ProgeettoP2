@@ -10,14 +10,21 @@ std::ostream &operator<<(std::ostream &os, const Utente &u) //OK
     return os;
 }
 
-Utente::~Utente()
+Utente::~Utente()// vanno distrutte solo le domande, ovviamente per gli amici ed i seguaci è sufficiente deallocare i puntatori
 {
-//     for(auto it=domande.begin();it!=domande.end();++it)
-//        delete *it;
+     for(auto it=domande.begin();it!=domande.end();++it)
+        delete *it;
 }
 
-Utente::Utente(const Utente &u):pf(u.pf),credenziali(u.credenziali),amici(u.amici),seguaci(u.seguaci),domande(u.domande),punti(u.punti),risposte_date(u.risposte_date)
+Utente::Utente(const Utente &u):pf(u.pf),credenziali(u.credenziali),amici(u.amici),seguaci(u.seguaci),punti(u.punti),risposte_date(u.risposte_date)
 {
+    for(auto it=u.domande.begin();it!=u.domande.end();++it)
+    {
+        string testo=(*it)->get_testo();
+        container<Commento> commenti=(*it)->get_commenti();
+        unsigned int priorita=(*it)->get_priorita();
+        domande.push_back(new Domanda(testo,this,priorita,commenti));
+    }
 }
 
 
@@ -25,8 +32,8 @@ Utente::Utente(std::string username, std::string password, std::string nome, std
     :pf(Profilo(nome,cognome,email)),credenziali(Accesso(username,password)),punti(punti),risposte_date(risposte){
 }
 
-Utente::Utente(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d, unsigned int punti, unsigned int risposte)
-    :pf(p),credenziali(c),amici(a),seguaci(s),domande(d),punti(punti),risposte_date(risposte)
+Utente::Utente(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, unsigned int punti, unsigned int risposte)
+    :pf(p),credenziali(c),amici(a),seguaci(s),punti(punti),risposte_date(risposte)
 {
 
 }
@@ -110,7 +117,6 @@ void Utente::togli_amico(Utente *utente) // OK, serve a togliere un utente dalla
 {
     bool tolto=false;
 
-    try{
         if(this!=utente){
         for(auto it=amici.begin();it!=amici.end() && !tolto;++it)
             if((*it)==utente)
@@ -125,17 +131,6 @@ void Utente::togli_amico(Utente *utente) // OK, serve a togliere un utente dalla
         }else{
              throw togliere_te_stesso_dagli_amici();
         }
-    }
-    catch(amico_non_presente)
-    {
-        std::cerr<<"amico non trovato";
-        return;
-    }
-    catch(togliere_te_stesso_dagli_amici) //funziona
-    {
-        std::cerr<<"non puoi togliere te stesso dagli amici!";
-        return;
-    }
 }
 
 void Utente::cerca_amico(const std::string & username, container<std::string>& lista_di_elementi) const{
@@ -210,7 +205,6 @@ void Utente::togli_seguace(Utente *utente) // OK, toglie un suo seguace dalla co
 //seguace viene a sua volta tolto dalla lista degli amici dell'ex seguace
 {
     bool tolto=false;
-    try{
     for(auto it=seguaci.begin();it!=seguaci.end() && !tolto;++it)
         if((*it)==utente)
         {
@@ -218,11 +212,8 @@ void Utente::togli_seguace(Utente *utente) // OK, toglie un suo seguace dalla co
             tolto=true;
             utente->togli_amico_ausiliario(this);
         }
-    if(!tolto)
+    if(!tolto){
         throw amico_non_presente();
-    }catch(amico_non_presente){
-        std::cerr<<"seguace non trovato";
-        return;
     }
 }
 
@@ -262,7 +253,7 @@ void Utente::fai_domanda(const std::string & testo, unsigned int priorita)
     domande.push_back(new Domanda(testo,this,priorita));
 }
 
-void Utente::set_domande(container<Domanda *> d)
+void Utente::set_domande(const container<Domanda *>& d)
 {
     domande=d;
 }

@@ -35,7 +35,6 @@ public:
     void importa_dati_utenti();
     void importa_amici_e_domande_utenti(); //per ora funziona
     void import();
-//    void importa_amici();
     void exportdati() const;
     void fai_domanda(const string&,const string&,unsigned int);
 };

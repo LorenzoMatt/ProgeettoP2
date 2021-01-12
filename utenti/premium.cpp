@@ -6,18 +6,13 @@ unsigned int Premium::puntiBonus=60;
 unsigned int Premium::limitePerAverePuntiBonus=15;
 unsigned int Premium::supplementoDomandaPriorita=3;
 
-//Premium::Premium(const Premium &p): Pagamento(p)
-//{
-
-//}
-
 Premium::Premium(std::string username, std::string password, std::string nome, std::string cognome, std::string email, unsigned int punti, unsigned int risposte_date)
     :Pagamento(username,password,nome,cognome,email,punti,risposte_date)
 {
 }
 
-Premium::Premium(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d, unsigned int punti, unsigned int risposte)
-    :Pagamento(p,c,a,s,d,punti< puntiBonus ? puntiBonus : punti,risposte)
+Premium::Premium(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, unsigned int punti, unsigned int risposte)
+    :Pagamento(p,c,a,s,punti< puntiBonus ? puntiBonus : punti,risposte)
 {
 
 }

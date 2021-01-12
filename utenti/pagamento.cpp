@@ -11,8 +11,8 @@ Pagamento::Pagamento(std::string username, std::string password, std::string nom
 
 }
 
-Pagamento::Pagamento(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d,unsigned int punti, unsigned int risposte)
-    :Utente(p,c,a,s,d,punti,risposte)
+Pagamento::Pagamento(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, unsigned int punti, unsigned int risposte)
+    :Utente(p,c,a,s,punti,risposte)
 {
 
 }
