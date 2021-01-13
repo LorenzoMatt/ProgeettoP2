@@ -42,7 +42,7 @@ void vistaProfilo::creaCampoPuntiEPiano()
 {
     QHBoxLayout* layoutPuntiEPiano=new QHBoxLayout;
     QVBoxLayout* layoutPunti=new QVBoxLayout;
-    QHBoxLayout* layoutPiano=new QHBoxLayout;
+    QVBoxLayout* layoutPiano=new QVBoxLayout;
 
     QVBoxLayout* layoutPianoCorrente=new QVBoxLayout;
     QLabel* testoPiano=new QLabel("PIANO ATTUALE ");
@@ -265,6 +265,7 @@ vistaProfilo::vistaProfilo(Controller * c, QWidget *parent):QDialog(parent),a(c)
     layoutInserimentoTitoloDiStudio(new QHBoxLayout),
     cambio_piano_combo(new QComboBox),invio(new QPushButton("Invio")),
     invioT(new QPushButton("Invio")) ,
+    amiciSeguaci(new QPushButton("Gestisci amici e seguaci")),
     piano(new QLineEdit())
 {
     //file di stile

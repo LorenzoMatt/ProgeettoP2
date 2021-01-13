@@ -26,7 +26,7 @@ public:
     Profilo getProfilo() const;
     Accesso getAccesso() const;
     container<Domanda *> getDomandeAmici() const;//OK
-    container<Domanda *> getDomandePersonali() const;
+    const container<Domanda *>& getDomandePersonali() const;
     int getPunti() const;
     Utente* getUtente() const;
 

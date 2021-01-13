@@ -22,7 +22,7 @@ Accesso Account::get_credenziali() const
     return utente->get_credenziali();
 }
 
-container<Domanda *> Account::get_domande() const
+const container<Domanda *>& Account::get_domande() const
 {
     return utente->get_domande();
 }

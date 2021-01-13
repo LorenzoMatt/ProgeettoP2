@@ -110,7 +110,7 @@ Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
                 trovato=true;
                 Profilo pf=(*it)->get_profilo();
                 Accesso credenziali=(*it)->get_credenziali();
-                container<Domanda*> dom=(*it)->get_domande();
+                container<Domanda*> dom=(*it)->get_domande_rif();
                 container<Domanda*> domande;
                 for(auto ut=dom.begin();ut!=dom.end();++ut)
                 {

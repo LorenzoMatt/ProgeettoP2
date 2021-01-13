@@ -45,6 +45,7 @@ private:
     QMessageBox* dialogo;
 
     QLineEdit* testoPunti;
+    QPushButton* amiciSeguaci;
     QPushButton* invio;
     QPushButton* invioT;
     QString testoCambioPiano;

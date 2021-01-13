@@ -35,7 +35,8 @@ public:
     container(const container &c); //copia profonda del container
     container &operator=(const container &c);//assegnazione profonda
     container operator+(const container &c);// somma fra 2 container
-    T &operator[](unsigned int i); //non buono in una lista ma presente per comodità di utilizzo
+    const T &operator[](unsigned int i) const;
+    T &operator[](unsigned int i); //non efficiente in una lista ma presente per comodità di utilizzo
     void push_front(const T &t);
     void push_back(const T &t);
     void insertion_sort(const T &t);// inserisce in modo ordinato dentro alla lista passando un riferimento
@@ -187,6 +188,17 @@ container<T> container<T>::operator+(const container<T> &c)
     aux.first=copy(first,aux.last);//copiata la prima lista e passato aux.last per incrementare il last
     aux.last->next=copy(c.first,aux.last);
     return aux;
+}
+
+template<class T>
+const T& container<T>::operator[](unsigned int i) const
+{
+    if(i>size())
+        throw std::out_of_range("indice più grande della grandezza della lista");
+    container<T>::const_iterator it=cbegin();
+    for(;it!=end() && i>0;++it,--i)
+    {}//corpo vuoto
+    return *it;
 }
 
 template<class T>

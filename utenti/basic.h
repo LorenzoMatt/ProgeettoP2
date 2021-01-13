@@ -20,6 +20,5 @@ public:
     void get_punti_domanda() override; //OK
     Basic* clone() const override;//OK
     string piano() const override;
-
 };
 #endif // BASIC_H

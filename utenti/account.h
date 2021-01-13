@@ -15,7 +15,7 @@ public:
            /* getter*/
     Profilo &get_profilo() const;//OK
     Accesso get_credenziali() const;//OK
-    container<Domanda *> get_domande() const;//OK
+    const container<Domanda *> &get_domande() const;//OK
     Utente *get_utente() const;//OK
     unsigned int get_punti() const;//OK
     container<Domanda *> get_domande_amici() const;//OK

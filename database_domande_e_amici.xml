@@ -2,7 +2,7 @@
 <domande_e_amici>
     <utente>
         <username>Pikachu</username>
-        <amici>Mirko Lorenzo Elton</amici>
+        <amici>Mirko Elton Lorenzo</amici>
         <domanda>
             <priorita>1</priorita>
             <testo>pikachuuuuu</testo>
@@ -62,13 +62,7 @@
         <domanda>
             <priorita>2</priorita>
             <testo>prova</testo>
-            <commenti>
-                <commento>
-                    <testo>ciao</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
-                </commento>
-            </commenti>
+            <commenti/>
         </domanda>
         <domanda>
             <priorita>2</priorita>
@@ -268,7 +262,7 @@
     </utente>
     <utente>
         <username>Giorgia</username>
-        <amici>Lorenzo Elton</amici>
+        <amici>Elton Lorenzo</amici>
         <domanda>
             <priorita>5</priorita>
             <testo>ciaooo</testo>

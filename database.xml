@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <campi_dati_utenti>
     <utente>
-        <tipoutente>Basic</tipoutente>
+        <tipoutente>Premium</tipoutente>
         <username>Pikachu</username>
         <password>0000</password>
         <nome>Pikachu</nome>
@@ -10,16 +10,17 @@
         <competenze>
             <competenza>Lavorare al computer</competenza>
             <competenza>Giocare a calcio</competenza>
+            <competenza>ciao</competenza>
         </competenze>
         <titoli_di_studio>
             <titolo>Laurea in bere vino</titolo>
             <titolo>Perito Elettronico</titolo>
         </titoli_di_studio>
-        <punti>40</punti>
+        <punti>60</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Premium</tipoutente>
+        <tipoutente>Gold</tipoutente>
         <username>Lorenzo</username>
         <password>0000</password>
         <nome>Lorenzo</nome>

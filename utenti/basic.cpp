@@ -51,7 +51,7 @@ void Basic::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funzi
 
 }
 
-container<Domanda *> Basic::cerca_domanda(const string & domanda, const Database & m) const
+container<Domanda *> Basic::cerca_domanda(const string & domanda, const Database & m) const//le domande vengono cercate solo fra gli amici
 {
         container<string> domanda_fatta=split(domanda," ");// divido la stringa domanda per spazi
         container<Domanda*> domande_trovate;

@@ -111,7 +111,7 @@ void Controller::togli_amico(const QString & user)
     a->togli_amico(u);
     aggiorna_vista();
 }
-container<Domanda *> Controller::getDomandePersonali() const
+const container<Domanda *> &Controller::getDomandePersonali() const
 {
     return a->get_domande();
 }

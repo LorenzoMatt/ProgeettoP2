@@ -218,7 +218,7 @@ const container<Utente *> &Utente::get_seguaci() const // OK
     return seguaci;
 }
 
-container<Domanda *> Utente::get_domande() const
+const container<Domanda *> &Utente::get_domande() const
 {
     return domande;
 }

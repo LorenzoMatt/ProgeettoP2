@@ -38,7 +38,7 @@ public:
     Accesso get_credenziali();
     container<Utente*>& get_amici();
     const container<Utente *> &get_seguaci() const;
-    container<Domanda *> get_domande() const;
+    const container<Domanda *>& get_domande() const;
     container<Domanda *>& get_domande_rif();
     container<Domanda *> get_domande_amici() const;
     const container<Utente* > & get_amici() const;
