@@ -179,7 +179,6 @@ Utente* Database::get_utente(const string& username) const
 DeepPtr<Utente> *Database::get_utente_deep(const std::string & username)
 {
     bool trovato=false;
-    try{
         for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
             if((*it)->get_credenziali().get_username()==username)
             {
@@ -188,10 +187,6 @@ DeepPtr<Utente> *Database::get_utente_deep(const std::string & username)
             }
         if(!trovato)
             throw amico_non_presente();
-    }catch(amico_non_presente)
-    {
-        std::cerr<<"utente non presente";
-    }
     return 0;
 }
 

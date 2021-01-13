@@ -2,7 +2,12 @@
 <domande_e_amici>
     <utente>
         <username>Pikachu</username>
-        <amici>Mirko Francesca Lorenzo Elton</amici>
+        <amici>Mirko Lorenzo Elton</amici>
+        <domanda>
+            <priorita>1</priorita>
+            <testo>pikachuuuuu</testo>
+            <commenti/>
+        </domanda>
         <domanda>
             <priorita>2</priorita>
             <testo>sono pikachu</testo>
@@ -14,11 +19,6 @@
                 </commento>
                 <commento>
                     <testo>ehi</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
-                </commento>
-                <commento>
-                    <testo>prova dio</testo>
                     <autore_commento>Lorenzo</autore_commento>
                     <like>0</like>
                 </commento>
@@ -58,7 +58,7 @@
     </utente>
     <utente>
         <username>Lorenzo</username>
-        <amici>Pikachu Giorgia Elton</amici>
+        <amici>Elton Giorgia Pikachu</amici>
         <domanda>
             <priorita>2</priorita>
             <testo>prova</testo>
@@ -180,21 +180,6 @@
             <testo>sono grande?</testo>
             <commenti>
                 <commento>
-                    <testo>dio porco</testo>
-                    <autore_commento>Pikachu</autore_commento>
-                    <like>0</like>
-                </commento>
-                <commento>
-                    <testo>la madonna</testo>
-                    <autore_commento>Pikachu</autore_commento>
-                    <like>0</like>
-                </commento>
-                <commento>
-                    <testo>gesu</testo>
-                    <autore_commento>Pikachu</autore_commento>
-                    <like>0</like>
-                </commento>
-                <commento>
                     <testo>prova per un commento</testo>
                     <autore_commento>Giorgia</autore_commento>
                     <like>0</like>
@@ -284,6 +269,11 @@
     <utente>
         <username>Giorgia</username>
         <amici>Lorenzo Elton</amici>
+        <domanda>
+            <priorita>5</priorita>
+            <testo>ciaooo</testo>
+            <commenti/>
+        </domanda>
         <domanda>
             <priorita>1</priorita>
             <testo>prova a fare una domanda</testo>

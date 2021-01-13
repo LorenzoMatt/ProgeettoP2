@@ -1,10 +1,5 @@
 #include "account.h"
 
-Account::~Account()
-{
-    salva();
-}
-
 Account::Account(const std::string & u)
 {
     model=new Database();
@@ -143,25 +138,10 @@ container<Domanda *> Account::get_domande_amici() const
     return utente->get_domande_amici();
 }
 
-Domanda *Account::get_domanda(const container<Domanda *>& d, unsigned int i) const
-{
-    if(i>d.size())
-        throw std::runtime_error("domanda non presente");
-    else
-    {
-        container<Domanda*>::const_iterator it=d.begin();
-        for(;it!=d.end() && i>0;++it,i--)
-        {}//corpo vuoto
-        return *it;
-    }
-}
-
 std::string Account::get_piano() const
 {
     return utente->piano();
 }
-
-
 
 bool Account::check_presenza_amico(const std::string & user) const
 {

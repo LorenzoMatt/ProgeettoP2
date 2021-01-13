@@ -21,9 +21,9 @@ private:
     container<Utente*> amici;
     container<Utente*> seguaci;
     container<Domanda*> domande;
-    void aggiungi_seguace(Utente& utente); //OK
-    void togli_amico_ausiliario(Utente* utente); //OK
-    void togli_seguace_ausiliario(Utente* utente); //OK
+    void aggiungi_seguace(Utente &utente); //OK
+    void togli_amico_ausiliario(const Utente* utente); //OK
+    void togli_seguace_ausiliario(const Utente* utente); //OK
 public:
             /*costruttori e distruttori*/
     Utente() =delete;
@@ -34,8 +34,8 @@ public:
 
                      /*getter*/
 
-    Profilo &get_profilo();//OK
-    Accesso get_credenziali();//OK
+    Profilo &get_profilo();
+    Accesso get_credenziali();
     container<Utente*>& get_amici();
     const container<Utente *> &get_seguaci() const;
     container<Domanda *> get_domande() const;
@@ -43,7 +43,7 @@ public:
     container<Domanda *> get_domande_amici() const;
     const container<Utente* > & get_amici() const;
     unsigned int get_punti() const;//OK
-    unsigned int get_risposte_date() const; //serve per ottenere un bonus
+    unsigned int get_risposte_date() const; //serve per ottenere un bonus per gli utenti gold e premium
 
 
 
@@ -82,7 +82,7 @@ protected:
     class Funtore
     {
     public:
-        int search;
+        int search;//parametro per effetturare la ricerca
         Funtore(int x=1);
         void operator() (const Utente* ut, container<string>& l) const;
     };

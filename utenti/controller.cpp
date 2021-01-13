@@ -53,7 +53,6 @@ void Controller::dai_like(int i, Domanda * d)
 void Controller::rimuovi_commento(int i, Domanda * d)
 {
     d->rimuovi_commento(i);
-//    a->salva();
 }
 
 container<Domanda*> Controller::cercaDomanda(const QString & d)
@@ -94,10 +93,16 @@ bool Controller::check_presenza_amico(const QString& user) const
 
 void Controller::aggiungi_amico(const QString & user)
 {
-    Utente* u=a->cerca_utente_per_nome(user.toStdString());
-    a->aggiungi_amico(u);
-    v->aggiungiAreaDomandaAmici();
-    // funzione per aggiornare le domande deglia amici
+    try
+    {
+        Utente* u=a->cerca_utente_per_nome(user.toStdString());
+        a->aggiungi_amico(u);
+        v->aggiungiAreaDomandaAmici();
+    }
+    catch(amico_non_presente)
+    {
+        messaggio_errore("utente non presente","l'utente "+user+" non è presente!",v);
+    }
 }
 
 void Controller::togli_amico(const QString & user)

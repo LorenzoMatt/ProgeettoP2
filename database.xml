@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <campi_dati_utenti>
     <utente>
-        <tipoutente>Premium</tipoutente>
+        <tipoutente>Basic</tipoutente>
         <username>Pikachu</username>
         <password>0000</password>
         <nome>Pikachu</nome>
         <cognome>Pikachu</cognome>
         <email>Pikachu</email>
         <competenze>
-            <competenza>farsi le seghe</competenza>
-            <competenza>prendere a pugni i barboni</competenza>
-            <competenza>vendere la droga</competenza>
+            <competenza>Lavorare al computer</competenza>
+            <competenza>Giocare a calcio</competenza>
         </competenze>
         <titoli_di_studio>
             <titolo>Laurea in bere vino</titolo>
-            <titolo>Laurea in dinosauri con il cazzo lungo</titolo>
+            <titolo>Perito Elettronico</titolo>
         </titoli_di_studio>
-        <punti>50</punti>
+        <punti>40</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
@@ -73,7 +72,7 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Basic</tipoutente>
+        <tipoutente>Premium</tipoutente>
         <username>Giorgia</username>
         <password>0000</password>
         <nome>Giorgia</nome>
@@ -84,7 +83,7 @@
             <competenza>ruttare</competenza>
         </competenze>
         <titoli_di_studio/>
-        <punti>45</punti>
+        <punti>49</punti>
         <risposte_date>1</risposte_date>
     </utente>
 </campi_dati_utenti>

@@ -10,7 +10,7 @@ Basic::~Basic()
 {
 }
 
-Basic::Basic(std::string username, std::string password, std::string nome, std::string cognome, std::string email, unsigned int punti, unsigned int risposte_date)
+Basic::Basic(string username, string password, string nome, string cognome, string email, unsigned int punti, unsigned int risposte_date)
     :Utente(username,password,nome,cognome,email,punti,risposte_date)
 {
 }
@@ -21,7 +21,7 @@ Basic::Basic(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s,
 
 }
 
-void Basic::cerca_utente(const std::string & username, const Database & model, container<std::string> & lista_di_elementi) const
+void Basic::cerca_utente(const string & username, const Database & model, container<string> & lista_di_elementi) const
 {
         Utente* utente = model.get_utente(username);
         if(utente)
@@ -51,7 +51,7 @@ void Basic::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funzi
 
 }
 
-container<Domanda *> Basic::cerca_domanda(const std::string & domanda, const Database & m) const
+container<Domanda *> Basic::cerca_domanda(const string & domanda, const Database & m) const
 {
         container<string> domanda_fatta=split(domanda," ");// divido la stringa domanda per spazi
         container<Domanda*> domande_trovate;

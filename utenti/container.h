@@ -333,7 +333,7 @@ typename container<T>::iterator container<T>::erase(iterator i)
             ++i;//incremento l'iteratore da ritornare
             pop_front();//elimino in testa
         }
-        else if (i == --end()) {//penultimo nodo
+        else if (i == --end()) {//nodo prima del pTE
             nodo* temp = last;
             last = last->prev;
             last->next = nullptr;
@@ -346,7 +346,7 @@ typename container<T>::iterator container<T>::erase(iterator i)
             ++i;//incremento l'iteratore da ritornare
             (temp->prev)->next = temp->next;
             (temp->next)->prev = temp->prev;
-            temp->next = nullptr;
+            temp->next = nullptr;//isolo il nodo da eliminare
             delete temp;
         }
     }
