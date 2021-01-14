@@ -30,7 +30,7 @@ void VistaUtente::aggiungiAreaDomandaAmici()
     for(unsigned int i=0;i<contenitoreDomandeAmici.size();i++){
     //costruisco il layout del widget che conterrá le domande che dovranno essere visualizzate e il pulsante
     //Vedi commenti
-    Domanda* d=contenitoreDomandeAmici[i];
+    Domanda* d=*(contenitoreDomandeAmici[i]);
     string stringaAutore=d->get_autore_domanda()->get_credenziali().get_username();
     QLabel* autoreDomanda=new QLabel(QString::fromStdString(stringaAutore));
 
@@ -70,7 +70,7 @@ void VistaUtente::aggiungiAreaDomandePersonali()
     for(unsigned int i=0;i<contenitoreDomandePersonali.size();i++){
 
     //creo lo spazio che conterrá la domanda
-    Domanda* d=contenitoreDomandePersonali[i];
+    Domanda* d=*(contenitoreDomandePersonali[i]);
     QTextEdit* testoDomanda=new QTextEdit(QString::fromStdString(d->get_testo()));
     testoDomanda->setReadOnly(true);
 

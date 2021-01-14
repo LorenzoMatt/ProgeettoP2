@@ -80,7 +80,7 @@ vistaCercaUtente::~vistaCercaUtente()
 
 void vistaCercaUtente::segui_utente()
 {
-    QString utente(QString::fromStdString(proprieta[0]));
+    QString utente(QString::fromStdString(*proprieta[0]));
     messaggio_informativo("Aggiunto amico","utente "+utente+" aggiunto agli amici!",this);
     emit  invia(utente);
     close();
@@ -88,7 +88,7 @@ void vistaCercaUtente::segui_utente()
 
 void vistaCercaUtente::togli_utente()
 {
-    QString utente(QString::fromStdString(proprieta[0]));
+    QString utente(QString::fromStdString(*proprieta[0]));
     messaggio_informativo("rimosso dagli amici","utente "+utente+" rimosso agli amici!",this);
     emit  rimuovi(utente);
     close();
