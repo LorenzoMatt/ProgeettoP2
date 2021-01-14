@@ -272,10 +272,11 @@ vistaProfilo::vistaProfilo(Controller * c, QWidget *parent):QDialog(parent),a(c)
     inserisciTitoloDiStudio(new QLineEdit),
     testoTitoliDiStudio(new QListWidget),
     layoutInserimentoTitoloDiStudio(new QHBoxLayout),
-    cambio_piano_combo(new QComboBox),invio(new QPushButton("Invio")),
-    invioT(new QPushButton("Invio")) ,
+    cambio_piano_combo(new QComboBox),
     amiciSeguaci(new QPushButton("Gestisci amici e seguaci")),
-    piano(new QLineEdit())
+    invio(new QPushButton("Invio")),
+    piano(new QLineEdit()),
+    invioT(new QPushButton("Invio"))
 {
     //file di stile
 //    setStyleSheet(imposta_stile());

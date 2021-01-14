@@ -22,7 +22,7 @@ FinestraVistaDomande::FinestraVistaDomande(container<Domanda*>d, Controller *con
     for(unsigned int i=0;i<domande.size();i++){
     //costruisco il layout del widget che conterrá le domande che dovranno essere visualizzate e il pulsante
     //Vedi commenti
-    Domanda* d=*(domande[i]);
+    Domanda* d=domande[i];
     string stringaAutore=d->get_autore_domanda()->get_credenziali().get_username();
     stringaAutore=stringaAutore+ " " +(d->get_autore_domanda()->get_credenziali().get_username());
     QLabel* autoreDomanda=new QLabel(QString::fromStdString(stringaAutore));

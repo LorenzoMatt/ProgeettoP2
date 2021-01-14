@@ -47,9 +47,10 @@ private:
     QLineEdit* testoPunti;
     QPushButton* amiciSeguaci;
     QPushButton* invio;
-    QPushButton* invioT;
     QString testoCambioPiano;
     QLineEdit* piano;
+    QPushButton* invioT;
+
 
 
     //funzioni di utilitá

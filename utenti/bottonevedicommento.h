@@ -14,8 +14,6 @@ private:
     Domanda* dom;
 public:
     bottoneVediCommento(Domanda*,const QString& ut,const QString& testo, QWidget* parent=nullptr);
-//    void setDom(Domanda*);
-
 private slots:
     void vediCommenti();
 signals:

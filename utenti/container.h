@@ -35,8 +35,8 @@ public:
     container(const container &c); //copia profonda del container
     container &operator=(const container &c);//assegnazione profonda
     container operator+(const container &c);// somma fra 2 container
-    const T* operator[](unsigned int i) const;
-    T *operator[](unsigned int i); //non efficiente in una lista ma presente per comodità di utilizzo
+    const T& operator[](unsigned int i) const;
+    T& operator[](unsigned int i); //non efficiente in una lista ma presente per comodità di utilizzo
     void push_front(const T &t);
     void push_back(const T &t);
     void insertion_sort(const T &t);// inserisce in modo ordinato dentro alla lista passando un riferimento
@@ -55,11 +55,11 @@ public:
         iterator(nodo *p, bool pte = false); // conversione nodo* => iterator
     public:
         iterator();
-        T &operator*() const;
-        T *operator->() const;
-        iterator &operator++();//operatore di incremento prefisso
+        T& operator*() const;
+        T* operator->() const;
+        iterator& operator++();//operatore di incremento prefisso
         iterator operator++(int);//operatore di incremento postfisso
-        iterator &operator--();//operatore di decremento prefisso
+        iterator& operator--();//operatore di decremento prefisso
         iterator operator--(int);//operatore di decremento postfisso
         bool operator <=(const iterator &i) const;
         bool operator >=(const iterator &i) const;
@@ -191,25 +191,25 @@ container<T> container<T>::operator+(const container<T> &c)
 }
 
 template<class T>
-const T* container<T>::operator[](unsigned int i) const
+const T& container<T>::operator[](unsigned int i) const
 {
     if(i>size())
         throw std::out_of_range("indice più grande della grandezza della lista");
     container<T>::const_iterator it=cbegin();
-    for(;it!=end() && i>0;++it,--i)
+    for(;it!=cend() && i>0;++it,--i)
     {}//corpo vuoto
-    return &(*it);
+    return *it;
 }
 
 template<class T>
-T* container<T>::operator[](unsigned int i) //non molto adatto per una lista ma comodo da usare
+T& container<T>::operator[](unsigned int i) //non molto adatto per una lista ma comodo da usare
 {
     if(i>size())
         throw std::out_of_range("indice più grande della grandezza della lista");
     container<T>::iterator it=begin();
     for(;it!=end() && i>0;++it,--i)
     {}//corpo vuoto
-    return &(*it);
+    return *it;
 }
 
 template <class T>
