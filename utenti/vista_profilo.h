@@ -72,7 +72,7 @@ private slots:
     void creaCampoCognome();
     void creaCampoPassword();
     void creaCampoEmail();
-
+    void buildFinestraAmiciSeguaci();
 
     void finestraDiConferma(const QString&);
 

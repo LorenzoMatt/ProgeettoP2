@@ -29,7 +29,8 @@ public:
     const container<Domanda *>& getDomandePersonali() const;
     int getPunti() const;
     Utente* getUtente() const;
-
+    const container<Utente *> &getAmici() const;
+    const container<Utente *> &getSeguaci() const;
 
     container<std::string> cercaUtente(const QString&) const;
     container<Domanda *> cercaDomanda(const QString&);

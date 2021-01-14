@@ -126,6 +126,16 @@ Utente *Controller::getUtente() const
     return a->get_utente();
 }
 
+const container<Utente *> &Controller::getAmici() const
+{
+    return a->get_utente()->get_amici();
+}
+
+const container<Utente *> &Controller::getSeguaci() const
+{
+    return a->get_utente()->get_seguaci();
+}
+
 bool Controller::cambiaPiano(const QString & piano)
 {
     string p=piano.toStdString();

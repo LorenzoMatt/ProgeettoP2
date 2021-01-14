@@ -1,5 +1,5 @@
 #include "vista_profilo.h"
-
+#include "finestraamiciseguaci.h"
 
 
 
@@ -73,7 +73,6 @@ void vistaProfilo::creaCampoPuntiEPiano()
     layoutPiano->addWidget(nuovo_piano);
     layoutPiano->addWidget(cambio_piano_combo);
 
-    connect(cambio_piano_combo,SIGNAL(currentTextChanged(const QString&)),this,SLOT(finestraDiConferma(const QString&)));
     //punti
     QLabel* etichettaPunti=new QLabel("PUNTI RESIDUI");
     etichettaPunti->setObjectName("tpiano");
@@ -87,12 +86,16 @@ void vistaProfilo::creaCampoPuntiEPiano()
     layoutPunti->addWidget(testoPunti);
     //set elementi
 
+    layoutPuntiEPiano->addWidget(amiciSeguaci);
     layoutPuntiEPiano->addLayout(layoutPiano);
     layoutPuntiEPiano->addLayout(layoutPianoCorrente);
     layoutPuntiEPiano->addLayout(layoutPunti);
 
     etichettaPunti->setAlignment(Qt::AlignRight);
     layoutTotale->addLayout(layoutPuntiEPiano);
+    connect(cambio_piano_combo,SIGNAL(currentTextChanged(const QString&)),this,SLOT(finestraDiConferma(const QString&)));
+    connect(amiciSeguaci,SIGNAL(clicked()),this,SLOT(buildFinestraAmiciSeguaci()));
+
 }
 
 void vistaProfilo::creaCampoNome()
@@ -126,6 +129,12 @@ void vistaProfilo::creaCampoEmail()
     email=new widgetCampoDati("Email: ",stringaEmail);
     connect(email,SIGNAL(invioNome(const QString&)),a,SLOT(modificaEmail(const QString&)));
     connect(email,SIGNAL(invioNome(const QString&)),this,SLOT(creaCampoEmail()));
+}
+
+void vistaProfilo::buildFinestraAmiciSeguaci()
+{
+    FinestraAmiciSeguaci* f=new FinestraAmiciSeguaci(a,this);
+    f->show();
 }
 
 
