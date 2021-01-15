@@ -44,7 +44,7 @@ void Login::build_main_layout(QVBoxLayout* a, QLabel* oppure)
 Login::Login(QWidget *parent) : QWidget(parent) ,db(new Database())
 {
     db->import();
-    setStyleSheet(imposta_stile());
+//    setStyleSheet(imposta_stile());
 
     setWindowTitle("Login");
     mainLayout=new QVBoxLayout();

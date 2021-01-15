@@ -187,7 +187,7 @@ void vista_amministratore::set_controller(controller_admin *c)
 
 vista_amministratore::vista_amministratore(QWidget *parent) :QWidget(parent),controller(new controller_admin(this))
 {
-    setStyleSheet(imposta_stile());
+//    setStyleSheet(imposta_stile());
     mainLyaout=new QVBoxLayout;
 
     build_buttons();
