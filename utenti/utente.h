@@ -7,7 +7,6 @@
 #include "database.h"
 #include "amico_non_presente.h"
 #include "non_autore_domanda.h"
-#include "togliere_te_stesso_dagli_amici.h"
 #include "punti_non_sufficienti.h"
 class Domanda;
 class Database;

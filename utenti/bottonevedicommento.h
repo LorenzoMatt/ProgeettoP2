@@ -3,7 +3,6 @@
 
 #include <QPushButton>
 #include "vista_domanda.h"
-#include "QWidget"
 class Domanda;
 
 class bottoneVediCommento:public QPushButton
