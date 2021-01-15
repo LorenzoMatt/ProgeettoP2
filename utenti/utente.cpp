@@ -223,7 +223,7 @@ const container<Domanda *> &Utente::get_domande() const
     return domande;
 }
 
-container<Domanda *> &Utente::get_domande_rif()//ho bisogno di ritornarlo per riferimento non costante perchè possono essere modificate
+container<Domanda *> &Utente::get_domande_rif()
 {
     return domande;
 }

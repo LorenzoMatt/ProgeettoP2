@@ -34,12 +34,12 @@ public:
 
                      /*getter*/
 
-    Profilo &get_profilo();
+    Profilo &get_profilo();//
     Accesso get_credenziali();
     container<Utente*>& get_amici();
     const container<Utente *> &get_seguaci() const;
     const container<Domanda *>& get_domande() const;
-    container<Domanda *>& get_domande_rif();
+    container<Domanda *>& get_domande_rif();//ho bisogno di ritornarlo per riferimento non costante perchè possono essere modificate aggiungendovi nuove domande
     container<Domanda *> get_domande_amici() const;
     const container<Utente* > & get_amici() const;
     unsigned int get_punti() const;//OK
