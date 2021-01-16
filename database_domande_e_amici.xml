@@ -58,7 +58,7 @@
     </utente>
     <utente>
         <username>Lorenzo</username>
-        <amici>Elton Pikachu</amici>
+        <amici>Elton Pikachu Francesca</amici>
         <domanda>
             <priorita>2</priorita>
             <testo>prova</testo>
@@ -194,6 +194,11 @@
                     <autore_commento>Giorgia</autore_commento>
                     <like>0</like>
                 </commento>
+                <commento>
+                    <testo>prova sono Francesca</testo>
+                    <autore_commento>Francesca</autore_commento>
+                    <like>0</like>
+                </commento>
             </commenti>
         </domanda>
     </utente>
@@ -250,7 +255,7 @@
     </utente>
     <utente>
         <username>Francesca</username>
-        <amici></amici>
+        <amici>Lorenzo</amici>
         <domanda>
             <priorita>2</priorita>
             <testo>Sono francesca</testo>
@@ -259,7 +264,7 @@
     </utente>
     <utente>
         <username>Mirko</username>
-        <amici>Pikachu Lorenzo</amici>
+        <amici>Lorenzo Pikachu</amici>
         <domanda>
             <priorita>1</priorita>
             <testo>sono mirko</testo>
@@ -268,7 +273,7 @@
     </utente>
     <utente>
         <username>Giorgia</username>
-        <amici>Elton Lorenzo</amici>
+        <amici>Elton Lorenzo Mirko</amici>
         <domanda>
             <priorita>5</priorita>
             <testo>ciaooo</testo>

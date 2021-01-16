@@ -176,7 +176,6 @@ void VistaUtente::buildTabella()
 VistaUtente::VistaUtente(const QString& utente, QWidget *parent):QWidget(parent),c(new Controller(utente,this))
 {
     setAttribute(Qt::WA_DeleteOnClose);// serve a chiamare la delete della finestra, che a sua volta chiama la delete del controller che effettua il salvataggio del contenuto
-//    setStyleSheet(imposta_stile());
     QVBoxLayout* mainLayout=new QVBoxLayout();
 
     //creo gli elementi da aggiungere al mainLayout

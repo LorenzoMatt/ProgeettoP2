@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <campi_dati_utenti>
     <utente>
-        <tipoutente>Premium</tipoutente>
+        <tipoutente>Basic</tipoutente>
         <username>Pikachu</username>
         <password>0000</password>
         <nome>Pikachu</nome>
@@ -57,8 +57,8 @@
         <email>francesca.mari@gmail.com</email>
         <competenze/>
         <titoli_di_studio/>
-        <punti>50</punti>
-        <risposte_date>0</risposte_date>
+        <punti>67</punti>
+        <risposte_date>1</risposte_date>
     </utente>
     <utente>
         <tipoutente>Premium</tipoutente>
@@ -73,7 +73,7 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Premium</tipoutente>
+        <tipoutente>Basic</tipoutente>
         <username>Giorgia</username>
         <password>0000</password>
         <nome>Giorgia</nome>

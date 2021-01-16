@@ -279,7 +279,6 @@ vistaProfilo::vistaProfilo(Controller * c, QWidget *parent):QDialog(parent),a(c)
     invioT(new QPushButton("Invio"))
 {
     //file di stile
-//    setStyleSheet(imposta_stile());
 
     //campi dati
     invio->setVisible(false);

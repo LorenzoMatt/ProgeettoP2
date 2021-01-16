@@ -54,7 +54,3 @@ FinestraAmiciSeguaci::FinestraAmiciSeguaci(Controller* c, QWidget *parent) :
     setMaximumSize(500,500);
     setLayout(mainLayout);
 }
-
-FinestraAmiciSeguaci::~FinestraAmiciSeguaci()
-{
-}
