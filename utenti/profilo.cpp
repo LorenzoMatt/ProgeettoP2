@@ -6,12 +6,12 @@ void Profilo::set_nome(const string& n){nome=n;}
 void Profilo::set_cognome(const string& c){cognome=c;}
 void Profilo::set_email(const string& e){email=e;}
 
-void Profilo::set_competenze(const container<std::string> &c)
+void Profilo::set_competenze(const container<string> &c)
 {
     competenze=c;
 }
 
-void Profilo::set_titoli_di_studio(const container<std::string> &t)
+void Profilo::set_titoli_di_studio(const container<string> &t)
 {
     titoli_di_studio=t;
 }
@@ -28,7 +28,7 @@ string Profilo::get_nome() const{return nome;}
 string Profilo::get_cognome() const{return cognome;}
 string Profilo::get_email() const{return email;}
 
-std::string Profilo::competenze_toString() const
+string Profilo::competenze_toString() const
 {
     string c;
     for(container<string>::const_iterator it=competenze.cbegin();it!=competenze.cend();++it)
@@ -36,7 +36,7 @@ std::string Profilo::competenze_toString() const
     return c;
 }
 
-std::string Profilo::titoli_di_studio_toString() const
+string Profilo::titoli_di_studio_toString() const
 {
     string t;
     for(container<string>::const_iterator it=titoli_di_studio.cbegin();it!=titoli_di_studio.cend();++it)

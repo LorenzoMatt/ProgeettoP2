@@ -1,10 +1,7 @@
 #ifndef COMMENTO_H
 #define COMMENTO_H
-#include <string>
-#include <iostream>
 #include "utente.h"
 class Utente;
-using std::string;
 class Commento
 {
     friend std::ostream &operator<<(std::ostream &, const Commento&);

@@ -3,7 +3,7 @@
 
 Commento::Commento(const string& t, Utente* u, bool l):testo(t),autore(u->get_credenziali().get_username()),like(l){}
 
-Commento::Commento(const std::string & t, const std::string & u, bool l):testo(t),autore(u),like(l){}
+Commento::Commento(const string & t, const string & u, bool l):testo(t),autore(u),like(l){}
 
 string Commento::get_testo() const{
     return testo;

@@ -26,12 +26,12 @@ void Basic::cerca_utente(const string & username, const Database & model, contai
         Utente* utente = model.get_utente(username);
         if(utente)
         {
-            Utente::Funtore f(1);//nelle funzioni polimorfe il numero_funtore sarà sostituito con 1 in account gratuito,2 in gold e 3 in premium
+            Utente::Funtore f(1);
             f(utente, lista_di_elementi);
         }
 }
 
-void Basic::fai_domanda(Domanda* domanda)// il sollevamento dell'eccezione funziona a dovere
+void Basic::fai_domanda(Domanda* domanda)// aggiunge una domanda se abbiamo abbastanza punti
 {
 
     unsigned int punti_da_sottrarre=puntiDetrattiDomandaFatta;
@@ -100,7 +100,7 @@ Basic *Basic::clone() const
     return new Basic(*this);
 }
 
-std::string Basic::piano() const
+string Basic::piano() const
 {
     return "Basic";
 }

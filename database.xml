@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <campi_dati_utenti>
     <utente>
-        <tipoutente>Basic</tipoutente>
+        <tipoutente>Premium</tipoutente>
         <username>Pikachu</username>
         <password>0000</password>
         <nome>Pikachu</nome>
@@ -45,7 +45,7 @@
         <email>elton.ibra@gmail.com</email>
         <competenze/>
         <titoli_di_studio/>
-        <punti>60</punti>
+        <punti>55</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
@@ -57,7 +57,7 @@
         <email>francesca.mari@gmail.com</email>
         <competenze/>
         <titoli_di_studio/>
-        <punti>67</punti>
+        <punti>59</punti>
         <risposte_date>1</risposte_date>
     </utente>
     <utente>
@@ -69,7 +69,7 @@
         <email>miko.stella@gmail.com</email>
         <competenze/>
         <titoli_di_studio/>
-        <punti>60</punti>
+        <punti>55</punti>
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
@@ -84,7 +84,7 @@
             <competenza>ruttare</competenza>
         </competenze>
         <titoli_di_studio/>
-        <punti>49</punti>
+        <punti>39</punti>
         <risposte_date>1</risposte_date>
     </utente>
 </campi_dati_utenti>

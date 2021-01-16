@@ -4,10 +4,7 @@
 #include "container.h"
 #include "commento.h"
 #include "utente.h"
-#include <iostream>
-#include <string>
 class Commento;
-using std::string;
 using std::endl;
 class Utente;
 class Domanda

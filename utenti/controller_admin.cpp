@@ -15,7 +15,7 @@ Database *controller_admin::get_db() const
     return db;
 }
 
-void controller_admin::togli_utente(const std::string & utente)
+void controller_admin::togli_utente(const string & utente)
 {
     db->togli_utente(utente);
     vista->aggiorna_tabella();
@@ -26,7 +26,7 @@ void controller_admin::salva() const
     db->exportdati();
 }
 
-Utente *controller_admin::get_utente(const std::string & utente) const
+Utente *controller_admin::get_utente(const string & utente) const
 {
     Utente* ut=db->get_utente(utente);
     return ut;

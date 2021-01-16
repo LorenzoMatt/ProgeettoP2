@@ -6,7 +6,7 @@ unsigned int Premium::puntiBonus=60;
 unsigned int Premium::limitePerAverePuntiBonus=15;
 unsigned int Premium::supplementoDomandaPriorita=3;
 
-Premium::Premium(std::string username, std::string password, std::string nome, std::string cognome, std::string email, unsigned int punti, unsigned int risposte_date)
+Premium::Premium(string username, string password, string nome, string cognome, string email, unsigned int punti, unsigned int risposte_date)
     :Pagamento(username,password,nome,cognome,email,punti,risposte_date)
 {
 }
@@ -17,7 +17,7 @@ Premium::Premium(Profilo p, Accesso c, container<Utente *> a, container<Utente *
 
 }
 
-void Premium::cerca_utente(const std::string &username, const Database &model, container<std::string> &lista_di_elementi) const
+void Premium::cerca_utente(const string &username, const Database &model, container<string> &lista_di_elementi) const
 {
     Utente* utente = model.get_utente(username);
         if(utente)
@@ -71,7 +71,7 @@ Premium *Premium::clone() const
     return new Premium(*this);
 }
 
-std::string Premium::piano() const
+string Premium::piano() const
 {
     return "Premium";
 }

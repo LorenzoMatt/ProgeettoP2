@@ -49,7 +49,7 @@ public:
     Utente* cerca_utente_per_nome(const string&);
     container<Domanda *> ricerca_domanda(const string&);//OK
     container<string> ricerca_utente(const string&); //OK
-    container<std::string> ricerca_contatto(const string&) const;//OK
+    container<string> ricerca_contatto(const string&) const;//OK
 
    bool check_presenza_amico(const string &) const;
 };

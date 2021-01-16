@@ -3,7 +3,6 @@
 #define PROFILO_H
 
 #include <string>
-#include <iostream>
 #include <container.h>
 using std::cout;
 using std::endl;

@@ -28,7 +28,7 @@ Utente::Utente(const Utente &u):pf(u.pf),credenziali(u.credenziali),amici(u.amic
 }
 
 
-Utente::Utente(std::string username, std::string password, std::string nome, std::string cognome, std::string email, unsigned int punti, unsigned int risposte)
+Utente::Utente(string username, string password, string nome, string cognome, string email, unsigned int punti, unsigned int risposte)
     :pf(Profilo(nome,cognome,email)),credenziali(Accesso(username,password)),punti(punti),risposte_date(risposte){
 }
 
@@ -70,7 +70,7 @@ void Utente::carica_competenze(const container<string>& competenze)
 }
 
 
-void Utente::modifica_password(const std::string & pw)
+void Utente::modifica_password(const string & pw)
 {
     credenziali.set_password(pw);
 }
@@ -186,7 +186,7 @@ container<string> Utente::split(const string & text, const string & delim)
             parole.push_back(text.substr(start, end - start));
             start = text.find_first_not_of(delim, end);
         }
-        if(start != std::string::npos)
+        if(start != string::npos)
             parole.push_back(text.substr(start));
 
         return parole;

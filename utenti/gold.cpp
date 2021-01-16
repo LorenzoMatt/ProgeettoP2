@@ -6,7 +6,7 @@ unsigned int Gold::supplementoDomandaPriorita=4;
 unsigned int Gold::limitePerAverePuntiBonus=25;
 
 
-Gold::Gold(std::string username, std::string password, std::string nome, std::string cognome, std::string email, unsigned int punti, unsigned int risposte_date)
+Gold::Gold(string username, string password, string nome, string cognome, string email, unsigned int punti, unsigned int risposte_date)
     :Pagamento(username,password,nome,cognome,email,punti,risposte_date)
 {
 }
@@ -17,7 +17,7 @@ Gold::Gold(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, u
 
 }
 
-void Gold::cerca_utente(const std::string & username, const Database & model, container<std::string> & lista_di_elementi) const
+void Gold::cerca_utente(const string & username, const Database & model, container<string> & lista_di_elementi) const
 {
         Utente* utente = model.get_utente(username);
         if(utente)
@@ -71,7 +71,7 @@ Gold *Gold::clone() const
     return new Gold(*this);
 }
 
-std::string Gold::piano() const
+string Gold::piano() const
 {
     return "Gold";
 }

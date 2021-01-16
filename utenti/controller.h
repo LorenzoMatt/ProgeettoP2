@@ -32,7 +32,7 @@ public:
     const container<Utente *> &getAmici() const;
     const container<Utente *> &getSeguaci() const;
 
-    container<std::string> cercaUtente(const QString&) const;
+    container<string> cercaUtente(const QString&) const;
     container<Domanda *> cercaDomanda(const QString&);
 
     bool check_presenza_amico(const QString &) const;

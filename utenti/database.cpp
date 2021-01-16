@@ -12,7 +12,7 @@ Database::~Database()
     //il depptr si proccupa di deallocare gli utenti
 }
 
-bool Database::check_presenza(const std::string &username)
+bool Database::check_presenza(const string &username)
 {
     bool trovato=false;
     for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
@@ -79,7 +79,7 @@ void Database::togli_utente(Utente *utente)
 
 }
 
-void Database::togli_utente(const std::string & username)
+void Database::togli_utente(const string & username)
 {
         bool trovato=false;
         for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
@@ -98,7 +98,7 @@ void Database::togli_utente(const std::string & username)
 
 }
 
-Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
+Utente* Database::cambia_piano(Utente *utente, const string &piano)
 {
 
     bool trovato=false;
@@ -144,7 +144,7 @@ Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
     return nullptr;
 }
 
-Utente* Database::check_credenziali(const std::string & username, const std::string & password) const
+Utente* Database::check_credenziali(const string & username, const string & password) const
 {
         for(auto it=utenti.begin();it!=utenti.end();++it)
             if((*it)->get_credenziali().get_username()==username)
@@ -176,7 +176,7 @@ Utente* Database::get_utente(const string& username) const
 
 }
 
-DeepPtr<Utente> *Database::get_utente_deep(const std::string & username)
+DeepPtr<Utente> *Database::get_utente_deep(const string & username)
 {
     bool trovato=false;
         for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)

@@ -1,6 +1,6 @@
 #include "pagamento.h"
 
-Pagamento::Pagamento(std::string username, std::string password, std::string nome, std::string cognome, std::string email,unsigned int punti,unsigned int risposte)
+Pagamento::Pagamento(string username, string password, string nome, string cognome, string email,unsigned int punti,unsigned int risposte)
     :Utente(username,password,nome,cognome,email,punti,risposte)
 {
 
@@ -11,7 +11,7 @@ Pagamento::Pagamento(Profilo p, Accesso c, container<Utente *> a, container<Uten
 {
 
 }
-container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const Database & m) const
+container<Domanda *> Pagamento::cerca_domanda(const string & domanda, const Database & m) const
 {
     container<string> domanda_fatta=split(domanda," ");// divido la stringa domanda per spazi
     container<Domanda*> domande_trovate_amici;
