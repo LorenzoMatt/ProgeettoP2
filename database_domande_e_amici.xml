@@ -2,16 +2,28 @@
 <domande_e_amici>
     <utente>
         <username>Pikachu</username>
-        <amici>Lorenzo Mirko Giorgia</amici>
+        <amici>Mirko Giorgia Lorenzo</amici>
         <domanda>
             <priorita>1</priorita>
             <testo>ciao</testo>
-            <commenti/>
+            <commenti>
+                <commento>
+                    <testo>ciao</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                    <like>0</like>
+                </commento>
+            </commenti>
         </domanda>
         <domanda>
             <priorita>1</priorita>
             <testo>pikachuuuuu</testo>
-            <commenti/>
+            <commenti>
+                <commento>
+                    <testo>Ciao pikachu</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                    <like>1</like>
+                </commento>
+            </commenti>
         </domanda>
         <domanda>
             <priorita>2</priorita>
@@ -63,17 +75,11 @@
     </utente>
     <utente>
         <username>Lorenzo</username>
-        <amici>Elton Francesca Pikachu</amici>
+        <amici>Elton Francesca Pikachu Giorgia</amici>
         <domanda>
             <priorita>2</priorita>
             <testo>prova</testo>
-            <commenti>
-                <commento>
-                    <testo>ciao</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
-                </commento>
-            </commenti>
+            <commenti/>
         </domanda>
         <domanda>
             <priorita>2</priorita>
@@ -254,13 +260,7 @@
         <domanda>
             <priorita>7</priorita>
             <testo>ciao sono Elton</testo>
-            <commenti>
-                <commento>
-                    <testo>rrrrrr</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
-                </commento>
-            </commenti>
+            <commenti/>
         </domanda>
     </utente>
     <utente>
@@ -279,7 +279,7 @@
     </utente>
     <utente>
         <username>Mirko</username>
-        <amici>Lorenzo Pikachu</amici>
+        <amici>Pikachu Lorenzo</amici>
         <domanda>
             <priorita>3</priorita>
             <testo>ciao</testo>
@@ -293,7 +293,7 @@
     </utente>
     <utente>
         <username>Giorgia</username>
-        <amici>Elton Lorenzo Mirko</amici>
+        <amici>Elton Mirko Lorenzo</amici>
         <domanda>
             <priorita>1</priorita>
             <testo>ciao</testo>

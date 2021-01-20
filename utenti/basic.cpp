@@ -63,7 +63,7 @@ container<Domanda *> Basic::cerca_domanda(const string & domanda, const Database
                 container<string> domanda_esaminata=split((*dt)->get_testo()," ");// divido la domanda corrente per spazi
                 unsigned int lunghezza_parola_esaminata=domanda_esaminata.size();
                 unsigned int count=0;//numero di parole che matchano fra domanda_fatta e domande_esaminata
-                for(auto ut=domanda_esaminata.begin();ut!=domanda_esaminata.end() && count<=(lunghezza_parola_esaminata*0.6);++ut)
+                for(auto ut=domanda_esaminata.begin();ut!=domanda_esaminata.end() && count<=(lunghezza_parola_esaminata*0.5);++ut)
                     //scorri le parole della domanda_esaminata
                 {
                     bool ok=false;
@@ -77,7 +77,7 @@ container<Domanda *> Basic::cerca_domanda(const string & domanda, const Database
                     }
 
                  }
-                if(count>=(lunghezza_parola_esaminata*0.6))// basterebbe ==
+                if(count>=(lunghezza_parola_esaminata*0.5))// basterebbe ==
                 {
                     domande_trovate.insertion_sort_pointer(&*dt);
                 }

@@ -20,7 +20,7 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Basic</tipoutente>
+        <tipoutente>Premium</tipoutente>
         <username>Lorenzo</username>
         <password>0000</password>
         <nome>Lorenzo</nome>
@@ -29,12 +29,13 @@
         <competenze>
             <competenza>Giocare a nascondino</competenza>
             <competenza>mangiare molto</competenza>
+            <competenza>Mangiare</competenza>
         </competenze>
         <titoli_di_studio>
             <titolo>nessuna</titolo>
         </titoli_di_studio>
-        <punti>60</punti>
-        <risposte_date>0</risposte_date>
+        <punti>80</punti>
+        <risposte_date>1</risposte_date>
     </utente>
     <utente>
         <tipoutente>Premium</tipoutente>
