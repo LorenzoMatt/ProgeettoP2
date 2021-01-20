@@ -191,6 +191,8 @@ container<string> Utente::split(const string & text, const string & delim)
 
         return parole;
 }
+
+
 void Utente::togli_seguace(Utente *utente) // OK, toglie un suo seguace dalla coda se è presente e l'utente che ha rimosso il
 //seguace viene a sua volta tolto dalla lista degli amici dell'ex seguace
 {

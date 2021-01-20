@@ -313,7 +313,7 @@ void Database::importa_dati_utenti()
         {
             QDomElement el = nodes.at(i).toElement();
             QDomNode nodo = el.firstChild();
-            QString tipo,user, psw, nome, cognome,email, comp, /*titoli,*/ punti, risposte;
+            QString tipo,user, psw, nome, cognome,email, punti, risposte;
             container<string> competenze, titoli;
             while (!nodo.isNull()) {
                 QDomElement elemento = nodo.toElement();
@@ -351,7 +351,6 @@ void Database::importa_dati_utenti()
                     {
                         competenze.push_back(lista_competenze.at(x).toElement().text().toStdString());
                     }
-//                    comp=elemento.text();
                 }
                 if(tagName=="titoli_di_studio")
                 {
@@ -362,7 +361,6 @@ void Database::importa_dati_utenti()
                     {
                         titoli.push_back(lista_titoli.at(x).toElement().text().toStdString());
                     }
-//                    titoli=elemento.text();
                 }
                 if(tagName=="punti")
                 {
@@ -389,11 +387,6 @@ void Database::importa_dati_utenti()
                                  cognome.toStdString(),email.toStdString(),punt,risp);
             utente->carica_competenze(competenze);
             utente->carica_titoli(titoli);
-
-//            if(comp.size()!=0)
-//               utente->carica_competenze(comp.toStdString());
-//            if(titoli.size()!=0)
-//               utente->carica_titoli(titoli.toStdString());
             aggiungi_utente(utente);
         }
         file->close();
@@ -457,7 +450,6 @@ void Database::importa_amici_e_domande_utenti()
                             QDomNodeList lista_commenti =commenti.elementsByTagName("commento");
                             for(int x=0; x<lista_commenti.count(); ++x)
                             {
-//                                    QDomElement commento=elemento_domande.firstChild(); //che è comento
                                 QDomElement commento= lista_commenti.at(x).toElement();
                                 QString testo_commento, autore_commento, like;
                                 QDomNode elementi_del_commento=commento.firstChild();
@@ -479,7 +471,7 @@ void Database::importa_amici_e_domande_utenti()
                                     }
                                     elementi_del_commento=elementi_del_commento.nextSibling();
                                }
-                                commenti_totali.push_back(Commento(testo_commento.toStdString(),autore_commento.toStdString(),like.toInt()));
+                                commenti_totali.push_back(Commento(testo_commento.toStdString(),autore_commento.toStdString(),like.toInt()));//conversione int->bool
                         }
                     }
                         domande=domande.nextSibling();
