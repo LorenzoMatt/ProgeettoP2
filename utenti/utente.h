@@ -7,7 +7,6 @@
 #include "database.h"
 #include "amico_non_presente.h"
 #include "non_autore_domanda.h"
-#include "togliere_te_stesso_dagli_amici.h"
 #include "punti_non_sufficienti.h"
 class Domanda;
 class Database;
@@ -21,61 +20,58 @@ private:
     container<Utente*> amici;
     container<Utente*> seguaci;
     container<Domanda*> domande;
-
-    //unsigned int punti;
-    //unsigned int risposte_date;
-    void aggiungi_seguace(Utente& utente); //OK
-    void togli_amico_ausiliario(Utente* utente); //OK
-    void togli_seguace_ausiliario(Utente* utente); //OK
+    void aggiungi_seguace(Utente &utente); //OK
+    void togli_amico_ausiliario(const Utente* utente); //OK
+    void togli_seguace_ausiliario(const Utente* utente); //OK
 public:
-
-
             /*costruttori e distruttori*/
     Utente() =delete;
     virtual ~Utente();
     Utente(const Utente& u);
     Utente(string username,string password,string nome,string cognome,string email,unsigned int,unsigned int =0);
-    Utente(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,container<Domanda*> d,unsigned int punti,unsigned int risposte);
+    Utente(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,unsigned int punti,unsigned int risposte);
 
                      /*getter*/
-    Profilo get_profilo() const;//OK
-    Accesso get_credenziali() const;//OK
+
+    Profilo &get_profilo();//
+    Accesso get_credenziali();
     container<Utente*>& get_amici();
     const container<Utente *> &get_seguaci() const;
-    container<Domanda *>& get_domande();
+    const container<Domanda *>& get_domande() const;
+    container<Domanda *>& get_domande_rif();//ho bisogno di ritornarlo per riferimento non costante perchè possono essere modificate aggiungendovi nuove domande
+    container<Domanda *> get_domande_amici() const;
     const container<Utente* > & get_amici() const;
     unsigned int get_punti() const;//OK
-    unsigned int get_risposte_date() const; //serve per ottenere un bonus
+    unsigned int get_risposte_date() const; //serve per ottenere un bonus per gli utenti gold e premium
+
 
 
     //caricamento da file
-    void carica_competenze(const string&);
-    void carica_titoli(const string&);
+    void carica_competenze(const container<string> &);
+    void carica_titoli(const container<string> &);
 
-    //void fai_domanda(const string& domanda,unsigned int priorita=0);
     void modifica_password(const string &);
     void aggiungi_amico(Utente *);
     void togli_amico(Utente*);
     void cerca_amico(const string&,container<string>&) const;
-    container<Domanda *> get_domande_amici() const;
     void togli_seguace(Utente*);
     void AggiungiCompetenza(const string&); //OK
     void AggiungiTitoloDiStudio (const string&); //OK
-    void set_nome_profilo(const string&);
     void dai_punti(Utente*) const;
-    string get_username_amici() const; //OK
-    string get_username_seguaci() const;
+    string get_username_amici() const; //serve per la creazione del file xml
+    string get_username_seguaci() const; //serve per la creazione del file xml
     void scrivi_commento(Domanda* d, string risposta);
     void fai_domanda(const string&, unsigned int);
-    void set_domande(container<Domanda*>);
+    void set_domande(const container<Domanda *> &);
     static container<string> split(const string&,const string&); //OK
 
                 /*virtual*/
     virtual void cerca_utente(const string&,const Database&, container<string>&) const =0;//OK quando implementeremo le classi polimorfe dovrà andare tolto l'ultimo intero da passare alla funzione
-    virtual void get_punti_domanda() =0; //virtual
-    virtual container<Domanda*> cerca_domanda(const string&,const Database&) const =0;//OK per adesso contiene un container di domande, in utente basic la domanda viene cercata solo negli amici mentre negli account a pagamento nel modello
+    virtual void get_punti_domanda() =0;
+    virtual container<Domanda*> cerca_domanda(const string&,const Database&) const =0;//OKin utente basic la domanda viene cercata solo negli amici mentre negli account a pagamento nel modello
     virtual void fai_domanda(Domanda* domanda)=0;
     virtual Utente* clone() const=0;
+    virtual string piano() const=0;
 
 protected:
     unsigned int punti; // punti presenti nell'account
@@ -85,7 +81,7 @@ protected:
     class Funtore
     {
     public:
-        int search;
+        int search;//parametro per effetturare la ricerca
         Funtore(int x=1);
         void operator() (const Utente* ut, container<string>& l) const;
     };

@@ -1,6 +1,8 @@
 #include "vistacercautente.h"
-#include "QMessageBox"
 #include <QHeaderView>
+#include "funzioniutili.h"
+
+
 void vistaCercaUtente::build_tabella()
 {
     tabella=new QTableWidget();
@@ -49,7 +51,7 @@ void vistaCercaUtente::build_bottoni()
     connect(esci,SIGNAL(clicked()),this,SLOT(close()));
 }
 
-vistaCercaUtente::vistaCercaUtente(container<std::string> p, bool amico, QWidget *parent) :proprieta(p),a(!amico), QWidget(parent)
+vistaCercaUtente::vistaCercaUtente(container<std::string> p, bool amico, QWidget *parent) :QDialog(parent),proprieta(p),a(!amico)
 {// a(!amico) perchè se l'amico è presente allora il pulsante "segui" non deve essere visibile
     QVBoxLayout* mainLayout=new QVBoxLayout;
     build_tabella();
@@ -68,6 +70,7 @@ vistaCercaUtente::vistaCercaUtente(container<std::string> p, bool amico, QWidget
     mainLayout->addWidget(tabella);
     mainLayout->addLayout(layoutBottoni);
     setLayout(mainLayout);
+    setMaximumSize(500,500);
 }
 
 vistaCercaUtente::~vistaCercaUtente()
@@ -78,10 +81,7 @@ vistaCercaUtente::~vistaCercaUtente()
 void vistaCercaUtente::segui_utente()
 {
     QString utente(QString::fromStdString(proprieta[0]));
-    QMessageBox* messaggio=new QMessageBox(this);
-    messaggio->setWindowTitle("Aggiunto amico");
-    messaggio->setText("utente "+utente+" aggiunto agli amici!");
-    messaggio->exec();
+    messaggio_informativo("Aggiunto amico","utente "+utente+" aggiunto agli amici!",this);
     emit  invia(utente);
     close();
 }
@@ -89,10 +89,7 @@ void vistaCercaUtente::segui_utente()
 void vistaCercaUtente::togli_utente()
 {
     QString utente(QString::fromStdString(proprieta[0]));
-    QMessageBox* messaggio=new QMessageBox(this);
-    messaggio->setWindowTitle("rimosso dagli amici");
-    messaggio->setText("utente "+utente+" rimosso agli amici!");
-    messaggio->exec();
+    messaggio_informativo("rimosso dagli amici","utente "+utente+" rimosso agli amici!",this);
     emit  rimuovi(utente);
     close();
 }

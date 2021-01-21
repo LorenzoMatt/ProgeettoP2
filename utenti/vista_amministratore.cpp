@@ -4,13 +4,16 @@
 #include "premium.h"
 #include "controller_admin.h"
 #include "log.h"
+#include "funzioniutili.h"
 void vista_amministratore::build_buttons()
 {
     aggiungi=new QPushButton("Aggiungi utente");
     togli_utente_button=new QPushButton("Conferma");
     cambia_piano_button=new QPushButton("Conferma");
-    esci=new QPushButton("esci");
-    salva=new QPushButton("salva database");
+    esci=new QPushButton("Esci");
+    esci->setObjectName("annulla");
+    salva=new QPushButton("Salva database");
+    salva->setObjectName("salva");
     connect(aggiungi,SIGNAL(clicked()),this,SLOT(finestra_aggiungi_utente()));
     connect(togli_utente_button,SIGNAL(clicked()),this,SLOT(togli_utente()));
     connect(cambia_piano_button,SIGNAL(clicked()),this,SLOT(cambio_piano()));
@@ -34,17 +37,12 @@ void vista_amministratore::togli_utente()
     if(ut)
     {
         controller->togli_utente(togli_utente_line->text().toStdString());
-        QMessageBox* messaggio=new QMessageBox(this);
-        messaggio->setWindowTitle("Utente rimosso");
-        messaggio->setText("utente "+togli_utente_line->text()+" rimosso");
-        messaggio->exec();
+        messaggio_informativo("Utente rimosso","utente "+togli_utente_line->text()+" rimosso",this);
         togli_utente_line->clear();
     }
     else
     {
-        QErrorMessage * messaggio=new QErrorMessage(this);
-        messaggio->setWindowTitle("Utente non rimosso");
-        messaggio->showMessage("Utente "+togli_utente_line->text()+"non presente");
+        messaggio_errore("Utente non rimosso","Utente "+togli_utente_line->text()+"non presente",this);
     }
 }
 
@@ -57,9 +55,7 @@ void vista_amministratore::cambio_piano()
 void vista_amministratore::salva_db()
 {
     controller->salva();
-    QMessageBox* messaggio=new QMessageBox(this);
-    messaggio->setText("Salvataggio completato!");
-    messaggio->exec();
+    messaggio_informativo("","Salvataggio completato!",this);
 }
 
 void vista_amministratore::logout()
@@ -169,13 +165,7 @@ void vista_amministratore::aggiorna_tabella()
         QTableWidgetItem* email=new QTableWidgetItem(QString::fromStdString((*it)->get_profilo().get_email()));
         QTableWidgetItem* Competenze=new QTableWidgetItem(QString::fromStdString((*it)->get_profilo().competenze_toString()));
         QTableWidgetItem* Titoli=new QTableWidgetItem(QString::fromStdString((*it)->get_profilo().titoli_di_studio_toString()));
-        QTableWidgetItem* Piano=new QTableWidgetItem();
-        if(dynamic_cast<Basic*>(&**it))
-            Piano->setText("Basic");
-        if(dynamic_cast<Gold*>(&**it))
-            Piano->setText("Gold");
-        if(dynamic_cast<Premium*>(&**it))
-            Piano->setText("Premium");
+        QTableWidgetItem* Piano=new QTableWidgetItem(QString::fromStdString((*it)->piano()));;
         tabella_utenti->setItem(row,0,Username);
         tabella_utenti->setItem(row,1,Nome);
         tabella_utenti->setItem(row,2,Cognome);
@@ -193,19 +183,10 @@ void vista_amministratore::set_controller(controller_admin *c)
     aggiorna_tabella();
 }
 
-void vista_amministratore::imposta_stile()
-{
-    QFile file("../style.css");
-    file.open(QFile::ReadOnly);
-    QString styleSheet = QLatin1String(file.readAll());
-    file.close();
-    setStyleSheet(styleSheet);
-}
 
-vista_amministratore::vista_amministratore(QWidget *parent) :controller(new controller_admin(this)), QWidget(parent)
-{
-    imposta_stile();
 
+vista_amministratore::vista_amministratore(QWidget *parent) :QWidget(parent),controller(new controller_admin(this))
+{
     mainLyaout=new QVBoxLayout;
 
     build_buttons();

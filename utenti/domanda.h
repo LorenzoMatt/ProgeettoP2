@@ -4,10 +4,7 @@
 #include "container.h"
 #include "commento.h"
 #include "utente.h"
-#include <iostream>
-#include <string>
 class Commento;
-using std::string;
 using std::endl;
 class Utente;
 class Domanda
@@ -19,11 +16,14 @@ private:
     container<Commento> commenti;
     unsigned int priorita;
 public:
-    Domanda();
+    Domanda()=delete;
+    Domanda(const Domanda&)=delete;//voglio che una domanda non possa essere copiata
     Domanda(const string&,Utente*,unsigned int);//OK
-    Domanda(const Domanda&);//OK
+    Domanda(const string&,Utente*,unsigned int,const container<Commento>&);//OK
+    Domanda(const string&,unsigned int,const container<Commento>&);//OK
+    void set_autore(Utente*);
     void aggiungi_commento(const Commento&);//OK
-    void rimuovi_commento(const Commento&);//OK
+    void rimuovi_commento(unsigned int i);//OK
     Utente* get_autore_domanda() const;//OK
     string get_testo() const; //OK
     void set_priorita(unsigned int); //OK
@@ -32,7 +32,7 @@ public:
     bool operator >=(const Domanda&) const;//OK
     bool operator >(const Domanda&) const;
     unsigned int get_priorita() const;//OK
-    container<Commento> get_commenti() const;//OK
+    container<Commento> &get_commenti();//OK
     void set_commenti(const container<Commento>);
 };
 

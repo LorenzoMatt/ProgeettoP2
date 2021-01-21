@@ -11,12 +11,9 @@
 #include <QTextEdit>
 #include <QLabel>
 #include <QScrollArea>
-#include <vector>
 #include <QString>
-#include <QErrorMessage>
-#include <QMessageBox>
 #include "bottonevedicommento.h"
-#include "stile.h"
+#include "funzioniutili.h"
 
 class Controller;
 
@@ -26,9 +23,9 @@ class VistaUtente:public QWidget
     friend class Controller;
 private:
     Controller* c;
-
     QLabel* numeroDomandePersonali;
     QPushButton* aggiungiDomanda;
+    QPushButton* logout;
     QHBoxLayout* layoutBarraSuperiore;
     QTabWidget* tabella;
     QPushButton* profilo;
@@ -36,8 +33,6 @@ private:
     QPushButton* invioUtente;
     QLineEdit* scriviDomanda;
     QLineEdit* scriviUtente;
-    std::vector<QPushButton*> domandePersonali;
-    std::vector<QPushButton*> domandeAmici;
     QVBoxLayout* layoutWidgetPagina1;
     QVBoxLayout* layoutWidgetPagina2;
     QScrollArea* pagina1;
@@ -52,10 +47,16 @@ private:
     void buildTabella();
 
 public:
-    VistaUtente(const QString&,QWidget* parent=nullptr);
+    explicit VistaUtente(const QString&,QWidget* parent=nullptr);
+    ~VistaUtente();
 private slots:
     void vediProfilo();
     void buildCercaUtente();
+    void buildFaiDomanda();
+    void buildDomandeCercate();
+    void aggiornaAreaDomandeAmici();
+    void aggiornaNumeroDomande();
+    void buildLogout();
 };
 
 #endif // VISTAUTENTE_H

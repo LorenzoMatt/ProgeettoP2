@@ -17,3 +17,5 @@ public:
 };
 
 #endif // ACCESSO_H
+
+//ciao ranzato dacci un bel voto ti conviene

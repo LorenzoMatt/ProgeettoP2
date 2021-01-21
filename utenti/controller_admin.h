@@ -1,12 +1,11 @@
 #ifndef CONTROLLER_ADMIN_H
 #define CONTROLLER_ADMIN_H
 #include "vista_amministratore.h"
-#include "database.h"
-class controller_admin : public QWidget
+class controller_admin
 {
+
 public:
-    controller_admin(vista_amministratore* =nullptr);
-    ~controller_admin();
+    explicit controller_admin(vista_amministratore* =nullptr);
     Database* get_db() const;
     void togli_utente(const string&);
     void salva() const;
@@ -17,9 +16,6 @@ public:
 private:
     vista_amministratore* vista;
     Database* db;
-
-signals:
-private slots:
 };
 
 #endif // CONTROLLER_ADMIN_H

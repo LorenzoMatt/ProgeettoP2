@@ -1,45 +1,82 @@
 * {
-    background-color: rgb(63, 63, 63);
-    selection-background-color: rgb(36,98,124);
-    color: white;
+    background-color: beige;
+    color:black;
 }
 
 QPushButton {
-    background-color: rgb(90, 70, 100);
-    border-style: outset;
-    border-width: 2px;
+    background-color: rgb(59, 57, 23);
+    border: 2px solid rgb(214, 210, 147);
     border-radius: 10px;
-    border-color: beige;
     font: bold 14px;
     min-width: 5em;
+    color: white;
     padding: 6px;
 }
 
-<<<<<<< HEAD
-
 QLineEdit{ 
-    background-color:rgb(200,200,200);
-=======
-QLineEdit{ 
-    background-color:rgb(202, 255, 227);
->>>>>>> remotes/origin/mirkoGiusto
-    border: 2px solid gray;
+    background-color:rgb(167, 185, 83);
+    border: 2px solid rgb(59, 57, 23);
     border-radius: 10px;
     padding: 0 8px;
-    selection-background-color: darkgray;
     font-size: 16px;
+    color:black;
 }
-
 QLineEdit:focus { 
-background-color:rgb(192, 192, 255);
+    background-color:white;
+    color:black;
 }
 
-
-
-QPushButton:pressed {
-    background-color: rgb(224, 0, 0);
-    border-style: inset;
+QPushButton:hover{
+    background-color:rgb(226, 208, 147);
+    color:rgb(55,55,55);
 }
-QPushButton:hover{background-color:rgb(214, 153, 39);}
 
-QPushButton:focus{background-color:rgb(255, 115, 0);}
+QPushButton#ok{
+
+    background-color: rgb(226, 208, 147);
+    color:black;
+    border-color: rgb(59, 57, 23);
+}
+QPushButton#ok:hover{
+
+    color:white;
+}
+
+QPushButton#annulla:hover{
+
+    background-color: rgb(97, 109, 44);
+    color:white;
+}
+QPushButton#like:hover{
+
+    background-color: rgb(241, 205, 0);
+}
+QPushButton#salva:hover{
+
+    background-color: green;
+    color:white;
+}
+
+QTextEdit{
+    background-color: rgb(238, 226, 188);
+
+}
+QTextEdit#commenti{
+    background-color: rgb(255, 252, 244);
+
+}
+/* 226, 208, 147 */
+QScrollBar{
+
+background-color: rgb(167, 185, 83);
+
+
+}
+QLabel{
+
+    color: black;
+}
+QLabel#tpiano{
+    
+    font: bold 12px;
+}

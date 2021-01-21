@@ -5,16 +5,14 @@
 
 Database::Database()
 {
-//    import();
 }
 
 Database::~Database()
 {
-//    exportdati();
     //il depptr si proccupa di deallocare gli utenti
 }
 
-bool Database::check_presenza(const std::string &username)
+bool Database::check_presenza(const string &username)
 {
     bool trovato=false;
     for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
@@ -55,24 +53,17 @@ Database::Database(const container<DeepPtr<Utente> > &u):utenti(u)
 
 void Database::aggiungi_utente(const DeepPtr<Utente> &utente)
 {
-    try{
+
         if(!check_presenza(utente->get_credenziali().get_username()))
             utenti.push_back(utente);
         else
             throw utente_gia_presente();
-    }catch(utente_gia_presente)
-    {
-        std::cerr<<"utente "<<utente->get_credenziali().get_username() <<" già presente";
-    }
-
 }
 
 void Database::togli_utente(Utente *utente)
 {
     bool trovato=false;
-    try
-    {
-        for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
+    for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
         {
             if(&(**it)==utente)
             {
@@ -85,18 +76,13 @@ void Database::togli_utente(Utente *utente)
         {
             throw amico_non_presente();
         }
-    }catch(amico_non_presente)
-    {
-        std::cerr<<"utente non presente";
-    }
+
 }
 
-void Database::togli_utente(const std::string & username)
+void Database::togli_utente(const string & username)
 {
         bool trovato=false;
-        try
-        {
-            for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
+        for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
             {
                 if((*it)->get_credenziali().get_username()==username)
                 {
@@ -109,17 +95,13 @@ void Database::togli_utente(const std::string & username)
             {
                 throw amico_non_presente();
             }
-        }catch(amico_non_presente)
-        {
-            std::cerr<<"utente non presente";
-        }
+
 }
 
-Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
+Utente* Database::cambia_piano(Utente *utente, const string &piano)
 {
+
     bool trovato=false;
-    try
-    {
         for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
         {
             if(&(**it)==utente)
@@ -128,32 +110,41 @@ Utente* Database::cambia_piano(Utente *utente, const std::string &piano)
                 trovato=true;
                 Profilo pf=(*it)->get_profilo();
                 Accesso credenziali=(*it)->get_credenziali();
-                container<Domanda*> domande=(*it)->get_domande();
+                container<Domanda*> dom=(*it)->get_domande_rif();
+                container<Domanda*> domande;
+                for(auto ut=dom.begin();ut!=dom.end();++ut)
+                {
+                    string testo=(*ut)->get_testo();
+                    container<Commento> commenti=(*ut)->get_commenti();
+                    unsigned int priorita=(*ut)->get_priorita();
+                    domande.push_back(new Domanda(testo,priorita,commenti));
+                }
                 container<Utente*> amici=(*it)->get_amici();
                 container<Utente*> seguaci=(*it)->get_seguaci();
                 unsigned int risposte_date=(*it)->get_risposte_date();
                 unsigned int punti=(*it)->get_punti();
                 it=utenti.erase(it);
                 if(piano=="Basic")
-                    it=utenti.insert(it,DeepPtr<Utente>(new Basic(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
+                    it=utenti.insert(it,DeepPtr<Utente>(new Basic(pf,credenziali,amici,seguaci,punti,risposte_date)));
                 if(piano=="Gold")
-                    it=utenti.insert(it,DeepPtr<Utente>(new Gold(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
+                    it=utenti.insert(it,DeepPtr<Utente>(new Gold(pf,credenziali,amici,seguaci,punti,risposte_date)));
                 if(piano=="Premium")
-                    it=utenti.insert(it,DeepPtr<Utente>(new Premium(pf,credenziali,amici,seguaci,domande,punti,risposte_date)));
+                    it=utenti.insert(it,DeepPtr<Utente>(new Premium(pf,credenziali,amici,seguaci,punti,risposte_date)));
                 reverse_seguaci_amici(&(**it));
+                for(auto ut=domande.begin();ut!=domande.end();++ut)
+                {
+                    (*ut)->set_autore(&(**it));
+                }
+                (*it)->set_domande(domande);
                 return &(**it);
             }
         }
         if(!trovato)
             throw amico_non_presente();
-    }catch(amico_non_presente)
-    {
-        std::cerr<<"utente non trovato";
-    }
     return nullptr;
 }
 
-Utente* Database::check_credenziali(const std::string & username, const std::string & password) const
+Utente* Database::check_credenziali(const string & username, const string & password) const
 {
         for(auto it=utenti.begin();it!=utenti.end();++it)
             if((*it)->get_credenziali().get_username()==username)
@@ -174,29 +165,20 @@ const container<DeepPtr<Utente>>& Database::get_utenti() const
 Utente* Database::get_utente(const string& username) const
 {
     bool trovato=false;
-//    try
-//    {
         for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
             if((*it)->get_credenziali().get_username()==username)
             {
                 trovato=true;
                 return &(**it);
             }
-        if(!trovato)
-            return 0;
-//            throw amico_non_presente();
-//    }
-//    catch(amico_non_presente)
-//    {
-//        std::cerr<<"utente "<<username<<" non presente"<<endl;
-//    }
+        return 0;
+
 
 }
 
-DeepPtr<Utente> *Database::get_utente_deep(const std::string & username)
+DeepPtr<Utente> *Database::get_utente_deep(const string & username)
 {
     bool trovato=false;
-    try{
         for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
             if((*it)->get_credenziali().get_username()==username)
             {
@@ -205,56 +187,49 @@ DeepPtr<Utente> *Database::get_utente_deep(const std::string & username)
             }
         if(!trovato)
             throw amico_non_presente();
-    }catch(amico_non_presente)
-    {
-        std::cerr<<"utente non presente";
-    }
     return 0;
 }
 
 void Database::exportdati() const
 {
-
-
     try
     {
-        QFile* file = new QFile("../database.xml");
+        QFile* file = new QFile("../database.xml"); //costruttore con il nome del file
         if(!file->open(QIODevice::WriteOnly | QIODevice::Text))
         {
             throw std::runtime_error("il file non è stato aperto");
-            //       QMessageBox err;
-            //       err.setText("Errore nell'apertura del file");
-            //       err.exec();
         }
         else
         {
-            QXmlStreamWriter* inp = new QXmlStreamWriter;
+            QXmlStreamWriter* inp = new QXmlStreamWriter; //per scrivere dentro a file
             inp->setAutoFormatting(true);
             inp->setDevice(file);
-            inp->writeStartDocument();
+            inp->writeStartDocument(); //inizio a scrivere nel file
             inp->writeStartElement("campi_dati_utenti"); // inizio dei campi dati utenti
             for(auto it=utenti.begin();it!=utenti.end();++it)
             {
                 inp->writeStartElement("utente");// inizio singolo utente
-                if(dynamic_cast<Basic*>(&**it))
-                {
-                    inp->writeTextElement("tipoutente", QString::fromStdString("Basic"));
-                }
-                if(dynamic_cast<Gold*>(&**it))
-                {
-                    inp->writeTextElement("tipoutente", QString::fromStdString("Gold"));
-                }
-                if(dynamic_cast<Premium*>(&**it))
-                {
-                    inp->writeTextElement("tipoutente", QString::fromStdString("Premium"));
-                }
+                inp->writeTextElement("tipoutente", QString::fromStdString((*it)->piano()));
+
                 inp->writeTextElement("username",QString::fromStdString(((*it)->get_credenziali()).get_username()));
                 inp->writeTextElement("password",QString::fromStdString(((*it)->get_credenziali()).get_password()));
                 inp->writeTextElement("nome", QString::fromStdString(((*it)->get_profilo()).get_nome()));
                 inp->writeTextElement("cognome", QString::fromStdString(((*it)->get_profilo()).get_cognome()));
                 inp->writeTextElement("email", QString::fromStdString(((*it)->get_profilo()).get_email()));
-                inp->writeTextElement("competenze", QString::fromStdString(((*it)->get_profilo()).competenze_toString()));
-                inp->writeTextElement("titoli_di_studio", QString::fromStdString(((*it)->get_profilo()).titoli_di_studio_toString()));
+                inp->writeStartElement("competenze"); // inizio delle competenze
+                container<string> competenze=(*it)->get_profilo().GetCompetenze();
+                for(auto com=competenze.begin();com!=competenze.end();++com)
+                    inp->writeTextElement("competenza",QString::fromStdString(*com));
+
+                inp->writeEndElement();// fine competenze
+//                inp->writeTextElement("competenze", QString::fromStdString(((*it)->get_profilo()).competenze_toString()));
+                inp->writeStartElement("titoli_di_studio");// inizio titoli di studio
+                container<string> titoli=(*it)->get_profilo().GetTitoliDiStudio();
+                for(auto tit=titoli.begin();tit!=titoli.end();++tit)
+                    inp->writeTextElement("titolo",QString::fromStdString(*tit));
+
+                inp->writeEndElement();// fine dei titoli di studio
+//                inp->writeTextElement("titoli_di_studio", QString::fromStdString(((*it)->get_profilo()).titoli_di_studio_toString())); Mirko ha commentato questa riga
                 inp->writeTextElement("punti", QString::fromStdString(std::to_string(((*it)->get_punti()))));
                 inp->writeTextElement("risposte_date", QString::fromStdString(std::to_string(((*it)->get_risposte_date()))));
                 inp->writeEndElement();// fine di un utente
@@ -270,9 +245,6 @@ void Database::exportdati() const
             if(!file2->open(QIODevice::WriteOnly | QIODevice::Text))
             {
                 throw std::runtime_error("il file non è stato aperto");
-                //       QMessageBox err;
-                //       err.setText("Errore nell'apertura del file");
-                //       err.exec();
             }
             else
             {
@@ -281,14 +253,14 @@ void Database::exportdati() const
                 inp->setDevice(file2);
                 inp->writeStartDocument();
                 inp->writeStartElement("domande_e_amici");
+                //stampa gli amici, poi le domande e per ciscuna domanda i relativi commenti
             for(auto it=utenti.begin();it!=utenti.end();++it)
             {
                 inp->writeStartElement("utente");
                 inp->writeTextElement("username",QString::fromStdString(((*it)->get_credenziali()).get_username()));
-//                inp->writeStartElement(QString::fromStdString(((*it)->get_credenziali()).get_username()));
                 inp->writeTextElement("amici",QString::fromStdString((*it)->get_username_amici()));
-//                inp->writeStartElement("domande");
-                for(auto d=(*it)->get_domande().begin();d!=(*it)->get_domande().end();++d)
+                container<Domanda*> con=(*it)->get_domande();
+                for(auto d=con.begin();d!=con.end();++d)
                 {
                     inp->writeStartElement("domanda");
                     inp->writeTextElement("priorita",QString::fromStdString(std::to_string((*d)->get_priorita())));
@@ -299,17 +271,17 @@ void Database::exportdati() const
                     {
                         inp->writeStartElement("commento");// inizio commento
                         inp->writeTextElement("testo",QString::fromStdString(((*c).get_testo())));
-                        inp->writeTextElement("autore_commento",QString::fromStdString((*c).get_autore()->get_credenziali().get_username()));
+                        inp->writeTextElement("autore_commento",QString::fromStdString((*c).get_autore()));
+                        inp->writeTextElement("like",((*c).get_like()== true) ? "1" : "0");
                         inp->writeEndElement();// fine commento
                     }
-//                    inp->writeEndElement();// fine delle domande
                     inp->writeEndElement();//fine commenti
                     inp->writeEndElement();//fine domanda
 
                 }
-                inp->writeEndElement();// fine utente
+                inp->writeEndElement();// fine domande utente
             }
-            inp->writeEndElement();// fine domande_amici
+            inp->writeEndElement();// fine domande_amici utenti
 
             inp->writeEndDocument();
             file2->close();
@@ -341,7 +313,8 @@ void Database::importa_dati_utenti()
         {
             QDomElement el = nodes.at(i).toElement();
             QDomNode nodo = el.firstChild();
-            QString tipo,user, psw, nome, cognome,email, comp, titoli, punti, risposte;
+            QString tipo,user, psw, nome, cognome,email, punti, risposte;
+            container<string> competenze, titoli;
             while (!nodo.isNull()) {
                 QDomElement elemento = nodo.toElement();
                 QString tagName = elemento.tagName();
@@ -371,11 +344,23 @@ void Database::importa_dati_utenti()
                 }
                 if(tagName=="competenze")
                 {
-                    comp=elemento.text();
+
+                    QDomElement comp=elemento.toElement();
+                    QDomNodeList lista_competenze =comp.elementsByTagName("competenza");
+                    for(int x=0; x<lista_competenze.count(); ++x)
+                    {
+                        competenze.push_back(lista_competenze.at(x).toElement().text().toStdString());
+                    }
                 }
                 if(tagName=="titoli_di_studio")
                 {
-                    titoli=elemento.text();
+
+                    QDomElement tit=elemento.toElement();
+                    QDomNodeList lista_titoli=tit.elementsByTagName("titolo");
+                    for(int x=0; x<lista_titoli.count(); ++x)
+                    {
+                        titoli.push_back(lista_titoli.at(x).toElement().text().toStdString());
+                    }
                 }
                 if(tagName=="punti")
                 {
@@ -400,11 +385,8 @@ void Database::importa_dati_utenti()
             if(tipo=="Premium")
                 utente=new Premium(user.toStdString(),psw.toStdString(),nome.toStdString(),
                                  cognome.toStdString(),email.toStdString(),punt,risp);
-
-            if(comp.size()!=0)
-               utente->carica_competenze(comp.toStdString());
-            if(titoli.size()!=0)
-               utente->carica_titoli(titoli.toStdString());
+            utente->carica_competenze(competenze);
+            utente->carica_titoli(titoli);
             aggiungi_utente(utente);
         }
         file->close();
@@ -468,9 +450,8 @@ void Database::importa_amici_e_domande_utenti()
                             QDomNodeList lista_commenti =commenti.elementsByTagName("commento");
                             for(int x=0; x<lista_commenti.count(); ++x)
                             {
-//                                    QDomElement commento=elemento_domande.firstChild(); //che è comento
                                 QDomElement commento= lista_commenti.at(x).toElement();
-                                QString testo_commento, autore_commento;
+                                QString testo_commento, autore_commento, like;
                                 QDomNode elementi_del_commento=commento.firstChild();
                                 while (!elementi_del_commento.isNull())
                                 {
@@ -484,9 +465,13 @@ void Database::importa_amici_e_domande_utenti()
                                     {
                                         autore_commento=elemento_commento.text();
                                     }
+                                    if(tagNameCommento=="like")
+                                    {
+                                        like=elemento_commento.text();
+                                    }
                                     elementi_del_commento=elementi_del_commento.nextSibling();
                                }
-                                commenti_totali.push_back(Commento(testo_commento.toStdString(),get_utente(autore_commento.toStdString())));
+                                commenti_totali.push_back(Commento(testo_commento.toStdString(),autore_commento.toStdString(),like.toInt()));//conversione int->bool
                         }
                     }
                         domande=domande.nextSibling();

@@ -1,11 +1,6 @@
 #include "account.h"
 
-Account::Account()
-{
-
-}
-
-Account::Account(const std::string & u)
+Account::Account(const string & u)
 {
     model=new Database();
     model->import();
@@ -14,11 +9,10 @@ Account::Account(const std::string & u)
 
 Account::Account(Utente *u, Database *m) :model(m)
 {
-    m->aggiungi_utente(u);
     utente=model->get_utente(u->get_credenziali().get_username());
 }
 
-Profilo Account::get_profilo() const
+Profilo& Account::get_profilo() const
 {
     return utente->get_profilo();
 }
@@ -28,7 +22,7 @@ Accesso Account::get_credenziali() const
     return utente->get_credenziali();
 }
 
-container<Domanda *>& Account::get_domande()
+const container<Domanda *>& Account::get_domande() const
 {
     return utente->get_domande();
 }
@@ -38,7 +32,7 @@ Utente *Account::get_utente() const
     return utente;
 }
 
-Utente *Account::cerca_utente_per_nome(const std::string & utente)
+Utente *Account::cerca_utente_per_nome(const string & utente)
 {
     return model->get_utente(utente);
 }
@@ -63,12 +57,12 @@ void Account::togli_seguace(Utente *u)
     utente->togli_seguace(u);
 }
 
-void Account::AggiungiCompetenza(const std::string & competenza)
+void Account::AggiungiCompetenza(const string & competenza)
 {
     utente->AggiungiCompetenza(competenza);
 }
 
-void Account::AggiungiTitoloDiStudio(const std::string & titolo)
+void Account::AggiungiTitoloDiStudio(const string & titolo)
 {
     utente->AggiungiTitoloDiStudio(titolo);
 }
@@ -78,7 +72,7 @@ void Account::dai_punti(Utente *u) const
     utente->dai_punti(u);
 }
 
-void Account::dai_punti(const std::string & username) const
+void Account::dai_punti(const string & username) const
 {
     try
     {
@@ -98,28 +92,28 @@ container<string> Account::ricerca_utente(const string & u)
     return lista_attributi;
 }
 
-void Account::cambia_piano(const std::string & piano)
+void Account::cambia_piano(const string & piano)
 {
     utente=model->cambia_piano(utente,piano);
 }
 
-void Account::modifica_password(const std::string & pw)
+void Account::modifica_password(const string & pw)
 {
     utente->modifica_password(pw);
 }
 
-container<Domanda*> Account::ricerca_domanda(const std::string & testo)
+container<Domanda*> Account::ricerca_domanda(const string & testo)
 {
-    utente->cerca_domanda(testo,*model);
     return utente->cerca_domanda(testo,*model);
 }
 
-void Account::fai_domanda(const std::string & domanda, unsigned int priorita)
+void Account::fai_domanda (const string & domanda, unsigned int priorita)
+
 {
     utente->fai_domanda(new Domanda(domanda,utente,priorita));
 }
 
-void Account::fai_commento(Domanda* domanda, const std::string & t) const
+void Account::fai_commento(Domanda* domanda, const string & t) const
 {
     Commento c(t,utente);
     domanda->aggiungi_commento(c);
@@ -130,7 +124,7 @@ void Account::salva() const
     model->exportdati();
 }
 
-container<string> Account::ricerca_contatto(const std::string & username) const
+container<string> Account::ricerca_contatto(const string & username) const
 {
     container<string> aux;
     utente->cerca_amico(username,aux);
@@ -143,20 +137,12 @@ container<Domanda *> Account::get_domande_amici() const
     return utente->get_domande_amici();
 }
 
-Domanda *Account::get_domanda(const container<Domanda *>& d, unsigned int i) const
+string Account::get_piano() const
 {
-    if(i>d.size())
-        throw std::runtime_error("domanda non presente");
-    else
-    {
-        container<Domanda*>::const_iterator it=d.begin();
-        for(;it!=d.end() && i>0;++it,i--)
-        {}//corpo vuoto
-        return *it;
-    }
+    return utente->piano();
 }
 
-bool Account::check_presenza_amico(const std::string & user) const
+bool Account::check_presenza_amico(const string & user) const
 {
     container<string> l;
     utente->cerca_amico(user,l);

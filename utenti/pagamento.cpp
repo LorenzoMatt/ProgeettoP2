@@ -1,22 +1,17 @@
 #include "pagamento.h"
 
-//Pagamento::Pagamento(const Pagamento & p) : Utente(p)
-//{
-
-//}
-
-Pagamento::Pagamento(std::string username, std::string password, std::string nome, std::string cognome, std::string email,unsigned int punti,unsigned int risposte)
+Pagamento::Pagamento(string username, string password, string nome, string cognome, string email,unsigned int punti,unsigned int risposte)
     :Utente(username,password,nome,cognome,email,punti,risposte)
 {
 
 }
 
-Pagamento::Pagamento(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, container<Domanda *> d,unsigned int punti, unsigned int risposte)
-    :Utente(p,c,a,s,d,punti,risposte)
+Pagamento::Pagamento(Profilo p, Accesso c, container<Utente *> a, container<Utente *> s, unsigned int punti, unsigned int risposte)
+    :Utente(p,c,a,s,punti,risposte)
 {
 
 }
-container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const Database & m) const
+container<Domanda *> Pagamento::cerca_domanda(const string & domanda, const Database & m) const
 {
     container<string> domanda_fatta=split(domanda," ");// divido la stringa domanda per spazi
     container<Domanda*> domande_trovate_amici;
@@ -28,7 +23,7 @@ container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const
             container<string> domanda_esaminata=split((*dt)->get_testo()," ");// divido la domanda corrente per spazi
             unsigned int lunghezza_parola_esaminata=domanda_esaminata.size();
             unsigned int count=0;//numero di parole che matchano fra domanda_fatta e domande_esaminata
-            for(auto ut=domanda_esaminata.begin();ut!=domanda_esaminata.end() && count<=(lunghezza_parola_esaminata*0.6);++ut)
+            for(auto ut=domanda_esaminata.begin();ut!=domanda_esaminata.end() && count<=(lunghezza_parola_esaminata*0.5);++ut)
                 //scorri le parole della domanda_esaminata
             {
                 bool ok=false;
@@ -42,7 +37,7 @@ container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const
                 }
 
              }
-            if(count>=(lunghezza_parola_esaminata*0.6))// basterebbe ==
+            if(count>=(lunghezza_parola_esaminata*0.5))// basterebbe ==
             {
                 domande_trovate_amici.insertion_sort_pointer(&*dt);
             }
@@ -53,7 +48,7 @@ container<Domanda *> Pagamento::cerca_domanda(const std::string & domanda, const
     container<Domanda*> domande_trovate_modello;
     for(auto it=m.get_utenti().begin();it!=m.get_utenti().end();++it)
     {
-        if(&**it!=this && (!(check_presenza_amico((*it)->get_credenziali().get_username()))))
+        if(&(**it)!=this && (!(check_presenza_amico((*it)->get_credenziali().get_username()))))
 // se non è se stesso e se l'utente esaminato non è fra gli amici
         {
             const container<Domanda*>& domande_utente=(*it)->get_domande();//lista di domande dell'amico esaminato

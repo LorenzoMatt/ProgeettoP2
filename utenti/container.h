@@ -5,10 +5,11 @@
 using std::cout;
 using std::endl;
 
-//operatore di output
 template <class T>
-class container;
+class container;//dichiarazione incompleta
 
+
+//operatori di output
 template <class T>
 std::ostream &operator<<(std::ostream &, const container<T> &);
 template <class T>
@@ -17,9 +18,6 @@ std::ostream &operator<<(std::ostream &, const container<T*> &);
 template <class T>
 class container
 {
-    friend std::ostream &operator<< <T>(std::ostream &, const container <T> &);
-    friend std::ostream &operator<< <T>(std::ostream &, const container<T*> &);
-
 private:
     class nodo
     {
@@ -29,75 +27,71 @@ private:
         nodo(const T &t = T(), nodo *p = nullptr, nodo *n = nullptr);
         ~nodo();
     };
-
-    nodo *last, *first; // lista vuota iff first==last==nullptr    per garantire inserimento in testa e coda in tempo costante
-    static nodo *copy(nodo *p, nodo *&l);
+    nodo *last, *first;
+    static nodo *copy(nodo *n, nodo *&l);
 public:
-    ~container();
-    container(const container &d);
-    container(unsigned int k, const T &t);
     container();
-    container &operator=(const container &d);
-    container operator+(const container &d);
-    T &operator[](unsigned int i); //non buono in una lista ma presente lo stesso
+    ~container();//distruttore profondo
+    container(const container &c); //copia profonda del container
+    container &operator=(const container &c);//assegnazione profonda
+    container operator+(const container &c);// somma fra 2 container
+    const T& operator[](unsigned int i) const;
+    T& operator[](unsigned int i); //non efficiente in una lista ma presente per comodità di utilizzo
     void push_front(const T &t);
     void push_back(const T &t);
-    void insertion_sort(const T &t);
-    void insertion_sort_pointer(const T *t);
+    void insertion_sort(const T &t);// inserisce in modo ordinato dentro alla lista passando un riferimento
+    void insertion_sort_pointer(const T *t);// inserisce in modo ordinato dentro alla lista passando un puntatore
     void pop_front();
     void pop_back();
-    bool empty() const;
     unsigned int size() const;
+    bool empty() const;
     class iterator
     {
         friend class container<T>;
-        friend class const_iterator; //per accedere a p e pte
-
+        friend class const_iterator;
     private:
         nodo *ptr;
-        bool pastTheEnd;                     // true iff iterator e' "past-the-end"
+        bool pTE;// true se è iteratore pastTheEnd
         iterator(nodo *p, bool pte = false); // conversione nodo* => iterator
-
     public:
         iterator();
-        T &operator*() const;
-        T *operator->() const;
-        iterator &operator++();
-        iterator operator++(int);
-        iterator &operator--();
-        iterator operator--(int);
-        bool operator==(const iterator &x) const;
-        bool operator!=(const iterator &x) const;
-        bool operator <=(const iterator &x) const;
-        bool operator >=(const iterator &x) const;
+        T& operator*() const;
+        T* operator->() const;
+        iterator& operator++();//operatore di incremento prefisso
+        iterator operator++(int);//operatore di incremento postfisso
+        iterator& operator--();//operatore di decremento prefisso
+        iterator operator--(int);//operatore di decremento postfisso
+        bool operator <=(const iterator &i) const;
+        bool operator >=(const iterator &i) const;
+        bool operator==(const iterator &i) const;
+        bool operator!=(const iterator &i) const;
     };
     iterator begin();
     iterator end();
-    iterator insert(iterator i, const T &t);//inserisce t prima del nodo puntato da i e ritorna l'iteratore che punta al nuovo nodo
-    iterator erase(iterator i);
-
+    iterator erase(iterator i);//rimuove il nodo puntato da i e ritorna l'iteratore al nodo successivo
+    iterator insert(iterator i, const T &t);//inserisce t prima dell'iteratore puntato da i e ritorna l'iteratore che punta al nuovo nodo creato
     class const_iterator
     {
         friend class container<T>;
 
     private:
         nodo *ptr;
-        bool pastTheEnd;                           // true iff constiterator e' "past-the-end"
-        const_iterator(nodo *p, bool pte = false); // conversione nodo* => const_iterator
+        bool pTE;// true se è iteratore pastTheEnd
+        const_iterator(nodo *p, bool pte = false);
 
     public:
         const_iterator();
-        const_iterator(iterator &i); //conversione iterator->const_iterator
+        const_iterator(iterator &i); //conversione da iterator a const_iterator
         const T &operator*() const;
         const T *operator->() const;
-        const_iterator &operator++();
-        const_iterator operator++(int);
-        const_iterator &operator--();
-        const_iterator operator--(int);
-        bool operator==(const const_iterator &x) const;
-        bool operator!=(const const_iterator &x) const;
-        bool operator<=(const const_iterator &x) const;
-        bool operator>=(const const_iterator &x) const;
+        const_iterator &operator++();//operatore di incremento prefisso
+        const_iterator operator++(int);//operatore di incremento postfisso
+        const_iterator &operator--();//operatore di decremento prefisso
+        const_iterator operator--(int);//operatore di decremento postfisso
+        bool operator<=(const const_iterator &i) const;
+        bool operator>=(const const_iterator &i) const;
+        bool operator==(const const_iterator &i) const;
+        bool operator!=(const const_iterator &i) const;
     };
     const_iterator begin() const;
     const_iterator end() const;
@@ -105,9 +99,26 @@ public:
     const_iterator cend() const;
 };
 
-/*********************************************IMPLEMENTAZIONE************************************************/
+/**************OUTPUT**************/
+template <class T>
+std::ostream &operator<<(std::ostream &os, const container<T> & c)
+{
+    for (auto it = c.begin(); it != c.end(); ++it)
+        cout << *it << ' ';
+    cout <<endl;
+    return os;
+}
 
-/**********************************NODO**********************************/
+template <class T>
+std::ostream &operator<<(std::ostream &os, const container<T*> &c)
+{
+    for (auto it = c.begin(); it != c.end(); ++it)
+        cout << **it << ' ';
+    cout<<endl;
+    return os;
+}
+
+/**************NODO**************/
 
 template <class T>
 container<T>::nodo::nodo(const T &t, container<T>::nodo *p, container<T>::nodo *n) : info(t), prev(p), next(n) {}
@@ -115,25 +126,37 @@ container<T>::nodo::nodo(const T &t, container<T>::nodo *p, container<T>::nodo *
 template <class T>
 container<T>::nodo::~nodo() {
     delete next;
-    //if(std::is_pointer<T>::value)
-        //delete info;
 }
 
-/**********************************DLIST**********************************/
+/**************CONTAINER**************/
 
 template <class T>
-typename container<T>::nodo *container<T>::copy(nodo *p, nodo *&l) //si passa last per riferimento perché ancora non si sa quale sia l'ultimo nodo (il primo si)
+container<T>::container() : last(nullptr), first(nullptr) {}
+
+template <class T>
+container<T>::~container()
 {
-    if (p == nullptr) //lista da copiare vuota
-        return l = nullptr;
-    nodo *prec = new nodo(p->info, nullptr, nullptr); //lista da copiare ha almeno un nodo
-    nodo *succ = prec;                                //da inizializzare qui per l=succ
+    delete first;
+}
+
+template <class T>
+typename container<T>::nodo *container<T>::copy(nodo *n, nodo *&l) //da notare che l è passato per riferimento(per poter spostare il last)
+{
+    if (n == nullptr){
+        //lista vuota
+        l = nullptr;
+        return l;
+    }
+    //almeno un nodo
+    nodo *prec = new nodo(n->info, nullptr, nullptr);
+    nodo *succ = prec;
     nodo *start = prec;
-    while (p->next != nullptr) // lista da copiare ha almeno 2 nodi
+    //almeno 2 nodi
+    while (n->next != nullptr)
     {
-        succ = new nodo(p->next->info, prec, nullptr);
+        succ = new nodo(n->next->info, prec, nullptr);
         prec->next = succ;
-        p = p->next;
+        n = n->next;
         prec = prec->next;
     }
     l = succ;
@@ -141,40 +164,50 @@ typename container<T>::nodo *container<T>::copy(nodo *p, nodo *&l) //si passa la
 }
 
 template <class T>
-container<T>::container(const container<T> &d) : first(copy(d.first, last)) // first è ritornato dalla funzione, last viene modificato da copy
-{                                                               //grazie all'aliasing
-    // first=copy(d.first,last);
-}
+container<T>::container(const container<T> &c) : first(copy(c.first, last)){}
 
 template <class T>
-container<T> &container<T>::operator=(const container<T> &d)
+container<T> &container<T>::operator=(const container<T> &c)
 {
-    if (this != &d)
+    if (this != &c)
     {
         delete first;
-        first = copy(d.first, last);
+        first = copy(c.first, last);//copia profonda a partire da first
     }
     return *this;
 }
 
 template<class T>
-container<T> container<T>::operator+(const container<T> &d)
+container<T> container<T>::operator+(const container<T> &c)
 {
-    if(d.size()==0)
+    if(c.size()==0)
         return container<T>(*this);
-    if(this->size()==0)
-        return container<T>(d);
+    if(size()==0)
+        return container<T>(c);
     container<T> aux;
-    aux.first=copy(first,aux.last);
-    aux.last->next=copy(d.first,aux.last);
+    aux.first=copy(first,aux.last);//copiata la prima lista e passato aux.last per incrementare il last
+    aux.last->next=copy(c.first,aux.last);
     return aux;
 }
 
 template<class T>
-T& container<T>::operator[](unsigned int i) //non molto adatto per una lista
+const T& container<T>::operator[](unsigned int i) const
 {
-    container<T>::iterator it=this->begin();
-    for(;it!=this->end() && i>0;++it,--i)
+    if(i>size())
+        throw std::out_of_range("indice più grande della grandezza della lista");
+    container<T>::const_iterator it=cbegin();
+    for(;it!=cend() && i>0;++it,--i)
+    {}//corpo vuoto
+    return *it;
+}
+
+template<class T>
+T& container<T>::operator[](unsigned int i) //non molto adatto per una lista ma comodo da usare
+{
+    if(i>size())
+        throw std::out_of_range("indice più grande della grandezza della lista");
+    container<T>::iterator it=begin();
+    for(;it!=end() && i>0;++it,--i)
     {}//corpo vuoto
     return *it;
 }
@@ -184,13 +217,11 @@ void container<T>::push_front(const T &t)
 {
     first = new nodo(t, nullptr, first);
     if (first->next == nullptr)
-    {
-        // lista di invocazione era vuota
+    { // lista vuota
         last = first;
     }
     else
-    {
-        // lista di invocazione NON era vuota
+    {// lista non vuota
         (first->next)->prev = first;
     }
 }
@@ -200,13 +231,11 @@ void container<T>::push_back(const T &t)
 {
     last = new nodo(t, last, nullptr);
     if (last->prev == nullptr)
-    {
-        // lista di invocazione era vuota
+    {// lista vuota
         first = last;
     }
     else
-    {
-        // lista di invocazione NON era vuota
+    {// lista non vuota
         (last->prev)->next = last;
     }
 }
@@ -214,12 +243,12 @@ void container<T>::push_back(const T &t)
 template <class T>
 void container<T>::insertion_sort(const T &t)
 {
-    if(empty() || this->last->info>t)
+    if(empty() || last->info>t)
         push_back(t);
     else
-    {
+    {// scorro la lista ed inserisco
         bool sent=false;
-        for(auto it=this->begin();it!=this->end() && !sent;++it)
+        for(auto it=begin();it!=end() && !sent;++it)
         {
             if(*it<=t)
             {
@@ -233,12 +262,12 @@ void container<T>::insertion_sort(const T &t)
 template <class T>
 void container<T>::insertion_sort_pointer(const T *t)
 {
-    if(empty() || *(this->last->info)>**t)
+    if(empty() || *(last->info)>**t)
         push_back(*t);
     else
-    {
+    {// scorro la lista ed inserisco
         bool sent=false;
-        for(auto it=this->begin();it!=this->end() && !sent;++it)
+        for(auto it=begin();it!=end() && !sent;++it)
         {
             if(**it<=**t)
             {
@@ -252,18 +281,18 @@ void container<T>::insertion_sort_pointer(const T *t)
 template <class T>
 void container<T>::pop_front()
 {
-    if (first) //se la lista ha almeno un elemento
+    if (first)// se c'è un nodo di inizio da poter eliminare
     {
         nodo *temp = first;
 
-        if (first->next) //se la lista ha almeno 2 elementi
-        {
+        if (first->next)
+        {//presenti almeno 2 nodi
             first = first->next;
             temp->next = nullptr;
             first->prev = nullptr;
         }
-        else //la lista ha esattamente un elemento
-        {
+        else
+        {//presente un solo nodo
             first = last = nullptr;
         }
         delete temp;
@@ -290,41 +319,68 @@ void container<T>::pop_back()
 }
 
 template <class T>
-bool container<T>::empty() const
-{
-    return (first==nullptr && last==nullptr);
-}
-
-template <class T>
 unsigned int container<T>::size() const
 {
-    unsigned int cont=0;
+    unsigned int count=0;
     for (auto i=begin(); i!=end();++i)
-        cont++;
-    return cont;
+        count++;
+    return count;
 }
 
 template <class T>
-typename container<T>::iterator container<T>::insert(iterator i, const T &t) //inserisce t prima del nodo puntato da i e ritorna l'iteratore che punta al nuovo nodo
+bool container<T>::empty() const
 {
-    if (i.ptr == nullptr) //la lista è vuota
+    return first==nullptr && last==nullptr;//primo ed ultimo nodo non presenti(basterebbe controllare first non presente)
+}
+
+/**************ITERATOR**************/
+
+template <class T>
+typename container<T>::iterator container<T>::erase(iterator i)
+{
+    if (i != end())
     {
-        push_front(t);
-        return begin();
+        if (i == begin())
+        {
+            ++i;//incremento l'iteratore da ritornare
+            pop_front();//elimino in testa
+        }
+        else if (i == --end()) {//nodo prima del pTE
+            nodo* temp = last;
+            last = last->prev;
+            last->next = nullptr;
+            delete temp;
+            return end();//pTE=true
+        }
+        else
+        {//inserimento in mezzo alla lista
+            nodo * temp = i.ptr;
+            ++i;//incremento l'iteratore da ritornare
+            (temp->prev)->next = temp->next;
+            (temp->next)->prev = temp->prev;
+            temp->next = nullptr;//isolo il nodo da eliminare
+            delete temp;
+        }
+    }
+    return i;
+}
+
+template <class T>
+typename container<T>::iterator container<T>::insert(iterator i, const T &t)
+{
+    if ((i.ptr == nullptr) || (i == begin())) //la lista è vuota oppure l'iteratore punta al primo nodo
+    {
+        push_front(t);//inserisco in testa
+        return first;// ritorno l'iteratore al primo nodo(conversione implicita da nodo* ad iterator
     }
     else //lista non vuota
     {
-        if (i == end()) //iteratore past the end
+        if (i == end())//iteratore pTE
         {
             push_back(t);
-            return --end(); //cerca il past the end della lista aggiornata e ne ritorna il precedente (ultimo)
+            return --end(); //ritorna l'ultimo nodo(ovvero il nodo che precede il pTE)
         }
-        else if (i == begin()) //iteratore primo elemento
-        {
-            push_front(t);
-            return begin(); //ritorna il primo, avendo inserito t prima del primo (che diventa quindi il primo)
-        }
-        else //caso generale
+        else //inserimento in mezzo alla lista
         {
             nodo *temp = new nodo(t, i.ptr->prev, i.ptr);
             (i.ptr->prev)->next = temp;
@@ -333,51 +389,137 @@ typename container<T>::iterator container<T>::insert(iterator i, const T &t) //i
         }
     }
 }
+template <class T>
+typename container<T>::iterator container<T>::begin()
+{
+    return first;
+}
 
 template <class T>
-typename container<T>::iterator container<T>::erase(iterator i) //rimuove il nodo puntato da i iteratore valido, restituisce l'iteratore al nodo successivo
+typename container<T>::iterator container<T>::end()
 {
-    if (i != end())
+    if (last == nullptr) //lista vuota
+        return nullptr;
+    return iterator(last + 1, true); // lista ha almeno un nodo ritorna iterator pTE
+}
+
+template <class T>
+container<T>::iterator::iterator(container<T>::nodo *p, bool pte) : ptr(p), pTE(pte) {}
+
+template <class T>
+container<T>::iterator::iterator() : ptr(nullptr), pTE(false) {}
+
+template <class T>
+T &container<T>::iterator::operator*() const
+{
+    return ptr->info;
+}
+
+template <class T>
+T *container<T>::iterator::operator->() const
+{
+    return &(ptr->info);
+}
+
+template <class T>
+typename container<T>::iterator &container<T>::iterator::operator++()
+{
+    if (ptr != nullptr)
     {
-        if (i == begin())
+        if (!pTE)
         {
-            ++i;
-            pop_front();
-        }
-        else if (i == --end())
-        {
-            ++i;
-            pop_back();
-        }
-        else
-        {
-            nodo * temp = i.ptr; //nodo da eliminare
-            ++i;                //iteratore da restituire
-            (temp->prev)->next = temp->next;
-            (temp->next)->prev = temp->prev;
-            temp->next = nullptr;
-            delete temp;
+            if (ptr->next == nullptr)
+            {//ptr è l'ultimo nodo della lista
+                ++ptr;//incremento su un indirizzo di memoria
+                pTE = true;
+            }//caso generale
+            else
+            {
+                ptr = ptr->next;
+            }
         }
     }
-    return i;
+    return *this;
 }
 
 template <class T>
-container<T>::container(unsigned int k, const T &t) : last(nullptr), first(nullptr)
+typename container<T>::iterator container<T>::iterator::operator++(int)
 {
-    for (unsigned int i = 0; i < k; ++i)
-        push_front(t);
+  iterator aux=*this;
+  if (ptr != nullptr)
+  {
+      if (!pTE)
+      {
+          if (ptr->next == nullptr)
+          {//ptr è l'ultimo nodo della lista
+              ++ptr;//incremento su un indirizzo di memoria
+              pTE = true;
+          }//caso generale
+          else
+          {
+              ptr = ptr->next;
+          }
+      }
+  }
+  return aux;
 }
-template <class T>
-container<T>::container() : last(nullptr), first(nullptr) {}
 
 template <class T>
-container<T>::~container()
+typename container<T>::iterator &container<T>::iterator::operator--()
 {
-    delete first;
+    if (ptr != nullptr)
+    {
+        if (pTE)
+        {
+            --ptr;//decremento su un indirizzo di memoria
+            pTE = false;
+        }
+        else
+            ptr = ptr->prev;
+    }
+    return *this;
+}
+template <class T>
+typename container<T>::iterator container<T>::iterator::operator--(int)
+{
+  iterator aux=*this;
+  if (ptr != nullptr)
+  {
+      if (pTE)
+      {
+          --ptr;
+          pTE = false;
+      }
+      else
+          ptr = ptr->prev;
+  }
+  return aux;
 }
 
-/**********************************CONST_ITERATOR**********************************/
+template <class T>
+bool container<T>::iterator::operator==(const container<T>::iterator &i) const
+{
+    return ptr == i.ptr;
+}
+
+template <class T>
+bool container<T>::iterator::operator!=(const container<T>::iterator &i) const
+{
+    return ptr != i.ptr;
+}
+template <class T>
+bool container<T>::iterator::operator<=(const container<T>::iterator &i) const
+{
+    return ptr <= i.ptr;
+}
+
+template <class T>
+bool container<T>::iterator::operator>=(const container<T>::iterator &i) const
+{
+    return ptr >= i.ptr;
+}
+
+/**************CONST_ITERATOR**************/
 
 template <class T>
 typename container<T>::const_iterator container<T>::begin() const
@@ -388,9 +530,9 @@ typename container<T>::const_iterator container<T>::begin() const
 template <class T>
 typename container<T>::const_iterator container<T>::end() const
 {
-    if (last == nullptr) //dList vuota ritorna 0
+    if (last == nullptr) //lista vuota
         return nullptr;
-    return const_iterator(last + 1, true); // dList ha almeno un nodo ritorna iterator pte
+    return const_iterator(last + 1, true); // lista con almeno un nodo
 }
 
 template <class T>
@@ -402,19 +544,19 @@ typename container<T>::const_iterator container<T>::cbegin() const
 template <class T>
 typename container<T>::const_iterator container<T>::cend() const
 {
-    if (last == nullptr) //dList vuota ritorna 0
+    if (last == nullptr) //lista vuota
         return nullptr;
-    return const_iterator(last + 1, true); // dList ha almeno un nodo ritorna iterator pte
+    return const_iterator(last + 1, true); // lista ha almeno un nodo
 }
 
 template <class T>
-container<T>::const_iterator::const_iterator(container<T>::nodo *p, bool pte) : ptr(p), pastTheEnd(pte) {}
+container<T>::const_iterator::const_iterator(container<T>::nodo *p, bool pte) : ptr(p), pTE(pte) {}
 
 template <class T>
-container<T>::const_iterator::const_iterator() : ptr(nullptr), pastTheEnd(false) {}
+container<T>::const_iterator::const_iterator() : ptr(nullptr), pTE(false) {}
 
 template <class T>
-container<T>::const_iterator::const_iterator(iterator &i) : ptr(i.ptr), pastTheEnd(i.pastTheEnd) {}
+container<T>::const_iterator::const_iterator(iterator &i) : ptr(i.ptr), pTE(i.pTE) {}
 
 template <class T>
 const T &container<T>::const_iterator::operator*() const
@@ -434,14 +576,14 @@ typename container<T>::const_iterator &container<T>::const_iterator::operator++(
 {
     if (ptr != nullptr)
     {
-        if (!pastTheEnd)
+        if (!pTE)
         {
-            if (ptr->next == nullptr)
+            if (ptr->next == nullptr)//ptr è l'ultimo nodo della lista
             {
-                ++ptr; //chiamata al ++ prefisso sugli interi: ptr è un indirizzo
-                pastTheEnd = true;
+                ++ptr;
+                pTE = true;
             }
-            else
+            else//caso generale
             {
                 ptr = ptr->next;
             }
@@ -456,14 +598,14 @@ typename container<T>::const_iterator container<T>::const_iterator::operator++(i
     iterator aux=*this;
     if (ptr != nullptr)
     {
-        if (!pastTheEnd)
+        if (!pTE)
         {
-            if (ptr->next == nullptr)
+            if (ptr->next == nullptr)//ptr è l'ultimo nodo della lista
             {
-                ++ptr; //chiamata al ++ prefisso sugli interi: ptr è un indirizzo
-                pastTheEnd = true;
+                ++ptr;
+                pTE = true;
             }
-            else
+            else//caso generale
             {
                 ptr = ptr->next;
             }
@@ -477,12 +619,12 @@ typename container<T>::const_iterator &container<T>::const_iterator::operator--(
 {
     if (ptr != nullptr)
     {
-        if (pastTheEnd)
+        if (pTE)//ptr è l'ultimo nodo della lista
         {
             --ptr;
-            pastTheEnd = false;
+            pTE = false;
         }
-        else
+        else//caso generale
             ptr = ptr->prev;
     }
     return *this;
@@ -494,200 +636,36 @@ typename container<T>::const_iterator container<T>::const_iterator::operator--(i
   iterator aux=*this;
   if (ptr != nullptr)
   {
-      if (pastTheEnd)
+      if (pTE)//ptr è l'ultimo nodo della lista
       {
           --ptr;
-          pastTheEnd = false;
+          pTE = false;
       }
-      else
+      else//caso generale
           ptr = ptr->prev;
   }
   return aux;
 }
 template <class T>
-bool container<T>::const_iterator::operator==(const container<T>::const_iterator &x) const
+bool container<T>::const_iterator::operator==(const container<T>::const_iterator &i) const
 {
-    return ptr == x.ptr;
+    return ptr == i.ptr;
 }
 
 template <class T>
-bool container<T>::const_iterator::operator!=(const container<T>::const_iterator &x) const
+bool container<T>::const_iterator::operator!=(const container<T>::const_iterator &i) const
 {
-    return ptr != x.ptr;
+    return ptr != i.ptr;
 }
 template <class T>
-bool container<T>::const_iterator::operator<=(const container<T>::const_iterator &x) const
+bool container<T>::const_iterator::operator<=(const container<T>::const_iterator &i) const
 {
-    return ptr <= x.ptr;
+    return ptr <= i.ptr;
 }
 template <class T>
-bool container<T>::const_iterator::operator>=(const container<T>::const_iterator &x) const
+bool container<T>::const_iterator::operator>=(const container<T>::const_iterator &i) const
 {
-    return ptr >= x.ptr;
+    return ptr >= i.ptr;
 }
-
-/**********************************ITERATOR**********************************/
-
-template <class T>
-typename container<T>::iterator container<T>::begin()
-{
-    return first;
-}
-
-template <class T>
-typename container<T>::iterator container<T>::end()
-{
-    if (last == nullptr) //dList vuota ritorna 0
-        return nullptr;
-    return iterator(last + 1, true); // dList ha almeno un nodo ritorna iterator pte
-}
-
-template <class T>
-container<T>::iterator::iterator(container<T>::nodo *p, bool pte) : ptr(p), pastTheEnd(pte) {}
-
-template <class T>
-container<T>::iterator::iterator() : ptr(nullptr), pastTheEnd(false) {}
-
-template <class T>
-T &container<T>::iterator::operator*() const
-{
-    return ptr->info;
-}
-
-template <class T>
-T *container<T>::iterator::operator->() const
-{
-    return &(ptr->info);
-}
-
-template <class T>
-typename container<T>::iterator &container<T>::iterator::operator++()
-{
-    if (ptr != nullptr)
-    {
-        if (!pastTheEnd)
-        {
-            if (ptr->next == nullptr)
-            {
-                ++ptr; //chiamata al ++ prefisso sugli interi: ptr è un indirizzo
-                pastTheEnd = true;
-            }
-            else
-            {
-                ptr = ptr->next;
-            }
-        }
-    }
-    return *this;
-}
-
-template <class T>
-typename container<T>::iterator container<T>::iterator::operator++(int)
-{
-  iterator aux=*this;
-  if (ptr != nullptr)
-  {
-      if (!pastTheEnd)
-      {
-          if (ptr->next == nullptr)
-          {
-              ++ptr; //chiamata al ++ prefisso sugli interi: ptr è un indirizzo
-              pastTheEnd = true;
-          }
-          else
-          {
-              ptr = ptr->next;
-          }
-      }
-  }
-  return aux;
-}
-
-template <class T>
-typename container<T>::iterator &container<T>::iterator::operator--()
-{
-    if (ptr != nullptr)
-    {
-        if (pastTheEnd)
-        {
-            --ptr;
-            pastTheEnd = false;
-        }
-        else
-            ptr = ptr->prev;
-    }
-    return *this;
-}
-template <class T>
-typename container<T>::iterator container<T>::iterator::operator--(int)
-{
-  iterator aux=*this;
-  if (ptr != nullptr)
-  {
-      if (pastTheEnd)
-      {
-          --ptr;
-          pastTheEnd = false;
-      }
-      else
-          ptr = ptr->prev;
-  }
-  return aux;
-}
-
-template <class T>
-bool container<T>::iterator::operator==(const container<T>::iterator &x) const
-{
-    return ptr == x.ptr;
-}
-
-template <class T>
-bool container<T>::iterator::operator!=(const container<T>::iterator &x) const
-{
-    return ptr != x.ptr;
-}
-template <class T>
-bool container<T>::iterator::operator<=(const container<T>::iterator &x) const
-{
-    return ptr <= x.ptr;
-}
-
-template <class T>
-bool container<T>::iterator::operator>=(const container<T>::iterator &x) const
-{
-    return ptr >= x.ptr;
-}
-
-
-template <class T> //dichiarazione perché è necessario che compaia quando viene dichiarata l'amicizia su trialbero
-std::ostream &operator<<(std::ostream &os, const container<T> &l)
-{
-    for (auto c = l.cbegin(); c != l.cend(); ++c)
-        std::cout << *c << ' ';
-    std::cout << std::endl;
-    return os;
-}
-
-template <class T> //dichiarazione perché è necessario che compaia quando viene dichiarata l'amicizia su trialbero
-std::ostream &operator<<(std::ostream &os, const container<T*> &l)
-{
-    for (auto c = l.cbegin(); c != l.cend(); ++c)
-        std::cout << **c <<endl;
-    std::cout << std::endl;
-    return os;
-}
-
-/*
-DONE:
-- iteratori
-- inserimento dato l'iteratore (bug)
-- pop front e pop back
-- eliminazione ad iteratore
-TODO (forse):
-    - eliminazione ad iteratore
-    - eccezioni all'inserimento e modifica?
-    - input e output?
-    questi due non presenti in stl::list
-*/
 
 #endif // CONTAINER_H

@@ -1,7 +1,6 @@
 #include "log.h"
 #include "creautente.h"
 #include "vista_utente.h"
-//#include "vista_amministratore.h"
 #include "basic.h"
 #include "gold.h"
 #include "premium.h"
@@ -17,8 +16,8 @@ void Login::build_pulsanti()
 
 void Login::build_line_edit()
 {
-    username=new QLineEdit();
-    password=new QLineEdit();
+    username=new QLineEdit;
+    password=new QLineEdit;
     password->setEchoMode(QLineEdit::Password);
 
     connect(username,SIGNAL(returnPressed()),this,SLOT(login_user()));
@@ -40,19 +39,12 @@ void Login::build_main_layout(QVBoxLayout* a, QLabel* oppure)
     setLayout(mainLayout);
 }
 
-void Login::imposta_stile()
-{
-    QFile file("../style.css");
-    file.open(QFile::ReadOnly);
-    QString styleSheet = QLatin1String(file.readAll());
-    file.close();
-    setStyleSheet(styleSheet);
-}
+
 
 Login::Login(QWidget *parent) : QWidget(parent) ,db(new Database())
 {
     db->import();
-
+    setWindowIcon(QIcon("../forum.jpeg"));
     setWindowTitle("Login");
     mainLayout=new QVBoxLayout();
 
@@ -81,8 +73,6 @@ Login::Login(QWidget *parent) : QWidget(parent) ,db(new Database())
      a->addWidget(registrati);
 
      /*******layout*******/
-
-     imposta_stile();
      build_main_layout(a, oppure);
      Login::setMaximumSize(300,300);
 }
@@ -95,20 +85,21 @@ Login::~Login()
 
 void Login::login_user()
 {
-//    string user=username->text().toStdString();
-//    string pw=password->text().toStdString();
-//    Utente* utente=db.check_credenziali(user,pw);
-
-
-        VistaUtente* v=new VistaUtente("Pikachu");
+    string user=username->text().toStdString();
+    string pw=password->text().toStdString();
+    Utente* utente=db->check_credenziali(user,pw);
+    if(utente)
+    {
+        VistaUtente* v=new VistaUtente(username->text());
         v->show();
         close();
-
-//    else
-//    {
-//        QErrorMessage * e=new QErrorMessage();
-//        e->showMessage("Username o Password non corretti");
-//    }
+    }
+    else
+    {
+        messaggio_errore("accesso non avvenuto","Username o Password non corretti",this);
+        username->clear();
+        password->clear();
+    }
 }
 
 void Login::login_admin()
@@ -147,9 +138,6 @@ void Login::aggiungi_utente(const QString & username, const QString & password, 
         close();
     }catch(utente_gia_presente)
     {
-        QErrorMessage* messaggio=new QErrorMessage(this);
-        messaggio->setWindowTitle("utente non registrato");
-        messaggio->showMessage("l'username "+username+" è già stato usato");
-        connect(messaggio,SIGNAL(accepted()),this,SLOT(registrazione()));
+        messaggio_errore("utente non registrato","l'username "+username+" è già stato usato",this);
     }
 }

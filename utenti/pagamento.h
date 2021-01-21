@@ -6,12 +6,11 @@ class Pagamento : public Utente
 {
 public:
     Pagamento()=delete;
-    //Pagamento(const Pagamento&);
     Pagamento(string username,string password,string nome,string cognome,string email,unsigned int punti,unsigned int risposte);
-    Pagamento(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,container<Domanda*> d,unsigned int punti,unsigned int risposte);
-    virtual Pagamento* clone() const=0;// va dichiarata altrimenti potremmo incorrere in errori di compilazione
+    Pagamento(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,unsigned int punti,unsigned int risposte);
+    virtual Pagamento* clone() const override=0;// va dichiarata altrimenti potremmo incorrere in errori di compilazione
     virtual void get_punti_bonus()=0;
-    container<Domanda*> cerca_domanda(const string&,const Database&) const override;//OK per adesso contiene un container di domande, in utente basic la domanda viene cercata solo negli amici mentre negli account a pagamento nel modello
+    container<Domanda*> cerca_domanda(const string&,const Database&) const override;
 };
 
 #endif // PAGAMENTO_H
