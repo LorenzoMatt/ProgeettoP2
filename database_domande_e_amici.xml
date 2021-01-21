@@ -75,7 +75,7 @@
     </utente>
     <utente>
         <username>Lorenzo</username>
-        <amici>Elton Francesca Pikachu Giorgia</amici>
+        <amici>Elton Francesca Pikachu Giorgia Enrico</amici>
         <domanda>
             <priorita>2</priorita>
             <testo>prova</testo>
@@ -159,7 +159,7 @@
                     <like>0</like>
                 </commento>
                 <commento>
-                    <testo>ma ovvio che lo sei ahhahaha</testo>
+                    <testo>ma ovvio che lo sei</testo>
                     <autore_commento>Lorenzo</autore_commento>
                     <like>0</like>
                 </commento>
@@ -238,7 +238,7 @@
                 <commento>
                     <testo>mi metti like?</testo>
                     <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
+                    <like>1</like>
                 </commento>
                 <commento>
                     <testo>Ti ho messo like contento?</testo>
@@ -255,10 +255,15 @@
                     <autore_commento>Lorenzo</autore_commento>
                     <like>0</like>
                 </commento>
+                <commento>
+                    <testo>ciaoooo</testo>
+                    <autore_commento>Enrico</autore_commento>
+                    <like>0</like>
+                </commento>
             </commenti>
         </domanda>
         <domanda>
-            <priorita>7</priorita>
+            <priorita>5</priorita>
             <testo>ciao sono Elton</testo>
             <commenti/>
         </domanda>
@@ -329,6 +334,15 @@
         <domanda>
             <priorita>1</priorita>
             <testo>prova a fare una domanda</testo>
+            <commenti/>
+        </domanda>
+    </utente>
+    <utente>
+        <username>Enrico</username>
+        <amici>Lorenzo Giorgia Elton</amici>
+        <domanda>
+            <priorita>2</priorita>
+            <testo>Come mai il cielo è blu?</testo>
             <commenti/>
         </domanda>
     </utente>
