@@ -2,7 +2,7 @@
 #include "basic.h"
 #include "gold.h"
 #include "premium.h"
-
+#include "funzioniutili.h"
 Database::Database()
 {
 }
@@ -299,7 +299,7 @@ void Database::importa_dati_utenti()
     QFile* file=new QFile("../database.xml");
     if (!file->open(QFile::ReadOnly | QFile::Text))
     {
-        throw std::runtime_error("errore nell'apertura del file database");
+        messaggio_errore("dati non presenti","non è presente il file da cui leggere i dati");
     }
     else
     {
@@ -399,7 +399,7 @@ void Database::importa_amici_e_domande_utenti()
     QFile* file=new QFile("../database_domande_e_amici.xml");
     if (!file->open(QFile::ReadOnly | QFile::Text))
     {
-        throw std::runtime_error("errore nell'apertura del file database domande amici");
+        messaggio_errore("dati non presenti","non è presente il file da cui leggere i dati");
     }
     else
     {
