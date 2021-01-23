@@ -7,11 +7,10 @@
 #include <QHBoxLayout>
 #include <QLineEdit>
 #include <QLabel>
-#include <string>
-//ciaooo
 class widgetCampoDati:public QWidget
 {
     Q_OBJECT
+private:
     int tipo;
 
     QVBoxLayout* layoutTotale;

@@ -1,6 +1,6 @@
 #ifndef ACCESSO_H
 #define ACCESSO_H
-#include <iostream>
+#include <string>
 using std::string;
 class Accesso
 {

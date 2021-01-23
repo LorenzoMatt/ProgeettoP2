@@ -3,7 +3,6 @@
 #include "vista_amministratore.h"
 class controller_admin
 {
-
 public:
     explicit controller_admin(vista_amministratore* =nullptr);
     Database* get_db() const;
@@ -12,7 +11,6 @@ public:
     Utente* get_utente(const string&) const;
     void aggiungi_utente(const QString &, const QString &, const QString &,const QString &, const QString &, const QString &);
     void cambia_piano(const QString&, const QString &);
-    void set_vista(vista_amministratore* v);
 private:
     vista_amministratore* vista;
     Database* db;

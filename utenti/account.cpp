@@ -32,7 +32,7 @@ Utente *Account::get_utente() const
     return utente;
 }
 
-Utente *Account::cerca_utente_per_nome(const string & utente)
+Utente *Account::cerca_utente_per_nome(const string & utente) const
 {
     return model->get_utente(utente);
 }
@@ -50,11 +50,6 @@ void Account::aggiungi_amico(Utente *u)
 void Account::togli_amico(Utente *u)
 {
     utente->togli_amico(u);
-}
-
-void Account::togli_seguace(Utente *u)
-{
-    utente->togli_seguace(u);
 }
 
 void Account::AggiungiCompetenza(const string & competenza)
@@ -85,7 +80,7 @@ void Account::dai_punti(const string & username) const
 
 }
 
-container<string> Account::ricerca_utente(const string & u)
+container<string> Account::ricerca_utente(const string & u) const
 {
     container<string> lista_attributi;
     utente->cerca_utente(u,*model,lista_attributi);
@@ -102,7 +97,7 @@ void Account::modifica_password(const string & pw)
     utente->modifica_password(pw);
 }
 
-container<Domanda*> Account::ricerca_domanda(const string & testo)
+container<Domanda*> Account::ricerca_domanda(const string & testo) const
 {
     return utente->cerca_domanda(testo,*model);
 }
@@ -113,7 +108,7 @@ void Account::fai_domanda (const string & domanda, unsigned int priorita)
     utente->fai_domanda(new Domanda(domanda,utente,priorita));
 }
 
-void Account::fai_commento(Domanda* domanda, const string & t) const
+void Account::fai_commento(Domanda* domanda, const string & t)
 {
     Commento c(t,utente);
     domanda->aggiungi_commento(c);

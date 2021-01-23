@@ -1,7 +1,6 @@
 #include "vista_profilo.h"
 #include "finestraamiciseguaci.h"
-
-
+#include "funzioniutili.h"
 
 void vistaProfilo::finestraDiConferma(const QString & t){
     if(t!=""){
@@ -17,9 +16,6 @@ void vistaProfilo::finestraDiConferma(const QString & t){
 
     connect(salva,SIGNAL(clicked()),this,SLOT(invioPiano()));
     connect(annulla,SIGNAL(clicked()),dialogo,SLOT(close()));
-
-
-
     dialogo->exec();
     }
 }

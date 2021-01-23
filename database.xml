@@ -20,7 +20,7 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Premium</tipoutente>
+        <tipoutente>Gold</tipoutente>
         <username>Lorenzo</username>
         <password>0000</password>
         <nome>Lorenzo</nome>
@@ -88,20 +88,15 @@
         <risposte_date>1</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Gold</tipoutente>
-        <username>Enrico</username>
+        <tipoutente>Basic</tipoutente>
+        <username>utente</username>
         <password>0000</password>
-        <nome>Enrico</nome>
-        <cognome>Stella</cognome>
-        <email>enrico.stella@gmail.com</email>
-        <competenze>
-            <competenza>Programmare</competenza>
-            <competenza>Testare componenti elettronici</competenza>
-        </competenze>
-        <titoli_di_studio>
-            <titolo>perito elettronico</titolo>
-        </titoli_di_studio>
-        <punti>42</punti>
+        <nome>utente</nome>
+        <cognome>utente</cognome>
+        <email>utente@gmail.com</email>
+        <competenze/>
+        <titoli_di_studio/>
+        <punti>30</punti>
         <risposte_date>0</risposte_date>
     </utente>
 </campi_dati_utenti>

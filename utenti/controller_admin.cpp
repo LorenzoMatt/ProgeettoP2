@@ -77,7 +77,3 @@ void controller_admin::cambia_piano(const QString & utente,const QString& piano)
 
 }
 
-void controller_admin::set_vista(vista_amministratore *v)
-{
-    vista=v;
-}

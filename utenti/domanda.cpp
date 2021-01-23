@@ -1,8 +1,5 @@
 #include "domanda.h"
 
-
-
-
 container<Commento>& Domanda::get_commenti()
 {
     return commenti;

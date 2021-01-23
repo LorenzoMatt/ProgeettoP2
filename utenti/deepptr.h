@@ -5,17 +5,13 @@ class DeepPtr{
 private:
     T* oggetto;
 public:
-    DeepPtr();
     ~DeepPtr();
-    DeepPtr(const T *);
+    DeepPtr(const T* =nullptr);
     DeepPtr(const DeepPtr<T>&);
     DeepPtr<T> &operator =(const DeepPtr<T>&);
     T& operator*() const;
     T* operator->() const;
 };
-
-template<class T>
-DeepPtr<T>::DeepPtr():oggetto(nullptr){}
 
 template<class T>
 DeepPtr<T>::DeepPtr(const T *t):oggetto(t ? t->clone() : nullptr){}

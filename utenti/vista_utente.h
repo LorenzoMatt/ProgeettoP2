@@ -13,7 +13,6 @@
 #include <QScrollArea>
 #include <QString>
 #include "bottonevedicommento.h"
-#include "funzioniutili.h"
 
 class Controller;
 

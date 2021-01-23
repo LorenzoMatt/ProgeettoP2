@@ -20,9 +20,9 @@ private:
     container<Utente*> amici;
     container<Utente*> seguaci;
     container<Domanda*> domande;
-    void aggiungi_seguace(Utente &utente); //OK
-    void togli_amico_ausiliario(const Utente* utente); //OK
-    void togli_seguace_ausiliario(const Utente* utente); //OK
+    void aggiungi_seguace(Utente &utente);
+    void togli_amico_ausiliario(const Utente* utente);
+    void togli_seguace_ausiliario(const Utente* utente);
 public:
             /*costruttori e distruttori*/
     Utente() =delete;
@@ -31,9 +31,9 @@ public:
     Utente(string username,string password,string nome,string cognome,string email,unsigned int,unsigned int =0);
     Utente(Profilo p,Accesso c,container<Utente*> a,container<Utente*> s,unsigned int punti,unsigned int risposte);
 
-                     /*getter*/
+                     /*getter vari*/
 
-    Profilo &get_profilo();//
+    Profilo &get_profilo();
     Accesso get_credenziali();
     container<Utente*>& get_amici();
     const container<Utente *> &get_seguaci() const;
@@ -41,9 +41,10 @@ public:
     container<Domanda *>& get_domande_rif();//ho bisogno di ritornarlo per riferimento non costante perchè possono essere modificate aggiungendovi nuove domande
     container<Domanda *> get_domande_amici() const;
     const container<Utente* > & get_amici() const;
-    unsigned int get_punti() const;//OK
+    unsigned int get_punti() const;
     unsigned int get_risposte_date() const; //serve per ottenere un bonus per gli utenti gold e premium
-
+    string get_username_amici() const; //serve per la creazione del file xml
+    string get_username_seguaci() const; //serve per la creazione del file xml
 
 
     //caricamento da file
@@ -55,20 +56,18 @@ public:
     void togli_amico(Utente*);
     void cerca_amico(const string&,container<string>&) const;
     void togli_seguace(Utente*);
-    void AggiungiCompetenza(const string&); //OK
-    void AggiungiTitoloDiStudio (const string&); //OK
+    void AggiungiCompetenza(const string&);
+    void AggiungiTitoloDiStudio (const string&);
     void dai_punti(Utente*) const;
-    string get_username_amici() const; //serve per la creazione del file xml
-    string get_username_seguaci() const; //serve per la creazione del file xml
     void scrivi_commento(Domanda* d, string risposta);
     void fai_domanda(const string&, unsigned int);
     void set_domande(const container<Domanda *> &);
-    static container<string> split(const string&,const string&); //OK
+    static container<string> split(const string&,const string&);
 
                 /*virtual*/
-    virtual void cerca_utente(const string&,const Database&, container<string>&) const =0;//OK quando implementeremo le classi polimorfe dovrà andare tolto l'ultimo intero da passare alla funzione
+    virtual void cerca_utente(const string&,const Database&, container<string>&) const =0;// quando implementeremo le classi polimorfe dovrà andare tolto l'ultimo intero da passare alla funzione
     virtual void get_punti_domanda() =0;
-    virtual container<Domanda*> cerca_domanda(const string&,const Database&) const =0;//OKin utente basic la domanda viene cercata solo negli amici mentre negli account a pagamento nel modello
+    virtual container<Domanda*> cerca_domanda(const string&,const Database&) const =0;//in utente basic la domanda viene cercata solo negli amici mentre negli account a pagamento nel modello
     virtual void fai_domanda(Domanda* domanda)=0;
     virtual Utente* clone() const=0;
     virtual string piano() const=0;

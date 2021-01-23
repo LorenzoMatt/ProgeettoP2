@@ -6,7 +6,6 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include "container.h"
-//ciaooo
 class vistaCercaUtente : public QDialog
 {
     Q_OBJECT

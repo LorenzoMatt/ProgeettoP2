@@ -4,10 +4,9 @@
 #include "vista_profilo.h"
 #include "vistacercautente.h"
 #include "funzioniutili.h"
-#include"finestranuovadomanda.h"
+#include "finestranuovadomanda.h"
 #include "finestravistadomande.h"
 #include "log.h"
-
 //aggiunge area domanda utente con pulsante commenti
 void VistaUtente::aggiungiAreaDomandaAmici()
 {

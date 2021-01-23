@@ -8,11 +8,9 @@
 #include <QLineEdit>
 #include <QComboBox>
 #include <QMessageBox>
-#include "funzioniutili.h"
-#include "container.h"
 #include "controller.h"
 #include "widgetcampodati.h"
-class vistaProfilo:public QDialog
+class vistaProfilo: public QDialog
 {
     Q_OBJECT
 private:

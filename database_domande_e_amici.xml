@@ -75,7 +75,7 @@
     </utente>
     <utente>
         <username>Lorenzo</username>
-        <amici>Elton Francesca Pikachu Giorgia Enrico</amici>
+        <amici>Elton Francesca Pikachu Giorgia</amici>
         <domanda>
             <priorita>2</priorita>
             <testo>prova</testo>
@@ -182,6 +182,11 @@
                 <commento>
                     <testo>ddwssxs</testo>
                     <autore_commento>Lorenzo</autore_commento>
+                    <like>0</like>
+                </commento>
+                <commento>
+                    <testo>ciao sono utente</testo>
+                    <autore_commento>utente</autore_commento>
                     <like>0</like>
                 </commento>
             </commenti>
@@ -338,12 +343,7 @@
         </domanda>
     </utente>
     <utente>
-        <username>Enrico</username>
-        <amici>Lorenzo Giorgia Elton</amici>
-        <domanda>
-            <priorita>2</priorita>
-            <testo>Come mai il cielo è blu?</testo>
-            <commenti/>
-        </domanda>
+        <username>utente</username>
+        <amici>Giorgia Lorenzo</amici>
     </utente>
 </domande_e_amici>

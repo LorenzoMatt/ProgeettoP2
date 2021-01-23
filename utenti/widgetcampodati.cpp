@@ -1,5 +1,5 @@
 #include "widgetcampodati.h"
-//ciaooo
+
 widgetCampoDati::widgetCampoDati(const QString& n, const QString& t, bool m):layoutTotale(new QVBoxLayout),
     layoutNome(new QVBoxLayout),testoNome(new QLineEdit),layoutModNome(new QHBoxLayout),
     modNome(new QPushButton("Modifica")),invio(new QPushButton("invio")),canc(new QPushButton("Annulla")),modo(m)

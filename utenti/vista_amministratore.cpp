@@ -42,7 +42,7 @@ void vista_amministratore::togli_utente()
     }
     else
     {
-        messaggio_errore("Utente non rimosso","Utente "+togli_utente_line->text()+"non presente",this);
+        messaggio_errore("Utente non rimosso","Utente "+togli_utente_line->text()+" non presente",this);
     }
 }
 
@@ -176,14 +176,6 @@ void vista_amministratore::aggiorna_tabella()
     }
 
 }
-
-void vista_amministratore::set_controller(controller_admin *c)
-{
-    controller=c;
-    aggiorna_tabella();
-}
-
-
 
 vista_amministratore::vista_amministratore(QWidget *parent) :QWidget(parent),controller(new controller_admin(this))
 {

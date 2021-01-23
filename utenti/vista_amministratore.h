@@ -12,7 +12,6 @@
 #include<QFormLayout>
 #include<QLineEdit>
 #include "creautente.h"
-
 #include "database.h"
 class controller_admin;
 class vista_amministratore : public QWidget
@@ -22,7 +21,6 @@ class vista_amministratore : public QWidget
 public:
     explicit vista_amministratore(QWidget *parent = 0);
     ~vista_amministratore();
-    void set_controller(controller_admin* c);
 private:
     controller_admin* controller;
     QVBoxLayout* mainLyaout;

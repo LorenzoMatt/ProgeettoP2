@@ -12,8 +12,6 @@
 #include <QScrollArea>
 #include <QTextEdit>
 #include <QSignalMapper>
-#include "domanda.h"
-#include "funzioniutili.h"
 #include "controller.h"
 
 class vista_domanda : public QDialog
