@@ -79,7 +79,7 @@ container<Domanda *> Basic::cerca_domanda(const string & domanda, const Database
                  }
                 if(count>=(lunghezza_parola_esaminata*0.5))// basterebbe ==
                 {
-                    domande_trovate.insertion_sort_pointer(&*dt);
+                    domande_trovate.insertion_sort(&*dt);
                 }
             }
 

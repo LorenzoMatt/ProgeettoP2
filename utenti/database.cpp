@@ -178,12 +178,11 @@ Utente* Database::get_utente(const string& username) const
 
 void Database::exportdati() const
 {
-    try
-    {
-        QFile* file = new QFile("../database.xml"); //costruttore con il nome del file
+
+    QFile* file = new QFile("../database.xml"); //costruttore con il nome del file
         if(!file->open(QIODevice::WriteOnly | QIODevice::Text))
         {
-            throw std::runtime_error("il file non è stato aperto");
+            messaggio_errore("file non aperto","file non aperto correttamente");
         }
         else
         {
@@ -228,7 +227,7 @@ void Database::exportdati() const
             QFile* file2 = new QFile("../database_domande_e_amici.xml");
             if(!file2->open(QIODevice::WriteOnly | QIODevice::Text))
             {
-                throw std::runtime_error("il file non è stato aperto");
+                messaggio_errore("file non aperto","file non aperto correttamente");
             }
             else
             {
@@ -270,11 +269,6 @@ void Database::exportdati() const
             inp->writeEndDocument();
             file2->close();
         }
-    }
-    catch(std::runtime_error& r)
-    {
-           cout << r.what() << "\n";
-    }
 
 }
 

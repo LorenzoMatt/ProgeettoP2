@@ -69,15 +69,8 @@ void Account::dai_punti(Utente *u) const
 
 void Account::dai_punti(const string & username) const
 {
-    try
-    {
-        Utente* u=model->get_utente(username);
-        u->get_punti_domanda();
-    }catch(amico_non_presente)
-    {
-        std::cerr<<"amico non presente";
-    }
-
+    Utente* u=model->get_utente(username);
+    u->get_punti_domanda();
 }
 
 container<string> Account::ricerca_utente(const string & u) const

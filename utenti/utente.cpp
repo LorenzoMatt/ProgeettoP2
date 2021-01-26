@@ -143,7 +143,7 @@ container<Domanda *> Utente::get_domande_amici() const
     for(auto it=amici.begin();it!=amici.end();++it){
        for(auto ut=(*it)->domande.begin();ut!=(*it)->domande.end();++ut)
        {
-           d.insertion_sort_pointer(&*ut);//inserisco le domande degli amici in ordine di priorità
+           d.insertion_sort(&*ut);//inserisco le domande degli amici in ordine di priorità
        }
     }
     return d;

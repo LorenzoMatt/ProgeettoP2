@@ -40,7 +40,7 @@ public:
     void push_front(const T &t);
     void push_back(const T &t);
     void insertion_sort(const T &t);// inserisce in modo ordinato dentro alla lista passando un riferimento
-    void insertion_sort_pointer(const T *t);// inserisce in modo ordinato dentro alla lista passando un puntatore
+    void insertion_sort(const T *t);// inserisce in modo ordinato dentro alla lista passando un puntatore
     void pop_front();
     void pop_back();
     unsigned int size() const;
@@ -260,7 +260,7 @@ void container<T>::insertion_sort(const T &t)
 }
 
 template <class T>
-void container<T>::insertion_sort_pointer(const T *t)
+void container<T>::insertion_sort(const T *t)
 {
     if(empty() || *(last->info)>**t)
         push_back(*t);

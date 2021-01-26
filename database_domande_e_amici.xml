@@ -180,11 +180,6 @@
                     <like>0</like>
                 </commento>
                 <commento>
-                    <testo>ddwssxs</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
-                </commento>
-                <commento>
                     <testo>ciao sono utente</testo>
                     <autore_commento>utente</autore_commento>
                     <like>0</like>
@@ -341,9 +336,5 @@
             <testo>prova a fare una domanda</testo>
             <commenti/>
         </domanda>
-    </utente>
-    <utente>
-        <username>utente</username>
-        <amici>Giorgia Lorenzo</amici>
     </utente>
 </domande_e_amici>
