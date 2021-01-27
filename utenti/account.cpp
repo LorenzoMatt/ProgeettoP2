@@ -1,5 +1,11 @@
 #include "account.h"
 
+Account::~Account()
+{
+    delete model;
+    //niente delete utente perchè sarà rimosso distruggendo model
+}
+
 Account::Account(const string & u)
 {
     model=new Database();
@@ -62,10 +68,10 @@ void Account::AggiungiTitoloDiStudio(const string & titolo)
     utente->AggiungiTitoloDiStudio(titolo);
 }
 
-void Account::dai_punti(Utente *u) const
-{
-    utente->dai_punti(u);
-}
+//void Account::dai_punti(Utente *u) const
+//{
+//    utente->dai_punti(u);
+//}
 
 void Account::dai_punti(const string & username) const
 {

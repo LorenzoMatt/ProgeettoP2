@@ -7,7 +7,6 @@ class Premium : public Pagamento
 private:
     static unsigned int puntiPerDomandaData;
     static unsigned int puntiDetrattiDomandaFatta;
-    static unsigned int limiteDomandeVisualizzate;
     static unsigned int puntiBonus;
     static unsigned int limitePerAverePuntiBonus;
     static unsigned int supplementoDomandaPriorita;

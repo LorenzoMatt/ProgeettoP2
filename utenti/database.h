@@ -19,6 +19,8 @@ private:
     void sistema_amici_seguaci(Utente*);//serve a togliere dagli amici e dai seguaci di utente il riferimento ad utente
     void reverse_seguaci_amici(Utente*);//aggiunge agli amici e ai seguaci di utente i riferimenti ad utente
     void aggiungi_amici_ad_utente(const string&, const string&);
+    void importa_dati_utenti();
+    void importa_amici_e_domande_utenti();
 public:
     Database();
     ~Database();
@@ -30,11 +32,8 @@ public:
     void togli_utente(const string&);
     Utente* cambia_piano(Utente* utente,const string& piano);
     Utente* check_credenziali(const string&, const string&) const;
-    void importa_dati_utenti();
-    void importa_amici_e_domande_utenti();
     void import();
     void exportdati() const;
-    void fai_domanda(const string&,const string&,unsigned int);
 };
 
 #endif // MODEL_H

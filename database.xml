@@ -20,7 +20,7 @@
         <risposte_date>0</risposte_date>
     </utente>
     <utente>
-        <tipoutente>Gold</tipoutente>
+        <tipoutente>Premium</tipoutente>
         <username>Lorenzo</username>
         <password>0000</password>
         <nome>Lorenzo</nome>
@@ -87,5 +87,17 @@
         <titoli_di_studio/>
         <punti>39</punti>
         <risposte_date>1</risposte_date>
+    </utente>
+    <utente>
+        <tipoutente>Basic</tipoutente>
+        <username>utente</username>
+        <password>0000</password>
+        <nome>utente</nome>
+        <cognome>utente</cognome>
+        <email>utente@gmail.com</email>
+        <competenze/>
+        <titoli_di_studio/>
+        <punti>30</punti>
+        <risposte_date>0</risposte_date>
     </utente>
 </campi_dati_utenti>

@@ -7,6 +7,7 @@ private:
     Utente* utente;
     Database* model;
 public:
+    ~Account();
     Account()=delete;
     Account(const string&);
     Account(Utente *, Database *);
@@ -33,7 +34,6 @@ public:
     void togli_amico(Utente*);
 
     //dai
-    void dai_punti(Utente*) const;
     void dai_punti(const string &) const;
 
     //modifica

@@ -9,6 +9,7 @@ Controller::Controller(const QString& utente,VistaUtente* vista,QObject *parent)
 Controller::~Controller()// viene invocato dalla delete della classe vista_utente
 {
     a->salva();
+    delete a;
 }
 
 void Controller::faiDomanda(const QString & testo,int priorita)

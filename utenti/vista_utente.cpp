@@ -224,6 +224,7 @@ void VistaUtente::buildCercaUtente()
             }else
             {
                 messaggio_errore("Utente non presente","L'utente "+scriviUtente->text()+" non è stato trovato",this);
+                scriviUtente->clear();
             }
         }
 }
