@@ -1,7 +1,7 @@
-#include "vista_domanda.h"
+#include "vistadomanda.h"
 #include "funzioniutili.h"
 //aggiunge la domanda
-void vista_domanda::aggiungiWidgetDomanda(Domanda* d)
+void vistaDomanda::aggiungiWidgetDomanda(Domanda* d)
 {
     QVBoxLayout* bloccoDomanda=new QVBoxLayout;
 
@@ -19,7 +19,7 @@ void vista_domanda::aggiungiWidgetDomanda(Domanda* d)
 }
 
 //aggiunge i commenti
-void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
+void vistaDomanda::aggiungiWidgetCommenti(Domanda* d)
 {
     QVBoxLayout* bloccoCommenti=new QVBoxLayout;
 
@@ -74,7 +74,7 @@ void vista_domanda::aggiungiWidgetCommenti(Domanda* d)
 }
 
 //barra di testo
-void vista_domanda::aggiungiBarraDiTesto()
+void vistaDomanda::aggiungiBarraDiTesto()
 {
     QHBoxLayout* inserisciCommento=new QHBoxLayout;
     testoCommento=new QLineEdit;
@@ -93,7 +93,7 @@ void vista_domanda::aggiungiBarraDiTesto()
 }
 
 //costruttore
-vista_domanda::vista_domanda(Domanda * d, const QString & u, QWidget *parent) :QDialog(parent),domanda(new QVBoxLayout), dom(d),utente(u),
+vistaDomanda::vistaDomanda(Domanda * d, const QString & u, QWidget *parent) :QDialog(parent),domanda(new QVBoxLayout), dom(d),utente(u),
     scrollarea(new QScrollArea),scrollwidget(new QWidget),scrollwidgetLayout(new QVBoxLayout)
 {
     signalMapperLike=new QSignalMapper;
@@ -115,7 +115,7 @@ vista_domanda::vista_domanda(Domanda * d, const QString & u, QWidget *parent) :Q
     setLayout(domanda);
 }
 
-void vista_domanda::buildCommento()
+void vistaDomanda::buildCommento()
 {
     if(!testoCommento->text().isEmpty())
     {
@@ -129,14 +129,14 @@ void vista_domanda::buildCommento()
     }
 }
 
-void vista_domanda::buildLike(int i)
+void vistaDomanda::buildLike(int i)
 {
     emit like(i,dom);
     close();
     messaggio_informativo("like aggiunto","l'utente apprezzerà il tuo like!",this);
 }
 
-void vista_domanda::buildRimuovi(int i)
+void vistaDomanda::buildRimuovi(int i)
 {
     emit rimuovi(i,dom);
     close();

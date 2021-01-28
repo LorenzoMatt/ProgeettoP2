@@ -1,6 +1,6 @@
 #include "log.h"
 #include "creautente.h"
-#include "vista_utente.h"
+#include "vistautente.h"
 #include "basic.h"
 #include "gold.h"
 #include "premium.h"
@@ -90,7 +90,7 @@ void Login::login_user()
     Utente* utente=db->check_credenziali(user,pw);
     if(utente)
     {
-        VistaUtente* v=new VistaUtente(username->text());
+        vistaUtente* v=new vistaUtente(username->text());
         v->show();
         close();
     }
@@ -104,14 +104,14 @@ void Login::login_user()
 
 void Login::login_admin()
 {
-    vista_amministratore* vista=new vista_amministratore();
+    vistaAmministratore* vista=new vistaAmministratore();
     vista->show();
     close();
 }
 
 void Login::registrazione()
 {
-    creautente* utente=new creautente(this);
+    creaUtente* utente=new creaUtente(this);
     utente->setWindowTitle("aggiungi un utente");
 
     utente->show();
@@ -133,7 +133,7 @@ void Login::aggiungi_utente(const QString & username, const QString & password, 
         if(pi=="Premium")
             db->aggiungi_utente(new Premium(u,p,n,co,em));
         db->exportdati();
-        VistaUtente* v=new VistaUtente(username);//ci andra l'account appena creato
+        vistaUtente* v=new vistaUtente(username);//ci andra l'account appena creato
         v->show();
         close();
     }catch(utente_gia_presente)

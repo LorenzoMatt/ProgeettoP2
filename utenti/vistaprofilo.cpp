@@ -1,4 +1,4 @@
-#include "vista_profilo.h"
+#include "vistaprofilo.h"
 #include "finestraamiciseguaci.h"
 #include "funzioniutili.h"
 
@@ -129,7 +129,7 @@ void vistaProfilo::creaCampoEmail()
 
 void vistaProfilo::buildFinestraAmiciSeguaci()
 {
-    FinestraAmiciSeguaci* f=new FinestraAmiciSeguaci(a,this);
+    finestraAmiciSeguaci* f=new finestraAmiciSeguaci(a,this);
     f->show();
 }
 

@@ -3,21 +3,21 @@
 
 #include <QObject>
 #include "account.h"
-#include "vista_utente.h"
+#include "vistautente.h"
 #include "basic.h"
 #include "gold.h"
 #include "premium.h"
-class VistaUtente;
+class vistaUtente;
 
 class Controller : public QObject
 {
     Q_OBJECT
 private:
     Account* a;
-    VistaUtente* v;
+    vistaUtente* v;
     void aggiorna_vista();
 public:
-    explicit Controller(const QString& ,VistaUtente*,QObject *parent = nullptr);
+    explicit Controller(const QString& ,vistaUtente*,QObject *parent = nullptr);
     ~Controller();
     Profilo getProfilo() const;
     Accesso getAccesso() const;

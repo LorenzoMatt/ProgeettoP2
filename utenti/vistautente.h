@@ -16,7 +16,7 @@
 
 class Controller;
 
-class VistaUtente:public QWidget
+class vistaUtente:public QWidget
 {
     Q_OBJECT
     friend class Controller;
@@ -46,8 +46,8 @@ private:
     void buildTabella();
 
 public:
-    explicit VistaUtente(const QString&,QWidget* parent=nullptr);
-    ~VistaUtente();
+    explicit vistaUtente(const QString&,QWidget* parent=nullptr);
+    ~vistaUtente();
 private slots:
     void vediProfilo();
     void buildCercaUtente();

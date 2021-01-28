@@ -8,8 +8,8 @@
 #include <QLineEdit>
 #include <QFormLayout>
 #include "funzioniutili.h"
-#include "controller_admin.h"
-class controller_admin;
+#include "controlleradmin.h"
+class controllerAdmin;
 class Login : public QWidget
 {
     Q_OBJECT

@@ -8,7 +8,7 @@ bottoneVediCommento::bottoneVediCommento(Domanda* d, const QString& user, const 
 void bottoneVediCommento::vediCommenti()
 {
     Domanda* d=dom;
-    vista_domanda* dettagli=new vista_domanda(d,utente,this);
+    vistaDomanda* dettagli=new vistaDomanda(d,utente,this);
     dettagli->setWindowTitle("dettagli domanda");
     dettagli->show();
     //inoltro i diversi segnali alla vista_utente

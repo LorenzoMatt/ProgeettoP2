@@ -14,7 +14,7 @@
 #include <QSignalMapper>
 #include "controller.h"
 
-class vista_domanda : public QDialog
+class vistaDomanda : public QDialog
 {
     Q_OBJECT
 private:
@@ -39,7 +39,7 @@ private:
     void aggiungiBarraDiTesto();
 
 public:
-    explicit vista_domanda(Domanda*,const QString&, QWidget *parent = 0);
+    explicit vistaDomanda(Domanda*,const QString&, QWidget *parent = 0);
 signals:
     void commento(const QString&,Domanda*);
     void like(int,Domanda*);

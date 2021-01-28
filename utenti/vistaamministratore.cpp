@@ -1,11 +1,11 @@
-#include "vista_amministratore.h"
+#include "vistaamministratore.h"
 #include "basic.h"
 #include "gold.h"
 #include "premium.h"
-#include "controller_admin.h"
+#include "controlleradmin.h"
 #include "log.h"
 #include "funzioniutili.h"
-void vista_amministratore::build_buttons()
+void vistaAmministratore::build_buttons()
 {
     aggiungi=new QPushButton("Aggiungi utente");
     togli_utente_button=new QPushButton("Conferma");
@@ -21,9 +21,9 @@ void vista_amministratore::build_buttons()
     connect(esci,SIGNAL(clicked()),this,SLOT(logout()));
 }
 
-void vista_amministratore::finestra_aggiungi_utente()
+void vistaAmministratore::finestra_aggiungi_utente()
 {
-    creautente* utente=new creautente(this);
+    creaUtente* utente=new creaUtente(this);
     utente->setWindowTitle("aggiungi un utente");
 
     utente->show();
@@ -31,7 +31,7 @@ void vista_amministratore::finestra_aggiungi_utente()
             this, SLOT(aggiungi_utente(const QString&,const QString&,const QString&,const QString&,const QString&,const QString&)));
 }
 
-void vista_amministratore::togli_utente()
+void vistaAmministratore::togli_utente()
 {
     Utente* ut=controller->get_utente(togli_utente_line->text().toStdString());
     if(ut)
@@ -46,26 +46,26 @@ void vista_amministratore::togli_utente()
     }
 }
 
-void vista_amministratore::cambio_piano()
+void vistaAmministratore::cambio_piano()
 {
 
     controller->cambia_piano(cambio_piano_username->text(),cambio_piano_combo->currentText());
 }
 
-void vista_amministratore::salva_db()
+void vistaAmministratore::salva_db()
 {
     controller->salva();
     messaggio_informativo("","Salvataggio completato!",this);
 }
 
-void vista_amministratore::logout()
+void vistaAmministratore::logout()
 {
     Login* log=new Login;
     log->show();
     close();
 }
 
-void vista_amministratore::aggiungi_utente(const QString & username, const QString & password, const QString & nome, const QString & cognome, const QString & email,const QString& piano)
+void vistaAmministratore::aggiungi_utente(const QString & username, const QString & password, const QString & nome, const QString & cognome, const QString & email,const QString& piano)
 {
     controller->aggiungi_utente(username,password,nome,cognome,email,piano);
 }
@@ -73,7 +73,7 @@ void vista_amministratore::aggiungi_utente(const QString & username, const QStri
 
 
 
-void vista_amministratore::creazione_tabella()
+void vistaAmministratore::creazione_tabella()
 {
     tabella_utenti=new QTableWidget();
     tabella_utenti->setColumnCount(7);
@@ -95,14 +95,14 @@ void vista_amministratore::creazione_tabella()
     aggiorna_tabella();
 }
 
-void vista_amministratore::build_togli_utente()
+void vistaAmministratore::build_togli_utente()
 {
     togli_utente_label=new QLabel("togli utente");
     togli_utente_line=new QLineEdit;
     togli_utente_label->setBuddy(togli_utente_line);
 }
 
-void vista_amministratore::build_cambio_piano()
+void vistaAmministratore::build_cambio_piano()
 {
     cambio_piano_label=new QLabel("cambio piano utente");
     cambio_piano_username=new QLineEdit;
@@ -115,7 +115,7 @@ void vista_amministratore::build_cambio_piano()
     nuovo_piano->setBuddy(cambio_piano_combo);
 }
 
-void vista_amministratore::layout_parte_superiore()
+void vistaAmministratore::layout_parte_superiore()
 {
     layout_togli_utente=new QHBoxLayout;
     layout_togli_utente->addWidget(togli_utente_label);
@@ -130,7 +130,7 @@ void vista_amministratore::layout_parte_superiore()
     layout_salva_esci->addWidget(salva);
 }
 
-void vista_amministratore::scritta_utente()
+void vistaAmministratore::scritta_utente()
 {
     utenti=new QLabel("Utenti presenti nel database");
     utenti->setFont(  QFont("Times", 30, QFont::Bold));
@@ -138,7 +138,7 @@ void vista_amministratore::scritta_utente()
     utenti->setMargin(50);
 }
 
-void vista_amministratore::creazione_mainLayout()
+void vistaAmministratore::creazione_mainLayout()
 {
     mainLyaout->addLayout(layout_togli_utente);
     mainLyaout->addWidget(togli_utente_button);
@@ -150,7 +150,7 @@ void vista_amministratore::creazione_mainLayout()
     mainLyaout->addLayout(layout_salva_esci);
 }
 
-void vista_amministratore::aggiorna_tabella()
+void vistaAmministratore::aggiorna_tabella()
 {
     tabella_utenti->clearContents();
     tabella_utenti->setRowCount(controller->get_db()->get_utenti().size());
@@ -177,7 +177,7 @@ void vista_amministratore::aggiorna_tabella()
 
 }
 
-vista_amministratore::vista_amministratore(QWidget *parent) :QWidget(parent),controller(new controller_admin(this))
+vistaAmministratore::vistaAmministratore(QWidget *parent) :QWidget(parent),controller(new controllerAdmin(this))
 {
     mainLyaout=new QVBoxLayout;
 
@@ -202,6 +202,6 @@ vista_amministratore::vista_amministratore(QWidget *parent) :QWidget(parent),con
 
 
 
-vista_amministratore::~vista_amministratore()
+vistaAmministratore::~vistaAmministratore()
 {
 }

@@ -1,7 +1,7 @@
 #include "controller.h"
 #include "funzioniutili.h"
 
-Controller::Controller(const QString& utente,VistaUtente* vista,QObject *parent) :QObject(parent),v(vista)
+Controller::Controller(const QString& utente,vistaUtente* vista,QObject *parent) :QObject(parent),v(vista)
 {
     a=new Account(utente.toStdString());
 }

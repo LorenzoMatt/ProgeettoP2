@@ -1,4 +1,4 @@
-#include "punti_non_sufficienti.h"
+#include "puntinonsufficienti.h"
 
 punti_non_sufficienti::punti_non_sufficienti()
 {

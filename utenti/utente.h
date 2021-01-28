@@ -5,9 +5,9 @@
 #include "accesso.h"
 #include "domanda.h"
 #include "database.h"
-#include "amico_non_presente.h"
-#include "non_autore_domanda.h"
-#include "punti_non_sufficienti.h"
+#include "amicononpresente.h"
+#include "nonautoredomanda.h"
+#include "puntinonsufficienti.h"
 class Domanda;
 class Database;
 class Utente

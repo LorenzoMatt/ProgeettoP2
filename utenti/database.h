@@ -2,7 +2,7 @@
 #define MODEL_H
 #include "utente.h"
 #include "deepptr.h"
-#include "utente_gia_presente.h"
+#include "utentegiapresente.h"
 
 #include <QFile>
 #include <QDomDocument>
