@@ -2,7 +2,7 @@
 #include "basic.h"
 #include "gold.h"
 #include "premium.h"
-
+#include "funzioniutili.h"
 Database::Database()
 {
 }
@@ -141,7 +141,7 @@ Utente* Database::cambia_piano(Utente *utente, const string &piano)
         }
         if(!trovato)
             throw amico_non_presente();
-    return nullptr;
+    return 0;
 }
 
 Utente* Database::check_credenziali(const string & username, const string & password) const
@@ -176,28 +176,13 @@ Utente* Database::get_utente(const string& username) const
 
 }
 
-DeepPtr<Utente> *Database::get_utente_deep(const string & username)
-{
-    bool trovato=false;
-        for(auto it=utenti.begin();it!=utenti.end() && !trovato;++it)
-            if((*it)->get_credenziali().get_username()==username)
-            {
-                trovato=true;
-                return &(*it);
-            }
-        if(!trovato)
-            throw amico_non_presente();
-    return 0;
-}
-
 void Database::exportdati() const
 {
-    try
-    {
-        QFile* file = new QFile("../database.xml"); //costruttore con il nome del file
+
+    QFile* file = new QFile("../database.xml"); //costruttore con il nome del file
         if(!file->open(QIODevice::WriteOnly | QIODevice::Text))
         {
-            throw std::runtime_error("il file non è stato aperto");
+            messaggio_errore("file non aperto","file non aperto correttamente");
         }
         else
         {
@@ -222,14 +207,12 @@ void Database::exportdati() const
                     inp->writeTextElement("competenza",QString::fromStdString(*com));
 
                 inp->writeEndElement();// fine competenze
-//                inp->writeTextElement("competenze", QString::fromStdString(((*it)->get_profilo()).competenze_toString()));
                 inp->writeStartElement("titoli_di_studio");// inizio titoli di studio
                 container<string> titoli=(*it)->get_profilo().GetTitoliDiStudio();
                 for(auto tit=titoli.begin();tit!=titoli.end();++tit)
                     inp->writeTextElement("titolo",QString::fromStdString(*tit));
 
                 inp->writeEndElement();// fine dei titoli di studio
-//                inp->writeTextElement("titoli_di_studio", QString::fromStdString(((*it)->get_profilo()).titoli_di_studio_toString())); Mirko ha commentato questa riga
                 inp->writeTextElement("punti", QString::fromStdString(std::to_string(((*it)->get_punti()))));
                 inp->writeTextElement("risposte_date", QString::fromStdString(std::to_string(((*it)->get_risposte_date()))));
                 inp->writeEndElement();// fine di un utente
@@ -240,11 +223,11 @@ void Database::exportdati() const
             file->close();
         }
 
-            ////// file per gli amici e le domande
+            /* file per gli amici e le domande  */
             QFile* file2 = new QFile("../database_domande_e_amici.xml");
             if(!file2->open(QIODevice::WriteOnly | QIODevice::Text))
             {
-                throw std::runtime_error("il file non è stato aperto");
+                messaggio_errore("file non aperto","file non aperto correttamente");
             }
             else
             {
@@ -286,11 +269,6 @@ void Database::exportdati() const
             inp->writeEndDocument();
             file2->close();
         }
-    }
-    catch(std::runtime_error& r)
-    {
-           cout << r.what() << "\n";
-    }
 
 }
 
@@ -299,7 +277,7 @@ void Database::importa_dati_utenti()
     QFile* file=new QFile("../database.xml");
     if (!file->open(QFile::ReadOnly | QFile::Text))
     {
-        throw std::runtime_error("errore nell'apertura del file database");
+        messaggio_errore("dati non presenti","non è presente il file da cui leggere i dati");
     }
     else
     {
@@ -399,7 +377,7 @@ void Database::importa_amici_e_domande_utenti()
     QFile* file=new QFile("../database_domande_e_amici.xml");
     if (!file->open(QFile::ReadOnly | QFile::Text))
     {
-        throw std::runtime_error("errore nell'apertura del file database domande amici");
+        messaggio_errore("dati non presenti","non è presente il file da cui leggere i dati");
     }
     else
     {
@@ -481,9 +459,9 @@ void Database::importa_amici_e_domande_utenti()
                                                  ,std::stoi(priorita.toStdString()));
                     domanda->set_commenti(commenti_totali);
                     domande_utente.push_back(domanda);
-            }//fine singolo utente
+            }//fine domanda
                 nodo=nodo.nextSibling();
-            }
+            }//fine singolo utente
             Utente* utente;
             utente=get_utente(user.toStdString());
             aggiungi_amici_ad_utente(amici.toStdString(),user.toStdString());

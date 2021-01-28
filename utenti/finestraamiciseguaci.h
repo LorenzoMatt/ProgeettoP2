@@ -5,12 +5,12 @@
 #include <QListWidget>
 #include "controller.h"
 
-class FinestraAmiciSeguaci : public QDialog
+class finestraAmiciSeguaci : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit FinestraAmiciSeguaci(Controller* c, QWidget *parent = 0);
+    explicit finestraAmiciSeguaci(Controller* c, QWidget *parent = 0);
 private:
     Controller* controller;
     QTabWidget* tab;

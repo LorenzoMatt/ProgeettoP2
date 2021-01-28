@@ -1,15 +1,14 @@
 
-#include "vista_utente.h"
+#include "vistautente.h"
 #include "controller.h"
-#include "vista_profilo.h"
+#include "vistaprofilo.h"
 #include "vistacercautente.h"
 #include "funzioniutili.h"
-#include"finestranuovadomanda.h"
+#include "finestranuovadomanda.h"
 #include "finestravistadomande.h"
 #include "log.h"
-
 //aggiunge area domanda utente con pulsante commenti
-void VistaUtente::aggiungiAreaDomandaAmici()
+void vistaUtente::aggiungiAreaDomandaAmici()
 {
 
     if (layoutWidgetPagina1) {// mi serve per aggiornare la lista delle domande quando tolgo o aggiungo un nuovo amico
@@ -60,7 +59,7 @@ void VistaUtente::aggiungiAreaDomandaAmici()
     layoutWidgetPagina1->addWidget(widgetDomandaAmici);
 }
 
-void VistaUtente::aggiungiAreaDomandePersonali()
+void vistaUtente::aggiungiAreaDomandePersonali()
 {
     QWidget* widgetScrollAreaPagina2=new QWidget;
     QVBoxLayout* layoutScrollAreaPagina2=new QVBoxLayout;
@@ -94,7 +93,7 @@ void VistaUtente::aggiungiAreaDomandePersonali()
     pagina2->setWidget(widgetScrollAreaPagina2);
 }
 
-void VistaUtente::buildBarraSuperiore()
+void vistaUtente::buildBarraSuperiore()
 {
     layoutBarraSuperiore=new QHBoxLayout;
 
@@ -125,7 +124,7 @@ void VistaUtente::buildBarraSuperiore()
 
 //costruisce la tabella con le due pagine (domande amici,domande personali)
 //entrambe le pagine sono delle scrollArea ma nella pagina domande amici c'é una barra fissa per aggiungere domande
-void VistaUtente::buildTabella()
+void vistaUtente::buildTabella()
 {
     tabella=new QTabWidget;
     pagina1=new QScrollArea;
@@ -173,7 +172,7 @@ void VistaUtente::buildTabella()
     connect(aggiungiDomanda,SIGNAL(clicked()),this,SLOT(buildFaiDomanda()));
 }
 
-VistaUtente::VistaUtente(const QString& utente, QWidget *parent):QWidget(parent),c(new Controller(utente,this))
+vistaUtente::vistaUtente(const QString& utente, QWidget *parent):QWidget(parent),c(new Controller(utente,this))
 {
     setAttribute(Qt::WA_DeleteOnClose);// serve a chiamare la delete della finestra, che a sua volta chiama la delete del controller che effettua il salvataggio del contenuto
     QVBoxLayout* mainLayout=new QVBoxLayout();
@@ -190,12 +189,12 @@ VistaUtente::VistaUtente(const QString& utente, QWidget *parent):QWidget(parent)
     setLayout(mainLayout);
 }
 
-VistaUtente::~VistaUtente()
+vistaUtente::~vistaUtente()
 {
     delete c;
 }
 
-void VistaUtente::vediProfilo()
+void vistaUtente::vediProfilo()
 {
     vistaProfilo* profilo=new vistaProfilo(c,this);
     profilo->setWindowTitle("Profilo");
@@ -203,7 +202,7 @@ void VistaUtente::vediProfilo()
     profilo->show();
 }
 
-void VistaUtente::buildCercaUtente()
+void vistaUtente::buildCercaUtente()
 {
         container<string> parametri=c->cercaUtente(scriviUtente->text());
         if(scriviUtente->text()==QString::fromStdString(c->getAccesso().get_username()))// se è se stesso
@@ -225,11 +224,12 @@ void VistaUtente::buildCercaUtente()
             }else
             {
                 messaggio_errore("Utente non presente","L'utente "+scriviUtente->text()+" non è stato trovato",this);
+                scriviUtente->clear();
             }
         }
 }
 
-void VistaUtente::buildFaiDomanda()
+void vistaUtente::buildFaiDomanda()
 {
     finestraNuovaDomanda* domanda=new finestraNuovaDomanda(this);
     domanda->show();
@@ -237,27 +237,27 @@ void VistaUtente::buildFaiDomanda()
     connect(domanda,SIGNAL(invia(const QString&,int)),this,SLOT(aggiornaNumeroDomande()));
 }
 
-void VistaUtente::buildDomandeCercate()
+void vistaUtente::buildDomandeCercate()
 {
     QString domanda=scriviDomanda->text();
     container<Domanda*> d=c->cercaDomanda(domanda);
-    FinestraVistaDomande* f=new FinestraVistaDomande(d,c,this);
+    finestraVistaDomande* f=new finestraVistaDomande(d,c,this);
     f->show();
     scriviDomanda->clear();
 }
 
-void VistaUtente::aggiornaAreaDomandeAmici()
+void vistaUtente::aggiornaAreaDomandeAmici()
 {
     aggiungiAreaDomandaAmici();
 }
 
-void VistaUtente::aggiornaNumeroDomande()
+void vistaUtente::aggiornaNumeroDomande()
 {
     numeroDomandePersonali->clear();
     numeroDomandePersonali->setText("numero di domande "+QString::number((c->getDomandePersonali().size())));
 }
 
-void VistaUtente::buildLogout()
+void vistaUtente::buildLogout()
 {
     Login* l=new Login;
     l->show();

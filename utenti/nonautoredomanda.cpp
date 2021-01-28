@@ -1,4 +1,4 @@
-#include "non_autore_domanda.h"
+#include "nonautoredomanda.h"
 
 non_autore_domanda::non_autore_domanda()
 {

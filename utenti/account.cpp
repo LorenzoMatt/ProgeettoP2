@@ -1,5 +1,11 @@
 #include "account.h"
 
+Account::~Account()
+{
+    delete model;
+    //niente delete utente perchè sarà rimosso distruggendo model
+}
+
 Account::Account(const string & u)
 {
     model=new Database();
@@ -32,7 +38,7 @@ Utente *Account::get_utente() const
     return utente;
 }
 
-Utente *Account::cerca_utente_per_nome(const string & utente)
+Utente *Account::cerca_utente_per_nome(const string & utente) const
 {
     return model->get_utente(utente);
 }
@@ -52,11 +58,6 @@ void Account::togli_amico(Utente *u)
     utente->togli_amico(u);
 }
 
-void Account::togli_seguace(Utente *u)
-{
-    utente->togli_seguace(u);
-}
-
 void Account::AggiungiCompetenza(const string & competenza)
 {
     utente->AggiungiCompetenza(competenza);
@@ -67,25 +68,18 @@ void Account::AggiungiTitoloDiStudio(const string & titolo)
     utente->AggiungiTitoloDiStudio(titolo);
 }
 
-void Account::dai_punti(Utente *u) const
-{
-    utente->dai_punti(u);
-}
+//void Account::dai_punti(Utente *u) const
+//{
+//    utente->dai_punti(u);
+//}
 
 void Account::dai_punti(const string & username) const
 {
-    try
-    {
-        Utente* u=model->get_utente(username);
-        u->get_punti_domanda();
-    }catch(amico_non_presente)
-    {
-        std::cerr<<"amico non presente";
-    }
-
+    Utente* u=model->get_utente(username);
+    u->get_punti_domanda();
 }
 
-container<string> Account::ricerca_utente(const string & u)
+container<string> Account::ricerca_utente(const string & u) const
 {
     container<string> lista_attributi;
     utente->cerca_utente(u,*model,lista_attributi);
@@ -102,7 +96,7 @@ void Account::modifica_password(const string & pw)
     utente->modifica_password(pw);
 }
 
-container<Domanda*> Account::ricerca_domanda(const string & testo)
+container<Domanda*> Account::ricerca_domanda(const string & testo) const
 {
     return utente->cerca_domanda(testo,*model);
 }
@@ -113,7 +107,7 @@ void Account::fai_domanda (const string & domanda, unsigned int priorita)
     utente->fai_domanda(new Domanda(domanda,utente,priorita));
 }
 
-void Account::fai_commento(Domanda* domanda, const string & t) const
+void Account::fai_commento(Domanda* domanda, const string & t)
 {
     Commento c(t,utente);
     domanda->aggiungi_commento(c);

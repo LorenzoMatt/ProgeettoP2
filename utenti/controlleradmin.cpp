@@ -1,38 +1,38 @@
-#include "controller_admin.h"
+#include "controlleradmin.h"
 #include "basic.h"
 #include "gold.h"
 #include "premium.h"
 #include "funzioniutili.h"
-controller_admin::controller_admin(vista_amministratore* v) :vista(v), db(new Database())
+controllerAdmin::controllerAdmin(vistaAmministratore* v) :vista(v), db(new Database())
 {
     db->import();
 }
 
 
 
-Database *controller_admin::get_db() const
+Database *controllerAdmin::get_db() const
 {
     return db;
 }
 
-void controller_admin::togli_utente(const string & utente)
+void controllerAdmin::togli_utente(const string & utente)
 {
     db->togli_utente(utente);
     vista->aggiorna_tabella();
 }
 
-void controller_admin::salva() const
+void controllerAdmin::salva() const
 {
     db->exportdati();
 }
 
-Utente *controller_admin::get_utente(const string & utente) const
+Utente *controllerAdmin::get_utente(const string & utente) const
 {
     Utente* ut=db->get_utente(utente);
     return ut;
 }
 
-void controller_admin::aggiungi_utente(const QString &username, const QString &password, const QString&nome,
+void controllerAdmin::aggiungi_utente(const QString &username, const QString &password, const QString&nome,
                                        const QString&cognome, const QString&email, const QString&piano)
 {
     try
@@ -53,7 +53,7 @@ void controller_admin::aggiungi_utente(const QString &username, const QString &p
     }
 }
 
-void controller_admin::cambia_piano(const QString & utente,const QString& piano)
+void controllerAdmin::cambia_piano(const QString & utente,const QString& piano)
 {
     Utente* u=db->get_utente(utente.toStdString());
     if(u)
@@ -77,7 +77,3 @@ void controller_admin::cambia_piano(const QString & utente,const QString& piano)
 
 }
 
-void controller_admin::set_vista(vista_amministratore *v)
-{
-    vista=v;
-}

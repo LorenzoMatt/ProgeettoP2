@@ -5,7 +5,6 @@
 #include "commento.h"
 #include "utente.h"
 class Commento;
-using std::endl;
 class Utente;
 class Domanda
 {
@@ -17,22 +16,22 @@ private:
     unsigned int priorita;
 public:
     Domanda()=delete;
-    Domanda(const Domanda&)=delete;//voglio che una domanda non possa essere copiata
-    Domanda(const string&,Utente*,unsigned int);//OK
-    Domanda(const string&,Utente*,unsigned int,const container<Commento>&);//OK
-    Domanda(const string&,unsigned int,const container<Commento>&);//OK
+    Domanda(const Domanda&)=delete;//una domanda non può essere copiata
+    Domanda(const string&,Utente*,unsigned int);
+    Domanda(const string&,Utente*,unsigned int,const container<Commento>&);
+    Domanda(const string&,unsigned int,const container<Commento>&);
+    Utente* get_autore_domanda() const;
+    string get_testo() const; 
+    container<Commento> &get_commenti();//possono essere modificati
+    void set_priorita(unsigned int); 
     void set_autore(Utente*);
-    void aggiungi_commento(const Commento&);//OK
-    void rimuovi_commento(unsigned int i);//OK
-    Utente* get_autore_domanda() const;//OK
-    string get_testo() const; //OK
-    void set_priorita(unsigned int); //OK
+    void aggiungi_commento(const Commento&);
+    void rimuovi_commento(unsigned int i);
     bool operator <(const Domanda&) const;
-    bool operator <=(const Domanda&) const; //OK
-    bool operator >=(const Domanda&) const;//OK
+    bool operator <=(const Domanda&) const; 
+    bool operator >=(const Domanda&) const;
     bool operator >(const Domanda&) const;
-    unsigned int get_priorita() const;//OK
-    container<Commento> &get_commenti();//OK
+    unsigned int get_priorita() const;
     void set_commenti(const container<Commento>);
 };
 

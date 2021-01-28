@@ -3,7 +3,7 @@
 
 
 
-std::ostream &operator<<(std::ostream &os, const Utente &u) //OK
+std::ostream &operator<<(std::ostream &os, const Utente &u)
 {
     os<<u.pf<<endl;
     os<<"username: "<<u.credenziali.get_username()<<endl<<"password: "<<u.credenziali.get_password()<<endl;
@@ -38,12 +38,12 @@ Utente::Utente(Profilo p, Accesso c, container<Utente *> a, container<Utente *> 
 
 }
 
-Profilo& Utente::get_profilo()  //OK
+Profilo& Utente::get_profilo()
 {
     return pf;
 }
 
-Accesso Utente::get_credenziali()  //OK
+Accesso Utente::get_credenziali()
 {
     return credenziali;
 }
@@ -86,7 +86,7 @@ void Utente::togli_amico_ausiliario(const Utente *utente) // serve a rimuovere d
             tolto=true;
         }
 }
-void Utente::aggiungi_seguace(Utente& utente) //OK
+void Utente::aggiungi_seguace(Utente& utente)
 {
     if(this!=&utente)
     {
@@ -106,7 +106,7 @@ void Utente::aggiungi_amico(Utente *utente)
 
 }
 
-void Utente::togli_amico(Utente *utente) // OK, serve a togliere un utente dalla sua lista degli amici se presente e
+void Utente::togli_amico(Utente *utente) //serve a togliere un utente dalla sua lista degli amici se presente e
 //l'utente che ha tolto l'amico dalla lista viene rimosso dalla lista dei seguaci dell'ex amico
 {
     bool tolto=false;
@@ -143,7 +143,7 @@ container<Domanda *> Utente::get_domande_amici() const
     for(auto it=amici.begin();it!=amici.end();++it){
        for(auto ut=(*it)->domande.begin();ut!=(*it)->domande.end();++ut)
        {
-           d.insertion_sort_pointer(&*ut);//inserisco le domande degli amici in ordine di priorità
+           d.insertion_sort(&*ut);//inserisco le domande degli amici in ordine di priorità
        }
     }
     return d;
@@ -210,7 +210,7 @@ void Utente::togli_seguace(Utente *utente) // OK, toglie un suo seguace dalla co
 }
 
 
-container<Utente *> &Utente::get_amici()//OK
+container<Utente *> &Utente::get_amici()
 {
     return amici;
 }
@@ -258,7 +258,7 @@ void Utente::dai_punti(Utente* utente) const
 string Utente::get_username_amici() const
 {
     string username;
-    for(container<Utente*>::const_iterator it=amici.begin();it!=amici.end();++it)
+    for(auto it=amici.begin();it!=amici.end();++it)
     {
         if(username.size()==0)
             username=(*it)->get_credenziali().get_username();
@@ -271,7 +271,7 @@ string Utente::get_username_amici() const
 string Utente::get_username_seguaci() const
 {
     string username;
-    for(container<Utente*>::const_iterator it=seguaci.begin();it!=seguaci.end();++it)
+    for(auto it=seguaci.begin();it!=seguaci.end();++it)
     {
         if(username.size()==0)
             username=(*it)->get_credenziali().get_username();

@@ -30,12 +30,13 @@
             <competenza>Giocare a nascondino</competenza>
             <competenza>mangiare molto</competenza>
             <competenza>Mangiare</competenza>
+            <competenza>dormire</competenza>
         </competenze>
         <titoli_di_studio>
             <titolo>nessuna</titolo>
         </titoli_di_studio>
-        <punti>80</punti>
-        <risposte_date>1</risposte_date>
+        <punti>100</punti>
+        <risposte_date>2</risposte_date>
     </utente>
     <utente>
         <tipoutente>Premium</tipoutente>
@@ -82,10 +83,21 @@
         <email>Giorgia</email>
         <competenze>
             <competenza>mangiare e dormire</competenza>
-            <competenza>ruttare</competenza>
         </competenze>
         <titoli_di_studio/>
         <punti>39</punti>
         <risposte_date>1</risposte_date>
+    </utente>
+    <utente>
+        <tipoutente>Basic</tipoutente>
+        <username>utente</username>
+        <password>0000</password>
+        <nome>utente</nome>
+        <cognome>utente</cognome>
+        <email>utente@gmail.com</email>
+        <competenze/>
+        <titoli_di_studio/>
+        <punti>30</punti>
+        <risposte_date>0</risposte_date>
     </utente>
 </campi_dati_utenti>

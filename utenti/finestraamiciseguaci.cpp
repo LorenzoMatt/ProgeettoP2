@@ -1,7 +1,7 @@
 #include "finestraamiciseguaci.h"
 #include "vistacercautente.h"
 
-void FinestraAmiciSeguaci::buildListe()
+void finestraAmiciSeguaci::buildListe()
 {
     amici->clear();
     seguaci->clear();
@@ -16,7 +16,7 @@ void FinestraAmiciSeguaci::buildListe()
         seguaci->insertItem(row,new QListWidgetItem(QString::fromStdString((*it)->get_credenziali().get_username())));
     }
 }
-void FinestraAmiciSeguaci::buildCercaUtente(const QListWidget* lista)
+void finestraAmiciSeguaci::buildCercaUtente(const QListWidget* lista)
 {
     container<string> parametri=controller->cercaUtente(lista->currentItem()->text());
     bool amico_presente=controller->check_presenza_amico(lista->currentItem()->text());
@@ -28,16 +28,16 @@ void FinestraAmiciSeguaci::buildCercaUtente(const QListWidget* lista)
     connect(v,SIGNAL(rimuovi(const QString&)),this,SLOT(buildListe()));
 }
 
-void FinestraAmiciSeguaci::buildCercaAmico()
+void finestraAmiciSeguaci::buildCercaAmico()
 {
     buildCercaUtente(amici);
 }
 
-void FinestraAmiciSeguaci::buildCercaSeguace()
+void finestraAmiciSeguaci::buildCercaSeguace()
 {
     buildCercaUtente(seguaci);
 }
-FinestraAmiciSeguaci::FinestraAmiciSeguaci(Controller* c, QWidget *parent) :
+finestraAmiciSeguaci::finestraAmiciSeguaci(Controller* c, QWidget *parent) :
     QDialog(parent), controller(c)
 {
     QVBoxLayout* mainLayout=new QVBoxLayout;

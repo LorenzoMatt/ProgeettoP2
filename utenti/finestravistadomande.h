@@ -5,7 +5,7 @@
 #include "container.h"
 #include "domanda.h"
 #include "controller.h"
-class FinestraVistaDomande : public QDialog
+class finestraVistaDomande : public QDialog
 {
     Q_OBJECT
 
@@ -15,8 +15,8 @@ private:
     QScrollArea* paginaDomande;
     QVBoxLayout* layoutWidgetPagina;
 public:
-    explicit FinestraVistaDomande(container<Domanda*>,Controller*, QWidget *parent = nullptr);
-    ~FinestraVistaDomande();
+    explicit finestraVistaDomande(container<Domanda*>,Controller*, QWidget *parent = nullptr);
+    ~finestraVistaDomande();
 
 
 };

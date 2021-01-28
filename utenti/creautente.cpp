@@ -2,7 +2,7 @@
 #include<QLabel>
 #include<QFormLayout>
 #include "funzioniutili.h"
-creautente::creautente(QWidget *parent) :QDialog(parent)
+creaUtente::creaUtente(QWidget *parent) :QDialog(parent)
 {
     crea_tasti();
     setWindowTitle("aggiungi un utente");
@@ -47,7 +47,7 @@ creautente::creautente(QWidget *parent) :QDialog(parent)
     connect(conferma,SIGNAL(rejected()),this,SLOT(close()));
 }
 
-void creautente::dati()
+void creaUtente::dati()
 {
     const QString & user=Username->text(),password= Password->text(),nome=Nome->text(),cognome=Cognome->text(),email=Email->text(),piano=Piano->currentText();
     if(user.isEmpty() ||password.isEmpty() ||nome.isEmpty() || cognome.isEmpty() || email.isEmpty() || piano.isEmpty())
@@ -60,11 +60,11 @@ void creautente::dati()
         close();
     }
 }
-creautente::~creautente()
+creaUtente::~creaUtente()
 {
 }
 
-void creautente::crea_tasti()
+void creaUtente::crea_tasti()
 {
     Username=new QLineEdit;
     Password=new QLineEdit;

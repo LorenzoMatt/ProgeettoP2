@@ -20,7 +20,6 @@ QT += xml
 
 # Input
 HEADERS += accesso.h \
-           amico_non_presente.h \
     bottonevedicommento.h \
     database.h \
            commento.h \
@@ -29,59 +28,60 @@ HEADERS += accesso.h \
            deepptr.h \
            domanda.h \
     log.h \
-           non_autore_domanda.h \
            profilo.h \
            utente.h \
-    utente_gia_presente.h \
     basic.h \
     pagamento.h \
     gold.h \
-    punti_non_sufficienti.h \
     premium.h \
     account.h \
-    vista_domanda.h \
-    vista_utente.h \
     widgetcampodati.h \
     creautente.h \
-    vista_amministratore.h \
-    controller_admin.h \
     vistacercautente.h \
-    vista_profilo.h \
     finestranuovadomanda.h \
     funzioniutili.h \
     finestravistadomande.h \
-    finestraamiciseguaci.h
+    finestraamiciseguaci.h \
+    vistadomanda.h \
+    amicononpresente.h \
+    controlleradmin.h \
+    nonautoredomanda.h \
+    puntinonsufficienti.h \
+    utentegiapresente.h \
+    vistaamministratore.h \
+    vistaprofilo.h \
+    vistautente.h
 FORMS +=
 SOURCES += accesso.cpp \
-           amico_non_presente.cpp \
     bottonevedicommento.cpp \
            commento.cpp \
     controller.cpp \
            domanda.cpp \
     log.cpp \
            main.cpp \
-           non_autore_domanda.cpp \
            profilo.cpp \
            utente.cpp \
-    utente_gia_presente.cpp \
     basic.cpp \
     pagamento.cpp \
     gold.cpp \
-    punti_non_sufficienti.cpp \
     premium.cpp \
     account.cpp \
-    vista_domanda.cpp \
     widgetcampodati.cpp \
-    vista_utente.cpp \
     creautente.cpp \
     database.cpp \
-    vista_amministratore.cpp \
-    controller_admin.cpp \
     vistacercautente.cpp \
-    vista_profilo.cpp \
     finestranuovadomanda.cpp \
     finestravistadomande.cpp \
     funzioniutili.cpp \
-    finestraamiciseguaci.cpp
+    finestraamiciseguaci.cpp \
+    amicononpresente.cpp \
+    controlleradmin.cpp \
+    nonautoredomanda.cpp \
+    puntinonsufficienti.cpp \
+    utentegiapresente.cpp \
+    vistaamministratore.cpp \
+    vistadomanda.cpp \
+    vistaprofilo.cpp \
+    vistautente.cpp
 
 RESOURCES +=

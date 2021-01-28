@@ -1,4 +1,4 @@
-#include "amico_non_presente.h"
+#include "amicononpresente.h"
 
 amico_non_presente::amico_non_presente()
 {

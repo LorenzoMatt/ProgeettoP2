@@ -2,7 +2,7 @@
 #define BOTTONEVEDICOMMENTO_H
 
 #include <QPushButton>
-#include "vista_domanda.h"
+#include "vistadomanda.h"
 class Domanda;
 
 class bottoneVediCommento:public QPushButton

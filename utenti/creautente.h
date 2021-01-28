@@ -6,13 +6,13 @@
 #include<QComboBox>
 #include<QLineEdit>
 #include<QDialogButtonBox>
-class creautente : public QDialog
+class creaUtente : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit creautente(QWidget *parent = 0);
-    ~creautente();
+    explicit creaUtente(QWidget *parent = 0);
+    ~creaUtente();
 
 private:
     QLineEdit* Username;

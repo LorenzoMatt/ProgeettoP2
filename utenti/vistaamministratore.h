@@ -12,19 +12,17 @@
 #include<QFormLayout>
 #include<QLineEdit>
 #include "creautente.h"
-
 #include "database.h"
-class controller_admin;
-class vista_amministratore : public QWidget
+class controllerAdmin;
+class vistaAmministratore : public QWidget
 {
     Q_OBJECT
-    friend class controller_admin;
+    friend class controllerAdmin;
 public:
-    explicit vista_amministratore(QWidget *parent = 0);
-    ~vista_amministratore();
-    void set_controller(controller_admin* c);
+    explicit vistaAmministratore(QWidget *parent = 0);
+    ~vistaAmministratore();
 private:
-    controller_admin* controller;
+    controllerAdmin* controller;
     QVBoxLayout* mainLyaout;
     QLabel* cambio_piano_label;
     QLabel* togli_utente_label;

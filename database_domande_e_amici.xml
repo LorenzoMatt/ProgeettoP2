@@ -84,13 +84,7 @@
         <domanda>
             <priorita>2</priorita>
             <testo>ciao</testo>
-            <commenti>
-                <commento>
-                    <testo>ciaoooo</testo>
-                    <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
-                </commento>
-            </commenti>
+            <commenti/>
         </domanda>
         <domanda>
             <priorita>2</priorita>
@@ -100,7 +94,13 @@
         <domanda>
             <priorita>5</priorita>
             <testo>ssss</testo>
-            <commenti/>
+            <commenti>
+                <commento>
+                    <testo>ciaoo</testo>
+                    <autore_commento>utente</autore_commento>
+                    <like>0</like>
+                </commento>
+            </commenti>
         </domanda>
         <domanda>
             <priorita>2</priorita>
@@ -142,7 +142,13 @@
         <domanda>
             <priorita>2</priorita>
             <testo>sono Lorenzo?</testo>
-            <commenti/>
+            <commenti>
+                <commento>
+                    <testo>piripicchio</testo>
+                    <autore_commento>utente</autore_commento>
+                    <like>0</like>
+                </commento>
+            </commenti>
         </domanda>
         <domanda>
             <priorita>2</priorita>
@@ -159,7 +165,7 @@
                     <like>0</like>
                 </commento>
                 <commento>
-                    <testo>ma ovvio che lo sei ahhahaha</testo>
+                    <testo>ma ovvio che lo sei</testo>
                     <autore_commento>Lorenzo</autore_commento>
                     <like>0</like>
                 </commento>
@@ -180,8 +186,8 @@
                     <like>0</like>
                 </commento>
                 <commento>
-                    <testo>ddwssxs</testo>
-                    <autore_commento>Lorenzo</autore_commento>
+                    <testo>ciao sono utente</testo>
+                    <autore_commento>utente</autore_commento>
                     <like>0</like>
                 </commento>
             </commenti>
@@ -208,6 +214,11 @@
                 <commento>
                     <testo>prova sono Francesca</testo>
                     <autore_commento>Francesca</autore_commento>
+                    <like>0</like>
+                </commento>
+                <commento>
+                    <testo>ciao</testo>
+                    <autore_commento>utente</autore_commento>
                     <like>0</like>
                 </commento>
             </commenti>
@@ -238,7 +249,7 @@
                 <commento>
                     <testo>mi metti like?</testo>
                     <autore_commento>Lorenzo</autore_commento>
-                    <like>0</like>
+                    <like>1</like>
                 </commento>
                 <commento>
                     <testo>Ti ho messo like contento?</testo>
@@ -255,10 +266,15 @@
                     <autore_commento>Lorenzo</autore_commento>
                     <like>0</like>
                 </commento>
+                <commento>
+                    <testo>ciaoooo</testo>
+                    <autore_commento>Enrico</autore_commento>
+                    <like>0</like>
+                </commento>
             </commenti>
         </domanda>
         <domanda>
-            <priorita>7</priorita>
+            <priorita>5</priorita>
             <testo>ciao sono Elton</testo>
             <commenti/>
         </domanda>
@@ -302,7 +318,18 @@
         <domanda>
             <priorita>5</priorita>
             <testo>ciaooo</testo>
-            <commenti/>
+            <commenti>
+                <commento>
+                    <testo>ciao</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                    <like>0</like>
+                </commento>
+                <commento>
+                    <testo>ciao</testo>
+                    <autore_commento>Lorenzo</autore_commento>
+                    <like>0</like>
+                </commento>
+            </commenti>
         </domanda>
         <domanda>
             <priorita>1</priorita>
@@ -331,5 +358,9 @@
             <testo>prova a fare una domanda</testo>
             <commenti/>
         </domanda>
+    </utente>
+    <utente>
+        <username>utente</username>
+        <amici>Lorenzo</amici>
     </utente>
 </domande_e_amici>

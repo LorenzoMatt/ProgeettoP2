@@ -1,7 +1,7 @@
 #include "controller.h"
+#include "funzioniutili.h"
 
-
-Controller::Controller(const QString& utente,VistaUtente* vista,QObject *parent) :QObject(parent),v(vista)
+Controller::Controller(const QString& utente,vistaUtente* vista,QObject *parent) :QObject(parent),v(vista)
 {
     a=new Account(utente.toStdString());
 }
@@ -9,16 +9,7 @@ Controller::Controller(const QString& utente,VistaUtente* vista,QObject *parent)
 Controller::~Controller()// viene invocato dalla delete della classe vista_utente
 {
     a->salva();
-}
-
-void Controller::setModel(Account * modello)
-{
-    a=modello;
-}
-
-void Controller::setVista(VistaUtente * vista)
-{
-    v=vista;
+    delete a;
 }
 
 void Controller::faiDomanda(const QString & testo,int priorita)
@@ -55,7 +46,7 @@ void Controller::rimuovi_commento(int i, Domanda * d)
     d->rimuovi_commento(i);
 }
 
-container<Domanda*> Controller::cercaDomanda(const QString & d)
+container<Domanda*> Controller::cercaDomanda(const QString & d) const
 {
     return a->ricerca_domanda(d.toStdString());
 }

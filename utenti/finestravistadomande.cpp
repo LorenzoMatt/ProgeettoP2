@@ -1,6 +1,6 @@
 #include "finestravistadomande.h"
 
-FinestraVistaDomande::FinestraVistaDomande(container<Domanda*>d, Controller *controller, QWidget *parent) :QDialog(parent),domande(d),c(controller)
+finestraVistaDomande::finestraVistaDomande(container<Domanda*>d, Controller *controller, QWidget *parent) :QDialog(parent),domande(d),c(controller)
 {
 
     QVBoxLayout* layoutTotalePagina=new QVBoxLayout;
@@ -48,7 +48,7 @@ FinestraVistaDomande::FinestraVistaDomande(container<Domanda*>d, Controller *con
     setLayout(layoutTotalePagina);
 }
 
-FinestraVistaDomande::~FinestraVistaDomande()
+finestraVistaDomande::~finestraVistaDomande()
 {
 
 }

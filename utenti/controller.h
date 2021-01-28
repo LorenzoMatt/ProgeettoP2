@@ -3,29 +3,25 @@
 
 #include <QObject>
 #include "account.h"
-#include "vista_utente.h"
+#include "vistautente.h"
 #include "basic.h"
 #include "gold.h"
 #include "premium.h"
-class VistaUtente;
+class vistaUtente;
 
 class Controller : public QObject
 {
     Q_OBJECT
 private:
     Account* a;
-    VistaUtente* v;
+    vistaUtente* v;
     void aggiorna_vista();
 public:
-    explicit Controller(const QString& ,VistaUtente*,QObject *parent = nullptr);
+    explicit Controller(const QString& ,vistaUtente*,QObject *parent = nullptr);
     ~Controller();
-
-    void setModel(Account*);
-    void setVista(VistaUtente*);
-
     Profilo getProfilo() const;
     Accesso getAccesso() const;
-    container<Domanda *> getDomandeAmici() const;//OK
+    container<Domanda *> getDomandeAmici() const;
     const container<Domanda *>& getDomandePersonali() const;
     int getPunti() const;
     Utente* getUtente() const;
@@ -33,7 +29,7 @@ public:
     const container<Utente *> &getSeguaci() const;
 
     container<string> cercaUtente(const QString&) const;
-    container<Domanda *> cercaDomanda(const QString&);
+    container<Domanda *> cercaDomanda(const QString&) const;
 
     bool check_presenza_amico(const QString &) const;
     bool cambiaPiano(const QString&);
