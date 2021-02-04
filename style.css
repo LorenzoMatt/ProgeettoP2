@@ -31,27 +31,27 @@ QPushButton:hover{
     color:rgb(55,55,55);
 }
 
-QPushButton#ok{
+#ok{
 
     background-color: rgb(226, 208, 147);
     color:black;
     border-color: rgb(59, 57, 23);
 }
-QPushButton#ok:hover{
+#ok:hover{
 
     color:white;
 }
 
-QPushButton#annulla:hover{
+#annulla:hover{
 
     background-color: rgb(97, 109, 44);
     color:white;
 }
-QPushButton#like:hover{
+#like:hover{
 
     background-color: rgb(241, 205, 0);
 }
-QPushButton#salva:hover{
+#salva:hover{
 
     background-color: green;
     color:white;
@@ -61,7 +61,7 @@ QTextEdit{
     background-color: rgb(238, 226, 188);
 
 }
-QTextEdit#commenti{
+#commenti{
     background-color: rgb(255, 252, 244);
 
 }
@@ -76,7 +76,7 @@ QLabel{
 
     color: black;
 }
-QLabel#tpiano{
+#tpiano{
     
     font: bold 12px;
 }
