@@ -24,7 +24,6 @@ finestraVistaDomande::finestraVistaDomande(container<Domanda*>d, Controller *con
     //Vedi commenti
     Domanda* d=domande[i];
     string stringaAutore=d->get_autore_domanda()->get_credenziali().get_username();
-    stringaAutore=stringaAutore+ " " +(d->get_autore_domanda()->get_credenziali().get_username());
     QLabel* autoreDomanda=new QLabel(QString::fromStdString(stringaAutore));
     //creo lo spazio che conterrá la domanda
     QTextEdit* testoDomanda=new QTextEdit(QString::fromStdString(d->get_testo()));
