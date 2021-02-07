@@ -29,7 +29,7 @@ container<Domanda *> Pagamento::cerca_domanda(const string & domanda, const Data
                 bool ok=false;
                 for(auto d=domanda_fatta.begin();d!=domanda_fatta.end() && !ok;++d)//scorro le parole  della domanda fatta
                 {
-                    if(*ut==*d)//confronto fra parola della domanda_esaminata e della parola della domanda_fatta
+                    if(case_insensitive_match(*ut,*d))//confronto fra parola della domanda_esaminata e della parola della domanda_fatta
                     {
                         ok=true;
                         count++;//incremento il numero di parole uguali fra la domanda fatta e quella esaminata
@@ -63,7 +63,7 @@ container<Domanda *> Pagamento::cerca_domanda(const string & domanda, const Data
                     bool ok=false;
                     for(auto d=domanda_fatta.begin();d!=domanda_fatta.end() && !ok;++d)//scorro le parole  della domanda fatta
                     {
-                        if(*ut==*d)//confronto fra parola della domanda_esaminata e della parola della domanda_fatta
+                        if(case_insensitive_match(*ut,*d))//confronto fra parola della domanda_esaminata e della parola della domanda_fatta
                         {
                             ok=true;
                             count++;//incremento il numero di parole uguali fra la domanda fatta e quella esaminata
@@ -71,7 +71,7 @@ container<Domanda *> Pagamento::cerca_domanda(const string & domanda, const Data
                     }
 
                 }
-                if(count>=(lunghezza_parola_esaminata*0.6))// basterebbe ==
+                if(count>=(lunghezza_parola_esaminata*0.5))// basterebbe ==
                 {
                     domande_trovate_modello.insertion_sort(&*dt);
                 }

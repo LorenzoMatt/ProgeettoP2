@@ -8,6 +8,7 @@
 #include "amicononpresente.h"
 #include "nonautoredomanda.h"
 #include "puntinonsufficienti.h"
+#include <algorithm>
 class Domanda;
 class Database;
 class Utente
@@ -33,8 +34,9 @@ public:
 
                      /*getter vari*/
 
+    const Profilo &get_profilo() const;
     Profilo &get_profilo();
-    Accesso get_credenziali();
+    Accesso get_credenziali() const;
     container<Utente*>& get_amici();
     const container<Utente *> &get_seguaci() const;
     const container<Domanda *>& get_domande() const;
@@ -76,6 +78,7 @@ protected:
     unsigned int punti; // punti presenti nell'account
     unsigned int risposte_date; //serve per ottenere un bonus
     bool check_presenza_amico(const string&) const;
+    static bool case_insensitive_match(string s1, string s2);
     //Classe Funtore utilizzata per la ricerca polimorfa dell'utente
     class Funtore
     {

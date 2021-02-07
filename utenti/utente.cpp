@@ -38,12 +38,17 @@ Utente::Utente(Profilo p, Accesso c, container<Utente *> a, container<Utente *> 
 
 }
 
+const Profilo &Utente::get_profilo() const
+{
+    return pf;
+}
+
 Profilo& Utente::get_profilo()
 {
     return pf;
 }
 
-Accesso Utente::get_credenziali()
+Accesso Utente::get_credenziali() const
 {
     return credenziali;
 }
@@ -175,6 +180,15 @@ bool Utente::check_presenza_amico(const string & username) const
 
 }
 
+bool Utente::case_insensitive_match(string s1, string s2)
+{
+    //converto s1 e s2 in lower case
+    transform(s1.begin(), s1.end(), s1.begin(), ::tolower);
+    transform(s2.begin(), s2.end(), s2.begin(), ::tolower);
+    if(s1.compare(s2) == 0)
+       return true;
+    return false;
+}
 container<string> Utente::split(const string & text, const string & delim)
 //divide una stringa in base alle occorrenze di delim
 {
