@@ -8,7 +8,6 @@
 #include "amicononpresente.h"
 #include "nonautoredomanda.h"
 #include "puntinonsufficienti.h"
-#include <algorithm>
 class Domanda;
 class Database;
 class Utente
